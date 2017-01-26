@@ -12,7 +12,12 @@
 */
 
 Route::get('/','AuthController@login');
+Route::get('/login','AuthController@login');
 Route::post('/dologin','AuthController@dologin');
 Route::get('/logout','AuthController@logout');
 
-Route::get('/home','HomeController@index');
+Route::group(['middleware'=>['auth']],function()
+{
+    Route::get('/home','HomeController@index');
+    Route::get('/profile','HomeController@profile');
+});

@@ -42,6 +42,6 @@ class AuthController extends Controller
     public function logout()
     {
         $this->auth->logout();
-        redirect('/');
+        return redirect('/');
     }
 }
