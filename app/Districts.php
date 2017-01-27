@@ -13,4 +13,9 @@ class Districts extends Model
         'regency_id',
         'name'
     ];
+
+    public function regencies()
+    {
+        return $this->belongsTo('App\Regencies','regency_id');
+    }
 }

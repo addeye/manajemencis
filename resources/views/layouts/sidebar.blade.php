@@ -56,8 +56,10 @@
                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Provinsi</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Kabupaten/Kota</a></li>
+                            <li class="active" ><a href="{{ url('provinces') }}"><i class="fa fa-circle-o"></i> Provinsi</a></li>
+                            <li><a href="{{ url('regencies') }}"><i class="fa fa-circle-o"></i> Kabupaten/Kota</a></li>
+                            <li><a href="{{ url('districts') }}"><i class="fa fa-circle-o"></i> Kecamatan</a></li>
+                            <li><a href="{{ url('villages') }}"><i class="fa fa-circle-o"></i> Desa</a></li>
                         </ul>
                     </li>
                 </ul>

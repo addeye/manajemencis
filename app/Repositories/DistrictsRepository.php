@@ -2,30 +2,30 @@
 /**
  * Created by PhpStorm.
  * User: deyelovi
- * Date: 26/01/2017
- * Time: 18:59
+ * Date: 28/01/2017
+ * Time: 1:22
  */
 
 namespace App\Repositories;
 
 
-use App\Provinces;
+use App\Districts;
 
-class ProvincesRepository
+class DistrictsRepository
 {
     public function getAll()
     {
-        return Provinces::all();
+        return Districts::all();
     }
 
     public function getById($id)
     {
-        return Provinces::find($id);
+        return Districts::find($id);
     }
 
     public function create($data=array())
     {
-        $result = Provinces::create($data);
+        $result = Districts::create($data);
         if($result)
         {
             return true;
@@ -35,7 +35,7 @@ class ProvincesRepository
 
     public function update($id,$data=array())
     {
-        $result = Provinces::find($id)->update($data);
+        $result = Districts::find($id)->update($data);
         if($result)
         {
             return true;
@@ -45,7 +45,7 @@ class ProvincesRepository
 
     public function delete($id)
     {
-        $result = Provinces::destroy($id);
+        $result = Districts::destroy($id);
         if($result)
         {
             return true;

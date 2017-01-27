@@ -20,4 +20,16 @@ Route::group(['middleware'=>['auth']],function()
 {
     Route::get('/home','HomeController@index');
     Route::get('/profile','HomeController@profile');
+    /*For Provinsi*/
+    Route::get('/provinces','ProvincesController@getAll');
+    Route::get('/provinces/{province_id}','ProvincesController@getRegenciesByProvinces');
+
+    /*For Kabupaten Kota*/
+    Route::get('/regencies','RegenciesController@getAll');
+
+    /*For Kecamatan*/
+    Route::get('/districts','DistrictsController@getAll');
+
+    /*For Kelurahan*/
+    Route::get('/villages','VillagesController@getAll');
 });

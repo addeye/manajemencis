@@ -22,6 +22,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- DataTables -->
+    <link href="{{ asset("../bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.css") }}" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{ asset("../bower_components/admin-lte/dist/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -82,9 +84,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE App -->
 <script src="{{ asset ("../bower_components/admin-lte/dist/js/app.min.js") }}" type="text/javascript"></script>
 
+<!-- DataTables -->
+<script src="{{ asset("../bower_components/admin-lte/plugins/datatables/jquery.dataTables.min.js") }}"></script>
+<script src="{{ asset("../bower_components/admin-lte/plugins/datatables/dataTables.bootstrap.min.js") }}"></script>
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience -->
+<script>
+    $(function () {
+        $('.datatables-class').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
 @yield('script')
 </body>
 </html>

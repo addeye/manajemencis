@@ -2,30 +2,35 @@
 /**
  * Created by PhpStorm.
  * User: deyelovi
- * Date: 26/01/2017
- * Time: 18:59
+ * Date: 28/01/2017
+ * Time: 0:54
  */
 
 namespace App\Repositories;
 
 
-use App\Provinces;
+use App\Regencies;
 
-class ProvincesRepository
+class RegenciesRepository
 {
     public function getAll()
     {
-        return Provinces::all();
+        return Regencies::with('provinces')->get();
     }
 
     public function getById($id)
     {
-        return Provinces::find($id);
+        return Regencies::find($id);
+    }
+
+    public function getByProvinces($province_id)
+    {
+        return Regencies::where('province_id',$province_id)->get();
     }
 
     public function create($data=array())
     {
-        $result = Provinces::create($data);
+        $result = Regencies::create($data);
         if($result)
         {
             return true;
@@ -35,7 +40,7 @@ class ProvincesRepository
 
     public function update($id,$data=array())
     {
-        $result = Provinces::find($id)->update($data);
+        $result = Regencies::find($id)->update($data);
         if($result)
         {
             return true;
@@ -45,7 +50,7 @@ class ProvincesRepository
 
     public function delete($id)
     {
-        $result = Provinces::destroy($id);
+        $result = Regencies::destroy($id);
         if($result)
         {
             return true;
