@@ -32,4 +32,11 @@ Route::group(['middleware'=>['auth']],function()
 
     /*For Kelurahan*/
     Route::get('/villages','VillagesController@getAll');
+
+    /*For Bidang Layanan */ 
+    Route::get('/bidanglayanan','BidangLayananController@getAll');
+
+    /* Jenis Layanan */ 
+    Route::get('/jenislayanan','JenisLayananController@getAll');
+
 });

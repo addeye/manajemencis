@@ -44,8 +44,8 @@
                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Bidang Layanan</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Jenis Layanan</a></li>
+                            <li><a href="{{url('bidanglayanan')}}"><i class="fa fa-circle-o"></i> Bidang Layanan</a></li>
+                            <li><a href="{{url('jenislayanan')}}"><i class="fa fa-circle-o"></i> Jenis Layanan</a></li>
                             <li><a href="#"><i class="fa fa-circle-o"></i> Bidang Usaha</a></li>
                         </ul>
                     </li>

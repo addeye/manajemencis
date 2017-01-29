@@ -23,6 +23,8 @@ class ProvincesRepository
         return Provinces::find($id);
     }
 
+    
+
     public function create($data=array())
     {
         $result = Provinces::create($data);
