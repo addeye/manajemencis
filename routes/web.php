@@ -35,8 +35,18 @@ Route::group(['middleware'=>['auth']],function()
 
     /*For Bidang Layanan */ 
     Route::get('/bidanglayanan','BidangLayananController@getAll');
+    Route::get('/bidanglayanan/create','BidangLayananController@addData');
+    Route::post('/bidanglayanan','BidangLayananController@doAddData');
+    Route::get('/bidanglayanan/{id}','BidangLayananController@editData');
+    Route::put('/bidanglayanan/{id}/update','BidangLayananController@doEditData');
+    Route::get('/bidanglayanan/{id}/delete','BidangLayananController@deleteData');
 
-    /* Jenis Layanan */ 
+    /* Jenis Layanan */
     Route::get('/jenislayanan','JenisLayananController@getAll');
+    Route::get('/jenislayanan/create','JenisLayananController@addData');
+    Route::post('/jenislayanan','JenisLayananController@doAddData');
+    Route::get('/jenislayanan/{id}','JenisLayananController@editData');
+    Route::put('/jenislayanan/{id}/update','JenisLayananController@doEditData');
+
 
 });
