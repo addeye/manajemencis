@@ -22,10 +22,19 @@ Route::group(['middleware'=>['auth']],function()
     Route::get('/profile','HomeController@profile');
     /*For Provinsi*/
     Route::get('/provinces','ProvincesController@getAll');
-    Route::get('/provinces/{province_id}','ProvincesController@getRegenciesByProvinces');
+    Route::get('/provinces/create','ProvincesController@addData');
+    Route::post('/provinces','ProvincesController@doAddData');
+    Route::get('/provinces/{id}','ProvincesController@editData');
+    Route::put('/provinces/{id}/update','ProvincesController@doEditData');
+    Route::get('/provinces/{id}/delete','ProvincesController@deleteData');
 
     /*For Kabupaten Kota*/
     Route::get('/regencies','RegenciesController@getAll');
+    Route::get('/regencies/create','RegenciesController@addData');
+    Route::post('/regencies','RegenciesController@doAddData');
+    Route::get('/regencies/{id}','RegenciesController@editData');
+    Route::put('/regencies/{id}/update','RegenciesController@doEditData');
+    Route::get('/regencies/{id}/delete','RegenciesController@deleteData');
 
     /*For Kecamatan*/
     Route::get('/districts','DistrictsController@getAll');

@@ -28,12 +28,15 @@ class CreateKonsultansTable extends Migration
             $table->string('email')->unique();
             $table->integer('pendidikan_id')->unsigned();
             $table->foreign('pendidikan_id')->references('id')->on('pendidikans');
+            $table->string('perguruan_terkahir');
+            $table->string('jurusan');
+            $table->string('bidang_keahlian');
+            $table->string('asosiasi');
             $table->text('pengalaman');
             $table->integer('lembaga_id')->unsigned();
             $table->foreign('lembaga_id')->references('id')->on('lembagas');
             $table->integer('bidang_layanan_id')->unsigned();
             $table->foreign('bidang_layanan_id')->references('id')->on('bidang_layanans');
-            $table->string('foto');
             $table->timestamps();
         });
     }

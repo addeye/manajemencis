@@ -9,4 +9,6 @@ class Provinces extends Model
     protected $table = 'provinces';
 
     protected $fillable = ['id','name'];
+
+    public $timestamps = false;
 }

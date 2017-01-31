@@ -14,6 +14,9 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{ $title }}</h3>
+                    <div class="pull-right">
+                        <a href="{{ url('regencies/create') }}">Tambah Data</a>
+                    </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -23,6 +26,7 @@
                             <th class="col-xs-1">Kode</th>
                             <th class="col-xs-3">Provinsi</th>
                             <th>Kabupaten/Kota</th>
+                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -31,6 +35,11 @@
                             <td>{{ $row->id }}</td>
                             <td>{{ $row->provinces->name }}</td>
                             <td>{{ $row->name }}</td>
+                            <td>
+                                <a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-list"></i></a>
+                                <a href="{{ url('regencies/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                                <a href="{{ url('regencies/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                            </td>
                         </tr>
                             @endforeach
                         </tbody>

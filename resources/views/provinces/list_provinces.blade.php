@@ -14,6 +14,9 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{ $title }}</h3>
+                    <div class="pull-right">
+                        <a href="{{ url('provinces/create') }}">Tambah Data</a>
+                    </div>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -31,9 +34,9 @@
                             <td>{{ $row->id }}</td>
                             <td>{{ $row->name }}</td>
                             <td>
-                                <a href="{{ url('provinces/'.$row->id) }}" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-list"></i></a>
-                                <a href="#" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-                                <a href="#" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                                <a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-list"></i></a>
+                                <a href="{{ url('provinces/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                                <a href="{{ url('provinces/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
                             </td>
                         </tr>
                             @endforeach

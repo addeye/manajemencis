@@ -49,14 +49,14 @@
                             <li class="{{ active_check('bidangusaha') }}"><a href="#"><i class="fa fa-circle-o"></i> Bidang Usaha</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="{{active_check('provinces')}}">
                         <a href="#"><i class="fa fa-circle-o"></i> Wilayah
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ url('provinces') }}"><i class="fa fa-circle-o"></i> Provinsi</a></li>
+                            <li class="{{active_check('provinces')}}"><a href="{{ url('provinces') }}"><i class="fa fa-circle-o"></i> Provinsi</a></li>
                             <li><a href="{{ url('regencies') }}"><i class="fa fa-circle-o"></i> Kabupaten/Kota</a></li>
                             <li><a href="{{ url('districts') }}"><i class="fa fa-circle-o"></i> Kecamatan</a></li>
                             <li><a href="{{ url('villages') }}"><i class="fa fa-circle-o"></i> Desa</a></li>

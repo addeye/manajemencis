@@ -10,6 +10,8 @@ class Regencies extends Model
 
     protected $fillable = ['id','province_id','name'];
 
+    public $timestamps = false;
+
     public function provinces()
     {
         return $this->belongsTo('App\Provinces','province_id');
