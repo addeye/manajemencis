@@ -24,7 +24,6 @@ class JenisLayananController extends Controller
 
     	);
 
-    	// return $data;
     	return view('jenis_layanan.list_jenis_layanan' ,$data);
     }
 }

@@ -39,4 +39,7 @@ Route::group(['middleware'=>['auth']],function()
     /* Jenis Layanan */ 
     Route::get('/jenislayanan','JenisLayananController@getAll');
 
+    /* View Bidang Usaha*/
+    Route::get('/bidangusaha','BidangUsahaController@getAll');
+
 });
