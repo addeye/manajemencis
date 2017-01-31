@@ -102,6 +102,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             "autoWidth": false
         });
     });
+
+    function ConfirmDelete()
+    {
+        var x = confirm("Are you sure you want to delete?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
 </script>
 @yield('script')
 </body>

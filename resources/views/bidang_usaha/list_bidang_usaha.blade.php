@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by Sublime
  * User: Dio Putra
@@ -9,15 +8,20 @@
 
 ?>
 
-@extends('layouts.master');
-@section('content');
+@extends('layouts.master')
+
+@section('content')
+
 	<div class="row">
 		<div class="col-xs-12">
+			@include('layouts.alert')
 			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">{{$title}}</h3>
+					<div class="pull-right">
+						<a href="{{ url('bidanglayanan/create') }}">Tambah Data</a>
+					</div>
 				</div>
-
 				<!-- / box Header -->
 				<div class="box-body">
 						<table class="table table-bordered table-striped datatables-class">
@@ -29,21 +33,17 @@
 								
 							</tr>
 						</thead>
-
 						<tbody>
-							@foreach($bidangusaha as $row)
+							@foreach($bidanglayanan as $row)
 							<tr>
 								
 								<td>{{$row->id}}</td>
 								<td>{{$row->name}}</td>
 								<td>
-                                	<a href="#" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-                                	<a href="#" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                                	<a href="{{ url('bidanglayanan/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                                	<a href="{{ url('bidanglayanan/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
 								</td>
-
 							</tr>
-
-
 							 @endforeach
 						</tbody>
 
@@ -54,5 +54,4 @@
 			</div>
 		</div>
 	</div>
-
 @endsection

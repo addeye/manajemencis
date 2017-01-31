@@ -1,60 +1,63 @@
 <?php
-
 /**
- * Created by Sublime.
- * User: Dio Putra
- * Date: 30/01/2017
- * Time: 03:05
+ * Created by PhpStorm.
+ * User: deyelovi
+ * Date: 31/01/2017
+ * Time: 2:04
+>>>>>>> 0229f4612d4afda82c3e1724617610da2b9a2a16
  */
 
 namespace App\Repositories;
 
-
-use App\Bidang_Usaha;
+use App\Bidang_usaha;
 
 class BidangUsahaRepository
 {
-	public function getAll()
-	{
-		return Bidang_Usaha::all();
-	}
+    // Select All
+    Public function getAll()
+    {
+        return Bidang_usaha::all();
+    }
 
-	public function getById($id)
-	{
-		return Bidang_Usaha::find($id);
-	}
+    // Select where id
+    public function getById($id)
+    {
+        return Bidang_usaha::find($id);
+    }
 
-	public function create($data=Array())
-	{
-		$result = Bidang_Usaha::create($data);
-		if ($result)
-		{
-			return true;
-		}
+    // Insert into
+    public function create($data=array())
+    {
+        $result = Bidang_usaha::create($data);
+        if ($result)
+        {
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	public function update($id,$data=Array())
-	{
-		$result= Bidang_Usaha::find($id)->update($data);
-		if ($result)
-		{
-			return true;
-		}
 
-		return false;
-	}
+    // Update
+    public function update($id,$data=array())
+    {
+        $result = Bidang_usaha::find($id)->update($data);
+        if ($result)
+        {
+            return true;
+        }
 
-	public function delete($id)
-	{
-		$result= Bidang_Usaha::destroy($id);
-		if ($result)
-		{
-			return true;
-		}
-		return false;
-		
-	}
+        return false;
+    }
 
+    // Delete
+    public function delete($id)
+    {
+        $result = Bidang_usaha::destroy($id);
+        if ($result)
+        {
+            return true;
+        }
+        return false;
+    }
 }

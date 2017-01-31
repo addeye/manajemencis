@@ -28,8 +28,8 @@
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-            <li class="treeview">
+            <li class="{{ Active::check('home') }}"><a href="{{ url('home') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            <li class="treeview {{active_check('bidanglayanan')}} {{active_check('jenislayanan')}}">
                 <a href="#">
                     <i class="fa fa-cube"></i> <span>Master Data</span>
             <span class="pull-right-container">
@@ -37,16 +37,16 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li>
+                    <li class="{{active_check('bidanglayanan')}} {{active_check('jenislayanan')}}">
                         <a href="#"><i class="fa fa-circle-o"></i> Bidang
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{url('bidanglayanan')}}"><i class="fa fa-circle-o"></i> Bidang Layanan</a></li>
-                            <li><a href="{{url('jenislayanan')}}"><i class="fa fa-circle-o"></i> Jenis Layanan</a></li>
-                            <li><a href="{{url('bidangusaha')}}"><i class="fa fa-circle-o"></i> Bidang Usaha</a></li>
+                            <li class="{{ active_check('bidanglayanan') }}"><a href="{{url('bidanglayanan')}}"><i class="fa fa-circle-o"></i> Bidang Layanan</a></li>
+                            <li class="{{ active_check('jenislayanan') }}"><a href="{{url('jenislayanan')}}"><i class="fa fa-circle-o"></i> Jenis Layanan</a></li>
+                            <li class="{{ active_check('bidangusaha') }}"><a href="#"><i class="fa fa-circle-o"></i> Bidang Usaha</a></li>
                         </ul>
                     </li>
                     <li>
@@ -56,7 +56,7 @@
                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="active" ><a href="{{ url('provinces') }}"><i class="fa fa-circle-o"></i> Provinsi</a></li>
+                            <li><a href="{{ url('provinces') }}"><i class="fa fa-circle-o"></i> Provinsi</a></li>
                             <li><a href="{{ url('regencies') }}"><i class="fa fa-circle-o"></i> Kabupaten/Kota</a></li>
                             <li><a href="{{ url('districts') }}"><i class="fa fa-circle-o"></i> Kecamatan</a></li>
                             <li><a href="{{ url('villages') }}"><i class="fa fa-circle-o"></i> Desa</a></li>
