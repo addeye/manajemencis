@@ -4,10 +4,10 @@
  * User: deyelovi
  * Date: 31/01/2017
  * Time: 2:04
+>>>>>>> 0229f4612d4afda82c3e1724617610da2b9a2a16
  */
 
 namespace App\Repositories;
-
 
 use App\Bidang_usaha;
 

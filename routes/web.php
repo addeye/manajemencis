@@ -49,4 +49,7 @@ Route::group(['middleware'=>['auth']],function()
     Route::put('/jenislayanan/{id}/update','JenisLayananController@doEditData');
 
 
+    /* View Bidang Usaha*/
+    Route::get('/bidangusaha','BidangUsahaController@getAll');
+
 });
