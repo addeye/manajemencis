@@ -28,7 +28,7 @@
                                 <select name="province_id" class="form-control">
                                     <option value="">Pilih Provinsi</option>
                                     @foreach($provinces as $row)
-                                        <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                        <option value="{{ $row->id }}">{{ $row->id }} {{ $row->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

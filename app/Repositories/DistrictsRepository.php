@@ -10,12 +10,18 @@ namespace App\Repositories;
 
 
 use App\Districts;
+use App\Regencies;
 
 class DistrictsRepository
 {
     public function getAll()
     {
         return Districts::all();
+    }
+
+    public function getByRegencies($regency_id)
+    {
+        return Districts::where('regency_id',$regency_id)->get();
     }
 
     public function getById($id)

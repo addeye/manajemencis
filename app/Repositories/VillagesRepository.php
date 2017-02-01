@@ -23,6 +23,11 @@ class VillagesRepository
         return Villages::find($id);
     }
 
+    public function getByDistrict($districts_id)
+    {
+        return Villages::where('district_id','=',$districts_id)->get();
+    }
+
     public function create($data=array())
     {
         $result = Villages::create($data);

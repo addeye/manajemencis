@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Nama Jenis Layanan</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">IKU (Indikator Kinerja Utama)</label>
                             <div class="col-sm-5">
                                 <input type="text" name="name" class="form-control" placeholder="Nama Bidang Layanan.." value="{{ $data->name }}" required>
                             </div>

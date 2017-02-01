@@ -34,21 +34,21 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Nama Jenis Layanan</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Indikator Kinerja Utama</label>
                             <div class="col-sm-5">
-                                <input type="text" name="name[]" class="form-control" placeholder="Nama Jenis Layanan.." required>
+                                <input type="text" name="name[]" class="form-control" placeholder="Indikator Kinerja Utama.." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label"></label>
                             <div class="col-sm-5">
-                                <input type="text" name="name[]" class="form-control" placeholder="Nama Jenis Layanan.." >
+                                <input type="text" name="name[]" class="form-control" placeholder="Indikator Kinerja Utama.." >
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label"></label>
                             <div class="col-sm-5">
-                                <input type="text" name="name[]" class="form-control" placeholder="Nama Jenis Layanan.." >
+                                <input type="text" name="name[]" class="form-control" placeholder="Indikator Kinerja Utama.." >
                             </div>
                         </div>
                         <div class="form-group">

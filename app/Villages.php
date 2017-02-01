@@ -10,6 +10,8 @@ class Villages extends Model
 
     protected $fillable = ['id','district_id','name'];
 
+    public $timestamps = false;
+
     public function districts()
     {
         return $this->belongsTo('App\Districts','district_id');

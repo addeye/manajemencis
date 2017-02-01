@@ -14,6 +14,8 @@ class Districts extends Model
         'name'
     ];
 
+    public $timestamps = false;
+
     public function regencies()
     {
         return $this->belongsTo('App\Regencies','regency_id');

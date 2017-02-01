@@ -20,12 +20,12 @@
                 </div>
                 <!-- / box Header -->
                 <div class="box-body">
-                    <form method="post" action="{{ url('bidanglayanan') }}" class="form-horizontal">
+                    <form method="post" action="{{ url('bidangusaha') }}" class="form-horizontal">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Nama Bidang Layanan</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Nama Bidang Usaha</label>
                             <div class="col-sm-5">
-                                <input type="text" name="name" class="form-control" placeholder="Nama Bidang Layanan.." required>
+                                <input type="text" name="name" class="form-control" placeholder="Nama Bidang Usaha.." required>
                             </div>
                         </div>
                         <div class="form-group">

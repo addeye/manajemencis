@@ -15,13 +15,17 @@ class CreateLembagasTable extends Migration
     {
         Schema::create('lembagas', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('idlembaga',10);
             $table->string('name');
             $table->integer('tingkat_id')->unsigned();
             $table->foreign('tingkat_id')->references('id')->on('tingkats');
-            $table->string('district_id');
-            $table->foreign('district_id')->references('id')->on('districts');
+            $table->string('provinces_id');
+            $table->foreign('provinces_id')->references('id')->on('provinces');
+            $table->string('regency_id');
+            $table->foreign('regency_id')->references('id')->on('regencies');
             $table->text('alamat');
             $table->string('kode_pos');
+            $table->string('bentuk_lembaga');
             $table->string('SKPD');
             $table->string('tahun_berdiri');
             $table->string('telepon');
@@ -38,27 +42,6 @@ class CreateLembagasTable extends Migration
             $table->string('nama_staffteknis');
             $table->string('telepon_staffteknis');
             $table->string('email_staffteknis');
-//            $table->string('nama_kons_kelembagaan');
-//            $table->string('telepon_kons_kelembagaan');
-//            $table->string('email_kons_kelembagaan');
-//            $table->string('nama_kons_sdm');
-//            $table->string('telepon_kons_sdm');
-//            $table->string('email_kons_sdm');
-//            $table->string('nama_kons_produksi');
-//            $table->string('telepon_kons_produksi');
-//            $table->string('email_kons_produksi');
-//            $table->string('nama_kons_pembiayaan');
-//            $table->string('telepon_kons_pembiayaan');
-//            $table->string('email_kons_pembiayaan');
-//            $table->string('nama_kons_pemesaran');
-//            $table->string('telepon_kons_pemasaran');
-//            $table->string('email_kons_pemasaran');
-//            $table->string('nama_kons_it');
-//            $table->string('telepon_kons_it');
-//            $table->string('email_kons_it');
-//            $table->string('nama_kons_kerjasama');
-//            $table->string('telepon_kons_kerjasama');
-//            $table->string('email_kons_kerjasama');
             $table->timestamps();
         });
     }

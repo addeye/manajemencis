@@ -29,7 +29,7 @@
                                 <select name="province_id" class="form-control">
                                     <option value="">Pilih Provinsi</option>
                                     @foreach($provinces as $row)
-                                        <option value="{{ $row->id }}" {{ $row->id==$data->province_id?'selected':'' }} >{{ $row->name }}</option>
+                                        <option value="{{ $row->id }}" {{ $row->id==$data->province_id?'selected':'' }} >{{ $row->id }} {{ $row->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -37,13 +37,13 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">ID</label>
                             <div class="col-sm-5">
-                                <input type="text" name="id" class="form-control" placeholder="ID Provinsi.." required value="{{ $data->id }}">
+                                <input type="text" name="id" class="form-control" placeholder="ID Kabupaten/Kota.." required value="{{ $data->id }}">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Nama Provinsi</label>
                             <div class="col-sm-5">
-                                <input type="text" name="name" class="form-control" placeholder="Nama Provinsi.." required value="{{ $data->name }}">
+                                <input type="text" name="name" class="form-control" placeholder="Nama Kabupaten/Kota.." required value="{{ $data->name }}">
                             </div>
                         </div>
                         <div class="form-group">

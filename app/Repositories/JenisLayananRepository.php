@@ -9,7 +9,7 @@
 
 namespace App\Repositories;
 
-use App\Jenis_Layanan;
+use App\Jenis_layanan;
 
 
 class JenisLayananRepository
@@ -18,18 +18,18 @@ class JenisLayananRepository
 	// Select all
 	public function getAll()
 	{
-		return Jenis_Layanan::with('bidang_layanan')->get();
+		return Jenis_layanan::with('bidang_layanan')->get();
 	}
 
 	// Select Where id
 	public function getById($id)
 	{
-		return Jenis_Layanan::find($id);
+		return Jenis_layanan::find($id);
 	}
 
 	public function create($data=array())
 	{
-		$result = Jenis_Layanan::create($data);
+		$result = Jenis_layanan::create($data);
 		if ($result)
 		{
 			return true;
@@ -39,7 +39,7 @@ class JenisLayananRepository
 
 	public function update($id,$data=array())
 	{
-		$result = Jenis_Layanan::find($id)->update($data);
+		$result = Jenis_layanan::find($id)->update($data);
 		if ($result)
 		{
 			return true;
@@ -50,7 +50,7 @@ class JenisLayananRepository
 
 	public function delete($id)
 	{
-		$result= Jenis_Layanan::destroy($id);
+		$result= Jenis_layanan::destroy($id);
 		if ($result) {
 			return true;
 		}

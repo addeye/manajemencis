@@ -29,7 +29,7 @@
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="{{ Active::check('home') }}"><a href="{{ url('home') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-            <li class="treeview {{active_check('bidanglayanan')}} {{active_check('jenislayanan')}}">
+            <li class="treeview {{active_check('bidanglayanan',true)}} {{active_check('jenislayanan',true)}} {{active_check('bidangusaha',true)}} {{active_check('provinces',true)}} {{active_check('regencies',true)}} {{active_check('districts',true)}}">
                 <a href="#">
                     <i class="fa fa-cube"></i> <span>Master Data</span>
             <span class="pull-right-container">
@@ -37,29 +37,28 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{{active_check('bidanglayanan')}} {{active_check('jenislayanan')}}">
+                    <li class="{{active_check('bidanglayanan',true)}} {{active_check('jenislayanan',true)}} {{ active_check('bidangusaha',true) }}">
                         <a href="#"><i class="fa fa-circle-o"></i> Bidang
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="{{ active_check('bidanglayanan') }}"><a href="{{url('bidanglayanan')}}"><i class="fa fa-circle-o"></i> Bidang Layanan</a></li>
-                            <li class="{{ active_check('jenislayanan') }}"><a href="{{url('jenislayanan')}}"><i class="fa fa-circle-o"></i> Jenis Layanan</a></li>
-                            <li class="{{ active_check('bidangusaha') }}"><a href="#"><i class="fa fa-circle-o"></i> Bidang Usaha</a></li>
+                            <li class="{{ active_check('bidanglayanan',true) }}"><a href="{{url('bidanglayanan')}}"><i class="fa fa-circle-o"></i> Bidang Layanan</a></li>
+                            <li class="{{ active_check('jenislayanan',true) }}"><a href="{{url('jenislayanan')}}"><i class="fa fa-circle-o"></i> IKU Layanan</a></li>
+                            <li class="{{ active_check('bidangusaha',true) }}"><a href="{{ url('bidangusaha') }}"><i class="fa fa-circle-o"></i> Bidang Usaha</a></li>
                         </ul>
                     </li>
-                    <li class="{{active_check('provinces')}}">
+                    <li class="{{active_check('provinces',true)}} {{active_check('regencies',true)}} {{active_check('districts',true)}}">
                         <a href="#"><i class="fa fa-circle-o"></i> Wilayah
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li class="{{active_check('provinces')}}"><a href="{{ url('provinces') }}"><i class="fa fa-circle-o"></i> Provinsi</a></li>
-                            <li><a href="{{ url('regencies') }}"><i class="fa fa-circle-o"></i> Kabupaten/Kota</a></li>
-                            <li><a href="{{ url('districts') }}"><i class="fa fa-circle-o"></i> Kecamatan</a></li>
-                            <li><a href="{{ url('villages') }}"><i class="fa fa-circle-o"></i> Desa</a></li>
+                            <li class="{{active_check('provinces',true)}}"><a href="{{ url('provinces') }}"><i class="fa fa-circle-o"></i> Provinsi</a></li>
+                            <li class="{{active_check('regencies',true)}}"><a href="{{ url('regencies') }}"><i class="fa fa-circle-o"></i> Kabupaten/Kota</a></li>
+                            {{--<li class="{{active_check('districts',true)}}"><a href="{{ url('districts') }}"><i class="fa fa-circle-o"></i> Kecamatan</a></li>--}}
                         </ul>
                     </li>
                 </ul>

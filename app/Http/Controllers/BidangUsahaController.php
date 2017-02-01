@@ -19,7 +19,7 @@ class BidangUsahaController extends Controller
         $data = Array
         (
             'title' => 'Data Bidang Usaha',
-            'bidanglayanan' => $this->bidangusaha->getAll()
+            'bidangusaha' => $this->bidangusaha->getAll()
 
         );
         return view('bidang_usaha.list_bidang_usaha',$data);
@@ -53,7 +53,7 @@ class BidangUsahaController extends Controller
             'title' => 'Edit Bidang Usaha',
             'data' => $this->bidangusaha->getById($id)
         );
-        return view('bidang_layanan.edit_bidang_layanan',$data);
+        return view('bidang_usaha.edit_bidang_usaha',$data);
     }
 
     public function doEditData(Request $request,$id)
@@ -70,7 +70,7 @@ class BidangUsahaController extends Controller
 
     public function deleteData($id)
     {
-        $result = $this->bidanglayanan->delete($id);
+        $result = $this->bidangusaha->delete($id);
         if($result)
         {
             return redirect('bidangusaha')->with('info','Data Bidang Usaha Berhasil Dihapus');

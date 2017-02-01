@@ -36,7 +36,7 @@
                             <td>{{ $row->provinces->name }}</td>
                             <td>{{ $row->name }}</td>
                             <td>
-                                <a href="#" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-list"></i></a>
+                                <a href="{{ url('regencies/'.$row->id.'/districts') }}" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-list"></i></a>
                                 <a href="{{ url('regencies/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                 <a href="{{ url('regencies/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
                             </td>

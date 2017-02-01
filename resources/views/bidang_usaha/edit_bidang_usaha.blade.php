@@ -20,13 +20,13 @@
                 </div>
                 <!-- / box Header -->
                 <div class="box-body">
-                    <form method="post" action="{{ url('bidanglayanan/'.$data->id.'/update') }}" class="form-horizontal">
+                    <form method="post" action="{{ url('bidangusaha/'.$data->id.'/update') }}" class="form-horizontal">
                         <input type="hidden" name="_method" value="PUT">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Nama Bidang Layanan</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Nama Bidang Usaha</label>
                             <div class="col-sm-5">
-                                <input type="text" name="name" class="form-control" placeholder="Nama Bidang Layanan.." value="{{ $data->name }}" required>
+                                <input type="text" name="name" class="form-control" placeholder="Nama Bidang Usaha.." value="{{ $data->name }}" required>
                             </div>
                         </div>
                         <div class="form-group">

@@ -16,9 +16,12 @@ class CreateKonsultansTable extends Migration
         Schema::create('konsultans', function (Blueprint $table) {
             $table->increments('id');
             $table->string('username');
+            $table->string('no_registrasi');
             $table->string('nama_lengkap');
-            $table->string('district_id');
-            $table->foreign('district_id')->references('id')->on('districts');
+            $table->string('provinces_id');
+            $table->foreign('provinces_id')->references('id')->on('provinces');
+            $table->string('regency_id');
+            $table->foreign('regency_id')->references('id')->on('regencies');
             $table->text('alamat');
             $table->string('kode_pos');
             $table->string('jenis_kelamin',1);
@@ -26,13 +29,16 @@ class CreateKonsultansTable extends Migration
             $table->date('tanggal_lahir');
             $table->string('telepon');
             $table->string('email')->unique();
+
             $table->integer('pendidikan_id')->unsigned();
             $table->foreign('pendidikan_id')->references('id')->on('pendidikans');
+
             $table->string('perguruan_terkahir');
             $table->string('jurusan');
             $table->string('bidang_keahlian');
-            $table->string('asosiasi');
             $table->text('pengalaman');
+            $table->string('sertifikat');
+            $table->string('asosiasi');
             $table->integer('lembaga_id')->unsigned();
             $table->foreign('lembaga_id')->references('id')->on('lembagas');
             $table->integer('bidang_layanan_id')->unsigned();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\DistrictsRepository;
 use App\Repositories\ProvincesRepository;
 use App\Repositories\RegenciesRepository;
 use Illuminate\Http\Request;
@@ -10,11 +11,13 @@ class RegenciesController extends Controller
 {
     protected $regencies;
     protected $provinces;
+    protected $districts;
 
-    public function __construct(RegenciesRepository $regencies, ProvincesRepository $provinces)
+    public function __construct(RegenciesRepository $regencies, ProvincesRepository $provinces, DistrictsRepository $districts)
     {
         $this->regencies = $regencies;
         $this->provinces = $provinces;
+        $this->districts = $districts;
     }
 
     public function getAll()
@@ -24,6 +27,15 @@ class RegenciesController extends Controller
             'regencies' => $this->regencies->getAll()
         );
         return view('regencies.list_regencies',$data);
+    }
+
+    public function getDistrictsByRegencies($id)
+    {
+        $data = array(
+            'title' => 'Data Kecamatan',
+            'districts' => $this->districts->getByRegencies($id)
+        );
+        return view('districts.list_districts',$data);
     }
 
     public function getByProvinces($province_id)
