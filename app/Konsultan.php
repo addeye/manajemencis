@@ -10,8 +10,10 @@ class Konsultan extends Model
 
     protected $fillable = [
         'username',
+        'no_registrasi',
         'nama_lengkap',
-        'district_id',
+        'provinces_id',
+        'regency_id',
         'alamat',
         'kode_pos',
         'jenis_kelamin',
@@ -20,9 +22,13 @@ class Konsultan extends Model
         'telepon',
         'email',
         'pendidikan_id',
+        'perguruan_terakhir',
+        'jurusan',
+        'bidang_keahlian',
         'pengalaman',
+        'sertifikat',
+        'asosiasi',
         'lembaga_id',
         'bidang_layanan_id',
-        'foto'
     ];
 }

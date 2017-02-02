@@ -55,6 +55,7 @@ class CreateSentraKumkmsTable extends Migration
             $table->text('masalah_pembiayaan');
             $table->text('masalah_pemasaran');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

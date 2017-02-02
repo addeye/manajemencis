@@ -19,6 +19,7 @@ class CreateJenisLayanansTable extends Migration
             $table->foreign('bidang_layanan_id')->references('id')->on('bidang_layanans');
             $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

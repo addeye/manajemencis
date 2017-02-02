@@ -132,4 +132,16 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/{id}/update', 'RolesController@doEditData');
         Route::get('/{id}/delete', 'RolesController@deleteData');
     });
+
+    /**
+     * For Konsultan
+     */
+    Route::group(['prefix' => 'konsultan'], function () {
+        Route::get('/', 'KonsultanController@getAll');
+        Route::get('/create', 'KonsultanController@addData');
+        Route::post('/', 'KonsultanController@doAddData');
+        Route::get('/{id}', 'KonsultanController@editData');
+        Route::put('/{id}/update', 'KonsultanController@doEditData');
+        Route::get('/{id}/delete', 'KonsultanController@deleteData');
+    });
 });

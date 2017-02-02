@@ -43,6 +43,7 @@ class CreateLembagasTable extends Migration
             $table->string('telepon_staffteknis');
             $table->string('email_staffteknis');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
