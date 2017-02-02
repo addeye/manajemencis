@@ -8,5 +8,5 @@ class Tingkats extends Model
 {
     protected $table = 'tingkats';
 
-    protected $fillable = ['name','name'];
+    protected $fillable = ['name'];
 }

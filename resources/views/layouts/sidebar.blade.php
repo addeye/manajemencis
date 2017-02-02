@@ -115,7 +115,7 @@
                     <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> View KUMKM</a></li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {{active_check('roles',true)}} {{active_check('u',true)}} {{active_check('tingkat',true)}}">
                 <a href="#">
                     <i class="fa fa-cog"></i> <span>Setting</span>
             <span class="pull-right-container">
@@ -123,9 +123,9 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Tingkat</a></li>
-                    <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Roles</a></li>
-                    <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Users</a></li>
+                    <li class="{{active_check('tingkat',true)}}"><a href="{{ url('tingkat') }}"><i class="fa fa-circle-o"></i> Tingkat</a></li>
+                    <li class="{{active_check('roles',true)}}"><a href="{{ url('roles') }}"><i class="fa fa-circle-o"></i> Roles</a></li>
+                    <li class="{{active_check('u',true)}}"><a href="{{ url('u') }}"><i class="fa fa-circle-o"></i> Users</a></li>
                 </ul>
             </li>
         </ul>

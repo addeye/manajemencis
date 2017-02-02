@@ -3,62 +3,61 @@
  * Created by PhpStorm.
  * User: deyelovi
  * Date: 02/02/2017
- * Time: 11:22
+ * Time: 11:40
  */
 
 namespace App\Repositories;
 
 
-use App\User;
+use App\Roles;
 
-class UserRepository
+class RolesRepository
 {
-    public function getAll()
+    // Select All
+    Public function getAll()
     {
-        return User::all();
+        return Roles::all();
     }
 
+    // Select where id
     public function getById($id)
     {
-        return User::find($id);
+        return Roles::find($id);
     }
 
-
-
+    // Insert into
     public function create($data=array())
     {
-        $data['password'] = bcrypt($data['password']);
-        $result = User::create($data);
-        if($result)
+        $result = Roles::create($data);
+        if ($result)
         {
             return true;
         }
+
         return false;
     }
 
+
+    // Update
     public function update($id,$data=array())
     {
-        if($data['password']=='')
-        {
-            unset($data['password']);
-            unset($data['confirm_password']);
-        }
-        $result = User::find($id)->update($data);
-        if($result)
+        $result =Roles::find($id)->update($data);
+        if ($result)
         {
             return true;
         }
+
         return false;
     }
 
+    // Delete
     public function delete($id)
     {
-        $result = User::destroy($id);
-        if($result)
+        $result = Roles::destroy($id);
+        if ($result)
         {
             return true;
         }
         return false;
     }
-
 }
