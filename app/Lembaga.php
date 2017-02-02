@@ -9,9 +9,11 @@ class Lembaga extends Model
     protected $table = 'lembagas';
 
     protected $fillable = [
+        'idlembaga',
         'name',
         'tingkat_id',
-        'district_id',
+        'provinces_id',
+        'regency_id',
         'alamat',
         'kode_pos',
         'bentuk_lembaga',
@@ -32,4 +34,19 @@ class Lembaga extends Model
         'telepon_staffteknis',
         'email_staffteknis',
     ];
+
+    public function provinces()
+    {
+        return $this->belongsTo(Provinces::class,'provinces_id');
+    }
+
+    public function regencies()
+    {
+        return $this->belongsTo(Regencies::class,'regency_id');
+    }
+
+    public function tingkats()
+    {
+        return $this->belongsTo(Tingkats::class,'tingkat_id');
+    }
 }

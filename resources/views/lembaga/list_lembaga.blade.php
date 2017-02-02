@@ -11,6 +11,7 @@
 @section('content')
     <div class="row">
         <div class="col-xs-12">
+            @include('layouts.alert')
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{ $title }}</h3>
@@ -35,16 +36,16 @@
                         <tbody>
                         @foreach($lembaga as $row)
                         <tr>
-                            <td>{{ $row->id }}</td>
+                            <td>{{ $row->idlembaga }}</td>
                             <td>{{ $row->name }}</td>
-                            <td>{{ $row->rege }}</td>
-                            <td>{{ $row->name }}</td>
-                            <td>{{ $row->name }}</td>
-                            <td>{{ $row->name }}</td>
+                            <td>{{ $row->regencies->name }}</td>
+                            <td>{{ $row->provinces->name }}</td>
+                            <td>{{ $row->tingkats->name }}</td>
+                            <td>{{ $row->tahun_berdiri }}</td>
                             <td>
-                                <a href="{{ url('provinces/'.$row->id.'/regencies') }}" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-list"></i></a>
-                                <a href="{{ url('provinces/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-                                <a href="{{ url('provinces/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                                <a href="{{ url('lembaga/'.$row->id.'/detail') }}" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-list"></i></a>
+                                <a href="{{ url('lembaga/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
+                                <a href="{{ url('lembaga/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
                             </td>
                         </tr>
                             @endforeach

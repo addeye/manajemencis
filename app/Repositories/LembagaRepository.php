@@ -35,7 +35,7 @@ class LembagaRepository
         return false;
     }
 
-    public function update($id,$data=array())
+    public function update($id,$data)
     {
         $result = Lembaga::find($id)->update($data);
         if($result)
@@ -53,5 +53,15 @@ class LembagaRepository
             return true;
         }
         return false;
+    }
+
+    public function transformator($data)
+    {
+        $rowData = array();
+        if(isset($data['idlembaga']) and $data['idlembaga']!='')
+        {
+            $rowData['idlembaga'] = $data['idlembaga'];
+        }
+        return $rowData;
     }
 }

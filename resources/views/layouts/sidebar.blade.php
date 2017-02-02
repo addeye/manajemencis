@@ -64,7 +64,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{active_check('lembaga',true)}}">
                 <a href="#">
                     <i class="fa fa-home"></i> <span>Lembaga</span>
             <span class="pull-right-container">
@@ -72,8 +72,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Add Lembaga</a></li>
-                    <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> View Lembaga</a></li>
+                    <li class="{{active_check('lembaga/create')}}"><a href="{{ url('lembaga/create') }}"><i class="fa fa-circle-o"></i> Add Lembaga</a></li>
+                    <li class="{{active_check('lembaga')}}"><a href="{{ url('lembaga') }}"><i class="fa fa-circle-o"></i> View Lembaga</a></li>
                 </ul>
             </li>
 

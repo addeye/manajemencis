@@ -92,5 +92,6 @@ Route::group(['middleware'=>['auth']],function()
         Route::get('/{id}','LembagaController@editData');
         Route::put('/{id}/update','LembagaController@doEditData');
         Route::get('/{id}/delete','LembagaController@deleteData');
+        Route::get('/{id}/detail','LembagaController@detailData');
     });
 });
