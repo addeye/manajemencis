@@ -19,36 +19,35 @@
 				<div class="box-header">
 					<h3 class="box-title">{{$title}}</h3>
 					<div class="pull-right">
-						<a href="{{ url('konsultan/create') }}">Tambah Data</a>
+						<a class="btn btn-info" href="{{ url('konsultan/report') }}">Report</a>
+						<a class="btn btn-success" href="{{ url('konsultan/create') }}">Tambah Data</a>
 					</div>
 				</div>
 				<!-- / box Header -->
-				<div class="box-body">
+				<div class="box-body table-responsive">
 						<table class="table table-bordered table-striped datatables-class">
 						<thead>
 							<tr>
 								<th class="col-xs-1">ID</th>
-								<th>Username</th>
 								<th>No Registrasi</th>
 								<th>Nama Lengkap</th>
 								<th>Jenis Kelamin</th>
 								<th>Telepon</th>
 								<th>Email</th>
 								<th>Action</th>
-								
 							</tr>
 						</thead>
 						<tbody>
 							@foreach($konsultan as $row)
 							<tr>
 								<td>{{$row->id}}</td>
-								<td>{{$row->username}}</td>
 								<td>{{$row->no_registrasi}}</td>
 								<td>{{$row->nama_lengkap}}</td>
 								<td>{{$row->jenis_kelamin}}</td>
 								<td>{{$row->telepon}}</td>
 								<td>{{$row->email}}</td>
 								<td>
+									<a href="{{ url('konsultan/'.$row->id.'/detail') }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-list"></i></a>
                                 	<a href="{{ url('konsultan/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                 	<a href="{{ url('konsultan/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
 								</td>

@@ -28,26 +28,19 @@
                 </div>
                 <!-- / box Header -->
                 <div class="box-body">
-                    <form method="post" action="{{ url('/konsultan') }}" class="form-horizontal">
+                    <form method="post" action="{{ url('/konsultan') }}" class="form-horizontal" enctype="multipart/form-data">
                         {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-                            <div class="col-sm-5">
-                                <input type="text" name="name" class="form-control" placeholder="Username.." value="{{ old('nama_lengkap') }}">
-                                <p class="text-danger">{{ $errors->first('nama_lengkap') }}</p>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">No Registrasi*</label>
                             <div class="col-sm-5">
-                                <input type="text" name="name" class="form-control" placeholder="Nomor Registrasi.." value="{{ old('nama_lengkap') }}" required>
+                                <input type="text" name="no_registrasi" class="form-control" placeholder="Nomor Registrasi.." value="{{ old('no_registrasi') }}" required>
                                 <p class="text-danger">{{ $errors->first('nama_lengkap') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Nama Lengkap*</label>
                             <div class="col-sm-5">
-                                <input type="text" name="name" class="form-control" placeholder="Nama Lengkap.." value="{{ old('nama_lengkap') }}" required>
+                                <input type="text" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap.." value="{{ old('nama_lengkap') }}" required>
                                 <p class="text-danger">{{ $errors->first('nama_lengkap') }}</p>
                             </div>
                         </div>
@@ -56,13 +49,13 @@
                             <label for="inputEmail3" class="col-sm-2 control-label">Jenis Kelamin*</label>
                             <div class="col-sm-5">
                                 <label>
-                                    <input type="radio" name="jenis_kelamin" value="L" class="minimal" checked>
+                                    <input type="radio" name="jenis_kelamin" value="L" class="minimal" {{ old('jenis_kelamin')=='L'?'checked':'' }}>
                                     Laki - laki
                                 </label>
                                 &nbsp;
                                 &nbsp;
                                 <label>
-                                    <input type="radio" value="P" name="jenis_kelamin" class="minimal">
+                                    <input type="radio" value="P" name="jenis_kelamin" class="minimal" {{ old('jenis_kelamin')=='P'?'checked':'' }}>
                                     Perempuan
                                 </label>
                             </div>
@@ -82,7 +75,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Alamat</label>
                             <div class="col-sm-5">
-                                <textarea class="form-control" name="alamat" rows="4"></textarea>
+                                <textarea class="form-control" name="alamat" rows="4">{{ old('alamat') }}</textarea>
                                 <p class="text-danger">{{ $errors->first('alamat') }}</p>
                             </div>
                         </div>
@@ -99,13 +92,13 @@
                                 <select name="tempat_lahir" class="form-control select2" style="width: 100%;">
                                     <option value="">Pilih Kota</option>
                                     @foreach($regencies as $row)
-                                        <option value="{{ $row->name }}">{{$row->name}}</option>
+                                        <option value="{{ $row->name }}" {{ old('nama_lengkap')==$row->name?'selected':'' }}>{{$row->name}}</option>
                                         @endforeach
                                 </select>
                                 <p class="text-danger">{{ $errors->first('tempat_lahir') }}</p>
                             </div>
                             <div class="col-sm-3">
-                                <input type="text" id="datemask" name="tanggal_lahir" class="form-control" placeholder="Tanggal Lahir..">
+                                <input type="text" id="datemask" name="tanggal_lahir" class="form-control" value="{{ old('tanggal_lahir') }}" placeholder="Tanggal Lahir..">
                                 <p class="text-danger">{{ $errors->first('tangal_lahir') }}</p>
                             </div>
                         </div>
@@ -129,10 +122,10 @@
                                 <select class="form-control" name="pendidikan_id">
                                     <option value="">Pendidikan Terakhir</option>
                                     @foreach($pendidikan as $row)
-                                        <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                        <option value="{{ $row->id }}" {{ old('pendidikan_id')==$row->id?'selected':'' }}>{{ $row->name }}</option>
                                         @endforeach
                                 </select>
-                                <p class="text-danger">{{ $errors->first('email') }}</p>
+                                <p class="text-danger">{{ $errors->first('pendidikan_id') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -159,7 +152,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Pengalaman Pendampingan KUMKM</label>
                             <div class="col-sm-5">
-                                <textarea class="form-control" name="pengalaman" placeholder="Pengalaman Dalam Pendampingan KUMKM" rows="4"></textarea>
+                                <textarea class="form-control" name="pengalaman" placeholder="Pengalaman Dalam Pendampingan KUMKM" rows="4">{{ old('pengalaman') }}</textarea>
                                 <p class="text-danger">{{ $errors->first('<i class="fa fa-exclamation-circle"></i> pengalaman') }}</p>
                             </div>
                         </div>
@@ -183,7 +176,7 @@
                                 <select name="lembaga_id" class="form-control select2">
                                     <option value="">Pilih Lembaga</option>
                                     @foreach($lembaga as $row)
-                                        <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                        <option value="{{ $row->id }}" {{ old('lembaga_id')==$row->id?'selected':'' }}>{{ $row->name }}</option>
                                         @endforeach
                                 </select>
                                 <p class="text-danger">{{ $errors->first('lembaga_id') }}</p>
@@ -195,10 +188,10 @@
                                 <select name="bidang_layanan_id" class="form-control">
                                     <option value="">Pilih Bidang Layanan</option>
                                     @foreach($bidanglayanan as $row)
-                                        <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                        <option value="{{ $row->id }}" {{ old('bidang_layanan_id')==$row->id?'selected':'' }}>{{ $row->name }}</option>
                                     @endforeach
                                 </select>
-                                <p class="text-danger">{{ $errors->first('lembaga_id') }}</p>
+                                <p class="text-danger">{{ $errors->first('bidang_layanan_id') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -216,9 +209,41 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Foto Profil</label>
+                            <div class="col-sm-3">
+                                <input type="file" name="images">
+                                <p class="help-block">Maksimal file 1 MB</p>
+                                <p class="text-danger">{{ $errors->first('images') }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Ijazah</label>
+                            <div class="col-sm-3">
+                                <input type="file" name="ijazah">
+                                <p class="help-block">Maksimal file 1 MB</p>
+                                <p class="text-danger">{{ $errors->first('ijazah') }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat 1</label>
+                            <div class="col-sm-3">
+                                <input type="file" name="sertifikat_1">
+                                <p class="help-block">Maksimal file 1 MB</p>
+                                <p class="text-danger">{{ $errors->first('sertifikat_1') }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat 2</label>
+                            <div class="col-sm-3">
+                                <input type="file" name="sertifikat_2">
+                                <p class="help-block">Maksimal file 1 MB</p>
+                                <p class="text-danger">{{ $errors->first('sertifikat_2') }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">Simpan</button>
-                                <a href="{{ url('u') }}" class="btn btn-default">Kembali</a>
+                                <a href="{{ url('konsultan') }}" class="btn btn-default">Kembali</a>
                             </div>
                         </div>
                     </form>

@@ -77,7 +77,7 @@
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{active_check('konsultan',true)}}">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Konsultan</span>
             <span class="pull-right-container">
@@ -85,8 +85,9 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Add Konsultan</a></li>
-                    <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> View Konsultan</a></li>
+                    <li class="{{active_check('konsultan/create')}}"><a href="{{ url('konsultan/create') }}"><i class="fa fa-circle-o"></i> Add Konsultan</a></li>
+                    <li class="{{active_check('konsultan')}}"><a href="{{ url('konsultan') }}"><i class="fa fa-circle-o"></i> View Konsultan</a></li>
+                    <li class="{{active_check('konsultan/report')}}"><a href="{{ url('konsultan/report') }}"><i class="fa fa-circle-o"></i> Report Konsultan</a></li>
                 </ul>
             </li>
 

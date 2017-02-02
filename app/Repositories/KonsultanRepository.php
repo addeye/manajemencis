@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\Konsultan;
+use App\User;
 
 class KonsultanRepository
 {
@@ -28,6 +29,23 @@ class KonsultanRepository
     // Insert into
     public function create($data=array())
     {
+        $dataUser = array(
+            'name' => $data['nama_lengkap'],
+            'role_id' => 3,
+            'email' => $data['email'],
+            'path' => $data['path'],
+            'password' => bcrypt($data['password'])
+        );
+
+        $tgl_sementara = $data['tanggal_lahir'];
+        $date = str_replace('/', '-', $tgl_sementara);
+        $final_date = date('Y-m-d', strtotime($date));
+        $data['tanggal_lahir'] = date('Y-m-d', strtotime($final_date));
+
+        $users = User::create($dataUser);
+
+        $data['user_id'] = $users->id;
+
         $result = Konsultan::create($data);
         if ($result)
         {
@@ -37,10 +55,20 @@ class KonsultanRepository
         return false;
     }
 
-
     // Update
     public function update($id,$data=array())
     {
+        $dataUser = array(
+            'name' => $data['nama_lengkap'],
+            'email' => $data['email'],
+        );
+
+        $tgl_sementara = $data['tanggal_lahir'];
+        $date = str_replace('/', '-', $tgl_sementara);
+        $final_date = date('Y-m-d', strtotime($date));
+        $data['tanggal_lahir'] = date('Y-m-d', strtotime($final_date));
+
+        User::find($data['user_id'])->update($dataUser);
         $result =Konsultan::find($id)->update($data);
         if ($result)
         {

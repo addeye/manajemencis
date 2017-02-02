@@ -17,7 +17,6 @@ class CreateKonsultansTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('username');
             $table->string('no_registrasi');
             $table->string('nama_lengkap');
             $table->string('provinces_id');
@@ -35,7 +34,7 @@ class CreateKonsultansTable extends Migration
             $table->integer('pendidikan_id')->unsigned();
             $table->foreign('pendidikan_id')->references('id')->on('pendidikans');
 
-            $table->string('perguruan_terkahir');
+            $table->string('perguruan_terakhir');
             $table->string('jurusan');
             $table->string('bidang_keahlian');
             $table->text('pengalaman');

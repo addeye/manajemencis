@@ -9,7 +9,7 @@ class Konsultan extends Model
     protected $table = 'konsultans';
 
     protected $fillable = [
-        'username',
+        'user_id',
         'no_registrasi',
         'nama_lengkap',
         'provinces_id',
@@ -30,5 +30,33 @@ class Konsultan extends Model
         'asosiasi',
         'lembaga_id',
         'bidang_layanan_id',
+        'ijazah',
+        'sertifikat_1',
+        'sertifikat_2',
     ];
+
+    public function provinces()
+    {
+        return $this->belongsTo(Provinces::class,'provinces_id');
+    }
+
+    public function regencies()
+    {
+        return $this->belongsTo(Regencies::class,'regency_id');
+    }
+
+    public function pendidikans()
+    {
+        return $this->belongsTo(Pendidikans::class,'pendidikan_id');
+    }
+
+    public function lembagas()
+    {
+        return $this->belongsTo(Lembaga::class,'lembaga_id');
+    }
+
+    public function bidang_layanans()
+    {
+        return $this->belongsTo(Bidang_layanan::class,'bidang_layanan_id');
+    }
 }

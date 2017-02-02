@@ -138,6 +138,7 @@ Route::group(['middleware' => ['auth']], function () {
      */
     Route::group(['prefix' => 'konsultan'], function () {
         Route::get('/', 'KonsultanController@getAll');
+        Route::get('/report', 'KonsultanController@getAllReport');
         Route::get('/create', 'KonsultanController@addData');
         Route::post('/', 'KonsultanController@doAddData');
         Route::get('/{id}', 'KonsultanController@editData');
