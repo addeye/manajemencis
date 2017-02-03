@@ -31,9 +31,9 @@
                     <form method="post" action="{{ url('/konsultan') }}" class="form-horizontal" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">No Registrasi*</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">No Registrasi</label>
                             <div class="col-sm-5">
-                                <input type="text" name="no_registrasi" class="form-control" placeholder="Nomor Registrasi.." value="{{ old('no_registrasi') }}" required>
+                                <input type="text" name="no_registrasi" class="form-control" placeholder="Nomor Registrasi.." value="{{ old('no_registrasi') }}">
                                 <p class="text-danger">{{ $errors->first('nama_lengkap') }}</p>
                             </div>
                         </div>
@@ -44,12 +44,19 @@
                                 <p class="text-danger">{{ $errors->first('nama_lengkap') }}</p>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Email*</label>
+                            <div class="col-sm-3">
+                                <input type="email" name="email" class="form-control" placeholder="Email Address.." value="{{ old('email') }}" required>
+                                <p class="text-danger">{{ $errors->first('email') }}</p>
+                            </div>
+                        </div>
                         <!-- radio -->
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Jenis Kelamin*</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Jenis Kelamin</label>
                             <div class="col-sm-5">
                                 <label>
-                                    <input type="radio" name="jenis_kelamin" value="L" class="minimal" {{ old('jenis_kelamin')=='L'?'checked':'' }}>
+                                    <input type="radio" name="jenis_kelamin" value="L" class="minimal" checked>
                                     Laki - laki
                                 </label>
                                 &nbsp;
@@ -63,7 +70,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Provinsi*</label>
                             <div class="col-sm-5">
-                                <select name="provinces_id" id="provinces" class="form-control select2" required>
+                                <select name="provinces_id" id="provinces" class="form-control select2">
                                     <option value="">Pilih Provinsi</option>
                                     @foreach($provinces as $row)
                                         <option value="{{ $row->id }}">{{ $row->id }} {{ $row->name }}</option>
@@ -82,7 +89,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Kode Pos</label>
                             <div class="col-sm-3">
-                                <input type="text" name="kode_pos" class="form-control" placeholder="Kode Pos.." value="{{ old('kode_pos') }}" required>
+                                <input type="text" name="kode_pos" class="form-control" placeholder="Kode Pos.." value="{{ old('kode_pos') }}">
                                 <p class="text-danger">{{ $errors->first('kode_pos') }}</p>
                             </div>
                         </div>
@@ -105,15 +112,8 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Telepon</label>
                             <div class="col-sm-3">
-                                <input type="number" name="telepon" class="form-control" placeholder="Telepon.." value="{{ old('telepon') }}" required>
-                                <p class="text-danger">{{ $errors->first('email') }}</p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                            <div class="col-sm-3">
-                                <input type="email" name="email" class="form-control" placeholder="Email Address.." value="{{ old('email') }}" required>
-                                <p class="text-danger">{{ $errors->first('email') }}</p>
+                                <input type="number" name="telepon" class="form-control" placeholder="Telepon.." value="{{ old('telepon') }}">
+                                <p class="text-danger">{{ $errors->first('telepon') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -131,21 +131,21 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Perguruan Tinggi Terakhir</label>
                             <div class="col-sm-5">
-                                <input type="text" name="perguruan_terakhir" class="form-control" placeholder="Nama sekolah/perguruan tinggi terakhir.." value="{{ old('perguruan_terakhir') }}" required>
+                                <input type="text" name="perguruan_terakhir" class="form-control" placeholder="Nama sekolah/perguruan tinggi terakhir.." value="{{ old('perguruan_terakhir') }}">
                                 <p class="text-danger">{{ $errors->first('perguruan_terakhir') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Jurusan</label>
                             <div class="col-sm-3">
-                                <input type="text" name="jurusan" class="form-control" placeholder="Jurusan.." value="{{ old('jurusan') }}" required>
+                                <input type="text" name="jurusan" class="form-control" placeholder="Jurusan.." value="{{ old('jurusan') }}">
                                 <p class="text-danger">{{ $errors->first('jurusan') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Bidang Keahlian</label>
                             <div class="col-sm-5">
-                                <input type="text" name="bidang_keahlian" class="form-control" placeholder="Kompetensi/Bidang Keahlian Pendampingan.." value="{{ old('bidang_keahlian') }}" required>
+                                <input type="text" name="bidang_keahlian" class="form-control" placeholder="Kompetensi/Bidang Keahlian Pendampingan.." value="{{ old('bidang_keahlian') }}">
                                 <p class="text-danger">{{ $errors->first('<i class="fa fa-exclamation-circle"></i> bidang_keahlian') }}</p>
                             </div>
                         </div>
@@ -159,14 +159,14 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat</label>
                             <div class="col-sm-5">
-                                <input type="text" name="sertifikat" class="form-control" placeholder="Sertifikat yang dimiliki terkait dengan pendampingan KUMKM.." value="{{ old('sertifikat') }}" required>
+                                <input type="text" name="sertifikat" class="form-control" placeholder="Sertifikat yang dimiliki terkait dengan pendampingan KUMKM.." value="{{ old('sertifikat') }}">
                                 <p class="text-danger"> {{ $errors->first('sertifikat') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Asosiasi</label>
                             <div class="col-sm-5">
-                                <input type="text" name="asosiasi" class="form-control" placeholder="Asosiasi pendampingan KUMKM yang diikuti.." value="{{ old('sertifikat') }}" required>
+                                <input type="text" name="asosiasi" class="form-control" placeholder="Asosiasi pendampingan KUMKM yang diikuti.." value="{{ old('sertifikat') }}">
                                 <p class="text-danger">{{ $errors->first('sertifikat') }}</p>
                             </div>
                         </div>
@@ -195,14 +195,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Password</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Password*</label>
                             <div class="col-sm-3">
                                 <input type="password" name="password" class="form-control" placeholder="Password.." required>
                                 <p class="text-danger">{{ $errors->first('password') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Confirm Password</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Confirm Password*</label>
                             <div class="col-sm-3">
                                 <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password.." required>
                                 <p class="text-danger">{{ $errors->first('confirm_password') }}</p>

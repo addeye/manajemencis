@@ -19,6 +19,7 @@ Route::get('/logout', 'AuthController@logout');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/profile', 'HomeController@profile');
+    Route::put('/profile/{id}/update', 'HomeController@doProfile');
     /*For Provinsi*/
     Route::get('/provinces', 'ProvincesController@getAll');
     Route::get('/provinces/create', 'ProvincesController@addData');
@@ -144,5 +145,34 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/{id}', 'KonsultanController@editData');
         Route::put('/{id}/update', 'KonsultanController@doEditData');
         Route::get('/{id}/delete', 'KonsultanController@deleteData');
+        Route::get('/{id}/detail', 'KonsultanController@detailData');
+    });
+
+    Route::group(['namespace' => 'Konsultan',['middleware' => 'konsultan']], function () {
+
+        Route::get('k/lembaga','LembagaController@getLembaga');
+        Route::get('k/lembaga/detail','LembagaController@detailData');
+        Route::put('k/lembaga/{id}/update', 'LembagaController@doEditData');
+        Route::get('bio/konsultan','BiodataController@index');
+        Route::get('bio/konsultan/edit','BiodataController@editData');
+        Route::put('bio/konsultan/{id}/update','BiodataController@doEditData');
+
+        Route::group(['prefix' => 'k/proker'], function () {
+            Route::get('/', 'ProkerKonsultanController@getAll');
+            Route::get('/create', 'ProkerKonsultanController@addData');
+            Route::post('/', 'ProkerKonsultanController@doAddData');
+            Route::get('/{id}', 'ProkerKonsultanController@editData');
+            Route::put('/{id}/update', 'ProkerKonsultanController@doEditData');
+            Route::get('/{id}/delete', 'ProkerKonsultanController@deleteData');
+        });
+
+        Route::group(['prefix' => 'k/dproker'], function () {
+            Route::get('/{idproker}', 'DetailsProkerController@getAll');
+            Route::get('/create/{idproker}', 'DetailsProkerController@addData');
+            Route::post('/', 'DetailsProkerController@doAddData');
+            Route::get('/{id}/edit', 'DetailsProkerController@editData');
+            Route::put('/{id}/update', 'DetailsProkerController@doEditData');
+            Route::get('/{id}/delete', 'DetailsProkerController@deleteData');
+        });
     });
 });

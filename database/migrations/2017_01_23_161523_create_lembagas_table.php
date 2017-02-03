@@ -29,7 +29,7 @@ class CreateLembagasTable extends Migration
             $table->string('SKPD');
             $table->string('tahun_berdiri');
             $table->string('telepon');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('nama_pimpinan');
             $table->string('telepon_pimpinan');
             $table->string('email_pimpinan');

@@ -10,6 +10,7 @@
 namespace App\Repositories;
 
 use App\Jenis_layanan;
+use Illuminate\Support\Facades\Auth;
 
 
 class JenisLayananRepository
@@ -56,6 +57,12 @@ class JenisLayananRepository
 		}
 
 		return false;
+	}
+
+	public function getByBidangLayanan()
+	{
+		$bidang_id = Auth::user()->konsultans->bidang_layanan_id;
+		return Jenis_layanan::where('bidang_layanan_id',$bidang_id)->get();
 	}
 
 

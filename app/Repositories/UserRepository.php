@@ -43,6 +43,10 @@ class UserRepository
             unset($data['password']);
             unset($data['confirm_password']);
         }
+        else
+        {
+            $data['password'] = bcrypt($data['password']);
+        }
         $result = User::find($id)->update($data);
         if($result)
         {

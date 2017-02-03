@@ -29,11 +29,19 @@ class KonsultanRepository
     // Insert into
     public function create($data=array())
     {
+        if(!isset($data['path']))
+        {
+            $path='default.png';
+        }
+        else
+        {
+            $path = $data['path'];
+        }
         $dataUser = array(
             'name' => $data['nama_lengkap'],
             'role_id' => 3,
             'email' => $data['email'],
-            'path' => $data['path'],
+            'path' => $path,
             'password' => bcrypt($data['password'])
         );
 
@@ -85,6 +93,16 @@ class KonsultanRepository
         if ($result)
         {
             return true;
+        }
+        return false;
+    }
+
+    public function getByUserId($id)
+    {
+        $result = Konsultan::with('lembagas')->where('user_id',$id)->first();
+        if($result)
+        {
+            return $result;
         }
         return false;
     }

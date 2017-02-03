@@ -15,6 +15,10 @@ class UmkmMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::user()->role_id != 4)
+        {
+            return back();
+        }
         return $next($request);
     }
 }

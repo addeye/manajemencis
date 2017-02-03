@@ -1,7 +1,15 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: deyelovi
+ * Date: 03/02/2017
+ * Time: 13:04
+ */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Konsultan;
 
+
+use App\Http\Controllers\Controller;
 use App\Repositories\BidangLayananRepository;
 use App\Repositories\KonsultanRepository;
 use App\Repositories\LembagaRepository;
@@ -10,10 +18,11 @@ use App\Repositories\ProvincesRepository;
 use App\Repositories\RegenciesRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
-class KonsultanController extends Controller
+class BiodataController extends Controller
 {
     protected $konsultan;
     protected $provinces;
@@ -36,82 +45,48 @@ class KonsultanController extends Controller
         $this->bidanglayanan = $bidanglayanan;
     }
 
-    public function getAll()
+    public function index()
     {
         $data = Array
         (
-            'title' => 'Data Konsultan',
-            'konsultan' => $this->konsultan->getAll()
+            'title' => 'Biodata Konsultan',
+            'data' => $this->konsultan->getByUserId(Auth::user()->id)
 
         );
-        return view('konsultan.k_list',$data);
+//        return $data;
+        return view('dashboard.konsultan.detail',$data);
     }
 
-    public function getAllReport()
+    public function editData()
     {
-        $data = Array
-        (
-            'title' => 'Laporan Data Konsultan',
-            'konsultan' => $this->konsultan->getAll()
-
-        );
-        return view('konsultan.k_report',$data);
-    }
-
-    public function detailData($id)
-    {
-        $data = Array
-        (
-            'title' => 'Detail Data Konsultan',
-            'data' => $this->konsultan->getById($id)
-
-        );
-        return view('konsultan.k_detail',$data);
-    }
-
-    public function addData()
-    {
-        $data = Array
-        (
-            'title' => 'Tambah Konsultan',
+        $data = array(
+            'title' => 'Edit Biodata Konsultan',
             'provinces' => $this->provinces->getAll(),
             'regencies' => $this->regencies->getAll(),
             'pendidikan' => $this->pendidikan->getAll(),
             'lembaga' => $this->lembaga->getAll(),
-            'bidanglayanan' => $this->bidanglayanan->getAll()
+            'bidanglayanan' => $this->bidanglayanan->getAll(),
+            'data' => $this->konsultan->getByUserId(Auth::user()->id)
         );
-        return view('konsultan.k_add',$data);
+        return view('dashboard.konsultan.edit',$data);
     }
 
-    public function doAddData(Request $request)
+    public function doEditData(Request $request, $id)
     {
         $data = $request->all();
 
         $validator = Validator::make($request->all(), [
-            'images' => 'image|max:1024',
             'ijazah' => 'image|max:1024',
             'sertifikat_1' => 'image|max:1024',
             'sertifikat_2' => 'image|max:1024',
-            'password' => 'required',
-            'email' => 'required|email|unique:users',
-            'confirm_password' => 'required|same:password'
         ]);
 
         if ($validator->fails()) {
-            return redirect('konsultan/create')
+            return redirect('bio/konsultan/edit')
                 ->withErrors($validator)
                 ->withInput();
         }
 
-        if($request->hasFile('images'))
-        {
-            $files = Input::file('images');
-            //getting timestamp
-                $timestamp = str_replace(['',':'],' pp -',Carbon::now()->toDateTimeString());
-                $name = $timestamp.'-'.$files->getClientOriginalName();
-                $data['path'] = $name;
-                $files->move(public_path().'/images/',$name);
-        }
         if($request->hasFile('ijazah'))
         {
             $files = Input::file('ijazah');
@@ -140,43 +115,11 @@ class KonsultanController extends Controller
             $files->move(public_path().'/lampiran/',$name);
         }
 
-        $result = $this->konsultan->create($data);
-        if($result)
-        {
-            return redirect('konsultan')->with('success','Data Konsultan Berhasil Disimpan');
-        }
-    }
-
-    public function editData($id)
-    {
-        $data = array(
-            'title' => 'Edit Data Konsultan',
-            'provinces' => $this->provinces->getAll(),
-            'regencies' => $this->regencies->getAll(),
-            'pendidikan' => $this->pendidikan->getAll(),
-            'lembaga' => $this->lembaga->getAll(),
-            'bidanglayanan' => $this->bidanglayanan->getAll(),
-            'data' => $this->konsultan->getById($id)
-        );
-        return view('konsultan.k_edit',$data);
-    }
-
-    public function doEditData(Request $request,$id)
-    {
-        $data = $request->all();
         $result = $this->konsultan->update($id,$data);
         if($result)
         {
-            return redirect('konsultan')->with('info','Data Bidang Layanan Berhasil Diupdate');
+            return redirect('bio/konsultan')->with('info','Data Bidang Layanan Berhasil Diupdate');
         }
     }
 
-    public function deleteData($id)
-    {
-        $result = $this->konsultan->delete($id);
-        if($result)
-        {
-            return redirect('konsultan')->with('info','Data Konsultan Berhasil Dihapus');
-        }
-    }
 }

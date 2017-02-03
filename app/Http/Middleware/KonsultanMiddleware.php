@@ -15,6 +15,10 @@ class KonsultanMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::user()->role_id != 3)
+        {
+            return back();
+        }
         return $next($request);
     }
 }

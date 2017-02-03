@@ -19,7 +19,7 @@
                 <div class="box-header">
                     <h3 class="box-title">{{$title}} {{ $data->name }}</h3>
                     <div class="pull-right">
-                        <a href="{{ url('konsultan') }}" class="btn btn-xs btn-primary"><i class="fa  fa-reply"></i> Back</a>
+                        <a href="{{ url('bio/konsultan/edit') }}" class="btn btn-xs btn-primary"><i class="fa  fa-edit"></i> Edit</a>
                     </div>
                 </div>
                 <!-- / box Header -->
@@ -50,11 +50,11 @@
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <dt>Ijazah</dt>
-                        <dd><img class="thumbnail" src="{{ url('lampiran/'.$data->ijazah) }}"></dd>
+                        <dd><img src="{{ url('lampiran/'.$data->ijazah) }}" class="img-responsive" alt="Responsive image"></dd>
                         <dt>Sertifikat 1</dt>
-                        <dd><img class="thumbnail" src="{{ url('/lampiran'.$data->Sertifikat_1) }}"></dd>
+                        <dd><img src="{{ url('lampiran/'.$data->sertifikat_1) }}" class="img-responsive" alt="Responsive image"></dd>
                         <dt>Sertifikat 2</dt>
-                        <dd><img class="thumbnail" src="{{ url('lampiran'.$data->sertifikat_2) }}"></dd>
+                        <dd><img src="{{ url('lampiran/'.$data->sertifikat_2) }}" class="img-responsive" alt="Responsive image"></dd>
                     </dl>
                 </div>
             </div>

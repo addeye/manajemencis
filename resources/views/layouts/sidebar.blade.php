@@ -15,7 +15,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{ asset("../bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="img-circle"
+                <img src="{{ url('images/'.Auth::user()->path) }}" class="img-circle"
                      alt="User Image"/>
             </div>
             <div class="pull-left info">
@@ -25,6 +25,7 @@
             </div>
         </div>
         <!-- Sidebar Menu -->
+        @if(Auth::user()->role_id==1)
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
@@ -130,6 +131,19 @@
                 </ul>
             </li>
         </ul>
+        @endif
+
+        @if(Auth::user()->role_id==3)
+        {{--For Konsultan--}}
+        <ul class="sidebar-menu">
+            <li class="header">HEADER</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li class="{{ Active::check('home') }}"><a href="{{ url('home') }}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            <li class="{{ Active::check('bio/konsultan',true) }}"><a href="{{ url('bio/konsultan') }}"><i class="fa fa-dashboard"></i> <span>Biodata</span></a></li>
+            <li class="{{active_check('k/lembaga',true)}}"><a href="{{ url('k/lembaga/detail') }}"><i class="fa fa-home"></i> View Lembaga</a></li>
+            <li class="{{active_check('k/proker',true)}}"><a href="{{ url('k/proker') }}"><i class="fa fa-home"></i> Program Kerja</a></li>
+        </ul>
+        @endif
         <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

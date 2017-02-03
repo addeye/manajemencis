@@ -15,6 +15,10 @@ class SuperAdminMiddleware
      */
     public function handle($request, Closure $next)
     {
+        if(Auth::user()->role_id != 1)
+        {
+            return back();
+        }
         return $next($request);
     }
 }
