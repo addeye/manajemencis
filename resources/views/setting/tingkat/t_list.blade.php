@@ -19,7 +19,7 @@
 				<div class="box-header">
 					<h3 class="box-title">{{$title}}</h3>
 					<div class="pull-right">
-						<a href="{{ url('tingkat/create') }}">Tambah Data</a>
+						<a class="btn btn-primary" href="{{ url('tingkat/create') }}">Tambah Data</a>
 					</div>
 				</div>
 				<!-- / box Header -->

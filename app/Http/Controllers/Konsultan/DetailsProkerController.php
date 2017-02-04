@@ -23,11 +23,13 @@ class DetailsProkerController extends Controller
 
     public function getAll($idproker)
     {
+        $proker = $this->proker->getById($idproker);
         $data = Array
         (
+            'head_title' => 'Detail Program Kerja '.$proker->tahun_kegiatan.' '.$proker->program,
             'title' => 'Detail Program Kerja',
             'data' => $this->detailproker->getAllByProker($idproker),
-            'proker' => $this->proker->getById($idproker)
+            'proker' => $proker
         );
         return view('dashboard.konsultan.dproker.list',$data);
     }

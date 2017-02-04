@@ -18,6 +18,7 @@ class BidangUsahaController extends Controller
     {
         $data = Array
         (
+            'head_title' => 'Data Bidang Usaha',
             'title' => 'Data Bidang Usaha',
             'bidangusaha' => $this->bidangusaha->getAll()
 

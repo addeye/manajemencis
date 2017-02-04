@@ -19,6 +19,7 @@ class BidangLayananController extends Controller
     {
     	$data = Array
     	(
+            'head_title' => 'Data Bidang Layanan',
     		'title' => 'Data Bidang Layanan',
     		'bidanglayanan' => $this->bidanglayanan->getAll()
 

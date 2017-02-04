@@ -22,7 +22,8 @@ class LembagaController extends Controller
     public function getAll()
     {
         $data = array(
-            'title' => 'Data Provinsi',
+            'head_title' => 'Data Lembaga',
+            'title' => 'Data Lembaga',
             'lembaga' => $this->lembaga->getAll()
         );
         return view('lembaga.list_lembaga',$data);

@@ -23,6 +23,7 @@ class RegenciesController extends Controller
     public function getAll()
     {
         $data = array(
+            'head_title' => 'Master Data Kabupaten Kota',
             'title' => 'Data Kabupaten Kota',
             'regencies' => $this->regencies->getAll()
         );

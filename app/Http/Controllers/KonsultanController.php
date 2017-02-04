@@ -51,6 +51,7 @@ class KonsultanController extends Controller
     {
         $data = Array
         (
+            'head_title' => 'Laporan Data Konsultan',
             'title' => 'Laporan Data Konsultan',
             'konsultan' => $this->konsultan->getAll()
 

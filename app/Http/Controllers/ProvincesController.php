@@ -20,6 +20,7 @@ class ProvincesController extends Controller
     public function getAll()
     {
         $data = array(
+            'head_title' => 'Master Data Provinsi',
             'title' => 'Data Provinsi',
             'provinces' => $this->provinces->getAll()
         );

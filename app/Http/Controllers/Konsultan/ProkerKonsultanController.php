@@ -32,7 +32,7 @@ class ProkerKonsultanController extends Controller
             'title' => 'Tambah Program Kerja',
 
         );
-        return view('dashboard.konsultan.dproker.add',$data);
+        return view('dashboard.konsultan.proker.add',$data);
     }
 
     public function doAddData(Request $request)
@@ -41,7 +41,7 @@ class ProkerKonsultanController extends Controller
         $result = $this->proker->create($data);
         if($result)
         {
-            return redirect('k/dproker')->with('success','Data Program Kerja Berhasil Disimpan');
+            return redirect('k/proker')->with('success','Data Program Kerja Berhasil Disimpan');
         }
     }
 
