@@ -68,6 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/jenislayanan', 'JenisLayananController@doAddData');
     Route::get('/jenislayanan/{id}', 'JenisLayananController@editData');
     Route::put('/jenislayanan/{id}/update', 'JenisLayananController@doEditData');
+    Route::get('/jenislayanan/{id}/delete', 'JenisLayananController@deleteData');
 
 
     /* View Bidang Usaha*/
@@ -173,6 +174,15 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/{id}/edit', 'DetailsProkerController@editData');
             Route::put('/{id}/update', 'DetailsProkerController@doEditData');
             Route::get('/{id}/delete', 'DetailsProkerController@deleteData');
+        });
+
+        Route::group(['prefix' => 'k/kegiatan'], function () {
+            Route::get('/', 'KegiatanKonsultanController@getAll');
+            Route::get('/create', 'KegiatanKonsultanController@addData');
+            Route::post('/', 'KegiatanKonsultanController@doAddData');
+            Route::get('/{id}', 'KegiatanKonsultanController@editData');
+            Route::put('/{id}/update', 'KegiatanKonsultanController@doEditData');
+            Route::get('/{id}/delete', 'KegiatanKonsultanController@deleteData');
         });
     });
 });

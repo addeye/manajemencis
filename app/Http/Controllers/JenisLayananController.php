@@ -77,10 +77,19 @@ class JenisLayananController extends Controller
         $data = array(
             'name'=>$request->name
         );
-        $result = $this->bidanglayanan->update($id,$data);
+        $result = $this->jenislayanan->update($id,$data);
         if($result)
         {
-            return redirect('bidanglayanan')->with('info','Data Bidang Layanan Berhasil Diupdate');
+            return redirect('jenislayanan')->with('info','Data Jenis Layanan Berhasil Diupdate');
+        }
+    }
+
+    public function deleteData($id)
+    {
+        $result = $this->jenislayanan->delete($id);
+        if($result)
+        {
+            return redirect('jenislayanan')->with('info','Data Jenis Layanan Berhasil Dihapus');
         }
     }
 }

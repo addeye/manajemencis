@@ -20,7 +20,7 @@ class ProkerKonsultanController extends Controller
         $data = Array
         (
             'title' => 'Data Program Kerja',
-            'data' => $this->proker->getAll()
+            'data' => $this->proker->getAllByKonsultan()
         );
         return view('dashboard.konsultan.proker.list',$data);
     }

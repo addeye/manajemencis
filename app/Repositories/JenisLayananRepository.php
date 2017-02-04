@@ -19,7 +19,7 @@ class JenisLayananRepository
 	// Select all
 	public function getAll()
 	{
-		return Jenis_layanan::with('bidang_layanan')->get();
+		return Jenis_layanan::with('bidang_layanan')->orderBy('bidang_layanan_id')->get();
 	}
 
 	// Select Where id

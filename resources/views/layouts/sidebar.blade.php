@@ -142,6 +142,7 @@
             <li class="{{ Active::check('bio/konsultan',true) }}"><a href="{{ url('bio/konsultan') }}"><i class="fa fa-dashboard"></i> <span>Biodata</span></a></li>
             <li class="{{active_check('k/lembaga',true)}}"><a href="{{ url('k/lembaga/detail') }}"><i class="fa fa-home"></i> View Lembaga</a></li>
             <li class="{{active_check('k/proker',true)}}"><a href="{{ url('k/proker') }}"><i class="fa fa-home"></i> Program Kerja</a></li>
+            <li class="{{active_check('k/kegiatan',true)}}"><a href="{{ url('k/kegiatan') }}"><i class="fa fa-home"></i> Kegiatan</a></li>
         </ul>
         @endif
         <!-- /.sidebar-menu -->

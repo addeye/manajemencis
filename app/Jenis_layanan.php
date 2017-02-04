@@ -15,6 +15,6 @@ class Jenis_layanan extends Model
 
     public function Bidang_Layanan()
     {
-    	return $this->belongsTo('App\Bidang_Layanan','bidang_layanan_id');
+    	return $this->belongsTo(Bidang_layanan::class,'bidang_layanan_id');
     }
 }
