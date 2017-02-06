@@ -25,13 +25,19 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Tahun Kegiatan</label>
                             <div class="col-sm-2">
-                                <input type="text" name="tahun_kegiatan" class="form-control" placeholder="Tahun Kegiatan.." required>
+                                <input type="text" name="tahun_kegiatan" class="form-control" placeholder="Tahun Kegiatan.." data-inputmask="'alias': '99-999-99'" data-mask>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Program Kerja</label>
                             <div class="col-sm-5">
                                 <input type="text" name="program" class="form-control" placeholder="Nama Proker .." required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Tujuan</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="tujuan" class="form-control" placeholder="Tujuan .." required>
                             </div>
                         </div>
                         <div class="form-group">

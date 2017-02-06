@@ -84,6 +84,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('regencies/{provinces_id}', 'CommonController@getRegencies');
         Route::get('districts/{regencies_id}', 'CommonController@getDistricts');
         Route::get('villages/{districts_id}', 'CommonController@getVillages');
+        Route::get('detail/proker/{id}', 'CommonController@getDetailProker');
     });
 
     /**
@@ -97,6 +98,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/{id}/update', 'LembagaController@doEditData');
         Route::get('/{id}/delete', 'LembagaController@deleteData');
         Route::get('/{id}/detail', 'LembagaController@detailData');
+        Route::get('/report/all', 'LembagaController@getAllColumn');
     });
 
     /**

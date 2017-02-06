@@ -54,7 +54,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                {{ $page_title or "Page Title" }}
+                {{ $page_title or null }}
                 <small>{{ $page_description or null }}</small>
             </h1>
             <!-- You can dynamically generate breadcrumbs here -->
@@ -89,11 +89,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ url("admin-lte/plugins/datatables/jquery.dataTables.min.js") }}"></script>
 <script src="{{ url("admin-lte/plugins/datatables/dataTables.bootstrap.min.js") }}"></script>
 
+<!-- InputMask -->
+<script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.js') }}"></script>
+<script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+<script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.js') }}"></script>
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience -->
 <script>
     $(function () {
+        $("[data-mask]").inputmask();
         $('.datatables-class').DataTable({
             "paging": true,
             "lengthChange": false,

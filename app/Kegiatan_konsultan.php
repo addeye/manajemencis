@@ -12,7 +12,6 @@ class Kegiatan_konsultan extends Model
         'konsultan_id',
         'tanggal_mulai',
         'tanggal_selesai',
-        'nama_kegiatan',
         'jenis_layanan_id',
         'bidang_usaha_id',
         'lokasi_kegiatan',
@@ -21,6 +20,8 @@ class Kegiatan_konsultan extends Model
         'sumber_daya',
         'mitra_kegiatan',
         'rencana_tindak_lanjut',
+        'proker_id',
+        'detail_proker_id',
     ];
 
     public function jenis_layanans()
@@ -31,5 +32,15 @@ class Kegiatan_konsultan extends Model
     public function bidang_usahas()
     {
         return $this->belongsTo(Bidang_usaha::class,'bidang_usaha_id');
+    }
+
+    public function prokers()
+    {
+        return $this->belongsTo(Proker_konsultan::class,'proker_id');
+    }
+
+    public function detail_proker()
+    {
+        return $this->belongsTo(Details_proker::class,'detail_proker_id');
     }
 }

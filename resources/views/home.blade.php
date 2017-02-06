@@ -15,8 +15,8 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>150</h3>
-                <p>New Orders</p>
+                <h3>0</h3>
+                <p>Sentra UMKM</p>
             </div>
             <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -29,9 +29,9 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>0<sup style="font-size: 20px">%</sup></h3>
 
-                <p>Bounce Rate</p>
+                <p>Jumlah Produk Unggulan</p>
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -44,9 +44,9 @@
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>44</h3>
+                <h3>0</h3>
 
-                <p>User Registrations</p>
+                <p>Jumlah UMKM Online</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -59,9 +59,9 @@
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>65</h3>
+                <h3>0</h3>
 
-                <p>Unique Visitors</p>
+                <p>Realisasi Izin Usaha Mikro Kecil</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -70,25 +70,38 @@
         </div>
     </div>
     <!-- ./col -->
-    <div class="col-md-12">
-        <!-- LINE CHART -->
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">Line Chart</h3>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-fuchsia">
+            <div class="inner">
+                <h3>0</h3>
 
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                </div>
+                <p>Jumlah KUMKM Terlayani</p>
             </div>
-            <div class="box-body chart-responsive">
-                <div class="chart" id="line-chart" style="height: 300px;"></div>
+            <div class="icon">
+                <i class="ion ion-pie-graph"></i>
             </div>
-            <!-- /.box-body -->
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
-        <!-- /.box -->
     </div>
+    <!-- ./col -->
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-gray">
+            <div class="inner">
+                <h3>0</h3>
+
+                <p>Realisasi KUR </p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
 </div>
 @endsection
 

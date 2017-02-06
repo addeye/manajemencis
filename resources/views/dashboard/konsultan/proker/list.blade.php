@@ -30,9 +30,9 @@
 								<th class="col-xs-1">ID</th>
 								<th>Tahun Kegiatan</th>
 								<th>Program</th>
+								<th>Tujuan</th>
 								<th>Detail</th>
 								<th>Action</th>
-								
 							</tr>
 						</thead>
 						<tbody>
@@ -41,6 +41,7 @@
 								<td>{{$row->id}}</td>
 								<td>{{$row->tahun_kegiatan}}</td>
 								<td>{{$row->program}}</td>
+								<td>{{$row->tujuan}}</td>
 								<td>
 									<a href="{{ url('k/dproker/'.$row->id) }}" class="btn btn-success btn-xs">Detail</a>
 								</td>

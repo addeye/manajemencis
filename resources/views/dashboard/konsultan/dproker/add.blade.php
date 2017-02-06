@@ -24,15 +24,9 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="proker_id" value="{{ $proker->id }}">
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Jenis Kegiatan</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Nama Kegiatan</label>
                             <div class="col-sm-5">
-                                <input type="text" name="jenis_kegiatan" class="form-control" placeholder="Jenis kegiatan.." required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Tujuan</label>
-                            <div class="col-sm-5">
-                                <input type="text" name="tujuan" class="form-control" placeholder="Tujuan .." required>
+                                <input type="text" name="jenis_kegiatan" class="form-control" placeholder="Nama kegiatan.." required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -69,14 +63,20 @@
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Jadwal Pelaksana</label>
-                            <div class="col-sm-2">
-                                <input type="text" name="jadwal_pelaksana" class="form-control" placeholder="Jadwal Pelaksana.." required>
+                            <div class="col-sm-3">
+                                <select class="form-control" name="jadwal_pelaksana">
+                                    <option value="">Pilih Minggu Ke</option>
+                                    @for($i=1; $i<=56; $i++)
+                                        <option value="{{ 'Minggu Ke-'.$i }}">{{ 'Minggu Ke-'.$i }}</option>
+                                        @endfor
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Mitra Kerja</label>
                             <div class="col-sm-5">
-                                <input type="text" name="mitra_kerja" class="form-control" placeholder="Mitra Kerja.." required>
+                                {{--<input type="text" name="mitra_kerja" class="form-control" placeholder="Mitra Kerja.." required>--}}
+                                <textarea rows="4" class="form-control" name="mitra_kerja" placeholder=""></textarea>
                             </div>
                         </div>
                         <div class="form-group">

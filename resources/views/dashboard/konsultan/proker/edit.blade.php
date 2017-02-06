@@ -36,6 +36,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Tujuan</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="tujuan" class="form-control" placeholder="Tujuan .." required>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">Simpan</button>
                                 <button type="button" onclick="history.go(-1);" class="btn btn-default">Kembali</button>

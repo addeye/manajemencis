@@ -25,20 +25,11 @@
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Mulai</label>
-                            <div class="col-sm-5">
+                            <div class="col-sm-3">
                                 <input type="date" name="tanggal_mulai" class="form-control" placeholder="Tanggal mulai.." value="{{ $data->tanggal_mulai }}" required>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Selesai</label>
-                            <div class="col-sm-5">
+                            <div class="col-sm-3">
                                 <input type="date" name="tanggal_selesai" class="form-control" placeholder="Tanggal selesai.." value="{{ $data->tanggal_selesai }}" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Nama Kegiatan</label>
-                            <div class="col-sm-5">
-                                <input type="text" name="nama_kegiatan" class="form-control" placeholder="Nama kegiatan.." value="{{ $data->nama_kegiatan }}" required>
                             </div>
                         </div>
                         <div class="form-group">

@@ -48,6 +48,7 @@ class DetailsProkerController extends Controller
     public function doAddData(Request $request)
     {
         $data = $request->all();
+//        return $data;
         $result = $this->detailproker->create($data);
         if($result)
         {

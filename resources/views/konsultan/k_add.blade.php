@@ -94,16 +94,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Tempat/Tanggal Lahir</label>
-                            <div class="col-sm-3">
-                                <select name="tempat_lahir" class="form-control select2" style="width: 100%;">
-                                    <option value="">Pilih Kota</option>
-                                    @foreach($regencies as $row)
-                                        <option value="{{ $row->name }}" {{ old('nama_lengkap')==$row->name?'selected':'' }}>{{$row->name}}</option>
-                                        @endforeach
-                                </select>
-                                <p class="text-danger">{{ $errors->first('tempat_lahir') }}</p>
-                            </div>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Lahir</label>
                             <div class="col-sm-3">
                                 <input type="text" id="datemask" name="tanggal_lahir" class="form-control" value="{{ old('tanggal_lahir') }}" placeholder="Tanggal Lahir..">
                                 <p class="text-danger">{{ $errors->first('tangal_lahir') }}</p>
@@ -212,7 +203,7 @@
                             <label for="inputEmail3" class="col-sm-2 control-label">Foto Profil</label>
                             <div class="col-sm-3">
                                 <input type="file" name="images">
-                                <p class="help-block">Maksimal file 1 MB</p>
+                                <p class="help-block">Maksimal file 500KB</p>
                                 <p class="text-danger">{{ $errors->first('images') }}</p>
                             </div>
                         </div>
@@ -220,15 +211,15 @@
                             <label for="inputEmail3" class="col-sm-2 control-label">Ijazah</label>
                             <div class="col-sm-3">
                                 <input type="file" name="ijazah">
-                                <p class="help-block">Maksimal file 1 MB</p>
+                                <p class="help-block">Maksimal file 500KB</p>
                                 <p class="text-danger">{{ $errors->first('ijazah') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat 1</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">SCAN KTP</label>
                             <div class="col-sm-3">
                                 <input type="file" name="sertifikat_1">
-                                <p class="help-block">Maksimal file 1 MB</p>
+                                <p class="help-block">Maksimal file 500KB</p>
                                 <p class="text-danger">{{ $errors->first('sertifikat_1') }}</p>
                             </div>
                         </div>

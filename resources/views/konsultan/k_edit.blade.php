@@ -107,16 +107,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Tempat/Tanggal Lahir</label>
-                                        <div class="col-sm-3">
-                                            <select name="tempat_lahir" class="form-control select2" style="width: 100%;">
-                                                <option value="">Pilih Kota</option>
-                                                @foreach($regencies as $row)
-                                                    <option value="{{ $row->name }}" {{ $data->tempat_lahir==$row->name?'selected':'' }}>{{$row->name}}</option>
-                                                @endforeach
-                                            </select>
-                                            <p class="text-danger">{{ $errors->first('tempat_lahir') }}</p>
-                                        </div>
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Lahir</label>
                                         <div class="col-sm-3">
                                             <input type="text" id="datemask" name="tanggal_lahir" value="{{ date('d/m/Y', strtotime($data->tanggal_lahir)) }}" class="form-control" placeholder="Tanggal Lahir..">
                                             <p class="text-danger">{{ $errors->first('tangal_lahir') }}</p>

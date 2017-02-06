@@ -23,27 +23,30 @@
                     <form method="post" action="{{ url('k/kegiatan') }}" class="form-horizontal">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Mulai</label>
-                            <div class="col-sm-5">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Mulai/Selesai</label>
+                            <div class="col-sm-3">
                                 <input type="date" name="tanggal_mulai" class="form-control" placeholder="Tanggal mulai.." required>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Selesai</label>
-                            <div class="col-sm-5">
+                            <div class="col-sm-3">
                                 <input type="date" name="tanggal_selesai" class="form-control" placeholder="Tanggal selesai.." required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Nama Kegiatan</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Program Kerja</label>
                             <div class="col-sm-5">
-                                <input type="text" name="nama_kegiatan" class="form-control" placeholder="Nama kegiatan.." required>
+                                <select class="form-control" id="proker_id" name="proker_id" required>
+                                    <option value="">Pilih</option>
+                                    @foreach($proker as $row)
+                                        <option value="{{$row->id}}">{{$row->tahun_kegiatan}} {{ $row->program }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
+                        <div id="ajaxDetailProker"></div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">IKU</label>
                             <div class="col-sm-5">
-                                <select class="form-control" name="jenis_layanan_id">
+                                <select class="form-control" name="jenis_layanan_id" required>
                                     <option value="">Pilih</option>
                                     @foreach($jenis_layanan as $row)
                                         <option value="{{$row->id}}">{{$row->name}}</option>
@@ -71,13 +74,13 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Jumlah Peserta</label>
                             <div class="col-sm-2">
-                                <input type="text" name="jumlah_peserta" class="form-control" placeholder="Jumlah.." required>
+                                <input type="number" name="jumlah_peserta" class="form-control" placeholder="Jumlah.." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Output</label>
                             <div class="col-sm-2">
-                                <input type="text" name="output" class="form-control" placeholder="Jumlah.." required>
+                                <input type="number" name="output" class="form-control" placeholder="Jumlah.." required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -87,15 +90,15 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Mitra Kegiatan</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Mitra Kerja</label>
                             <div class="col-sm-5">
-                                <input type="text" name="mitra_kegiatan" class="form-control" placeholder="Sumber daya.." required>
+                                <textarea class="form-control" name="mitra_kegiatan" rows="4" placeholder="Mitra Kerja.." required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Rencana Tindak Lanjut</label>
                             <div class="col-sm-5">
-                                <textarea class="form-control" name="rencana_tindak_lanjut" rows="4" placeholder="Rencana Tindak Lanjut"></textarea>
+                                <textarea class="form-control" name="rencana_tindak_lanjut" rows="4" placeholder="Rencana Tindak Lanjut" required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -109,4 +112,22 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="urldetailproker" value="{{ url('common/detail/proker') }}">
 @endsection
+
+@section('script')
+    <script>
+        urldetail = $('#urldetailproker').val();
+        $('#proker_id').change(function(){
+            $.ajax({
+                url: urldetail+'/'+this.value,
+                type : 'GET',
+                cache : false,
+                dataType : 'html'
+            })
+                    .success(function(response){
+                        $('#ajaxDetailProker').html(response);
+                    })
+        });
+    </script>
+    @endsection

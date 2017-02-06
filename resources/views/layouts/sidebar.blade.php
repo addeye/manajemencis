@@ -75,6 +75,7 @@
                 <ul class="treeview-menu">
                     <li class="{{active_check('lembaga/create')}}"><a href="{{ url('lembaga/create') }}"><i class="fa fa-circle-o"></i> Add Lembaga</a></li>
                     <li class="{{active_check('lembaga')}}"><a href="{{ url('lembaga') }}"><i class="fa fa-circle-o"></i> View Lembaga</a></li>
+                    <li class="{{active_check('lembaga/report/all')}}"><a href="{{ url('lembaga/report/all') }}"><i class="fa fa-circle-o"></i> Report Lembaga</a></li>
                 </ul>
             </li>
 
@@ -91,32 +92,32 @@
                     <li class="{{active_check('konsultan/report')}}"><a href="{{ url('konsultan/report') }}"><i class="fa fa-circle-o"></i> Report Konsultan</a></li>
                 </ul>
             </li>
-
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-university"></i> <span>Sentra KUMKM</span>
+                    <i class="fa fa-briefcase"></i> <span>Manajemen UMKM</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Add Sentra</a></li>
-                    <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> View Sentra</a></li>
+                    <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Input Data</a></li>
+                    <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Pendampingan</a></li>
                 </ul>
             </li>
-
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-briefcase"></i> <span>Master KUMKM</span>
+                    <i class="fa fa-university"></i> <span>Sentra UMKM</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Add KUMKM</a></li>
-                    <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> View KUMKM</a></li>
+                    <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Input Data</a></li>
+                    <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Pendampingan</a></li>
                 </ul>
             </li>
+            <li class=""><a href=""><i class="fa fa-dashboard"></i> <span>Digitalisasi UMKM</span></a></li>
+            <li class=""><a href=""><i class="fa fa-dashboard"></i> <span>Produk Unggulan</span></a></li>
             <li class="treeview {{active_check('roles',true)}} {{active_check('u',true)}} {{active_check('tingkat',true)}}">
                 <a href="#">
                     <i class="fa fa-cog"></i> <span>Setting</span>

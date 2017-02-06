@@ -28,8 +28,7 @@
 							<thead>
 							<tr>
 								<th class="col-xs-1">ID</th>
-								<th>Jenis Kegiatan</th>
-								<th>Tujuan</th>
+								<th>Nama Kegiatan</th>
 								<th>IKU</th>
 								<th>Output/Ket</th>
 								<th>Penerima</th>
@@ -44,7 +43,6 @@
 								<tr>
 									<td>{{$row->id}}</td>
 									<td>{{$row->jenis_kegiatan}}</td>
-									<td>{{$row->tujuan}}</td>
 									<td>{{$row->jenis_layanans->name}}</td>
 									<td>{{$row->output}} / {{$row->ket_output}}</td>
 									<td>{{$row->jml_penerima}}</td>

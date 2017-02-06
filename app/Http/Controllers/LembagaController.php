@@ -29,6 +29,17 @@ class LembagaController extends Controller
         return view('lembaga.list_lembaga',$data);
     }
 
+    public function getAllColumn()
+    {
+        $data = array(
+            'head_title' => 'Data Lembaga',
+            'subhead_title' => 'Lembaga',
+            'title' => 'Data Lembaga',
+            'lembaga' => $this->lembaga->getAll()
+        );
+        return view('lembaga.lembaga_report',$data);
+    }
+
     public function addData()
     {
         $data = Array
@@ -57,7 +68,6 @@ class LembagaController extends Controller
         (
             'title' => 'Detail Lembaga',
             'data' => $this->lembaga->getById($id)
-
         );
         return view('lembaga.detail_lembaga',$data);
     }
@@ -70,7 +80,6 @@ class LembagaController extends Controller
             'tingkat' => Tingkats::all(),
             'provinces' => $this->provinces->getAll(),
             'data' => $this->lembaga->getById($id)
-
         );
         return view('lembaga.edit_lembaga',$data);
     }

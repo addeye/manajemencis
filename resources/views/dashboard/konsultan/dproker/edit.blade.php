@@ -31,12 +31,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Tujuan</label>
-                            <div class="col-sm-5">
-                                <input type="text" name="tujuan" class="form-control" value="{{$data->tujuan}}" placeholder="Tujuan .." required>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">IKU</label>
                             <div class="col-sm-5">
                                 <select name="jenis_layanan_id" class="form-control">

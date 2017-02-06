@@ -17,7 +17,6 @@ class Konsultan extends Model
         'alamat',
         'kode_pos',
         'jenis_kelamin',
-        'tempat_lahir',
         'tanggal_lahir',
         'telepon',
         'email',

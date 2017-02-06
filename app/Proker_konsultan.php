@@ -12,6 +12,7 @@ class Proker_konsultan extends Model
         'konsultan_id',
         'tahun_kegiatan',
         'program',
+        'tujuan',
     ];
 
     public function details_proker()

@@ -11,7 +11,6 @@ class Details_proker extends Model
     protected $fillable = [
         'proker_id',
         'jenis_kegiatan',
-        'tujuan',
         'jenis_layanan_id',
         'output',
         'ket_output',

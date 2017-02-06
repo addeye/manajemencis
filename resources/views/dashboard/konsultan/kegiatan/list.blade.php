@@ -49,7 +49,7 @@
 								<td>{{$row->id}}</td>
 								<td>{{$row->tanggal_mulai}}</td>
 								<td>{{$row->tanggal_selesai}}</td>
-								<td>{{$row->nama_kegiatan}}</td>
+								<td>{{$row->detail_proker->jenis_kegiatan}}</td>
 								<td>{{$row->jenis_layanans->name}}</td>
 								<td>{{$row->bidang_usahas->name}}</td>
 								<td>{{$row->lokasi_kegiatan}}</td>

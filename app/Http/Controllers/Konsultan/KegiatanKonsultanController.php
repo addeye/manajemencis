@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\BidangUsahaRepository;
 use App\Repositories\JenisLayananRepository;
 use App\Repositories\KegiatanKonsultanRepository;
+use App\Repositories\ProkerKonsultanRepository;
 use Illuminate\Http\Request;
 
 class KegiatanKonsultanController extends Controller
@@ -13,13 +14,16 @@ class KegiatanKonsultanController extends Controller
     protected $kegiatankonsultan;
     protected $jenislayanan;
     protected $bidangusaha;
+    protected $proker;
 
     public function __construct(KegiatanKonsultanRepository $kegiatankonsultan,
-                                JenisLayananRepository $jenislayanan, BidangUsahaRepository $bidangusaha)
+                                JenisLayananRepository $jenislayanan,
+                                BidangUsahaRepository $bidangusaha, ProkerKonsultanRepository $proker)
     {
         $this->kegiatankonsultan = $kegiatankonsultan;
         $this->jenislayanan = $jenislayanan;
         $this->bidangusaha = $bidangusaha;
+        $this->proker = $proker;
     }
 
     public function getAll()
@@ -39,8 +43,9 @@ class KegiatanKonsultanController extends Controller
         $data = Array
         (
             'title' => 'Tambah Kegiatan Konsultan',
-            'jenis_layanan' => $this->jenislayanan->getAll(),
-            'bidang_usaha' => $this->bidangusaha->getAll()
+            'jenis_layanan' => $this->jenislayanan->getByBidangLayanan(),
+            'bidang_usaha' => $this->bidangusaha->getAll(),
+            'proker' => $this->proker->getAllByKonsultan()
 
         );
         return view('dashboard.konsultan.kegiatan.add',$data);
@@ -61,7 +66,7 @@ class KegiatanKonsultanController extends Controller
         $data = array(
             'title' => 'Edit Kegiatan',
             'data' => $this->kegiatankonsultan->getById($id),
-            'jenis_layanan' => $this->jenislayanan->getAll(),
+            'jenis_layanan' => $this->jenislayanan->getByBidangLayanan(),
             'bidang_usaha' => $this->bidangusaha->getAll()
         );
         return view('dashboard.konsultan.kegiatan.edit',$data);

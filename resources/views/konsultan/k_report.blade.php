@@ -36,7 +36,6 @@
                             <th>Kabupaten/Kota</th>
                             <th>Alamat</th>
                             <th>Kode Pos</th>
-                            <th>Tempat Lahir</th>
                             <th>Tanggal Lahir</th>
                             <th>Telepon</th>
                             <th>Email</th>
@@ -61,7 +60,6 @@
                                 <td>{{$row->regencies->name}}</td>
                                 <td>{{$row->alamat}}</td>
                                 <td>{{$row->kode_pos}}</td>
-                                <td>{{$row->tempat_lahir}}</td>
                                 <td>{{$row->tanggal_lahir}}</td>
                                 <td>{{$row->telepon}}</td>
                                 <td>{{$row->email}}</td>
