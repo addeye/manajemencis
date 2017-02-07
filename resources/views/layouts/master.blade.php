@@ -104,7 +104,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
             "paging": true,
             "lengthChange": false,
             "searching": true,
-            "ordering": true,
+            "ordering": false,
+            "bSortable": true,
             "info": true,
             "autoWidth": false
         });

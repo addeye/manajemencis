@@ -34,14 +34,14 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
-                                <form method="post" action="{{ url('konsultan/'.$data->id.'/update') }}" class="form-horizontal">
+                                <form method="post" action="{{ url('konsultan/'.$data->id.'/update') }}" class="form-horizontal" enctype="multipart/form-data">
                                     <input type="hidden" name="user_id" value="{{ $data->user_id }}">
                                     <input type="hidden" name="_method" value="PUT">
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">No Registrasi*</label>
                                         <div class="col-sm-5">
-                                            <input type="text" name="no_registrasi" class="form-control" placeholder="Nomor Registrasi.." value="{{ $data->no_registrasi }}" required>
+                                            <input type="text" name="no_registrasi" class="form-control" placeholder="Nomor Registrasi.." value="{{ $data->no_registrasi }}">
                                             <p class="text-danger">{{ $errors->first('nama_lengkap') }}</p>
                                         </div>
                                     </div>
@@ -203,6 +203,38 @@
                                                 @endforeach
                                             </select>
                                             <p class="text-danger">{{ $errors->first('lembaga_id') }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Pas Photo</label>
+                                        <div class="col-sm-3">
+                                            <input type="file" name="pas_photo">
+                                            <p class="help-block">Maksimal file 500KB</p>
+                                            <p class="text-danger">{{ $errors->first('pas_photo') }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Ijazah</label>
+                                        <div class="col-sm-3">
+                                            <input type="file" name="ijazah">
+                                            <p class="help-block">Maksimal file 500KB</p>
+                                            <p class="text-danger">{{ $errors->first('ijazah') }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Scan KTP</label>
+                                        <div class="col-sm-3">
+                                            <input type="file" name="scan_ktp">
+                                            <p class="help-block">Maksimal file 500KB</p>
+                                            <p class="text-danger">{{ $errors->first('scan_ktp') }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat</label>
+                                        <div class="col-sm-3">
+                                            <input type="file" name="sertifikat_1">
+                                            <p class="help-block">Maksimal file 500KB</p>
+                                            <p class="text-danger">{{ $errors->first('sertifikat_1') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">

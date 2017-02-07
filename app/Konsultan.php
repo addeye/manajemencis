@@ -32,6 +32,8 @@ class Konsultan extends Model
         'ijazah',
         'sertifikat_1',
         'sertifikat_2',
+        'pas_photo',
+        'scan_ktp',
     ];
 
     public function provinces()

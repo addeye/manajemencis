@@ -14,9 +14,11 @@ class AddColumnFileTableKonsultan extends Migration
     public function up()
     {
         Schema::table('konsultans', function (Blueprint $table) {
-            $table->string('ijazah');
-            $table->string('sertifikat_1');
-            $table->string('sertifikat_2');
+            $table->string('ijazah')->nullable();
+            $table->string('sertifikat_1')->nullable();
+            $table->string('sertifikat_2')->nullable();
+            $table->string('scan_ktp')->nullable();
+            $table->string('pas_photo')->nullable();
         });
     }
 
@@ -31,6 +33,8 @@ class AddColumnFileTableKonsultan extends Migration
             $table->dropColumn('ijazah');
             $table->dropColumn('sertifikat_1');
             $table->dropColumn('sertifikat_2');
+            $table->dropColumn('scan_ktp');
+            $table->dropColumn('pas_photo');
         });
     }
 }

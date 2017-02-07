@@ -17,7 +17,7 @@ class KonsultanRepository
     // Select All
     Public function getAll()
     {
-        return Konsultan::all();
+        return Konsultan::orderBy('created_at','desc')->get();
     }
 
     // Select where id

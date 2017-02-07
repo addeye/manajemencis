@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Provinsi*</label>
                             <div class="col-sm-5">
-                                <select name="provinces_id" id="provinces" class="form-control select2">
+                                <select name="provinces_id" id="provinces" class="form-control select2" required>
                                     <option value="">Pilih Provinsi</option>
                                     @foreach($provinces as $row)
                                         <option value="{{ $row->id }}">{{ $row->id }} {{ $row->name }}</option>
@@ -80,9 +80,9 @@
                         </div>
                         <div id="ajaxRegencies"></div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Alamat</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Alamat*</label>
                             <div class="col-sm-5">
-                                <textarea class="form-control" name="alamat" rows="4">{{ old('alamat') }}</textarea>
+                                <textarea class="form-control" name="alamat" rows="4" required>{{ old('alamat') }}</textarea>
                                 <p class="text-danger">{{ $errors->first('alamat') }}</p>
                             </div>
                         </div>
@@ -94,9 +94,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Lahir</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Lahir*</label>
                             <div class="col-sm-3">
-                                <input type="text" id="datemask" name="tanggal_lahir" class="form-control" value="{{ old('tanggal_lahir') }}" placeholder="Tanggal Lahir..">
+                                <input type="text" id="datemask" name="tanggal_lahir" class="form-control" value="{{ old('tanggal_lahir') }}" placeholder="Tanggal Lahir.." required>
                                 <p class="text-danger">{{ $errors->first('tangal_lahir') }}</p>
                             </div>
                         </div>
@@ -108,9 +108,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Pendidikan</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Pendidikan*</label>
                             <div class="col-sm-3">
-                                <select class="form-control" name="pendidikan_id">
+                                <select class="form-control" name="pendidikan_id" required>
                                     <option value="">Pendidikan Terakhir</option>
                                     @foreach($pendidikan as $row)
                                         <option value="{{ $row->id }}" {{ old('pendidikan_id')==$row->id?'selected':'' }}>{{ $row->name }}</option>
@@ -164,7 +164,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Lembaga</label>
                             <div class="col-sm-5">
-                                <select name="lembaga_id" class="form-control select2">
+                                <select name="lembaga_id" class="form-control select2" required>
                                     <option value="">Pilih Lembaga</option>
                                     @foreach($lembaga as $row)
                                         <option value="{{ $row->id }}" {{ old('lembaga_id')==$row->id?'selected':'' }}>{{ $row->name }}</option>
@@ -176,7 +176,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Bidang Layanan</label>
                             <div class="col-sm-5">
-                                <select name="bidang_layanan_id" class="form-control">
+                                <select name="bidang_layanan_id" class="form-control" required>
                                     <option value="">Pilih Bidang Layanan</option>
                                     @foreach($bidanglayanan as $row)
                                         <option value="{{ $row->id }}" {{ old('bidang_layanan_id')==$row->id?'selected':'' }}>{{ $row->name }}</option>
@@ -200,11 +200,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Foto Profil</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Pas Photo</label>
                             <div class="col-sm-3">
-                                <input type="file" name="images">
+                                <input type="file" name="pas_photo">
                                 <p class="help-block">Maksimal file 500KB</p>
-                                <p class="text-danger">{{ $errors->first('images') }}</p>
+                                <p class="text-danger">{{ $errors->first('pas_photo') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -216,19 +216,19 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">SCAN KTP</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Scan KTP</label>
+                            <div class="col-sm-3">
+                                <input type="file" name="scan_ktp">
+                                <p class="help-block">Maksimal file 500KB</p>
+                                <p class="text-danger">{{ $errors->first('scan_ktp') }}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat</label>
                             <div class="col-sm-3">
                                 <input type="file" name="sertifikat_1">
                                 <p class="help-block">Maksimal file 500KB</p>
                                 <p class="text-danger">{{ $errors->first('sertifikat_1') }}</p>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat 2</label>
-                            <div class="col-sm-3">
-                                <input type="file" name="sertifikat_2">
-                                <p class="help-block">Maksimal file 1 MB</p>
-                                <p class="text-danger">{{ $errors->first('sertifikat_2') }}</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -292,6 +292,9 @@
             })
                     .success(function(response){
                         $('#ajaxRegencies').html(response);
+                        $(".select2").select2({
+                            theme: "bootstrap"
+                        });
                     })
         });
     </script>

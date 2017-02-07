@@ -115,10 +115,10 @@ class KonsultanController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($request->all(), [
-            'images' => 'image|max:1024',
-            'ijazah' => 'image|max:1024',
-            'sertifikat_1' => 'image|max:1024',
-            'sertifikat_2' => 'image|max:1024',
+            'ijazah' => 'image|max:500',
+            'sertifikat_1' => 'image|max:500',
+            'pas_photo' => 'image|max:500',
+            'scan_ktp' => 'image|max:500',
             'password' => 'required',
             'email' => 'required|email|unique:users',
             'confirm_password' => 'required|same:password'
@@ -130,41 +130,31 @@ class KonsultanController extends Controller
                 ->withInput();
         }
 
-        if($request->hasFile('images'))
+        if($request->hasFile('pas_photo'))
         {
-            $files = Input::file('images');
-            //getting timestamp
-                $timestamp = str_replace(['',':'],' pp -',Carbon::now()->toDateTimeString());
-                $name = $timestamp.'-'.$files->getClientOriginalName();
-                $data['path'] = $name;
-                $files->move(public_path().'/images/',$name);
+            $files = Input::file('pas_photo');
+            $name = $this->upload_image($files,'images');
+            $data['pas_photo'] = $name;
         }
         if($request->hasFile('ijazah'))
         {
             $files = Input::file('ijazah');
-            //getting timestamp
-            $timestamp = str_replace(['',':'],' Ijazah -',Carbon::now()->toDateTimeString());
-            $name = $timestamp.'-'.$files->getClientOriginalName();
+            $name = $this->upload_image($files,'lampiran');
             $data['ijazah'] = $name;
-            $files->move(public_path().'/lampiran/',$name);
+        }
+        if($request->hasFile('scan_ktp'))
+        {
+            $files = Input::file('scan_ktp');
+            //getting timestamp
+            $name = $this->upload_image($files,'lampiran');
+            $data['scan_ktp'] = $name;
         }
         if($request->hasFile('sertifikat_1'))
         {
             $files = Input::file('sertifikat_1');
             //getting timestamp
-            $timestamp = str_replace(['',':'],' Sertifikat1 -',Carbon::now()->toDateTimeString());
-            $name = $timestamp.'-'.$files->getClientOriginalName();
+            $name = $this->upload_image($files,'lampiran');
             $data['sertifikat_1'] = $name;
-            $files->move(public_path().'/lampiran/',$name);
-        }
-        if($request->hasFile('sertifikat_2'))
-        {
-            $files = Input::file('sertifikat_2');
-            //getting timestamp
-            $timestamp = str_replace(['',':'],' sertifikat2 -',Carbon::now()->toDateTimeString());
-            $name = $timestamp.'-'.$files->getClientOriginalName();
-            $data['sertifikat_2'] = $name;
-            $files->move(public_path().'/lampiran/',$name);
         }
 
         $result = $this->konsultan->create($data);
@@ -191,6 +181,35 @@ class KonsultanController extends Controller
     public function doEditData(Request $request,$id)
     {
         $data = $request->all();
+        $old = $this->konsultan->getById($id);
+
+        if($request->hasFile('pas_photo'))
+        {
+            $files = Input::file('pas_photo');
+            $name = $this->upload_image($files,'images',$old->pas_photo);
+            $data['pas_photo'] = $name;
+        }
+        if($request->hasFile('ijazah'))
+        {
+            $files = Input::file('ijazah');
+            $name = $this->upload_image($files,'lampiran',$old->ijazah);
+            $data['ijazah'] = $name;
+        }
+        if($request->hasFile('scan_ktp'))
+        {
+            $files = Input::file('scan_ktp');
+            //getting timestamp
+            $name = $this->upload_image($files,'lampiran',$old->scan_ktp);
+            $data['scan_ktp'] = $name;
+        }
+        if($request->hasFile('sertifikat_1'))
+        {
+            $files = Input::file('sertifikat_1');
+            //getting timestamp
+            $name = $this->upload_image($files,'lampiran',$old->sertifikat_1);
+            $data['sertifikat_1'] = $name;
+        }
+
         $result = $this->konsultan->update($id,$data);
         if($result)
         {
@@ -205,5 +224,18 @@ class KonsultanController extends Controller
         {
             return redirect('konsultan')->with('info','Data Konsultan Berhasil Dihapus');
         }
+    }
+
+    public function upload_image($files,$dir,$old='')
+    {
+        //getting timestamp
+        $timestamp = str_replace(['',':'],' pp -',Carbon::now()->toDateTimeString());
+        $name = $timestamp.'-'.$files->getClientOriginalName();
+        $files->move(public_path().'/'.$dir.'/',$name);
+        if($old!='' and file_exists(public_path().'/'.$dir.'/'.$old))
+        {
+            unlink(public_path().'/'.$dir.'/'.$old);
+        }
+        return $name;
     }
 }

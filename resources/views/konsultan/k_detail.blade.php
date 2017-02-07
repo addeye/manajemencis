@@ -75,13 +75,13 @@
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <dt>Pas Photo</dt>
-                        <dd><img class="thumbnail img-responsive" src="{{ url('lampiran/'.$data->ijazah) }}"></dd>
+                        <dd><img class="thumbnail img-responsive" src="{{ url('images/'.$data->pas_photo) }}"></dd>
                         <dt>Ijazah</dt>
                         <dd><img class="thumbnail img-responsive" src="{{ url('lampiran/'.$data->ijazah) }}"></dd>
-                        <dt>Sertifikat 1</dt>
-                        <dd><img class="thumbnail img-responsive" src="{{ url('/lampiran'.$data->Sertifikat_1) }}"></dd>
-                        <dt>Sertifikat 2</dt>
-                        <dd><img class="thumbnail img-responsive" src="{{ url('lampiran'.$data->sertifikat_2) }}"></dd>
+                        <dt>Scan KTP</dt>
+                        <dd><img class="thumbnail img-responsive" src="{{ url('/lampiran'.$data->scan_ktp) }}"></dd>
+                        <dt>Sertifikat</dt>
+                        <dd><img class="thumbnail img-responsive" src="{{ url('lampiran'.$data->sertifikat_1) }}"></dd>
                     </dl>
                 </div>
             </div>
