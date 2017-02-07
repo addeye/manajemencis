@@ -70,7 +70,7 @@ class DetailsProkerController extends Controller
     {
         $data = $request->all();
 //        return $data;
-        $result = $this->proker->update($id,$data);
+        $result = $this->detailproker->update($id,$data);
         if($result)
         {
             return redirect('k/dproker/'.$request->proker_id)->with('info','Data Program Kerja Berhasil Diupdate');

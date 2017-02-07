@@ -149,6 +149,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/{id}/update', 'KonsultanController@doEditData');
         Route::get('/{id}/delete', 'KonsultanController@deleteData');
         Route::get('/{id}/detail', 'KonsultanController@detailData');
+        Route::get('/{id}/proker', 'KonsultanController@prokerData');
+        Route::get('/proker/{id}/detail', 'KonsultanController@detailProker');
     });
 
     Route::group(['namespace' => 'Konsultan',['middleware' => 'konsultan']], function () {

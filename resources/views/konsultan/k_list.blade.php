@@ -34,6 +34,7 @@
 								<th>Jenis Kelamin</th>
 								<th>Telepon</th>
 								<th>Email</th>
+								<th>Program Kerja</th>
 								<th>Action</th>
 							</tr>
 						</thead>
@@ -46,6 +47,9 @@
 								<td>{{$row->jenis_kelamin}}</td>
 								<td>{{$row->telepon}}</td>
 								<td>{{$row->email}}</td>
+								<td>
+									<a href="{{ url('konsultan/'.$row->id.'/proker') }}" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-list-alt"></i> Proker</a>
+								</td>
 								<td>
 									<a href="{{ url('konsultan/'.$row->id.'/detail') }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-list"></i></a>
                                 	<a href="{{ url('konsultan/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>

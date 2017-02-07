@@ -51,9 +51,7 @@ class KonsultanRepository
         $data['tanggal_lahir'] = date('Y-m-d', strtotime($final_date));
 
         $users = User::create($dataUser);
-
         $data['user_id'] = $users->id;
-
         $result = Konsultan::create($data);
         if ($result)
         {

@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\BidangLayananRepository;
+use App\Repositories\DetailsProkersRepository;
 use App\Repositories\KonsultanRepository;
 use App\Repositories\LembagaRepository;
 use App\Repositories\PendidikanRepository;
+use App\Repositories\ProkerKonsultanRepository;
 use App\Repositories\ProvincesRepository;
 use App\Repositories\RegenciesRepository;
 use Carbon\Carbon;
@@ -21,12 +23,17 @@ class KonsultanController extends Controller
     protected $pendidikan;
     protected $lembaga;
     protected $bidanglayanan;
+    protected $proker;
+    protected $detailproker;
 
     public function __construct(KonsultanRepository $konsultan,
                                 ProvincesRepository $provinces,
                                 RegenciesRepository $regencies,
                                 PendidikanRepository $pendidikan,
-                                LembagaRepository $lembaga, BidangLayananRepository $bidanglayanan)
+                                LembagaRepository $lembaga,
+                                BidangLayananRepository $bidanglayanan,
+                                ProkerKonsultanRepository $proker,
+                                DetailsProkersRepository $detailproker)
     {
         $this->konsultan = $konsultan;
         $this->provinces = $provinces;
@@ -34,6 +41,8 @@ class KonsultanController extends Controller
         $this->pendidikan = $pendidikan;
         $this->lembaga = $lembaga;
         $this->bidanglayanan = $bidanglayanan;
+        $this->proker = $proker;
+        $this->detailproker = $detailproker;
     }
 
     public function getAll()
@@ -42,7 +51,6 @@ class KonsultanController extends Controller
         (
             'title' => 'Data Konsultan',
             'konsultan' => $this->konsultan->getAll()
-
         );
         return view('konsultan.k_list',$data);
     }
@@ -68,6 +76,24 @@ class KonsultanController extends Controller
 
         );
         return view('konsultan.k_detail',$data);
+    }
+
+    public function prokerData($id)
+    {
+        $data = array(
+            'title' => 'Program Kerja',
+            'data' => $this->proker->getAllByKonsultanId($id)
+        );
+        return view('konsultan.k_proker',$data);
+    }
+
+    public function detailProker($id)
+    {
+        $data = array(
+            'title' => 'Detail Program Kerja',
+            'data' => $this->detailproker->getAllByProker($id)
+        );
+        return view('konsultan.k_detailproker',$data);
     }
 
     public function addData()

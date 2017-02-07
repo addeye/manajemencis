@@ -25,6 +25,11 @@ class ProkerKonsultanRepository
         return Proker_konsultan::where('konsultan_id',Auth::user()->konsultans->id)->get();
     }
 
+    public function getAllByKonsultanId($id)
+    {
+        return Proker_konsultan::where('konsultan_id',$id)->get();
+    }
+
     // Select where id
     public function getById($id)
     {

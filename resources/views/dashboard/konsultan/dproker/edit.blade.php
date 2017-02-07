@@ -64,8 +64,13 @@
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Jadwal Pelaksana</label>
-                            <div class="col-sm-2">
-                                <input type="text" name="jadwal_pelaksana" class="form-control" value="{{$data->jadwal_pelaksana}}" placeholder="Jadwal Pelaksana.." required>
+                            <div class="col-sm-3">
+                                <select class="form-control" name="jadwal_pelaksana">
+                                    <option value="">Pilih Minggu Ke</option>
+                                    @for($i=1; $i<=56; $i++)
+                                        <option value="{{ 'Minggu Ke-'.$i }}" {{ $data->jadwal_pelaksana=='Minggu Ke-'.$i ? 'selected':'' }}>{{ 'Minggu Ke-'.$i }}</option>
+                                    @endfor
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
