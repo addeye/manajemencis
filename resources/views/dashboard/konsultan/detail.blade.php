@@ -74,12 +74,14 @@
                 <!-- / box Header -->
                 <div class="box-body">
                     <dl class="dl-horizontal">
+                        <dt>Pas Photo</dt>
+                        <dd><img src="{{ url('lampiran/'.$data->pas_photo) }}" class="img-responsive" alt="Responsive image"></dd>
+                        <dt>Scan KTP</dt>
+                        <dd><img src="{{ url('lampiran/'.$data->scan_ktp) }}" class="img-responsive" alt="Responsive image"></dd>
                         <dt>Ijazah</dt>
                         <dd><img src="{{ url('lampiran/'.$data->ijazah) }}" class="img-responsive" alt="Responsive image"></dd>
                         <dt>Sertifikat 1</dt>
                         <dd><img src="{{ url('lampiran/'.$data->sertifikat_1) }}" class="img-responsive" alt="Responsive image"></dd>
-                        <dt>Sertifikat 2</dt>
-                        <dd><img src="{{ url('lampiran/'.$data->sertifikat_2) }}" class="img-responsive" alt="Responsive image"></dd>
                     </dl>
                 </div>
             </div>

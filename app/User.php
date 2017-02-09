@@ -36,4 +36,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Konsultan::class,'user_id');
     }
+
+    public function adminlembagas()
+    {
+        return $this->hasOne(Admin_lembaga::class,'user_id');
+    }
 }

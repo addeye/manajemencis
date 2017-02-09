@@ -1,8 +1,11 @@
 <div class="form-group">
-    <select class="form-control" name="regencies_id">
-        <option value="">Pilih Kelurahan</option>
-        @foreach($villages as $row)
-            <option value="{{ $row->id }}">{{ $row->name }}</option>
-        @endforeach
-    </select>
+    <label for="inputEmail3" class="col-sm-2 control-label">Kelurahan</label>
+    <div class="col-md-5">
+        <select class="form-control" name="village_id" required>
+            <option value="">Pilih Kelurahan</option>
+            @foreach($villages as $row)
+                <option value="{{ $row->id }}">{{ $row->id }} {{ $row->name }}</option>
+            @endforeach
+        </select>
+    </div>
 </div>

@@ -52,6 +52,7 @@ class KonsultanRepository
 
         $users = User::create($dataUser);
         $data['user_id'] = $users->id;
+
         $result = Konsultan::create($data);
         if ($result)
         {
