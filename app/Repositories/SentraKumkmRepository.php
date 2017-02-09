@@ -9,10 +9,21 @@
 namespace App\Repositories;
 
 
+use App\Admin_lembaga;
 use App\Sentra_kumkm;
+use Illuminate\Support\Facades\Auth;
 
 class SentraKumkmRepository
 {
+    protected $sentra;
+    protected $adminlembaga;
+
+    public function __construct(Sentra_kumkm $sentra, Admin_lembaga $adminlembaga)
+    {
+        $this->sentra = $sentra;
+        $this->adminlembaga = $adminlembaga;
+    }
+
     Public function getAll()
     {
         return Sentra_kumkm::all();
@@ -61,5 +72,14 @@ class SentraKumkmRepository
             return true;
         }
         return false;
+    }
+
+    /*For Admin Get Sentra*/
+    public function getSentraByAdmin()
+    {
+        $user_id = Auth::user()->id;
+        $lembaga = $this->adminlembaga->where('user_id',$user_id)->first();
+        $lembaga_id = $lembaga->id;
+        return $this->sentra->where('id_lembaga',$lembaga_id)->get();
     }
 }

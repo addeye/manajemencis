@@ -217,19 +217,38 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/{id}/delete', 'KegiatanKonsultanController@deleteData');
         });
     });
-    Route::group(['namespace' => 'Admin','middleware'=>['admin']], function () {
+    Route::group(['namespace' => 'Admin','prefix'=>'adm','middleware'=>['admin']], function () {
         /**
          * for lembaga
          */
         Route::group(['prefix' => 'lembaga'], function () {
-            Route::get('/', 'LembagaController@getAll');
-            Route::get('/create', 'LembagaController@addData');
-            Route::post('/', 'LembagaController@doAddData');
-            Route::get('/{id}', 'LembagaController@editData');
-            Route::put('/{id}/update', 'LembagaController@doEditData');
-            Route::get('/{id}/delete', 'LembagaController@deleteData');
-            Route::get('/{id}/detail', 'LembagaController@detailData');
-            Route::get('/report/all', 'LembagaController@getAllColumn');
+            Route::get('/profil', 'LembagaController@profile');
+            Route::get('/profil/edit', 'LembagaController@editProfile');
+            Route::put('profil/{id}/update','LembagaController@doUpdate');
+        });
+
+        Route::group(['prefix' => 'sentra'], function() {
+            Route::get('/', 'SentraController@getAll');
+            Route::get('/create', 'SentraController@addData');
+            Route::post('/', 'SentraController@doAddData');
+            Route::get('/{id}', 'SentraController@editData');
+            Route::put('/{id}/update', 'SentraController@doEditData');
+            Route::get('/{id}/delete', 'SentraController@deleteData');
+            Route::get('/report/all', 'SentraController@getAllColumn');
+        });
+
+        Route::group(['prefix'=>'konsultan'], function() {
+            Route::get('/', 'KonsultanController@getAll');
+            Route::get('/report', 'KonsultanController@getAllReport');
+            Route::get('/create', 'KonsultanController@addData');
+            Route::post('/', 'KonsultanController@doAddData');
+            Route::get('/{id}', 'KonsultanController@editData');
+            Route::put('/{id}/update', 'KonsultanController@doEditData');
+            Route::get('/{id}/delete', 'KonsultanController@deleteData');
+            Route::get('/{id}/detail', 'KonsultanController@detailData');
+            Route::get('/{id}/proker', 'KonsultanController@prokerData');
+            Route::get('/proker/{id}/detail', 'KonsultanController@detailProker');
         });
     });
+
 });

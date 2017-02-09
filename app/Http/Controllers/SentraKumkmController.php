@@ -87,7 +87,7 @@ class SentraKumkmController extends Controller
         $result = $this->sentrakumkm->create($data);
         if($result)
         {
-            return redirect('admin')->with('success','Data Sentra KUMKM Berhasil Disimpan');
+            return redirect('sentra')->with('success','Data Sentra KUMKM Berhasil Disimpan');
         }
     }
 
@@ -97,7 +97,7 @@ class SentraKumkmController extends Controller
         $result = $this->sentrakumkm->update($id,$data);
         if($result)
         {
-            return redirect('admin')->with('info','Data Sentra KUMKM Berhasil Diupdate');
+            return redirect('sentra')->with('info','Data Sentra KUMKM Berhasil Diupdate');
         }
     }
 
@@ -106,7 +106,7 @@ class SentraKumkmController extends Controller
         $result = $this->sentrakumkm->delete($id);
         if($result)
         {
-            return redirect('admin')->with('info','Data Sentra KUMKM Berhasil Dihapus');
+            return redirect('sentra')->with('info','Data Sentra KUMKM Berhasil Dihapus');
         }
     }
 

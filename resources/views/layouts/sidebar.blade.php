@@ -193,22 +193,23 @@
                 <!-- Optionally, you can add icons to the links -->
                 <li class="{{ Active::check('home') }}"><a href="{{ url('home') }}"><i class="fa fa-dashboard"></i>
                         <span>Dashboard</span></a></li>
-                <li class="{{ Active::check('bio/konsultan',true) }}"><a href="{{ url('bio/konsultan') }}"><i
-                                class="fa fa-dashboard"></i> <span>Biodata</span></a></li>
+                <li class="{{ Active::check('adm/lembaga/profil',true) }}"><a
+                            href="{{ url('adm/lembaga/profil') }}"><i
+                                class="fa fa-dashboard"></i> <span>Profil Lembaga</span></a></li>
                 <li class="treeview {{active_check('lembaga',true)}}">
                     <a href="#">
-                        <i class="fa fa-home"></i> <span>Lembaga</span>
+                        <i class="fa fa-home"></i> <span>Sentra UMKM</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="{{active_check('lembaga/create')}}"><a href="{{ url('lembaga/create') }}"><i
-                                        class="fa fa-circle-o"></i> Add Lembaga</a></li>
-                        <li class="{{active_check('lembaga')}}"><a href="{{ url('lembaga') }}"><i
-                                        class="fa fa-circle-o"></i> View Lembaga</a></li>
-                        <li class="{{active_check('lembaga/report/all')}}"><a href="{{ url('lembaga/report/all') }}"><i
-                                        class="fa fa-circle-o"></i> Report Lembaga</a></li>
+                        <li class="{{active_check('lembaga/create')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> Add Sentra</a></li>
+                        <li class="{{active_check('lembaga')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> View Sentra</a></li>
+                        <li class="{{active_check('lembaga/report/all')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> Report Sentra</a></li>
                     </ul>
                 </li>
             </ul>
