@@ -71,7 +71,7 @@
                     </ul>
                 </li>
 
-                <li class="treeview {{active_check('lembaga',true)}}">
+                <li class="treeview {{active_check('cislembaga',true)}}">
                     <a href="#">
                         <i class="fa fa-home"></i> <span>Lembaga</span>
             <span class="pull-right-container">
@@ -79,11 +79,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="{{active_check('lembaga/create')}}"><a href="{{ url('lembaga/create') }}"><i
+                        <li class="{{active_check('cislembaga/create')}}"><a href="{{ url('cislembaga/create') }}"><i
                                         class="fa fa-circle-o"></i> Add Lembaga</a></li>
-                        <li class="{{active_check('lembaga')}}"><a href="{{ url('lembaga') }}"><i
+                        <li class="{{active_check('cislembaga')}}"><a href="{{ url('cislembaga') }}"><i
                                         class="fa fa-circle-o"></i> View Lembaga</a></li>
-                        <li class="{{active_check('lembaga/report/all')}}"><a href="{{ url('lembaga/report/all') }}"><i
+                        <li class="{{active_check('cislembaga/report/all')}}"><a href="{{ url('cislembaga/report/all') }}"><i
                                         class="fa fa-circle-o"></i> Report Lembaga</a></li>
                     </ul>
                 </li>

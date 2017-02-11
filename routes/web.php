@@ -105,6 +105,48 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
         /**
+         * for CIS Lembaga
+         */
+        Route::group(['prefix' => 'cislembaga'], function () {
+            Route::get('/', 'CisLembagaController@getAll');
+            Route::get('/create', 'CisLembagaController@addData');
+            Route::post('/', 'CisLembagaController@doAddData');
+            Route::get('/{id}', 'CisLembagaController@editData');
+            Route::put('/{id}/update', 'CisLembagaController@doEditData');
+            Route::get('/{id}/delete', 'CisLembagaController@deleteData');
+            Route::get('/{id}/detail', 'CisLembagaController@detailData');
+            Route::get('/report/all', 'CisLembagaController@getAllColumn');
+        });
+
+        /**
+         * for Cis FIleManager
+         */
+        Route::group(['prefix' => 'cisfile'], function () {
+//            Route::get('/', 'CisFilemanageraController@getAll');
+//            Route::get('/create', 'CisFilemanageraController@addData');
+//            Route::post('/', 'CisFilemanageraController@doAddData');
+            Route::get('/{id}', 'CisFilemanageraController@editData');
+            Route::put('/{id}/update', 'CisFilemanageraController@doEditData');
+            Route::get('/{id}/delete', 'CisFilemanageraController@deleteData');
+//            Route::get('/{id}/detail', 'CisFilemanageraController@detailData');
+//            Route::get('/report/all', 'CisFilemanageraController@getAllColumn');
+        });
+
+        /**
+         * for Sentra Binaan
+         */
+        Route::group(['prefix' => 'sentra_binaan'], function () {
+//            Route::get('/', 'CisFilemanageraController@getAll');
+//            Route::get('/create', 'CisFilemanageraController@addData');
+//            Route::post('/', 'CisFilemanageraController@doAddData');
+            Route::get('/{id}', 'SentraBinaanController@editData');
+            Route::put('/{id}/update', 'SentraBinaanController@doEditData');
+            Route::get('/{id}/delete', 'SentraBinaanController@deleteData');
+//            Route::get('/{id}/detail', 'CisFilemanageraController@detailData');
+//            Route::get('/report/all', 'CisFilemanageraController@getAllColumn');
+        });
+
+        /**
          * For user
          */
         Route::group(['prefix' => 'u'], function () {

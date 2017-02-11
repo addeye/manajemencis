@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Traits\UploadTrait;
 use App\Repositories\BidangLayananRepository;
 use App\Repositories\DetailsProkersRepository;
 use App\Repositories\KonsultanRepository;
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Validator;
 
 class KonsultanController extends Controller
 {
+    use UploadTrait;
+
     protected $konsultan;
     protected $provinces;
     protected $regencies;
@@ -224,18 +227,5 @@ class KonsultanController extends Controller
         {
             return redirect('konsultan')->with('info','Data Konsultan Berhasil Dihapus');
         }
-    }
-
-    public function upload_image($files,$dir,$old='')
-    {
-        //getting timestamp
-        $timestamp = str_replace(['',':'],' pp -',Carbon::now()->toDateTimeString());
-        $name = $timestamp.'-'.$files->getClientOriginalName();
-        $files->move(public_path().'/'.$dir.'/',$name);
-        if($old!='' and file_exists(public_path().'/'.$dir.'/'.$old))
-        {
-            unlink(public_path().'/'.$dir.'/'.$old);
-        }
-        return $name;
     }
 }
