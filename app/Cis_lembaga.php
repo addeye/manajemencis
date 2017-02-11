@@ -9,6 +9,7 @@ class Cis_lembaga extends Model
     protected $table = 'cis_lembagas';
 
     protected $fillable = [
+        'id_lembaga',
         'plut_name',
         'plut_bentuk_kelembagaan',
         'plut_alamat',
@@ -35,4 +36,14 @@ class Cis_lembaga extends Model
         'jml_produk_online',
         'photo_gedung',
     ];
+
+    public function sentra_binaan()
+    {
+        return $this->hasMany(Sentra_binaan::class,'cis_lembaga_id');
+    }
+
+    public function cis_filemanager()
+    {
+        return $this->hasMany(Cis_filemanager::class,'cis_lembaga_id');
+    }
 }

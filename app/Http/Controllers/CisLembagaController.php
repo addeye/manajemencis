@@ -41,6 +41,18 @@ class CisLembagaController extends Controller
         return view('cislembaga.report',$data);
     }
 
+    public function detailData($id)
+    {
+        $data = Array
+        (
+            'head_title' => 'CIS PLUT-KUMKM',
+            'title' => 'Detail CIS PLUT-KUMKM',
+            'data' => $this->cislembaga->getById($id)
+        );
+
+        return view('cislembaga.detail',$data);
+    }
+
     public function addData()
     {
         $data = Array

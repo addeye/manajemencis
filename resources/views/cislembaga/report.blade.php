@@ -25,6 +25,7 @@
                         <thead>
                         <tr>
                             <th class="col-xs-1">ID</th>
+                            <th class="col-xs-1">ID Lembaga</th>
                             <th>Nama</th>
                             <th>Bentuk Kelembagaan</th>
                             <th>Alamat</th>
@@ -49,7 +50,6 @@
                             <th>Produk lain yang potensial</th>
                             <th>Jumlah UMKM ecommarce</th>
                             <th>Jumlah Produk Online</th>
-
                         </tr>
                         </thead>
                         <tbody>
@@ -57,6 +57,7 @@
                             <tr>
 
                                 <td>{{$row->id}}</td>
+                                <td>{{$row->id_lembaga}}</td>
                                 <td>{{$row->plut_name}}</td>
                                 <td>{{$row->plut_bentuk_kelembagaan}}</td>
                                 <td>{{$row->plut_alamat}}</td>

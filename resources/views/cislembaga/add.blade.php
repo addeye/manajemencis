@@ -23,6 +23,12 @@
                     <form method="post" action="{{ url('cislembaga') }}" class="form-horizontal" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
+                            <label  class="col-sm-2 control-label">ID Lembaga</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="id_lembaga" class="form-control" placeholder="ID Lembaga.." required>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label  class="col-sm-2 control-label">SKPD Penanggungjawab</label>
                             <div class="col-sm-5">
                                 <input type="text" name="skpd_name" class="form-control" placeholder="Nama SKPD.." required>

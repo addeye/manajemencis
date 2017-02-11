@@ -20,9 +20,15 @@
                 </div>
                 <!-- / box Header -->
                 <div class="box-body">
-                    <form method="post" action="{{ url('cislembaga/'.$data->id.'/update') }}" class="form-horizontal">
+                    <form method="post" action="{{ url('cislembaga/'.$data->id.'/update') }}" class="form-horizontal" enctype="multipart/form-data">
                         <input type="hidden" name="_method" value="PUT">
                         {{ csrf_field() }}
+                        <div class="form-group">
+                            <label  class="col-sm-2 control-label">ID Lembaga</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="id_lembaga" class="form-control" value="{{$data->id_lembaga}}" placeholder="ID Lembaga.." required>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">SKPD Penanggungjawab</label>
                             <div class="col-sm-5">
@@ -171,7 +177,7 @@
                             <label  class="col-sm-2 control-label">Photo Gedung CIS PLUT-KUMKM</label>
                             <div class="col-sm-5">
                                 <img class="img-responsive" src="{{url('images/'.$data->photo_gedung)}}">
-                                <input type="file" name="photo_gedung" class="form-control" placeholder="Tampak dari luar secara utuh dan terbar" required>
+                                <input type="file" name="photo_gedung" class="form-control" placeholder="Tampak dari luar secara utuh dan terbar">
                             </div>
                         </div>
                         <div class="form-group">

@@ -25,4 +25,14 @@ trait UploadTrait
         }
         return $name;
     }
+
+    public function delete_image($dir,$old)
+    {
+        if($old!='' and file_exists(public_path().'/'.$dir.'/'.$old))
+        {
+            unlink(public_path().'/'.$dir.'/'.$old);
+            return true;
+        }
+        return false;
+    }
 }

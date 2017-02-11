@@ -124,10 +124,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::group(['prefix' => 'cisfile'], function () {
 //            Route::get('/', 'CisFilemanageraController@getAll');
 //            Route::get('/create', 'CisFilemanageraController@addData');
-//            Route::post('/', 'CisFilemanageraController@doAddData');
-            Route::get('/{id}', 'CisFilemanageraController@editData');
-            Route::put('/{id}/update', 'CisFilemanageraController@doEditData');
-            Route::get('/{id}/delete', 'CisFilemanageraController@deleteData');
+            Route::post('/', 'CisFilemanagerController@doAddData');
+//            Route::get('/{id}', 'CisFilemanagerController@editData');
+//            Route::put('/{id}/update', 'CisFilemanagerController@doEditData');
+            Route::get('/{id}/delete', 'CisFilemanagerController@deleteData');
 //            Route::get('/{id}/detail', 'CisFilemanageraController@detailData');
 //            Route::get('/report/all', 'CisFilemanageraController@getAllColumn');
         });
@@ -138,7 +138,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::group(['prefix' => 'sentra_binaan'], function () {
 //            Route::get('/', 'CisFilemanageraController@getAll');
 //            Route::get('/create', 'CisFilemanageraController@addData');
-//            Route::post('/', 'CisFilemanageraController@doAddData');
+            Route::post('/', 'SentraBinaanController@doAddData');
             Route::get('/{id}', 'SentraBinaanController@editData');
             Route::put('/{id}/update', 'SentraBinaanController@doEditData');
             Route::get('/{id}/delete', 'SentraBinaanController@deleteData');
