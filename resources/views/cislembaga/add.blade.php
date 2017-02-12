@@ -108,19 +108,19 @@
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Tahun Perolehan</label>
-                            <div class="col-sm-1">
-                                <input value="{{date('Y')}}" type="text" name="tahun_perolehan" class="form-control" placeholder="Tahun Perolehan.." required>
+                            <div class="col-xs-4">
+                                <input type="text" name="tahun_perolehan" class="form-control datemaskyear" placeholder="Tahun Perolehan.." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Mulai Opersional</label>
-                            <div class="col-sm-1">
-                                <input value="{{date('Y')}}" type="text" name="mulai_operasional" class="form-control" placeholder="Mulai Operasional.." required>
+                            <div class="col-xs-4">
+                                <input type="text" name="mulai_operasional" class="form-control datemaskyear" placeholder="Mulai Operasional.." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Tanggal Peresmian</label>
-                            <div class="col-sm-3">
+                            <div class="col-xs-10 col-sm-4 col-md-4">
                                 <input type="date" value="{{date('Y-m-d')}}" name="tgl_peresmian" class="form-control" placeholder="Tanggal Peresmian.." required>
                             </div>
                         </div>
@@ -132,8 +132,8 @@
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Hibah Tahun</label>
-                            <div class="col-sm-1">
-                                <input value="{{date('Y')}}" type="text" name="hibah_tahun" class="form-control" placeholder="Url Facebook PLUT.." required>
+                            <div class="col-sm-4">
+                                <input type="text" name="hibah_tahun" class="form-control datemaskyear" placeholder="Hibah tahun.." required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -145,7 +145,7 @@
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Produk Unggulan Daerah</label>
                             <div class="col-sm-5">
-                                <input type="text" name="produk_unggulan" class="form-control" placeholder="Produk unggulan daerah.." required>
+                                <textarea name="produk_unggulan" class="form-control" placeholder="Produk unggulan daerah.." rows="4" required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -175,7 +175,7 @@
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Photo Gedung CIS PLUT-KUMKM</label>
                             <div class="col-sm-5">
-                                <input type="file" name="photo_gedung" class="form-control" placeholder="Tampak dari luar secara utuh dan terbar" required>
+                                <input type="file" name="photo_gedung" class="form-control" placeholder="Tampak dari luar secara utuh dan terbar">
                             </div>
                         </div>
                         <div class="form-group">
@@ -190,3 +190,17 @@
         </div>
     </div>
 @endsection
+
+@section('script')
+        <!-- InputMask -->
+    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.js') }}"></script>
+    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
+
+    <script>
+        $(function(){
+            //Datemask dd/mm/yyyy
+            $(".datemaskyear").inputmask("9999", {"placeholder": "yyyy"});
+        });
+    </script>
+    @endsection

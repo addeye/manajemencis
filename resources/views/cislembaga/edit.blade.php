@@ -109,13 +109,13 @@
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Tahun Perolehan</label>
-                            <div class="col-sm-1">
+                            <div class="col-xs-4">
                                 <input value="{{$data->tahun_perolehan}}" type="text" name="tahun_perolehan" class="form-control" placeholder="Tahun Perolehan.." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Mulai Opersional</label>
-                            <div class="col-sm-1">
+                            <div class="col-xs-10 col-sm-4 col-md-4">
                                 <input value="{{$data->mulai_operasional}}" type="text" name="mulai_operasional" class="form-control" placeholder="Mulai Operasional.." required>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Produk Unggulan Daerah</label>
                             <div class="col-sm-5">
-                                <input type="text" name="produk_unggulan" class="form-control" value="{{$data->produk_unggulan}}" placeholder="Produk unggulan daerah.." required>
+                                <textarea name="produk_unggulan" class="form-control" placeholder="Produk unggulan daerah.." rows="4" required>{{$data->produk_unggulan}}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -191,4 +191,18 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+        <!-- InputMask -->
+    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.js') }}"></script>
+    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
+
+    <script>
+        $(function(){
+            //Datemask dd/mm/yyyy
+            $(".datemaskyear").inputmask("9999", {"placeholder": "yyyy"});
+        });
+    </script>
 @endsection

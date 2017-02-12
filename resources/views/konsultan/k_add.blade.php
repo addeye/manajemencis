@@ -13,9 +13,6 @@
 @section('css')
         <!-- iCheck for checkboxes and radio inputs -->
 <link rel="stylesheet" href="{{ url('admin-lte/plugins/iCheck/all.css') }}">
-<!-- Select2 -->
-<link rel="stylesheet" href="{{ url('admin-lte/plugins/select2/select2.min.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.6/select2-bootstrap.css">
 
     @endsection
 

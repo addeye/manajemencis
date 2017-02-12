@@ -39,10 +39,9 @@
 						<tbody>
 							@foreach($data as $row)
 							<tr>
-								
 								<td>{{$row->id}}</td>
 								<td>{{$row->nama_lengkap}}</td>
-								<td>{{$row->lembagas->name}}</td>
+								<td>{{$row->lembagas?$row->lembagas->plut_name:''}}</td>
 								<td>{{$row->no_telp}}</td>
 								<td>{{$row->email}}</td>
 								<td>

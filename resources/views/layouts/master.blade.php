@@ -31,6 +31,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect.
     -->
     <link href="{{ url("admin-lte/dist/css/skins/skin-blue.min.css")}}" rel="stylesheet" type="text/css" />
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ url('admin-lte/plugins/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.6/select2-bootstrap.css">
     @yield('css')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -94,11 +97,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
 <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.js') }}"></script>
 
+<!-- Select2 -->
+<script src="{{ url('admin-lte/plugins/select2/select2.full.min.js') }}"></script>
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience -->
 <script>
     $(function () {
+
+        $(".select2").select2({
+            theme: "bootstrap"
+        });
+
         $("[data-mask]").inputmask();
         $('.datatables-class').DataTable({
             "paging": true,

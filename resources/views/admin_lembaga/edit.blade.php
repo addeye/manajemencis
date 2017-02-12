@@ -44,10 +44,10 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Lembaga</label>
                             <div class="col-sm-5">
-                                <select name="lembaga_id" class="form-control" required>
+                                <select name="lembaga_id" class="form-control select2" required>
                                     <option value="">Pilih Lembaga</option>
                                     @foreach($lembaga as $row)
-                                        <option value="{{$row->id}}" {{$data->lembaga_id==$row->id?'selected':''}} >{{$row->name}}</option>
+                                        <option value="{{$row->id}}" {{$data->lembaga_id==$row->id?'selected':''}} >{{$row->plut_name}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -23,6 +23,6 @@ class Admin_lembaga extends Model
 
     public function lembagas()
     {
-        return $this->belongsTo(Lembaga::class,'lembaga_id');
+        return $this->belongsTo(Cis_lembaga::class,'lembaga_id');
     }
 }

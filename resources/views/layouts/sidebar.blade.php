@@ -83,7 +83,8 @@
                                         class="fa fa-circle-o"></i> Add Lembaga</a></li>
                         <li class="{{active_check('cislembaga')}}"><a href="{{ url('cislembaga') }}"><i
                                         class="fa fa-circle-o"></i> View Lembaga</a></li>
-                        <li class="{{active_check('cislembaga/report/all')}}"><a href="{{ url('cislembaga/report/all') }}"><i
+                        <li class="{{active_check('cislembaga/report/all')}}"><a
+                                    href="{{ url('cislembaga/report/all') }}"><i
                                         class="fa fa-circle-o"></i> Report Lembaga</a></li>
                     </ul>
                 </li>
@@ -212,6 +213,55 @@
                                         class="fa fa-circle-o"></i> Report Sentra</a></li>
                     </ul>
                 </li>
+                <li class="treeview {{active_check('lembaga',true)}}">
+                    <a href="#">
+                        <i class="fa fa-home"></i> <span>Data UMKM</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{{active_check('lembaga/create')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> Add UMKM</a></li>
+                        <li class="{{active_check('lembaga')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> View UMKM</a></li>
+                        <li class="{{active_check('lembaga/report/all')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> Report UMKM</a></li>
+                    </ul>
+                </li>
+                <li class="treeview {{active_check('lembaga',true)}}">
+                    <a href="#">
+                        <i class="fa fa-home"></i> <span>Layanan Konsultasi</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{{active_check('lembaga/create')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> Pendaftaran Baru</a></li>
+                        <li class="{{active_check('lembaga')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> Daftar Pendaftar</a></li>
+                        <li class="{{active_check('lembaga/report/all')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> Report Pendaftar</a></li>
+                    </ul>
+                </li>
+                <li class="treeview {{active_check('lembaga',true)}}">
+                    <a href="#">
+                        <i class="fa fa-file"></i> <span>Laporan</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{{active_check('lembaga/create')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> Kegiatan Konsultan</a></li>
+                        <li class="{{active_check('lembaga')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> Profil Konsultan</a></li>
+                        <li class="{{active_check('lembaga/report/all')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> Proker Konsultan</a></li>
+                    </ul>
+                </li>
+
             </ul>
             @endif
                     <!-- /.sidebar-menu -->

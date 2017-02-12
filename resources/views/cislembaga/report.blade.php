@@ -72,8 +72,8 @@
                                 <td>{{$row->skpd_email}}</td>
                                 <td>{{$row->skpd_whatsapp}}</td>
                                 <td>{{$row->tahun_perolehan}}</td>
-                                <td>{{$row->mulai_operasional}}</td>
-                                <td>{{$row->tgl_peresmian}}</td>
+                                <td>{{date('d-m-Y',strtotime($row->mulai_operasional))}}</td>
+                                <td>{{date('d-m-Y',strtotime($row->tgl_peresmian))}}</td>
                                 <td>{{$row->diresmikan_oleh}}</td>
                                 <td>{{$row->hibah_tahun}}</td>
                                 <td>{{$row->ket_bersinergi}}</td>

@@ -19,7 +19,7 @@ class CreateAdminLembagasTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('nama_lengkap');
             $table->integer('lembaga_id')->unsigned();
-            $table->foreign('lembaga_id')->references('id')->on('lembagas');
+            $table->foreign('lembaga_id')->references('id')->on('cis_lembagas');
             $table->string('no_telp');
             $table->string('email');
             $table->timestamps();

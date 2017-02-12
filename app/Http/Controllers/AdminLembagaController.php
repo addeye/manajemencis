@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\AdminLembagaRepository;
-use App\Repositories\LembagaRepository;
+use App\Repositories\CisLembagaRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class AdminLembagaController extends Controller
     protected $adminlembaga;
     protected $user;
 
-    public function __construct(LembagaRepository $lembaga,
+    public function __construct(CisLembagaRepository $lembaga,
                                 AdminLembagaRepository $adminlembaga, UserRepository $user)
     {
         $this->lembaga = $lembaga;
