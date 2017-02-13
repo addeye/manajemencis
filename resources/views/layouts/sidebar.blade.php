@@ -197,7 +197,7 @@
                 <li class="{{ Active::check('adm/lembaga/profil',true) }}"><a
                             href="{{ url('adm/lembaga/profil') }}"><i
                                 class="fa fa-dashboard"></i> <span>Profil Lembaga</span></a></li>
-                <li class="treeview {{active_check('lembaga',true)}}">
+                <li class="treeview {{active_check('adm/sentra',true)}}">
                     <a href="#">
                         <i class="fa fa-home"></i> <span>Sentra UMKM</span>
             <span class="pull-right-container">
@@ -205,11 +205,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="{{active_check('lembaga/create')}}"><a href="#"><i
+                        <li class="{{active_check('adm/sentra/create')}}"><a href="{{url('adm/sentra/create')}}"><i
                                         class="fa fa-circle-o"></i> Add Sentra</a></li>
-                        <li class="{{active_check('lembaga')}}"><a href="#"><i
+                        <li class="{{active_check('adm/sentra')}}"><a href="{{url('adm/sentra')}}"><i
                                         class="fa fa-circle-o"></i> View Sentra</a></li>
-                        <li class="{{active_check('lembaga/report/all')}}"><a href="#"><i
+                        <li class="{{active_check('adm/sentra/report/all')}}"><a href="{{url('adm/sentra/report/all')}}"><i
                                         class="fa fa-circle-o"></i> Report Sentra</a></li>
                     </ul>
                 </li>

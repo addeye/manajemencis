@@ -9,15 +9,19 @@
 namespace App\Repositories;
 
 
+use App\Admin_lembaga;
 use App\Cis_lembaga;
+use Illuminate\Support\Facades\Auth;
 
 class CisLembagaRepository
 {
     protected $cislembaga;
+    protected $adminlembaga;
 
-    public function __construct(Cis_lembaga $cis_lembaga)
+    public function __construct(Cis_lembaga $cis_lembaga, Admin_lembaga $admin_lembaga)
     {
         $this->cislembaga = $cis_lembaga;
+        $this->adminlembaga = $admin_lembaga;
     }
 
     public function getAll()
@@ -61,6 +65,15 @@ class CisLembagaRepository
         }
 
         return false;
+
+    }
+
+    public function getLembagaForAdmin()
+    {
+        $user_id = Auth::user()->id;
+        $admin = $this->adminlembaga->where('user_id',$user_id)->first();
+        $lembaga_id = $admin->lembaga_id;
+        return $this->cislembaga->find($lembaga_id);
 
     }
 }

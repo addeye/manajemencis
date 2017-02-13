@@ -77,9 +77,7 @@ class SentraKumkmRepository
     /*For Admin Get Sentra*/
     public function getSentraByAdmin()
     {
-        $user_id = Auth::user()->id;
-        $lembaga = $this->adminlembaga->where('user_id',$user_id)->first();
-        $lembaga_id = $lembaga->id;
+        $lembaga_id = Auth::user()->adminlembagas->lembaga_id;
         return $this->sentra->where('id_lembaga',$lembaga_id)->get();
     }
 }

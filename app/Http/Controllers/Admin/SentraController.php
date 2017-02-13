@@ -12,7 +12,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Repositories\SentraKumkmRepository;
 
-class SentraControler extends Controller
+class SentraController extends Controller
 {
     protected $sentra;
 

@@ -16,13 +16,21 @@ Route::get('/login', 'AuthController@login');
 Route::post('/dologin', 'AuthController@dologin');
 Route::get('/logout', 'AuthController@logout');
 
+/*For Common*/
+Route::group(['prefix' => 'common'], function () {
+    Route::get('regencies/{provinces_id}', 'CommonController@getRegencies');
+    Route::get('districts/{regencies_id}', 'CommonController@getDistricts');
+    Route::get('villages/{districts_id}', 'CommonController@getVillages');
+    Route::get('detail/proker/{id}', 'CommonController@getDetailProker');
+});
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/home', 'HomeController@index');
     Route::get('/profile', 'HomeController@profile');
     Route::put('/profile/{id}/update', 'HomeController@doProfile');
 
-    Route::group(['middleware'=>['superadmin']], function(){
+        Route::group(['middleware'=>['superadmin']], function(){
         /*For Provinsi*/
         Route::get('/provinces', 'ProvincesController@getAll');
         Route::get('/provinces/create', 'ProvincesController@addData');
@@ -81,14 +89,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/bidangusaha/{id}', 'BidangUsahaController@editData');
         Route::put('/bidangusaha/{id}/update', 'BidangUsahaController@doEditData');
         Route::get('/bidangusaha/{id}/delete', 'BidangUsahaController@deleteData');
-
-        /*For Common*/
-        Route::group(['prefix' => 'common'], function () {
-            Route::get('regencies/{provinces_id}', 'CommonController@getRegencies');
-            Route::get('districts/{regencies_id}', 'CommonController@getDistricts');
-            Route::get('villages/{districts_id}', 'CommonController@getVillages');
-            Route::get('detail/proker/{id}', 'CommonController@getDetailProker');
-        });
 
         /**
          * for lembaga
@@ -269,14 +269,42 @@ Route::group(['middleware' => ['auth']], function () {
             Route::put('profil/{id}/update','LembagaController@doUpdate');
         });
 
-        Route::group(['prefix' => 'sentra'], function() {
-            Route::get('/', 'SentraController@getAll');
-            Route::get('/create', 'SentraController@addData');
-            Route::post('/', 'SentraController@doAddData');
-            Route::get('/{id}', 'SentraController@editData');
-            Route::put('/{id}/update', 'SentraController@doEditData');
-            Route::get('/{id}/delete', 'SentraController@deleteData');
-            Route::get('/report/all', 'SentraController@getAllColumn');
+        Route::group(['prefix' => 'sentra_binaan'], function () {
+//            Route::get('/', 'CisFilemanageraController@getAll');
+//            Route::get('/create', 'CisFilemanageraController@addData');
+            Route::post('/', 'SentraBinaanController@doAddData');
+            Route::get('/{id}', 'SentraBinaanController@editData');
+            Route::put('/{id}/update', 'SentraBinaanController@doEditData');
+            Route::get('/{id}/delete', 'SentraBinaanController@deleteData');
+//            Route::get('/{id}/detail', 'CisFilemanageraController@detailData');
+//            Route::get('/report/all', 'CisFilemanageraController@getAllColumn');
+        });
+
+        /**
+         * for Cis FIleManager
+         */
+        Route::group(['prefix' => 'cisfile'], function () {
+//            Route::get('/', 'CisFilemanageraController@getAll');
+//            Route::get('/create', 'CisFilemanageraController@addData');
+            Route::post('/', 'CisFilemanagerController@doAddData');
+//            Route::get('/{id}', 'CisFilemanagerController@editData');
+//            Route::put('/{id}/update', 'CisFilemanagerController@doEditData');
+            Route::get('/{id}/delete', 'CisFilemanagerController@deleteData');
+//            Route::get('/{id}/detail', 'CisFilemanageraController@detailData');
+//            Route::get('/report/all', 'CisFilemanageraController@getAllColumn');
+        });
+
+        /**
+         * For Sentra KUMKM
+         */
+        Route::group(['prefix' => 'sentra'], function () {
+            Route::get('/', 'SentraKumkmController@getAll');
+            Route::get('/create', 'SentraKumkmController@addData');
+            Route::post('/', 'SentraKumkmController@doAddData');
+            Route::get('/{id}', 'SentraKumkmController@editData');
+            Route::put('/{id}/update', 'SentraKumkmController@doEditData');
+            Route::get('/{id}/delete', 'SentraKumkmController@deleteData');
+            Route::get('/report/all', 'SentraKumkmController@getAllColumn');
         });
 
         Route::group(['prefix'=>'konsultan'], function() {

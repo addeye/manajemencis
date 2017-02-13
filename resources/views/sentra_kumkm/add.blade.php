@@ -125,7 +125,7 @@
                             <label for="inputEmail3" class="col-sm-2 control-label">Pemasaran</label>
                             <div class="col-sm-3">
                                 <select name="pemasaran" class="form-control" required>
-                                    <option value="">Pesamaran</option>
+                                    <option value="">Pilih Pemasaran</option>
                                     <option value="Lokal">Lokal</option>
                                     <option value="Ekspor">Ekspor</option>
                                 </select>

@@ -111,6 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         });
 
         $("[data-mask]").inputmask();
+        $(".datemaskyear").inputmask("9999", {"placeholder": "yyyy"});
         $('.datatables-class').DataTable({
             "paging": true,
             "lengthChange": false,

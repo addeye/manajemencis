@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Repositories\BidangUsahaRepository;
 use App\Repositories\DistrictsRepository;
 use App\Repositories\LembagaRepository;
@@ -10,6 +11,7 @@ use App\Repositories\RegenciesRepository;
 use App\Repositories\SentraKumkmRepository;
 use App\Repositories\VillagesRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SentraKumkmController extends Controller
 {
@@ -42,9 +44,9 @@ class SentraKumkmController extends Controller
         $data = array(
             'head_title' => 'Sentra KUMKM',
             'title' => 'Data Sentra KUMKM',
-            'data' => $this->sentrakumkm->getAll(),
+            'data' => $this->sentrakumkm->getSentraByAdmin(),
         );
-        return view('sentra_kumkm.list',$data);
+        return view('dashboard.admin.sentra_kumkm.list',$data);
     }
 
     public function addData()
@@ -57,10 +59,11 @@ class SentraKumkmController extends Controller
             'regencies' => $this->regencies->getAll(),
             'disticts' => $this->disticts->getAll(),
             'villages' => $this->villages->getAll(),
-            'bidangusaha' => $this->bidangusaha->getAll()
+            'bidangusaha' => $this->bidangusaha->getAll(),
+            'admin_lembagas' => Auth::user()->adminlembagas->lembaga_id,
         );
 
-        return view('sentra_kumkm.add',$data);
+        return view('dashboard.admin.sentra_kumkm.add',$data);
     }
 
     public function editData($id)
@@ -83,11 +86,12 @@ class SentraKumkmController extends Controller
     public function doAddData(Request $request)
     {
         $data = $request->all();
+        $data['id_lembaga'] = Auth::user()->adminlembagas->lembaga_id;
 //        return $data;
         $result = $this->sentrakumkm->create($data);
         if($result)
         {
-            return redirect('sentra')->with('success','Data Sentra KUMKM Berhasil Disimpan');
+            return redirect('adm/sentra')->with('success','Data Sentra KUMKM Berhasil Disimpan');
         }
     }
 
