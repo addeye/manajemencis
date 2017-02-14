@@ -27,7 +27,7 @@
 						<table id="example" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th class="col-xs-1">ID</th>
+								<th class="col-xs-1">No</th>
 								<th>Sentra ID</th>
 								<th>Lembaga</th>
 								<th>Nama</th>
@@ -39,10 +39,11 @@
 							</tr>
 						</thead>
 						<tbody>
+						<?php $no=1; ?>
 							@foreach($data as $row)
 							<tr>
 								
-								<td>{{$row->id}}</td>
+								<td>{{$no++}}</td>
 								<td>{{$row->id_sentra}}</td>
 								<td>{{$row->lembagas->name}}</td>
 								<td>{{$row->name}}</td>

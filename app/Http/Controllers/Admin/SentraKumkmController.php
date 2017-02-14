@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\BidangUsahaRepository;
+use App\Repositories\CisFilemanagerRepository;
+use App\Repositories\CisLembagaRepository;
 use App\Repositories\DistrictsRepository;
 use App\Repositories\LembagaRepository;
 use App\Repositories\ProvincesRepository;
@@ -22,13 +24,16 @@ class SentraKumkmController extends Controller
     protected $villages;
     protected $lembaga;
     protected $bidangusaha;
+    protected $cislembaga;
 
     public function __construct(SentraKumkmRepository $sentrakumkm,
                                 ProvincesRepository $provinces,
                                 RegenciesRepository $regencies,
                                 DistrictsRepository $disticts,
                                 VillagesRepository $villages,
-                                LembagaRepository $lembaga, BidangUsahaRepository $bidangusaha)
+                                LembagaRepository $lembaga,
+                                BidangUsahaRepository $bidangusaha,
+                                CisLembagaRepository $cisLembagaRepository)
     {
         $this->sentrakumkm = $sentrakumkm;
         $this->provinces = $provinces;
@@ -37,6 +42,7 @@ class SentraKumkmController extends Controller
         $this->villages = $villages;
         $this->lembaga = $lembaga;
         $this->bidangusaha = $bidangusaha;
+        $this->cislembaga = $cisLembagaRepository;
     }
 
     public function getAll()
@@ -51,17 +57,18 @@ class SentraKumkmController extends Controller
 
     public function addData()
     {
+        $lembaga_id = Auth::user()->adminlembagas->lembaga_id;
+        $datalembaga = $this->cislembaga->getById($lembaga_id);
+        $provinces_id = $datalembaga?$datalembaga->provinces_id:'0';
         $data = array(
-            'head_title' => 'Sentra KUMKM',
-            'title' => 'Tambah Data Sentra KUMKM',
-            'lembagas' => $this->lembaga->getAll(),
-            'provinces' => $this->provinces->getAll(),
-            'regencies' => $this->regencies->getAll(),
-            'disticts' => $this->disticts->getAll(),
-            'villages' => $this->villages->getAll(),
+            'head_title' => 'Sentra UMKM',
+            'title' => 'Tambah Data Sentra UMKM',
+            'regencies' => $this->regencies->getByProvinces($provinces_id),
             'bidangusaha' => $this->bidangusaha->getAll(),
-            'admin_lembagas' => Auth::user()->adminlembagas->lembaga_id,
+            'admin_lembagas' => $lembaga_id,
+            'data_lembaga' => $datalembaga,
         );
+//        return $data;
 
         return view('dashboard.admin.sentra_kumkm.add',$data);
     }

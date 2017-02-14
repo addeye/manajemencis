@@ -47,6 +47,10 @@
                         <dd>{{$data->plut_name}}</dd>
                         <dt>Bentuk Kelembagaan</dt>
                         <dd>{{$data->plut_bentuk_kelembagaan}}</dd>
+                        <dt>Provinsi</dt>
+                        <dd>{{$data->provinces?$data->provinces->name:'--'}}</dd>
+                        <dt>Kabupaten/Kota</dt>
+                        <dd>{{$data->regencies?$data->regencies->name:'--'}}</dd>
                         <dt>Alamat</dt>
                         <dd>{{$data->plut_alamat}}</dd>
                         <dt>Telepon</dt>

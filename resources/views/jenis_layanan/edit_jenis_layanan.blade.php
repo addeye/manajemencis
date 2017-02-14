@@ -20,7 +20,7 @@
                 </div>
                 <!-- / box Header -->
                 <div class="box-body">
-                    <form method="post" action="{{ url('bidanglayanan/'.$data->id.'/update') }}" class="form-horizontal">
+                    <form method="post" action="{{ url('jenislayanan/'.$data->id.'/update') }}" class="form-horizontal">
                         <input type="hidden" name="_method" value="PUT">
                         {{ csrf_field() }}
                         <div class="form-group">
@@ -38,6 +38,12 @@
                             <label for="inputEmail3" class="col-sm-2 control-label">IKU (Indikator Kinerja Utama)</label>
                             <div class="col-sm-5">
                                 <input type="text" name="name" class="form-control" placeholder="Nama Bidang Layanan.." value="{{ $data->name }}" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <select name="proses_or_output" class="form-control">
+                                    <option value="proses" {{$data->proses_or_output=='proses'?'selected':''}}>Proses</option>
+                                    <option value="output" {{$data->proses_or_output=='output'?'selected':''}}>Output</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">

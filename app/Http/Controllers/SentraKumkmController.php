@@ -40,8 +40,8 @@ class SentraKumkmController extends Controller
     public function getAll()
     {
         $data = array(
-            'head_title' => 'Sentra KUMKM',
-            'title' => 'Data Sentra KUMKM',
+            'head_title' => 'Sentra UMKM',
+            'title' => 'Data Sentra UMKM',
             'data' => $this->sentrakumkm->getAll(),
         );
         return view('sentra_kumkm.list',$data);
@@ -50,8 +50,8 @@ class SentraKumkmController extends Controller
     public function addData()
     {
         $data = array(
-            'head_title' => 'Sentra KUMKM',
-            'title' => 'Tambah Data Sentra KUMKM',
+            'head_title' => 'Sentra UMKM',
+            'title' => 'Tambah Data Sentra UMKM',
             'lembagas' => $this->lembaga->getAll(),
             'provinces' => $this->provinces->getAll(),
             'regencies' => $this->regencies->getAll(),
@@ -66,8 +66,8 @@ class SentraKumkmController extends Controller
     public function editData($id)
     {
         $data = array(
-            'head_title' => 'Sentra KUMKM',
-            'title' => 'Edit Data Sentra KUMKM',
+            'head_title' => 'Sentra UMKM',
+            'title' => 'Edit Data Sentra UMKM',
             'lembagas' => $this->lembaga->getAll(),
             'provinces' => $this->provinces->getAll(),
             'regencies' => $this->regencies->getAll(),
@@ -113,8 +113,8 @@ class SentraKumkmController extends Controller
     public function getAllColumn ()
     {
         $data = array(
-            'head_title' => 'Sentra KUMKM',
-            'title' => 'Laporan Sentra KUMKM',
+            'head_title' => 'Sentra UMKM',
+            'title' => 'Laporan Sentra UMKM',
             'data' => $this->sentrakumkm->getAll(),
         );
         return view('sentra_kumkm.report',$data);

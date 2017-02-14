@@ -71,9 +71,21 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Provinsi</label>
+                            <div class="col-sm-5">
+                                <select name="provinces_id" id="provinces" class="form-control select2" required>
+                                    <option value="">Pilih Provinsi</option>
+                                    @foreach($provinces as $row)
+                                        <option value="{{ $row->id }}">{{ $row->id }} {{ $row->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div id="ajaxRegencies"></div>
+                        <div class="form-group">
                             <label  class="col-sm-2 control-label"></label>
                             <div class="col-sm-5">
-                                <textarea class="form-control" name="plut_alamat" placeholder="Alamat PLUT.." required></textarea>
+                                <textarea rows="4" class="form-control" name="plut_alamat" placeholder="Alamat PLUT.." required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -189,6 +201,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="urlregencies" value="{{ url('common/regencies') }}">
 @endsection
 
 @section('script')
@@ -201,6 +214,22 @@
         $(function(){
             //Datemask dd/mm/yyyy
             $(".datemaskyear").inputmask("9999", {"placeholder": "yyyy"});
+
+            urlregencies = $('#urlregencies').val();
+            $('#provinces').change(function(){
+                $.ajax({
+                    url: urlregencies+'/'+this.value,
+                    type : 'GET',
+                    cache : false,
+                    dataType : 'html'
+                })
+                        .success(function(response){
+                            $('#ajaxRegencies').html(response);
+                            $(".select2").select2({
+                                theme: "bootstrap"
+                            });
+                        })
+            });
         });
     </script>
     @endsection

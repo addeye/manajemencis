@@ -38,17 +38,35 @@
                             <div class="col-sm-5">
                                 <input type="text" name="name[]" class="form-control" placeholder="Indikator Kinerja Utama.." required>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label"></label>
-                            <div class="col-sm-5">
-                                <input type="text" name="name[]" class="form-control" placeholder="Indikator Kinerja Utama.." >
+                            <div class="col-sm-4">
+                                <select name="proses_or_output[]" class="form-control">
+                                    <option value="proses">Proses</option>
+                                    <option value="output">Output</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label"></label>
                             <div class="col-sm-5">
                                 <input type="text" name="name[]" class="form-control" placeholder="Indikator Kinerja Utama.." >
+                            </div>
+                            <div class="col-sm-4">
+                                <select name="proses_or_output[]" class="form-control">
+                                    <option value="proses">Proses</option>
+                                    <option value="output">Output</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label"></label>
+                            <div class="col-sm-5">
+                                <input type="text" name="name[]" class="form-control" placeholder="Indikator Kinerja Utama.." >
+                            </div>
+                            <div class="col-sm-4">
+                                <select name="proses_or_output[]" class="form-control">
+                                    <option value="proses">Proses</option>
+                                    <option value="output">Output</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">

@@ -16,7 +16,7 @@ class BidangUsahaRepository
     // Select All
     Public function getAll()
     {
-        return Bidang_usaha::all();
+        return Bidang_usaha::orderBy('urutan', 'asc')->get();
     }
 
     // Select where id

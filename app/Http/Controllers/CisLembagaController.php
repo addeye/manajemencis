@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Traits\UploadTrait;
 use App\Repositories\CisLembagaRepository;
+use App\Repositories\ProvincesRepository;
+use App\Repositories\RegenciesRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -11,18 +13,23 @@ class CisLembagaController extends Controller
 {
     use UploadTrait;
     protected $cislembaga;
+    protected $provinces;
+    protected $regencies;
 
-    public function __construct(CisLembagaRepository $cisLembagaRepository)
+    public function __construct(CisLembagaRepository $cisLembagaRepository,
+                                ProvincesRepository $provincesRepository, RegenciesRepository $regenciesRepository)
     {
         $this->cislembaga = $cisLembagaRepository;
+        $this->provinces = $provincesRepository;
+        $this->regencies = $regenciesRepository;
     }
 
     public function getAll()
     {
         $data = Array
         (
-            'head_title' => 'CIS PLUT-KUMKM',
-            'title' => 'Data CIS PLUT-KUMKM',
+            'head_title' => 'Lembaga',
+            'title' => 'Data Lembaga',
             'data' => $this->cislembaga->getAll()
         );
 
@@ -33,8 +40,8 @@ class CisLembagaController extends Controller
     {
         $data = Array
         (
-            'head_title' => 'CIS PLUT-KUMKM',
-            'title' => 'Report CIS PLUT-KUMKM',
+            'head_title' => 'Lembaga',
+            'title' => 'Report Lembaga',
             'data' => $this->cislembaga->getAll()
         );
 
@@ -45,8 +52,8 @@ class CisLembagaController extends Controller
     {
         $data = Array
         (
-            'head_title' => 'CIS PLUT-KUMKM',
-            'title' => 'Detail CIS PLUT-KUMKM',
+            'head_title' => 'Lembaga',
+            'title' => 'Detail Lembaga',
             'data' => $this->cislembaga->getById($id)
         );
 
@@ -57,8 +64,9 @@ class CisLembagaController extends Controller
     {
         $data = Array
         (
-            'head_title' => 'CIS PLUT-KUMKM',
-            'title' => 'Tambah CIS PLUT-KUMKM',
+            'head_title' => 'Lembaga',
+            'title' => 'Tambah Lembaga',
+            'provinces' => $this->provinces->getAll()
         );
 
         return view('cislembaga.add',$data);
@@ -66,11 +74,14 @@ class CisLembagaController extends Controller
 
     public function editData($id)
     {
+        $rowdata = $this->cislembaga->getById($id);
         $data = Array
         (
-            'head_title' => 'CIS PLUT-KUMKM',
-            'title' => 'Edit CIS PLUT-KUMKM',
-            'data' => $this->cislembaga->getById($id)
+            'head_title' => 'Lembaga',
+            'title' => 'Edit Lembaga',
+            'provinces' => $this->provinces->getAll(),
+            'data' => $rowdata,
+            'regencies' => $this->regencies->getByProvinces($rowdata->provinces_id)
         );
 
         return view('cislembaga.edit',$data);

@@ -29,7 +29,7 @@
 							<tr>
 								<th class="col-xs-1">Kode</th>
 								<th>Name</th>
-								<th>Action</th>
+								<th>Aksi</th>
 								
 							</tr>
 						</thead>
@@ -61,18 +61,16 @@
 @endsection
 
 @section('script')
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-	<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-	<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
 	<script>
 		$(document).ready(function() {
 			var table = $('#example').DataTable( {
-				lengthChange: false,
+				"paging": true,
+				"lengthChange": true,
+				"searching": true,
+				"ordering": false,
+				"bSortable": true,
+				"info": true,
+				"autoWidth": false,
 				buttons: [
 					{
 						extend: 'pdf',
@@ -94,7 +92,8 @@
 					},
 					{
 						extend: 'colvis',
-						collectionLayout: 'fixed two-column'
+						collectionLayout: 'fixed two-column',
+						text: 'Filter Kolom'
 					}
 				],
 			} );

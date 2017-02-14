@@ -11,6 +11,7 @@ class Jenis_layanan extends Model
     protected $fillable = [
         'bidang_layanan_id',
         'name',
+        'proses_or_output'
     ];
 
     public function Bidang_Layanan()

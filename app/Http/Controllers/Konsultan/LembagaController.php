@@ -10,6 +10,8 @@ namespace App\Http\Controllers\Konsultan;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\UploadTrait;
+use App\Repositories\CisLembagaRepository;
 use App\Repositories\KonsultanRepository;
 use App\Repositories\LembagaRepository;
 use App\Repositories\ProvincesRepository;
@@ -17,9 +19,12 @@ use App\Repositories\RegenciesRepository;
 use App\Repositories\TingkatsRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class LembagaController extends Controller
 {
+    use UploadTrait;
+
     protected $lembaga;
     protected $konsultan;
     protected $userid;
@@ -27,39 +32,40 @@ class LembagaController extends Controller
     protected $tingkat;
     protected $provinces;
     protected $regencies;
+    protected $cislembaga;
 
     public function __construct(LembagaRepository $lembaga,
                                 KonsultanRepository $konsultan,
                                 TingkatsRepository $tingkat,
-                                ProvincesRepository $provinces, RegenciesRepository $regencies)
+                                ProvincesRepository $provinces,
+                                RegenciesRepository $regencies, CisLembagaRepository $cisLembagaRepository)
     {
         $this->lembaga = $lembaga;
         $this->konsultan = $konsultan;
         $this->tingkat = $tingkat;
         $this->provinces = $provinces;
         $this->regencies = $regencies;
+        $this->cislembaga = $cisLembagaRepository;
     }
 
     public function getLembaga()
     {
-        $row = $this->konsultan->getByUserId(Auth::user()->id);
         $data = array(
             'title' => 'Edit Lembaga',
-            'data' => $row->lembagas,
             'tingkat' => $this->tingkat->getAll(),
             'provinces' => $this->provinces->getAll(),
-            'regencies' => $this->regencies->getAll()
+            'regencies' => $this->regencies->getAll(),
+            'data' => $this->cislembaga->getLembagaForKonsultan()
         );
         return view('lembaga.konsultan.edit_lembaga',$data);
     }
 
     public function detailData()
     {
-        $row = $this->konsultan->getByUserId(Auth::user()->id);
         $data = Array
         (
             'title' => 'Detail Lembaga',
-            'data' => $row->lembagas
+            'data' => $this->cislembaga->getLembagaForKonsultan()
 
         );
         return view('lembaga.konsultan.detail_lembaga',$data);
@@ -69,13 +75,20 @@ class LembagaController extends Controller
     {
         $data = $request->all();
 
-        unset($data['_method']);
-        unset($data['_token']);
+        $cislembaga = $this->cislembaga->getById($id);
+        $oldfile = $cislembaga->photo_gedung;
 
-        $result = $this->lembaga->update($id,$data);
+        if($request->hasFile('photo_gedung'))
+        {
+            $file = Input::file('photo_gedung');
+            $name = $this->upload_image($file,'images',$oldfile);
+            $data['photo_gedung'] = $name;
+        }
+
+        $result = $this->cislembaga->update($id,$data);
         if($result)
         {
-            return redirect('k/lembaga/detail')->with('info','Data Lembaga '.$data['name'].' Sudah Di Update');
+            return redirect('k/lembaga/detail')->with('info','Data Lembaga '.$data['plut_name'].' Sudah Di Update');
         }
     }
 }

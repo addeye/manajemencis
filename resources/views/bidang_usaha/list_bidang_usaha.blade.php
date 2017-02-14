@@ -27,9 +27,10 @@
 						<table id="example" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th class="col-xs-1">Kode</th>
-								<th>Name</th>
-								<th>Action</th>
+								<th class="col-xs-1">No</th>
+								<th class="col-xs-1">Urutan</th>
+								<th>Nama Bidang Usaha</th>
+								<th>Aksi</th>
 								
 							</tr>
 						</thead>
@@ -38,6 +39,7 @@
 							<tr>
 								
 								<td>{{$row->id}}</td>
+								<td>{{$row->urutan}}</td>
 								<td>{{$row->name}}</td>
 								<td>
                                 	<a href="{{ url('bidangusaha/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
@@ -72,7 +74,13 @@
 	<script>
 		$(document).ready(function() {
 			var table = $('#example').DataTable( {
-				lengthChange: false,
+				"paging": true,
+				"lengthChange": true,
+				"searching": true,
+				"ordering": false,
+				"bSortable": true,
+				"info": true,
+				"autoWidth": false,
 				buttons: [
 					{
 						extend: 'pdf',
@@ -94,7 +102,8 @@
 					},
 					{
 						extend: 'colvis',
-						collectionLayout: 'fixed two-column'
+						collectionLayout: 'fixed two-column',
+						text: 'Filter Kolom'
 					}
 				],
 			} );

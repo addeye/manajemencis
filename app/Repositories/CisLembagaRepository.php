@@ -76,4 +76,10 @@ class CisLembagaRepository
         return $this->cislembaga->find($lembaga_id);
 
     }
+
+    public function getLembagaForKonsultan()
+    {
+        $lembaga_id = Auth::user()->konsultans->lembaga_id;
+        return $this->cislembaga->find($lembaga_id);
+    }
 }

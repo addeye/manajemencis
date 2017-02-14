@@ -39,7 +39,8 @@ class BidangUsahaController extends Controller
     public function doAddData(Request $request)
     {
         $data = array(
-            'name' => $request->name
+            'name' => $request->name,
+            'urutan' => $request->urutan
         );
         $result = $this->bidangusaha->create($data);
         if($result)
@@ -60,7 +61,8 @@ class BidangUsahaController extends Controller
     public function doEditData(Request $request,$id)
     {
         $data = array(
-            'name'=>$request->name
+            'name' => $request->name,
+            'urutan' => $request->urutan
         );
         $result = $this->bidangusaha->update($id,$data);
         if($result)

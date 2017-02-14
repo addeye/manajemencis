@@ -23,6 +23,12 @@
                     <form method="post" action="{{ url('bidangusaha') }}" class="form-horizontal">
                         {{ csrf_field() }}
                         <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Urutan</label>
+                            <div class="col-sm-5">
+                                <input type="number" name="urutan" class="form-control" placeholder="No Urutan.." required>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Nama Bidang Usaha</label>
                             <div class="col-sm-5">
                                 <input type="text" name="name" class="form-control" placeholder="Nama Bidang Usaha.." required>

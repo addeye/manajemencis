@@ -28,7 +28,7 @@
                     <table id="example" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th class="col-xs-1">ID</th>
+                            <th class="col-xs-1">No</th>
                             <th class="col-xs-1">ID Lembaga</th>
                             <th>Nama</th>
                             <th>Bentuk Kelembagaan</th>
@@ -41,10 +41,11 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php $no=1; ?>
                         @foreach($data as $row)
                             <tr>
 
-                                <td>{{$row->id}}</td>
+                                <td>{{$no++}}</td>
                                 <td>{{$row->id_lembaga}}</td>
                                 <td>{{$row->plut_name}}</td>
                                 <td>{{$row->plut_bentuk_kelembagaan}}</td>
@@ -88,9 +89,15 @@
     <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
     <script>
-        $(document).ready(function () {
-            var table = $('#example').DataTable({
-                lengthChange: false,
+        $(document).ready(function() {
+            var table = $('#example').DataTable( {
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": false,
+                "bSortable": true,
+                "info": true,
+                "autoWidth": false,
                 buttons: [
                     {
                         extend: 'pdf',
@@ -112,13 +119,14 @@
                     },
                     {
                         extend: 'colvis',
-                        collectionLayout: 'fixed two-column'
+                        collectionLayout: 'fixed two-column',
+                        text: 'Filter Kolom'
                     }
                 ],
-            });
+            } );
 
             table.buttons().container()
-                    .appendTo('#example_wrapper .col-sm-6:eq(0)');
-        });
+                    .appendTo( '#example_wrapper .col-sm-6:eq(0)' );
+        } );
     </script>
 @endsection

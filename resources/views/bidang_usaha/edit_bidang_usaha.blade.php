@@ -24,6 +24,12 @@
                         <input type="hidden" name="_method" value="PUT">
                         {{ csrf_field() }}
                         <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Urutan</label>
+                            <div class="col-sm-5">
+                                <input type="number" name="urutan" class="form-control" placeholder="No Urutan.." value="{{$data->urutan}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Nama Bidang Usaha</label>
                             <div class="col-sm-5">
                                 <input type="text" name="name" class="form-control" placeholder="Nama Bidang Usaha.." value="{{ $data->name }}" required>

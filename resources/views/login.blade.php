@@ -27,7 +27,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <img width="50%" src="{{url('cis-logo.png')}}">
+        <img width="20%" src="{{url('cis-logo.png')}}">
         <br>
         <a href="#"><b>MANAJEMEN CIS</b></a>
     </div>

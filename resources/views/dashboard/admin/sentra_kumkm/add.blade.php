@@ -35,17 +35,16 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Provinsi</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Kabupaten Kota</label>
                             <div class="col-sm-5">
-                                <select id="provinces_id" name="provinces_id" class="form-control select2" required>
+                                <select onchange="regencies(this.value)" name="regency_id" class="form-control select2" required>
                                     <option value="">Pilih Provinsi</option>
-                                    @foreach($provinces as $row)
+                                    @foreach($regencies as $row)
                                         <option value="{{$row->id}}">{{$row->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div id="ajaxRegencies"></div>
                         <div id="ajaxDistics"></div>
                         <div id="ajaxVillages"></div>
                         <div class="form-group">

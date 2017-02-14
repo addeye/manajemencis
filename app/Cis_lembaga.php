@@ -10,6 +10,8 @@ class Cis_lembaga extends Model
 
     protected $fillable = [
         'id_lembaga',
+        'provinces_id',
+        'regency_id',
         'plut_name',
         'plut_bentuk_kelembagaan',
         'plut_alamat',
@@ -45,5 +47,15 @@ class Cis_lembaga extends Model
     public function cis_filemanager()
     {
         return $this->hasMany(Cis_filemanager::class,'cis_lembaga_id');
+    }
+
+    public function provinces()
+    {
+        return $this->belongsTo(Provinces::class,'provinces_id');
+    }
+
+    public function regencies()
+    {
+        return $this->belongsTo(Regencies::class,'regency_id');
     }
 }

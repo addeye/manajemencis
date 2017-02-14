@@ -28,21 +28,24 @@
 						<table id="example" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th class="col-xs-1">Kode</th>
-								<th>Kode Bidang Layanan</th>
-								<th>Name</th>
-								<th>Action</th>
+								<th class="col-xs-1">No</th>
+								<th>Nama Bidang Layanan</th>
+								<th>Nama IKU</th>
+								<th>Ket</th>
+								<th>Aksi</th>
 								
 							</tr>
 						</thead>
 
 						<tbody>
+						<?php $no=1; ?>
 							@foreach($jenislayanan as $row)
 							<tr>
 								
-								<td>{{$row->id}}</td>
+								<td>{{$no++}}</td>
 								<td>{{$row->bidang_layanan->name}}</td>
 								<td>{{$row->name}}</td>
+								<td>{{$row->proses_or_output}}</td>
 								<td>
 									<a href="{{ url('jenislayanan/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
 									<a href="{{ url('jenislayanan/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>

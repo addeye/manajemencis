@@ -22,8 +22,8 @@ class JenisLayananController extends Controller
     {
     	$data = array
     	(
-            'head_title' => 'Data Bidang Jenis Layanan',
-    		'title' => 'Data Jenis Layanan',
+            'head_title' => 'Indikator Kerja Utama Layanan',
+    		'title' => 'IKU Layanan',
     		'jenislayanan' => $this->jenislayanan->getAll()
 
     	);
@@ -35,7 +35,7 @@ class JenisLayananController extends Controller
     {
         $data = Array
         (
-            'title' => 'Tambah Jenis Layanan',
+            'title' => 'Tambah IKU Layanan',
             'bidang' => $this->bidanglayanan->getAll()
         );
         return view('jenis_layanan.add_jenis_layanan',$data);
@@ -44,13 +44,15 @@ class JenisLayananController extends Controller
     public function doAddData(Request $request)
     {
         $name =  $request->name;
-        foreach($name as $row)
+        $proses_or_output = $request->proses_or_output;
+        foreach($name as $key=>$row)
         {
             if($row!='')
             {
                 $data = array(
                     'name' => $row,
-                    'bidang_layanan_id' => $request->bidang_layanan_id
+                    'bidang_layanan_id' => $request->bidang_layanan_id,
+                    'proses_or_output' => $proses_or_output[$key]
                 );
                 $result = $this->jenislayanan->create($data);
             }
@@ -65,7 +67,7 @@ class JenisLayananController extends Controller
     public function editData($id)
     {
         $data = array(
-            'title' => 'Edit Jenis Layanan',
+            'title' => 'Edit IKU Layanan',
             'data' => $this->jenislayanan->getById($id),
             'bidang' => $this->bidanglayanan->getAll()
         );
@@ -75,7 +77,8 @@ class JenisLayananController extends Controller
     public function doEditData(Request $request,$id)
     {
         $data = array(
-            'name'=>$request->name
+            'name'=>$request->name,
+            'proses_or_output' => $request->proses_or_output
         );
         $result = $this->jenislayanan->update($id,$data);
         if($result)

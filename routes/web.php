@@ -232,6 +232,20 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('bio/konsultan/edit','BiodataController@editData');
         Route::put('bio/konsultan/{id}/update','BiodataController@doEditData');
 
+        /**
+         * for Sentra Binaan
+         */
+        Route::group(['prefix' => 'sentra_binaan'], function () {
+//            Route::get('/', 'CisFilemanageraController@getAll');
+//            Route::get('/create', 'CisFilemanageraController@addData');
+            Route::post('k/', 'SentraBinaanController@doAddData');
+            Route::get('k/{id}', 'SentraBinaanController@editData');
+            Route::put('k/{id}/update', 'SentraBinaanController@doEditData');
+            Route::get('k/{id}/delete', 'SentraBinaanController@deleteData');
+//            Route::get('/{id}/detail', 'CisFilemanageraController@detailData');
+//            Route::get('/report/all', 'CisFilemanageraController@getAllColumn');
+        });
+
         Route::group(['prefix' => 'k/proker'], function () {
             Route::get('/', 'ProkerKonsultanController@getAll');
             Route::get('/create', 'ProkerKonsultanController@addData');

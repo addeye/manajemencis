@@ -24,7 +24,7 @@
                     <table id="example" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th class="col-xs-1">ID</th>
+                            <th class="col-xs-1">No</th>
                             <th class="col-xs-1">ID Lembaga</th>
                             <th>Nama</th>
                             <th>Bentuk Kelembagaan</th>
@@ -53,10 +53,10 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php $no=1; ?>
                         @foreach($data as $row)
                             <tr>
-
-                                <td>{{$row->id}}</td>
+                                <td>{{$no++}}</td>
                                 <td>{{$row->id_lembaga}}</td>
                                 <td>{{$row->plut_name}}</td>
                                 <td>{{$row->plut_bentuk_kelembagaan}}</td>
@@ -111,7 +111,13 @@
     <script>
         $(document).ready(function() {
             var table = $('#example').DataTable( {
-                lengthChange: false,
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": false,
+                "bSortable": true,
+                "info": true,
+                "autoWidth": false,
                 buttons: [
                     {
                         extend: 'pdf',
@@ -133,7 +139,8 @@
                     },
                     {
                         extend: 'colvis',
-                        collectionLayout: 'fixed two-column'
+                        collectionLayout: 'fixed two-column',
+                        text: 'Filter Kolom'
                     }
                 ],
             } );
