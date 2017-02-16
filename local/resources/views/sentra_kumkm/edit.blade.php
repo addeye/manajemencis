@@ -143,7 +143,7 @@
                                 <select name="teknologi" class="form-control" required>
                                     <option value="">Pilih Teknologi</option>
                                     <option value="Tradisional" {{$data->teknologi=='Tradisional'?'selected':''}}>Tradisional</option>
-                                    <option value="Sederhana" {{$data->teknologi=='Sederhana'?'selected':''}}>Sederhana</option>
+                                    <option value="Teknologi Tepat Guna" {{$data->teknologi=='Teknologi Tepat Guna'?'selected':''}}>Teknologi Tepat Guna</option>
                                     <option value="Modern" {{$data->teknologi=='Modern'?'selected':''}}>Modern</option>
                                 </select>
                             </div>
@@ -154,7 +154,7 @@
                                 <select name="bahan_baku" class="form-control" required>
                                     <option value="">Pilih Teknologi</option>
                                     <option value="Lokal" {{$data->bahan_baku=='Lokal'?'selected':''}}>Lokal</option>
-                                    <option value="Ekspor" {{$data->bahan_baku=='Ekspor'?'selected':''}}>Ekspor</option>
+                                    <option value="Impor" {{$data->bahan_baku=='Impor'?'selected':''}}>Impor</option>
                                 </select>
                             </div>
                         </div>

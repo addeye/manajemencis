@@ -106,7 +106,7 @@
                                 <select name="teknologi" class="form-control" required>
                                     <option value="">Pilih Teknologi</option>
                                     <option value="Tradisional">Tradisional</option>
-                                    <option value="Sederhana">Sederhana</option>
+                                    <option value="Teknologi Tepat Guna">Teknologi Tepat Guna</option>
                                     <option value="Modern">Modern</option>
                                 </select>
                             </div>
@@ -117,7 +117,7 @@
                                 <select name="bahan_baku" class="form-control" required>
                                     <option value="">Pilih Teknologi</option>
                                     <option value="Lokal">Lokal</option>
-                                    <option value="Ekspor">Ekspor</option>
+                                    <option value="Impor">Impor</option>
                                 </select>
                             </div>
                         </div>
