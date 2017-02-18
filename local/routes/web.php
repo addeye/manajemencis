@@ -22,6 +22,7 @@ Route::group(['prefix' => 'common'], function () {
     Route::get('districts/{regencies_id}', 'CommonController@getDistricts');
     Route::get('villages/{districts_id}', 'CommonController@getVillages');
     Route::get('detail/proker/{id}', 'CommonController@getDetailProker');
+    Route::get('detail/kegiatan/{id}', 'CommonController@getDetailKegiatan');
 });
 
 Route::group(['middleware' => ['auth']], function () {
@@ -30,7 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile', 'HomeController@profile');
     Route::put('/profile/{id}/update', 'HomeController@doProfile');
 
-        Route::group(['middleware'=>['superadmin']], function(){
+    Route::group(['middleware' => ['superadmin']], function () {
         /*For Provinsi*/
         Route::get('/provinces', 'ProvincesController@getAll');
         Route::get('/provinces/create', 'ProvincesController@addData');
@@ -196,6 +197,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/{id}/detail', 'KonsultanController@detailData');
             Route::get('/{id}/proker', 'KonsultanController@prokerData');
             Route::get('/proker/{id}/detail', 'KonsultanController@detailProker');
+            Route::post('semua/delete', 'KonsultanController@deleteAllData');
         });
 
         /**
@@ -223,14 +225,14 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
-    Route::group(['namespace' => 'Konsultan',['middleware' => ['konsultan']]], function () {
+    Route::group(['namespace' => 'Konsultan', ['middleware' => ['konsultan']]], function () {
 
-        Route::get('k/lembaga','LembagaController@getLembaga');
-        Route::get('k/lembaga/detail','LembagaController@detailData');
+        Route::get('k/lembaga', 'LembagaController@getLembaga');
+        Route::get('k/lembaga/detail', 'LembagaController@detailData');
         Route::put('k/lembaga/{id}/update', 'LembagaController@doEditData');
-        Route::get('bio/konsultan','BiodataController@index');
-        Route::get('bio/konsultan/edit','BiodataController@editData');
-        Route::put('bio/konsultan/{id}/update','BiodataController@doEditData');
+        Route::get('bio/konsultan', 'BiodataController@index');
+        Route::get('bio/konsultan/edit', 'BiodataController@editData');
+        Route::put('bio/konsultan/{id}/update', 'BiodataController@doEditData');
 
         /**
          * for Sentra Binaan
@@ -273,14 +275,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/{id}/delete', 'KegiatanKonsultanController@deleteData');
         });
     });
-    Route::group(['namespace' => 'Admin','prefix'=>'adm','middleware'=>['admin']], function () {
+    Route::group(['namespace' => 'Admin', 'prefix' => 'adm', 'middleware' => ['admin']], function () {
         /**
          * for lembaga
          */
         Route::group(['prefix' => 'lembaga'], function () {
             Route::get('/profil', 'LembagaController@profile');
             Route::get('/profil/edit', 'LembagaController@editProfile');
-            Route::put('profil/{id}/update','LembagaController@doUpdate');
+            Route::put('profil/{id}/update', 'LembagaController@doUpdate');
         });
 
         Route::group(['prefix' => 'sentra_binaan'], function () {
@@ -321,7 +323,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/report/all', 'SentraKumkmController@getAllColumn');
         });
 
-        Route::group(['prefix'=>'konsultan'], function() {
+        Route::group(['prefix' => 'konsultan'], function () {
             Route::get('/', 'KonsultanController@getAll');
             Route::get('/report', 'KonsultanController@getAllReport');
             Route::get('/create', 'KonsultanController@addData');

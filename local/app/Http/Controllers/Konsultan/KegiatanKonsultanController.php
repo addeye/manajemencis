@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Konsultan;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\BidangUsahaRepository;
+use App\Repositories\DetailsProkersRepository;
 use App\Repositories\JenisLayananRepository;
 use App\Repositories\KegiatanKonsultanRepository;
 use App\Repositories\ProkerKonsultanRepository;
@@ -15,15 +16,17 @@ class KegiatanKonsultanController extends Controller
     protected $jenislayanan;
     protected $bidangusaha;
     protected $proker;
+    protected $dproker;
 
     public function __construct(KegiatanKonsultanRepository $kegiatankonsultan,
                                 JenisLayananRepository $jenislayanan,
-                                BidangUsahaRepository $bidangusaha, ProkerKonsultanRepository $proker)
+                                BidangUsahaRepository $bidangusaha, ProkerKonsultanRepository $proker, DetailsProkersRepository $detailsProkersRepository)
     {
         $this->kegiatankonsultan = $kegiatankonsultan;
         $this->jenislayanan = $jenislayanan;
         $this->bidangusaha = $bidangusaha;
         $this->proker = $proker;
+        $this->dproker = $detailsProkersRepository;
     }
 
     public function getAll()
@@ -63,11 +66,13 @@ class KegiatanKonsultanController extends Controller
 
     public function editData($id)
     {
+        $rowkegiatan = $this->kegiatankonsultan->getById($id);
         $data = array(
             'title' => 'Edit Kegiatan',
-            'data' => $this->kegiatankonsultan->getById($id),
-            'jenis_layanan' => $this->jenislayanan->getByBidangLayanan(),
-            'bidang_usaha' => $this->bidangusaha->getAll()
+            'data' => $rowkegiatan,
+            'bidang_usaha' => $this->bidangusaha->getAll(),
+            'proker' => $this->proker->getAllByKonsultan(),
+            'dproker' => $this->dproker->getById($rowkegiatan->detail_proker_id)
         );
         return view('dashboard.konsultan.kegiatan.edit',$data);
     }

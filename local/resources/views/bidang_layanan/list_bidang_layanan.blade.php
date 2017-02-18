@@ -19,7 +19,9 @@
 				<div class="box-header">
 					<h3 class="box-title">{{$title}}</h3>
 					<div class="pull-right">
-						<a class="btn btn-primary" href="{{ url('bidanglayanan/create') }}">Tambah Data</a>
+						<a class="btn btn-primary" href="{{ url('bidanglayanan/create') }}">
+							<i class="fa fa-plus"></i> Tambah Data
+						</a>
 					</div>
 				</div>
 				<!-- / box Header -->
@@ -40,8 +42,12 @@
 								<td>{{$row->id}}</td>
 								<td>{{$row->name}}</td>
 								<td>
-                                	<a href="{{ url('bidanglayanan/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-                                	<a href="{{ url('bidanglayanan/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                                	<a href="{{ url('bidanglayanan/'.$row->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="left" title="Edit Data {{$row->name}}">
+										<i class="glyphicon glyphicon-edit"></i>
+									</a>
+                                	<a href="{{ url('bidanglayanan/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="Hapus Data {{$row->name}}">
+										<i class="glyphicon glyphicon-trash"></i>
+									</a>
 								</td>
 							</tr>
 							 @endforeach
@@ -49,57 +55,7 @@
 
 					</table>
 				</div>
-
-
 			</div>
 		</div>
 	</div>
-@endsection
-
-@section('css')
-	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css">
-@endsection
-
-@section('script')
-	<script>
-		$(document).ready(function() {
-			var table = $('#example').DataTable( {
-				"paging": true,
-				"lengthChange": true,
-				"searching": true,
-				"ordering": false,
-				"bSortable": true,
-				"info": true,
-				"autoWidth": false,
-				buttons: [
-					{
-						extend: 'pdf',
-						exportOptions: {
-							columns: ':visible'
-						}
-					},
-					{
-						extend: 'excel',
-						exportOptions: {
-							columns: ':visible'
-						}
-					},
-					{
-						extend: 'print',
-						exportOptions: {
-							columns: ':visible'
-						}
-					},
-					{
-						extend: 'colvis',
-						collectionLayout: 'fixed two-column',
-						text: 'Filter Kolom'
-					}
-				],
-			} );
-
-			table.buttons().container()
-					.appendTo( '#example_wrapper .col-sm-6:eq(0)' );
-		} );
-	</script>
 @endsection

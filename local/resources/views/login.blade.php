@@ -33,7 +33,7 @@
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Silahkan Login Disini</p>
 
         <form action="{{ url('dologin') }}" method="post">
             {{ csrf_field() }}
@@ -54,7 +54,7 @@
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox"> Remember Me
+                            {{--<input type="checkbox"> Remember Me--}}
                         </label>
                     </div>
                 </div>
@@ -67,8 +67,8 @@
         </form>
         <!-- /.social-auth-links -->
 
-        <a href="#">I forgot my password</a><br>
-        <a href="#" class="text-center">Register a new membership</a>
+        {{--<a href="#">I forgot my password</a><br>--}}
+        {{--<a href="#" class="text-center">Register a new membership</a>--}}
     </div>
     <!-- /.login-box-body -->
 </div>

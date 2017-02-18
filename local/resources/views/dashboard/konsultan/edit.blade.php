@@ -219,7 +219,7 @@
                                         <label for="inputEmail3" class="col-sm-2 control-label">Ijazah</label>
                                         <div class="col-sm-3">
                                             <input type="file" name="ijazah">
-                                            <p class="help-block">Maksimal file 1 MB</p>
+                                            <p class="help-block">Maksimal file 500KB</p>
                                             <p class="text-danger">{{ $errors->first('ijazah') }}</p>
                                         </div>
                                     </div>
@@ -227,7 +227,7 @@
                                         <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat 1</label>
                                         <div class="col-sm-3">
                                             <input type="file" name="sertifikat_1">
-                                            <p class="help-block">Maksimal file 1 MB</p>
+                                            <p class="help-block">Maksimal file 500KB</p>
                                             <p class="text-danger">{{ $errors->first('sertifikat_1') }}</p>
                                         </div>
                                     </div>
@@ -235,7 +235,7 @@
                                         <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat 2</label>
                                         <div class="col-sm-3">
                                             <input type="file" name="sertifikat_2">
-                                            <p class="help-block">Maksimal file 1 MB</p>
+                                            <p class="help-block">Maksimal file 500KB</p>
                                             <p class="text-danger">{{ $errors->first('sertifikat_2') }}</p>
                                         </div>
                                     </div>

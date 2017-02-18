@@ -33,14 +33,46 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">IKU</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Program Kerja</label>
                             <div class="col-sm-5">
-                                <select class="form-control" name="jenis_layanan_id">
+                                <select class="form-control" id="proker_id" name="proker_id" required>
                                     <option value="">Pilih</option>
-                                    @foreach($jenis_layanan as $row)
-                                        <option value="{{$row->id}}" {{$data->jenis_layanan_id==$row->id?'selected':''}} >{{$row->name}}</option>
+                                    @foreach($proker as $row)
+                                        <option value="{{$row->id}}" {{$data->proker_id==$row->id?'selected':''}} >{{$row->tahun_kegiatan}} {{ $row->program }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                        <div id="ajaxDetailProker"></div>
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <div id="ajaxDetailKegiatanProker">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Jenis Kegiatan :</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{$dproker->jenis_kegiatan}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Indikator Kinerja Utama :</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{$dproker->jenis_layanans->name}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Target Output:</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{$dproker->output}} - {{$dproker->ket_output}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Jumlah Penerima:</label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static">{{$dproker->jml_penerima}}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -101,4 +133,37 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="urldetailproker" value="{{ url('common/detail/proker') }}">
+    <input type="hidden" id="urldetaildproker" value="{{ url('common/detail/kegiatan') }}">
+@endsection
+
+@section('script')
+    <script>
+        urldetail = $('#urldetailproker').val();
+        $('#proker_id').change(function(){
+            $.ajax({
+                url: urldetail+'/'+this.value,
+                type : 'GET',
+                cache : false,
+                dataType : 'html'
+            })
+                    .success(function(response){
+                        $('#ajaxDetailProker').html(response);
+                    })
+        });
+
+        function detailKegiatan(id)
+        {
+            urldetailkegiatan = $('#urldetaildproker').val();
+            $.ajax({
+                url : urldetailkegiatan+'/'+id,
+                type : 'GET',
+                cache : false,
+                dataType : 'html'
+            })
+                    .success(function(response){
+                        $('#ajaxDetailKegiatanProker').html(response);
+                    });
+        }
+    </script>
 @endsection

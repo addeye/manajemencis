@@ -36,6 +36,20 @@ class Konsultan extends Model
         'scan_ktp',
     ];
 
+    public function prokers()
+    {
+        return $this->hasMany(Proker_konsultan::class,'konsultan_id');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($konslutan) {
+            $konslutan->prokers()->delete();
+        });
+    }
+
     public function provinces()
     {
         return $this->belongsTo(Provinces::class,'provinces_id');
@@ -53,7 +67,7 @@ class Konsultan extends Model
 
     public function lembagas()
     {
-        return $this->belongsTo(Lembaga::class,'lembaga_id');
+        return $this->belongsTo(Cis_lembaga::class,'lembaga_id');
     }
 
     public function bidang_layanans()

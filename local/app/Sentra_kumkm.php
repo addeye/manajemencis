@@ -69,6 +69,6 @@ class Sentra_kumkm extends Model
 
     public function lembagas()
     {
-        return $this->belongsTo(Lembaga::class,'id_lembaga');
+        return $this->belongsTo(Cis_lembaga::class,'id_lembaga');
     }
 }

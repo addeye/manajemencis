@@ -228,4 +228,14 @@ class KonsultanController extends Controller
             return redirect('konsultan')->with('info','Data Konsultan Berhasil Dihapus');
         }
     }
+
+    public function deleteAllData(Request $request)
+    {
+        $data = $request->idkonsultan;
+
+        foreach($data as $row)
+        {
+            $this->konsultan->delete($row);
+        }
+    }
 }

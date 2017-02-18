@@ -72,6 +72,30 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Provinsi</label>
+                            <div class="col-sm-5">
+                                <select name="provinces_id" id="provinces" class="form-control select2" required>
+                                    <option value="">Pilih Provinsi</option>
+                                    @foreach($provinces as $row)
+                                        <option value="{{ $row->id }}" {{ $data->provinces_id==$row->id?'selected':'' }}>{{ $row->id }} {{ $row->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div id="ajaxRegencies">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Kabupaten/Kota</label>
+                                <div class="col-md-5">
+                                    <select onchange="regencies(this.value)" class="form-control select2" name="regency_id" required>
+                                        <option value="">Pilih Kabupaten/Kota</option>
+                                        @foreach($regencies as $row)
+                                            <option value="{{ $row->id }}" {{$row->id==$data->regency_id?'selected':''}} >{{ $row->id }} {{ $row->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label  class="col-sm-2 control-label"></label>
                             <div class="col-sm-5">
                                 <textarea class="form-control" name="plut_alamat" placeholder="Alamat PLUT.." required>{{$data->plut_alamat}}</textarea>
@@ -191,4 +215,34 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="urlregencies" value="{{ url('common/regencies') }}">
+@endsection
+
+@section('script')
+        <!-- InputMask -->
+    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.js') }}"></script>
+    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
+
+    <script>
+        $(function(){
+            //Datemask dd/mm/yyyy
+            $(".datemaskyear").inputmask("9999", {"placeholder": "yyyy"});
+            urlregencies = $('#urlregencies').val();
+            $('#provinces').change(function(){
+                $.ajax({
+                    url: urlregencies+'/'+this.value,
+                    type : 'GET',
+                    cache : false,
+                    dataType : 'html'
+                })
+                        .success(function(response){
+                            $('#ajaxRegencies').html(response);
+                            $(".select2").select2({
+                                theme: "bootstrap"
+                            });
+                        })
+            });
+        });
+    </script>
 @endsection

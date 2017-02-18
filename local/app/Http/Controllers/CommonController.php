@@ -53,4 +53,10 @@ class CommonController extends Controller
         $data['detail'] = $this->dproker->getAllByProker($id);
         return view('common.detail_proker',$data);
     }
+
+    public function getDetailKegiatan($id)
+    {
+        $data['data'] = $this->dproker->getById($id);
+        return view('common.detail_kegiatan',$data);
+    }
 }

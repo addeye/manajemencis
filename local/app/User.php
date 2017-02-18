@@ -41,4 +41,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Admin_lembaga::class,'user_id');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function($user) {
+            $user->konsultans()->delete();
+            $user->adminlembagas()->delete();
+        });
+    }
 }

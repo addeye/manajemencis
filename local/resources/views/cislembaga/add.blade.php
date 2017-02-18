@@ -205,15 +205,8 @@
 @endsection
 
 @section('script')
-        <!-- InputMask -->
-    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.js') }}"></script>
-    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
-    <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
-
     <script>
         $(function(){
-            //Datemask dd/mm/yyyy
-            $(".datemaskyear").inputmask("9999", {"placeholder": "yyyy"});
 
             urlregencies = $('#urlregencies').val();
             $('#provinces').change(function(){

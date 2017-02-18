@@ -50,14 +50,15 @@ class LembagaController extends Controller
 
     public function getLembaga()
     {
+        $rowlembaga = $this->cislembaga->getLembagaForKonsultan();
         $data = array(
             'title' => 'Edit Lembaga',
             'tingkat' => $this->tingkat->getAll(),
             'provinces' => $this->provinces->getAll(),
-            'regencies' => $this->regencies->getAll(),
+            'regencies' => $this->regencies->getByProvinces($rowlembaga->provinces_id),
             'data' => $this->cislembaga->getLembagaForKonsultan()
         );
-        return view('lembaga.konsultan.edit_lembaga',$data);
+        return view('dashboard.konsultan.lembaga.edit_lembaga',$data);
     }
 
     public function detailData()
@@ -68,7 +69,7 @@ class LembagaController extends Controller
             'data' => $this->cislembaga->getLembagaForKonsultan()
 
         );
-        return view('lembaga.konsultan.detail_lembaga',$data);
+        return view('dashboard.konsultan.lembaga.detail_lembaga',$data);
     }
 
     public function doEditData(Request $request,$id)

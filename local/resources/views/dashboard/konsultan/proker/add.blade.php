@@ -25,7 +25,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Tahun Kegiatan</label>
                             <div class="col-sm-2">
-                                <input type="text" name="tahun_kegiatan" class="form-control" placeholder="Tahun Kegiatan.." data-inputmask="'alias': '99-999-99'" data-mask>
+                                <input type="text" name="tahun_kegiatan" class="form-control datemaskyear" placeholder="Tahun Kegiatan.." data-inputmask="'alias': '99-999-99'" data-mask>
                             </div>
                         </div>
                         <div class="form-group">

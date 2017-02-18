@@ -34,6 +34,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ url('admin-lte/plugins/select2/select2.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.6/select2-bootstrap.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css">
     @yield('css')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -106,6 +108,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
     $(function () {
 
+        //Datemask dd/mm/yyyy
+        $(".datemaskyear").inputmask("9999", {"placeholder": "yyyy"});
+
         $(".select2").select2({
             theme: "bootstrap"
         });
@@ -132,6 +137,130 @@ scratch. This page gets rid of all links and provides the needed markup only.
             return false;
     }
 </script>
+
+
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+
+        var table = $('#example').DataTable( {
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": false,
+            "bSortable": true,
+            "info": true,
+            "autoWidth": false,
+            buttons: [
+                {
+                    extend: 'pdf',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'colvis',
+                    collectionLayout: 'fixed two-column',
+                    text: 'Filter Kolom'
+                }
+            ],
+        } );
+
+        table.buttons().container()
+                .appendTo( '#example_wrapper .col-sm-6:eq(0)' );
+
+
+        $('#example-fill tfoot th').each( function () {
+            var title = $(this).text();
+            $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        } );
+
+        var table_fill = $('#example-fill').DataTable( {
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": false,
+            "bSortable": true,
+            "info": true,
+            "autoWidth": false,
+//            stateSave: true,
+            buttons: [
+                {
+                    extend: 'pdf',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'excel',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'print',
+                    exportOptions: {
+                        columns: ':visible'
+                    }
+                },
+                {
+                    extend: 'colvis',
+                    collectionLayout: 'fixed two-column',
+                    text: 'Filter Kolom'
+                }
+            ],
+        } );
+
+        var allPages = table_fill.cells( ).nodes( );
+
+        $('#selectAll').click(function () {
+            if ($(this).hasClass('allChecked')) {
+                $(allPages).find('input[type="checkbox"]').prop('checked', false);
+            } else {
+                $(allPages).find('input[type="checkbox"]').prop('checked', true);
+            }
+            $(this).toggleClass('allChecked');
+        })
+
+        table_fill.buttons().container()
+                .appendTo( '#example_wrapper .col-sm-6:eq(0)' );
+
+        // Apply the search
+        table_fill.columns().every( function () {
+            var that = this;
+
+            $( 'input', this.footer() ).on( 'keyup change', function () {
+                if ( that.search() !== this.value ) {
+                    that
+                            .search( this.value )
+                            .draw();
+                }
+            } );
+        } );
+
+    } );
+</script>
+
 @yield('script')
 </body>
 </html>

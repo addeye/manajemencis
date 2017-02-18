@@ -44,14 +44,9 @@
                         </div>
                         <div id="ajaxDetailProker"></div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">IKU</label>
-                            <div class="col-sm-5">
-                                <select class="form-control" name="jenis_layanan_id" required>
-                                    <option value="">Pilih</option>
-                                    @foreach($jenis_layanan as $row)
-                                        <option value="{{$row->id}}">{{$row->name}}</option>
-                                        @endforeach
-                                </select>
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <div id="ajaxDetailKegiatanProker"></div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -113,6 +108,7 @@
         </div>
     </div>
     <input type="hidden" id="urldetailproker" value="{{ url('common/detail/proker') }}">
+    <input type="hidden" id="urldetaildproker" value="{{ url('common/detail/kegiatan') }}">
 @endsection
 
 @section('script')
@@ -129,5 +125,19 @@
                         $('#ajaxDetailProker').html(response);
                     })
         });
+
+        function detailKegiatan(id)
+        {
+            urldetailkegiatan = $('#urldetaildproker').val();
+            $.ajax({
+                url : urldetailkegiatan+'/'+id,
+                type : 'GET',
+                cache : false,
+                dataType : 'html'
+            })
+                    .success(function(response){
+                        $('#ajaxDetailKegiatanProker').html(response);
+                    });
+        }
     </script>
     @endsection

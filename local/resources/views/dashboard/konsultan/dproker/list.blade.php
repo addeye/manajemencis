@@ -19,7 +19,9 @@
 					<small>{{$title}}</small>
 					<h3 class="box-title"> {{$proker->tahun_kegiatan}} {{ $proker->program }}</h3>
 					<div class="pull-right">
-						<a class="btn btn-primary" href="{{ url('k/dproker/create/'.$proker->id) }}">Tambah Data</a>
+						<a class="btn btn-primary" href="{{ url('k/dproker/create/'.$proker->id) }}">
+							<i class="fa fa-plus"></i> Tambah Data
+						</a>
 					</div>
 				</div>
 				<!-- / box Header -->
@@ -50,8 +52,12 @@
 									<td>{{$row->jadwal_pelaksana}}</td>
 									<td>{{$row->mitra_kerja}}</td>
 									<td>
-										<a href="{{ url('k/dproker/'.$row->id.'/edit') }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
-										<a href="{{ url('k/dproker/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+										<a href="{{ url('k/dproker/'.$row->id.'/edit') }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="left" title="Edit Data">
+											<i class="glyphicon glyphicon-edit"></i>
+										</a>
+										<a href="{{ url('k/dproker/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="Hapus Data">
+											<i class="glyphicon glyphicon-trash"></i>
+										</a>
 									</td>
 								</tr>
 							@endforeach
@@ -63,53 +69,4 @@
 			</div>
 		</div>
 	</div>
-@endsection
-
-@section('css')
-	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css">
-@endsection
-
-@section('script')
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-	<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-	<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			var table = $('#example').DataTable( {
-				lengthChange: false,
-				buttons: [
-					{
-						extend: 'pdf',
-						exportOptions: {
-							columns: ':visible'
-						}
-					},
-					{
-						extend: 'excel',
-						exportOptions: {
-							columns: ':visible'
-						}
-					},
-					{
-						extend: 'print',
-						exportOptions: {
-							columns: ':visible'
-						}
-					},
-					{
-						extend: 'colvis',
-						collectionLayout: 'fixed two-column'
-					}
-				],
-			} );
-
-			table.buttons().container()
-					.appendTo( '#example_wrapper .col-sm-6:eq(0)' );
-		} );
-	</script>
 @endsection

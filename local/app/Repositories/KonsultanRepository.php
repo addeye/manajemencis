@@ -88,9 +88,12 @@ class KonsultanRepository
     // Delete
     public function delete($id)
     {
+        $konsultan = Konsultan::find($id);
+        $user_id = $konsultan->user_id;
         $result = Konsultan::destroy($id);
         if ($result)
         {
+            User::destroy($user_id);
             return true;
         }
         return false;

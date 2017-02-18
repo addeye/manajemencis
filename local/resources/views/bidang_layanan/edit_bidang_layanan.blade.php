@@ -31,8 +31,12 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">Simpan</button>
-                                <button type="button" onclick="history.go(-1);" class="btn btn-default">Kembali</button>
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fa fa-save"></i> Update
+                                </button>
+                                <button type="button" onclick="history.go(-1);" class="btn btn-default">
+                                    <i class="fa fa-reply"></i> Kembali
+                                </button>
                             </div>
                         </div>
                     </form>

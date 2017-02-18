@@ -16,11 +16,10 @@
         <div class="col-xs-6">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">{{$title}}</h3>
-
+                    <h3 class="box-title">{{$title}}</h3> <small>Konsultan</small>
                     <div class="box-tools pull-right">
                         <a href="{{ url('k/lembaga') }}" class="btn btn-success btn-xs"><i
-                                    class="glyphicon glyphicon-edit"></i></a>
+                                    class="glyphicon glyphicon-edit"></i> Edit</a>
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                         </button>
                     </div>
@@ -48,6 +47,10 @@
                         <dd>{{$data->plut_name}}</dd>
                         <dt>Bentuk Kelembagaan</dt>
                         <dd>{{$data->plut_bentuk_kelembagaan}}</dd>
+                        <dt>Provinsi</dt>
+                        <dd>{{$data->provinces?$data->provinces->name:'--'}}</dd>
+                        <dt>Kabupaten/Kota</dt>
+                        <dd>{{$data->regencies?$data->regencies->name:'--'}}</dd>
                         <dt>Alamat</dt>
                         <dd>{{$data->plut_alamat}}</dd>
                         <dt>Telepon</dt>
@@ -140,7 +143,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
-                    <table id="example" class="table table-bordered table-striped">
+                    <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th class="col-xs-1">ID</th>
@@ -220,7 +223,7 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body table-responsive">
-                    <table id="example" class="table table-bordered table-striped">
+                    <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th class="col-xs-1">ID</th>

@@ -76,19 +76,21 @@ class SentraKumkmController extends Controller
     public function editData($id)
     {
         $rowsentra = $this->sentrakumkm->getById($id);
+        $lembaga_id = Auth::user()->adminlembagas->lembaga_id;
+        $datalembaga = $this->cislembaga->getById($lembaga_id);
         $data = array(
-            'head_title' => 'Sentra KUMKM',
-            'title' => 'Edit Data Sentra KUMKM',
-            'lembagas' => $this->lembaga->getAll(),
-            'provinces' => $this->provinces->getAll(),
+            'head_title' => 'Sentra UMKM',
+            'title' => 'Tambah Data Sentra UMKM',
             'regencies' => $this->regencies->getByProvinces($rowsentra->provinces_id),
             'districts' => $this->disticts->getByRegencies($rowsentra->regency_id),
             'villages' => $this->villages->getByDistrict($rowsentra->district_id),
             'bidangusaha' => $this->bidangusaha->getAll(),
+            'admin_lembagas' => $lembaga_id,
+            'data_lembaga' => $datalembaga,
             'data' => $rowsentra
         );
 
-        return view('sentra_kumkm.edit',$data);
+        return view('dashboard.admin.sentra_kumkm.edit',$data);
     }
 
     public function doAddData(Request $request)
@@ -129,6 +131,6 @@ class SentraKumkmController extends Controller
             'title' => 'Laporan Sentra KUMKM',
             'data' => $this->sentrakumkm->getSentraByAdmin(),
         );
-        return view('sentra_kumkm.report',$data);
+        return view('dashboard.admin.sentra_kumkm.report',$data);
     }
 }

@@ -31,7 +31,6 @@
 								<th>Tanggal Mulai</th>
 								<th>Tanggal Selesai</th>
 								<th>Nama Kegiatan</th>
-								<th>IKU</th>
 								<th>Bidang Usaha</th>
 								<th>Lokasi Kegiatan</th>
 								<th>Jumlah Peserta</th>
@@ -49,8 +48,7 @@
 								<td>{{$row->id}}</td>
 								<td>{{$row->tanggal_mulai}}</td>
 								<td>{{$row->tanggal_selesai}}</td>
-								<td>{{$row->detail_proker->jenis_kegiatan}}</td>
-								<td>{{$row->jenis_layanans->name}}</td>
+								<td>{{$row->detail_proker?$row->detail_proker->jenis_kegiatan:''}}</td>
 								<td>{{$row->bidang_usahas->name}}</td>
 								<td>{{$row->lokasi_kegiatan}}</td>
 								<td>{{$row->jumlah_peserta}}</td>
@@ -73,53 +71,4 @@
 			</div>
 		</div>
 	</div>
-@endsection
-
-@section('css')
-	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css">
-@endsection
-
-@section('script')
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-	<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-	<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
-	<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
-	<script>
-		$(document).ready(function() {
-			var table = $('#example').DataTable( {
-				lengthChange: false,
-				buttons: [
-					{
-						extend: 'pdf',
-						exportOptions: {
-							columns: ':visible'
-						}
-					},
-					{
-						extend: 'excel',
-						exportOptions: {
-							columns: ':visible'
-						}
-					},
-					{
-						extend: 'print',
-						exportOptions: {
-							columns: ':visible'
-						}
-					},
-					{
-						extend: 'colvis',
-						collectionLayout: 'fixed two-column'
-					}
-				],
-			} );
-
-			table.buttons().container()
-					.appendTo( '#example_wrapper .col-sm-6:eq(0)' );
-		} );
-	</script>
 @endsection

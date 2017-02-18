@@ -12,7 +12,6 @@ class Kegiatan_konsultan extends Model
         'konsultan_id',
         'tanggal_mulai',
         'tanggal_selesai',
-        'jenis_layanan_id',
         'bidang_usaha_id',
         'lokasi_kegiatan',
         'jumlah_peserta',

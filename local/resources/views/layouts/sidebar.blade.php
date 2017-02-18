@@ -180,7 +180,7 @@
                                 class="fa fa-dashboard"></i> <span>Biodata</span></a></li>
                 <li class="{{active_check('k/lembaga',true)}}"><a href="{{ url('k/lembaga/detail') }}"><i
                                 class="fa fa-home"></i> View Lembaga</a></li>
-                <li class="{{active_check('k/proker',true)}}"><a href="{{ url('k/proker') }}"><i class="fa fa-home"></i>
+                <li class="{{active_check('k/proker',true)}} {{active_check('k/dproker',true)}}"><a href="{{ url('k/proker') }}"><i class="fa fa-home"></i>
                         Program Kerja</a></li>
                 <li class="{{active_check('k/kegiatan',true)}}"><a href="{{ url('k/kegiatan') }}"><i
                                 class="fa fa-home"></i> Kegiatan</a></li>
@@ -188,7 +188,7 @@
         @endif
 
         @if(Auth::user()->role_id==2)
-            {{--For Konsultan--}}
+            {{--For admin--}}
             <ul class="sidebar-menu">
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
