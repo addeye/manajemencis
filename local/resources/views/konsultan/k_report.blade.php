@@ -28,7 +28,7 @@
                     <table id="example" class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th class="col-xs-1">ID</th>
+                            <th class="col-xs-1">No</th>
                             <th>No Registrasi</th>
                             <th>Nama Lengkap</th>
                             <th>Jenis Kelamin</th>
@@ -51,9 +51,10 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php $no=1; ?>
                         @foreach($konsultan as $row)
                             <tr>
-                                <td>{{$row->id}}</td>
+                                <td>{{$no++}}</td>
                                 <td>{{$row->no_registrasi}}</td>
                                 <td>{{$row->nama_lengkap}}</td>
                                 <td>{{$row->jenis_kelamin}}</td>

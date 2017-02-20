@@ -8,7 +8,8 @@
         "php": ">=5.6.4",
         "laravel/framework": "5.3.*",
         "pyaesone17/active-state": "0.0.2",
-        "doctrine/dbal" : "v2.5.5"
+        "doctrine/dbal" : "v2.5.5",
+        "bugsnag/bugsnag-laravel": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -23,8 +24,7 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        },
-        "files": ["app/http/helpers.php"]
+        }
     },
     "autoload-dev": {
         "classmap": [

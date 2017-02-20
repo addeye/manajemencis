@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: deyelovi
- * Date: 21/01/2017
- * Time: 7:32
- */
-?>
 @extends('layouts.master')
 
 @section('content')
@@ -15,8 +7,8 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>0</h3>
-                <p>Sentra UMKM</p>
+                <h3>150</h3>
+                <p>New Orders</p>
             </div>
             <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -29,9 +21,9 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>0<sup style="font-size: 20px">%</sup></h3>
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                <p>Jumlah Produk Unggulan</p>
+                <p>Bounce Rate</p>
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -44,9 +36,9 @@
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>0</h3>
+                <h3>44</h3>
 
-                <p>Jumlah UMKM Online</p>
+                <p>User Registrations</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -59,9 +51,9 @@
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>0</h3>
+                <h3>65</h3>
 
-                <p>Realisasi Izin Usaha Mikro Kecil</p>
+                <p>Unique Visitors</p>
             </div>
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -70,45 +62,32 @@
         </div>
     </div>
     <!-- ./col -->
-    <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-fuchsia">
-            <div class="inner">
-                <h3>0</h3>
+    <div class="col-md-12">
+        <!-- LINE CHART -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">Line Chart</h3>
 
-                <p>Jumlah KUMKM Terlayani</p>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
             </div>
-            <div class="icon">
-                <i class="ion ion-pie-graph"></i>
+            <div class="box-body chart-responsive">
+                <div class="chart" id="line-chart" style="height: 300px;"></div>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <!-- /.box-body -->
         </div>
+        <!-- /.box -->
     </div>
-    <!-- ./col -->
-    <!-- ./col -->
-    <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-gray">
-            <div class="inner">
-                <h3>0</h3>
-
-                <p>Realisasi KUR </p>
-            </div>
-            <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-    </div>
-    <!-- ./col -->
 </div>
 @endsection
 
 @section('script')
         <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="{{ asset ("../bower_components/admin-lte/plugins/morris/morris.min.js") }}" type="text/javascript"></script>
+<script src="{{ url('admin-lte/plugins/morris/morris.min.js')}}" type="text/javascript"></script>
 <script>
     // LINE CHART
     var line = new Morris.Line({
@@ -133,4 +112,4 @@
         hideHover: 'auto'
     });
 </script>
-    @endsection
+@endsection

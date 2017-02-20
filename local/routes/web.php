@@ -323,18 +323,22 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/report/all', 'SentraKumkmController@getAllColumn');
         });
 
-        Route::group(['prefix' => 'konsultan'], function () {
-            Route::get('/', 'KonsultanController@getAll');
-            Route::get('/report', 'KonsultanController@getAllReport');
-            Route::get('/create', 'KonsultanController@addData');
-            Route::post('/', 'KonsultanController@doAddData');
-            Route::get('/{id}', 'KonsultanController@editData');
-            Route::put('/{id}/update', 'KonsultanController@doEditData');
-            Route::get('/{id}/delete', 'KonsultanController@deleteData');
-            Route::get('/{id}/detail', 'KonsultanController@detailData');
-            Route::get('/{id}/proker', 'KonsultanController@prokerData');
-            Route::get('/proker/{id}/detail', 'KonsultanController@detailProker');
-        });
+//        Route::group(['prefix' => 'konsultan'], function () {
+//            Route::get('/', 'KonsultanController@getAll');
+//            Route::get('/report', 'KonsultanController@getAllReport');
+//            Route::get('/create', 'KonsultanController@addData');
+//            Route::post('/', 'KonsultanController@doAddData');
+//            Route::get('/{id}', 'KonsultanController@editData');
+//            Route::put('/{id}/update', 'KonsultanController@doEditData');
+//            Route::get('/{id}/delete', 'KonsultanController@deleteData');
+//            Route::get('/{id}/detail', 'KonsultanController@detailData');
+//            Route::get('/{id}/proker', 'KonsultanController@prokerData');
+//            Route::get('/proker/{id}/detail', 'KonsultanController@detailProker');
+//        });
     });
 
 });
+//Route::get('/home', 'HomeController@index');
+Auth::routes();
+
+
