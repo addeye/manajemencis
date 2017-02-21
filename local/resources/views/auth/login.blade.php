@@ -67,7 +67,7 @@
         </form>
         <!-- /.social-auth-links -->
 
-        {{--<a href="{{url('password/reset')}}">Lupa password</a><br>--}}
+        <a href="{{url('password/reset')}}"><i class="fa fa-key"></i> Lupa password</a><br>
         {{--<a href="#" class="text-center">Register a new membership</a>--}}
     </div>
     <!-- /.login-box-body -->
