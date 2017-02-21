@@ -32,7 +32,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">IKU</label>
                             <div class="col-sm-5">
-                                <select name="jenis_layanan_id" class="form-control">
+                                <select id="jenis_layanan_id" name="jenis_layanan_id" class="form-control">
                                     <option value="">Pilih IKU</option>
                                     @foreach($jenis_layanan as $row)
                                         <option value="{{$row->id}}">{{ $row->name }}</option>
@@ -40,23 +40,15 @@
                                 </select>
                             </div>
                         </div>
+                        <div id="ajaxFormProsesOutput"></div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Outpt / Keterangan</label>
-                            <div class="col-sm-2">
-                                <input type="text" name="output" class="form-control" placeholder="Output.." required>
-                            </div>
-                            <div class="col-sm-3">
-                                <input type="text" name="ket_output" class="form-control" placeholder="Keterangan.." required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Jumlah Penerima</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Jumlah Penerima Manfaat</label>
                             <div class="col-sm-2">
                                 <input type="text" name="jml_penerima" class="form-control" placeholder="Jumlah penerima.." required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Anggaran</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Jumlah Anggaran</label>
                             <div class="col-sm-2">
                                 <input type="text" name="anggaran" class="form-control" placeholder="Anggaran.." required>
                             </div>
@@ -90,4 +82,22 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="url" value="{{url('common/proses_output')}}">
 @endsection
+
+@section('script')
+    <script>
+        $('#jenis_layanan_id').change(function(){
+            var id = this.value;
+            var url = $('#url').val();
+            $.ajax({
+                url : url+'/'+id,
+                type : 'GET',
+                cache : false
+            })
+                    .success(function(response){
+                        $('#ajaxFormProsesOutput').html(response);
+                    });
+        });
+    </script>
+    @endsection

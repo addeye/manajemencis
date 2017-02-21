@@ -23,11 +23,6 @@ class Kegiatan_konsultan extends Model
         'detail_proker_id',
     ];
 
-    public function jenis_layanans()
-    {
-        return $this->belongsTo(Jenis_layanan::class,'jenis_layanan_id');
-    }
-
     public function bidang_usahas()
     {
         return $this->belongsTo(Bidang_usaha::class,'bidang_usaha_id');

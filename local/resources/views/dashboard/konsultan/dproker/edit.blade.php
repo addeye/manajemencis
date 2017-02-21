@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">IKU</label>
                             <div class="col-sm-5">
-                                <select name="jenis_layanan_id" class="form-control">
+                                <select id="jenis_layanan_id" name="jenis_layanan_id" class="form-control">
                                     <option value="">Pilih IKU</option>
                                     @foreach($jenis_layanan as $row)
                                         <option value="{{$row->id}}" {{$data->jenis_layanan_id==$row->id?'selected':''}} >{{ $row->name }}</option>
@@ -41,13 +41,21 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Outpt / Keterangan</label>
-                            <div class="col-sm-2">
-                                <input type="text" name="output" class="form-control" value="{{$data->output}}" placeholder="Output.." required>
+                        <div id="ajaxFormProsesOutput">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Kategori IKU</label>
+                                <div class="col-sm-10">
+                                    <p class="form-control-static">{{strtoupper($data->jenis_layanans->proses_or_output)}}</p>
+                                </div>
                             </div>
-                            <div class="col-sm-3">
-                                <input type="text" name="ket_output" class="form-control" value="{{$data->ket_output}}" placeholder="Keterangan.." required>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">Target / Keterangan</label>
+                                <div class="col-sm-2">
+                                    <input type="text" name="output" class="form-control" value="{{$data->output}}" required>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" name="ket_output" class="form-control" value="{{$data->ket_output}}" placeholder="Keterangan.." required>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -90,4 +98,22 @@
             </div>
         </div>
     </div>
+    <input type="hidden" id="url" value="{{url('common/proses_output')}}">
+@endsection
+
+@section('script')
+    <script>
+        $('#jenis_layanan_id').change(function(){
+            var id = this.value;
+            var url = $('#url').val();
+            $.ajax({
+                url : url+'/'+id,
+                type : 'GET',
+                cache : false
+            })
+                    .success(function(response){
+                        $('#ajaxFormProsesOutput').html(response);
+                    });
+        });
+    </script>
 @endsection

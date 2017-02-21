@@ -31,6 +31,7 @@
 								<th>Tanggal Mulai</th>
 								<th>Tanggal Selesai</th>
 								<th>Nama Kegiatan</th>
+								<th>IKU</th>
 								<th>Bidang Usaha</th>
 								<th>Lokasi Kegiatan</th>
 								<th>Jumlah Peserta</th>
@@ -49,6 +50,7 @@
 								<td>{{$row->tanggal_mulai}}</td>
 								<td>{{$row->tanggal_selesai}}</td>
 								<td>{{$row->detail_proker?$row->detail_proker->jenis_kegiatan:''}}</td>
+								<td>{{$row->detail_proker->jenis_layanans->name}}</td>
 								<td>{{$row->bidang_usahas->name}}</td>
 								<td>{{$row->lokasi_kegiatan}}</td>
 								<td>{{$row->jumlah_peserta}}</td>

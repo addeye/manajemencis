@@ -32,9 +32,11 @@
 								<th class="col-xs-1">ID</th>
 								<th>Nama Kegiatan</th>
 								<th>IKU</th>
-								<th>Output/Ket</th>
-								<th>Penerima</th>
-								<th>Anggaran</th>
+								<th>Kategori IKU</th>
+								<th>Target Hasil Proses / Output</th>
+								<th>Keterangan Hasil Proses / Output</th>
+								<th>Jumlah Penerima Manfaat</th>
+								<th>Jumlah Anggaran</th>
 								<th>Jadwal Pelaksana</th>
 								<th>Mitra Kerja</th>
 								<th>Action</th>
@@ -46,7 +48,9 @@
 									<td>{{$row->id}}</td>
 									<td>{{$row->jenis_kegiatan}}</td>
 									<td>{{$row->jenis_layanans->name}}</td>
-									<td>{{$row->output}} / {{$row->ket_output}}</td>
+									<td>{{strtoupper($row->jenis_layanans->proses_or_output)}}</td>
+									<td>{{$row->output}}</td>
+									<td>{{$row->ket_output}}</td>
 									<td>{{$row->jml_penerima}}</td>
 									<td>{{$row->anggaran}}</td>
 									<td>{{$row->jadwal_pelaksana}}</td>

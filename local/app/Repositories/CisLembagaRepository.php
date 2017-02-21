@@ -26,7 +26,7 @@ class CisLembagaRepository
 
     public function getAll()
     {
-        return $this->cislembaga->all();
+        return $this->cislembaga->orderBy('id_lembaga','ASC')->get();
     }
 
     public function getById($id)

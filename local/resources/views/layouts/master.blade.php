@@ -26,6 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="{{ url("admin-lte/plugins/datatables/dataTables.bootstrap.css") }}" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="{{ url("admin-lte/dist/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
+    <link rel="icon" href="{{url('cis-ico.png')}}" sizes="32x32" />
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
           apply the skin class to the body tag so the changes take effect.
