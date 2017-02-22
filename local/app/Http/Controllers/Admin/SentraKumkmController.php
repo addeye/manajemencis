@@ -96,7 +96,10 @@ class SentraKumkmController extends Controller
     public function doAddData(Request $request)
     {
         $data = $request->all();
-        $data['id_lembaga'] = Auth::user()->adminlembagas->lembaga_id;
+        $id_lembaga = Auth::user()->adminlembagas->lembaga_id;
+        $datalembaga = $this->cislembaga->getById($id_lembaga);
+        $data['id_lembaga'] = $id_lembaga;
+        $data['provinces_id'] = $datalembaga->provinces_id;
 //        return $data;
         $result = $this->sentrakumkm->create($data);
         if($result)

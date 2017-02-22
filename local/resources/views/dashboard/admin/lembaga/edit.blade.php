@@ -171,7 +171,7 @@
 
                             <div class="col-sm-3">
                                 <input type="date" value="{{$data->tgl_peresmian}}" name="tgl_peresmian"
-                                       class="form-control" placeholder="Tanggal Peresmian.." required>
+                                       class="form-control" placeholder="Tanggal Peresmian..">
                             </div>
                         </div>
                         <div class="form-group">

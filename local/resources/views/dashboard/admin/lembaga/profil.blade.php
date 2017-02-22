@@ -19,6 +19,8 @@
                     <h3 class="box-title">{{$title}}</h3>
 
                     <div class="box-tools pull-right">
+                        <a href="{{ url('/adm/lembaga/export/word/'.$data->id) }}" class="btn btn-success btn-xs"><i
+                                    class="fa fa-file-word-o"></i></a>
                         <a href="{{ url('/adm/lembaga/profil/edit') }}" class="btn btn-success btn-xs"><i
                                     class="glyphicon glyphicon-edit"></i></a>
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>

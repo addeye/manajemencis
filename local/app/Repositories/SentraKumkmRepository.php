@@ -63,12 +63,9 @@ class SentraKumkmRepository
     // Delete
     public function delete($id)
     {
-        $data = Sentra_kumkm::find($id);
-        $user_id = $data->user_id;
         $result = Sentra_kumkm::destroy($id);
         if ($result)
         {
-            User::destroy($user_id);
             return true;
         }
         return false;

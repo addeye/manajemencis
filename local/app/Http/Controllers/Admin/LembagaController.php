@@ -18,6 +18,9 @@ use App\Repositories\RegenciesRepository;
 use App\Repositories\TingkatsRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use PhpOffice\PhpWord\IOFactory;
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\Shared\Html;
 
 class LembagaController extends Controller
 {
@@ -84,4 +87,26 @@ class LembagaController extends Controller
             return redirect('adm/lembaga/profil')->with('info','Data Lembaga Berhasil Diupdate');
         }
     }
+
+    public function exportWord($id)
+    {
+        $lembaga = $this->cislembaga->getById($id);
+        $name = $lembaga->plut_name;
+        $dir = 'document/'.$name.'.docx';
+
+        $phpWord = new PhpWord();
+
+        $data['data'] = $lembaga;
+        $section = $phpWord->addSection();
+        $html = view('dashboard.admin.lembaga.exportword',$data)->render();
+
+// Adding Text element to the Section having font styled by default...
+        Html::addHtml($section,$html);
+
+// Saving the document as HTML file...
+        $objWriter = IOFactory::createWriter($phpWord);
+        $objWriter->save($dir);
+        return response()->download($dir);
+    }
+
 }

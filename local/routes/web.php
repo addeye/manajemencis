@@ -284,6 +284,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/profil', 'LembagaController@profile');
             Route::get('/profil/edit', 'LembagaController@editProfile');
             Route::put('profil/{id}/update', 'LembagaController@doUpdate');
+            Route::get('export/word/{id}','LembagaController@exportWord');
         });
 
         Route::group(['prefix' => 'sentra_binaan'], function () {
@@ -339,7 +340,29 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
 });
-Route::get('/home', 'HomeController@index');
 Auth::routes();
+Route::get('testword',function(){
+    // Creating the new document...
+    $phpWord = new \PhpOffice\PhpWord\PhpWord();
+
+    /* Note: any element you append to a document must reside inside of a Section. */
+
+    // Adding an empty Section to the document...
+    $section = $phpWord->addSection();
+
+// Adding Text element to the Section having font styled by default...
+    $section->addText(
+        htmlspecialchars(
+            '"Learn from yesterday, live for today, hope for tomorrow. '
+            . 'The important thing is not to stop questioning." '
+            . '(Albert Einstein)'
+        )
+    );
+
+// Saving the document as HTML file...
+    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord);
+    $objWriter->save('document/helloWorld.docx');
+    return response()->download('document/helloWorld.docx');
+});
 
 
