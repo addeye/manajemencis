@@ -16,7 +16,7 @@ trait UploadTrait
     public function upload_image($files,$dir,$old='')
     {
         //getting timestamp
-        $timestamp = str_replace(['',':'],' pp -',Carbon::now()->toDateTimeString());
+        $timestamp = str_replace(['',':'],'img',Carbon::now()->toDateTimeString());
         $name = $timestamp.'-'.$files->getClientOriginalName();
         $files->move($dir.'/',$name);
         if($old!='' and file_exists($dir.'/'.$old))

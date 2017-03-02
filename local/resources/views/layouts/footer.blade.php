@@ -12,5 +12,5 @@
         Manajemen CIS Version 1.0.0
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2017 <a target="_blank" href="http://cis-nasional.id/">PeachBromo</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2017 <a target="_blank" href="http://cis-nasional.id/">PEACBromo</a>.</strong> All rights reserved.
 </footer>

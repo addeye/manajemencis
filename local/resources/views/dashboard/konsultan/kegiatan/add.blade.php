@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Jumlah Peserta</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Jumlah Penerima Manfaat</label>
                             <div class="col-sm-2">
                                 <input type="number" name="jumlah_peserta" class="form-control" placeholder="Jumlah.." required>
                             </div>

@@ -196,7 +196,7 @@
                                             <select name="lembaga_id" class="form-control select2">
                                                 <option value="">Pilih Lembaga</option>
                                                 @foreach($lembaga as $row)
-                                                    <option value="{{ $row->id }}" {{ $data->lembaga_id==$row->id?'selected':'' }}>{{ $row->name }}</option>
+                                                    <option value="{{ $row->id }}" {{ $data->lembaga_id==$row->id?'selected':'' }}>{{ $row->plut_name }}</option>
                                                 @endforeach
                                             </select>
                                             <p class="text-danger">{{ $errors->first('lembaga_id') }}</p>
@@ -216,27 +216,47 @@
                                     </div>
                                     <hr>
                                     <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Pas Photo</label>
+
+                                        <div class="col-sm-3">
+                                            <input type="file" name="pas_photo">
+
+                                            <p class="help-block">Maksimal file 500KB</p>
+
+                                            <p class="text-danger">{{ $errors->first('pas_photo') }}</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Ijazah</label>
+
                                         <div class="col-sm-3">
                                             <input type="file" name="ijazah">
+
                                             <p class="help-block">Maksimal file 500KB</p>
+
                                             <p class="text-danger">{{ $errors->first('ijazah') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat 1</label>
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Scan KTP</label>
+
                                         <div class="col-sm-3">
-                                            <input type="file" name="sertifikat_1">
+                                            <input type="file" name="scan_ktp">
+
                                             <p class="help-block">Maksimal file 500KB</p>
-                                            <p class="text-danger">{{ $errors->first('sertifikat_1') }}</p>
+
+                                            <p class="text-danger">{{ $errors->first('scan_ktp') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat 2</label>
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat</label>
+
                                         <div class="col-sm-3">
-                                            <input type="file" name="sertifikat_2">
+                                            <input type="file" name="sertifikat_1">
+
                                             <p class="help-block">Maksimal file 500KB</p>
-                                            <p class="text-danger">{{ $errors->first('sertifikat_2') }}</p>
+
+                                            <p class="text-danger">{{ $errors->first('sertifikat_1') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">

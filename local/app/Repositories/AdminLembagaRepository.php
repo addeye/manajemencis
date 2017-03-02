@@ -82,4 +82,14 @@ class AdminLembagaRepository
         }
         return false;
     }
+
+    public function updateByUser($user_id,$data=array())
+    {
+        $result = Admin_lembaga::where('user_id',$user_id)->update($data);
+        if($result)
+        {
+            return true;
+        }
+        return false;
+    }
 }

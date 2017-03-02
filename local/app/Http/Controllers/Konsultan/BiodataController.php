@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Konsultan;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\BidangLayananRepository;
+use App\Repositories\CisLembagaRepository;
 use App\Repositories\KonsultanRepository;
 use App\Repositories\LembagaRepository;
 use App\Repositories\PendidikanRepository;
@@ -35,13 +36,14 @@ class BiodataController extends Controller
                                 ProvincesRepository $provinces,
                                 RegenciesRepository $regencies,
                                 PendidikanRepository $pendidikan,
-                                LembagaRepository $lembaga, BidangLayananRepository $bidanglayanan)
+                                BidangLayananRepository $bidanglayanan,
+                                CisLembagaRepository $cisLembagaRepository)
     {
         $this->konsultan = $konsultan;
         $this->provinces = $provinces;
         $this->regencies = $regencies;
         $this->pendidikan = $pendidikan;
-        $this->lembaga = $lembaga;
+        $this->lembaga = $cisLembagaRepository;
         $this->bidanglayanan = $bidanglayanan;
     }
 

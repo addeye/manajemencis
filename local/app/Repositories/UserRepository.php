@@ -23,8 +23,6 @@ class UserRepository
         return User::find($id);
     }
 
-
-
     public function create($data=array())
     {
         $data['password'] = bcrypt($data['password']);

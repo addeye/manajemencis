@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Traits\UploadTrait;
 use App\Repositories\BidangLayananRepository;
 use App\Repositories\CisLembagaRepository;
 use App\Repositories\DetailsProkersRepository;
 use App\Repositories\KonsultanRepository;
-use App\Repositories\LembagaRepository;
 use App\Repositories\PendidikanRepository;
 use App\Repositories\ProkerKonsultanRepository;
 use App\Repositories\ProvincesRepository;
 use App\Repositories\RegenciesRepository;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -185,19 +184,6 @@ class KonsultanController extends Controller
     {
         $data = $request->all();
         $old = $this->konsultan->getById($id);
-
-        $validator = Validator::make($request->all(), [
-            'ijazah' => 'image|max:500',
-            'sertifikat_1' => 'image|max:500',
-            'pas_photo' => 'image|max:500',
-            'scan_ktp' => 'image|max:500',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect('konsultan/'.$id)
-                ->withErrors($validator)
-                ->withInput();
-        }
 
         if($request->hasFile('pas_photo'))
         {

@@ -3,6 +3,7 @@
 @section('content')
         <!-- Small boxes (Stat box) -->
 <div class="row">
+    <div style="display: none;">
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-aqua">
@@ -31,19 +32,18 @@
         </div>
     </div>
     <!-- ./col -->
-    <div style="">
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3>{{$jml_kegiatan}}</h3>
+                    <h3>44</h3>
 
-                    <p>Jumlah Kegiatan</p>
+                    <p>User Registrations</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
+                    <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#" class="small-box-footer">Jumlah Laporan Kegiatan <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -51,17 +51,18 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>{{$jml_penerima}}</h3>
-                    <p>Penerima Manfaat</p>
+                    <h3>65</h3>
+
+                    <p>Unique Visitors</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-person-add"></i>
+                    <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="#" class="small-box-footer">Jumlah Penerima Manfaat <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-md-12" style="display: none">
+        <div class="col-md-12">
             <!-- LINE CHART -->
             <div class="box box-info">
                 <div class="box-header with-border">

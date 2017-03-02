@@ -164,7 +164,7 @@
                                 <select name="lembaga_id" class="form-control select2" required>
                                     <option value="">Pilih Lembaga</option>
                                     @foreach($lembaga as $row)
-                                        <option value="{{ $row->id }}" {{ old('lembaga_id')==$row->id?'selected':'' }}>{{ $row->name }}</option>
+                                        <option value="{{ $row->id }}" {{ old('lembaga_id')==$row->id?'selected':'' }}>{{ $row->plut_name }}</option>
                                         @endforeach
                                 </select>
                                 <p class="text-danger">{{ $errors->first('lembaga_id') }}</p>

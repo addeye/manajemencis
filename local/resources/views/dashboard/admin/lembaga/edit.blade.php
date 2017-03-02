@@ -29,7 +29,7 @@
 
                             <div class="col-sm-5">
                                 <input type="text" name="id_lembaga" class="form-control" value="{{$data->id_lembaga}}"
-                                       placeholder="ID Lembaga.." required>
+                                       placeholder="ID Lembaga.." readonly>
                             </div>
                         </div>
                         <div class="form-group">
@@ -77,7 +77,7 @@
 
                             <div class="col-sm-5">
                                 <input type="text" name="plut_name" class="form-control" value="{{$data->plut_name}}"
-                                       placeholder="Nama PLUT-KUMKM.." required>
+                                       placeholder="Nama PLUT-KUMKM.." readonly>
                             </div>
                         </div>
                         <div class="form-group">

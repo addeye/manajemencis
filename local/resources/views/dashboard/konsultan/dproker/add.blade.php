@@ -44,13 +44,13 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Jumlah Penerima Manfaat</label>
                             <div class="col-sm-2">
-                                <input type="text" name="jml_penerima" class="form-control" placeholder="Jumlah penerima.." required>
+                                <input type="number" name="jml_penerima" class="form-control" placeholder="Jumlah penerima.." required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Jumlah Anggaran</label>
                             <div class="col-sm-2">
-                                <input type="text" name="anggaran" class="form-control" placeholder="Anggaran.." required>
+                                <input type="number" name="anggaran" class="form-control" placeholder="Anggaran.." required>
                             </div>
                         </div>
                         <div class="form-group">

@@ -18,6 +18,7 @@ use App\Repositories\RegenciesRepository;
 use App\Repositories\TingkatsRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
 use PhpOffice\PhpWord\IOFactory;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Shared\Html;
@@ -92,21 +93,30 @@ class LembagaController extends Controller
     {
         $lembaga = $this->cislembaga->getById($id);
         $name = $lembaga->plut_name;
-        $dir = 'document/'.$name.'.docx';
-
-        $phpWord = new PhpWord();
-
+//        $dir = 'document/'.$name.'.docx';
+//
+//        $phpWord = new PhpWord();
+//
         $data['data'] = $lembaga;
-        $section = $phpWord->addSection();
+//        $section = $phpWord->addSection();
         $html = view('dashboard.admin.lembaga.exportword',$data)->render();
+//
+//// Adding Text element to the Section having font styled by default...
+//        Html::addHtml($section,$html);
+//
+//// Saving the document as HTML file...
+//        $objWriter = IOFactory::createWriter($phpWord);
+//        $objWriter->save($dir);
+//        return response()->download($dir);
 
-// Adding Text element to the Section having font styled by default...
-        Html::addHtml($section,$html);
+        $headers = array(
+            "Content-type"=>"text/html",
+            "Content-Disposition"=>"attachment;Filename=".$name.".doc"
+        );
 
-// Saving the document as HTML file...
-        $objWriter = IOFactory::createWriter($phpWord);
-        $objWriter->save($dir);
-        return response()->download($dir);
+        $content = $html;
+
+        return Response::make($content,200, $headers);
     }
 
 }

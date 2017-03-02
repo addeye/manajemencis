@@ -38,7 +38,7 @@ class CreateKonsultansTable extends Migration
             $table->string('jurusan');
             $table->string('bidang_keahlian');
             $table->text('pengalaman');
-            $table->string('sertifikat');
+            $table->text('sertifikat');
             $table->string('asosiasi');
             $table->integer('lembaga_id')->unsigned();
             $table->foreign('lembaga_id')->references('id')->on('lembagas');

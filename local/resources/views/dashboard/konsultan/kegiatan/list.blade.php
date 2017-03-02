@@ -27,7 +27,7 @@
 						<table id="example" class="table table-bordered table-striped">
 						<thead>
 							<tr>
-								<th class="col-xs-1">ID</th>
+								<th class="col-xs-1">No</th>
 								<th>Tanggal Mulai</th>
 								<th>Tanggal Selesai</th>
 								<th>Nama Kegiatan</th>
@@ -44,11 +44,12 @@
 							</tr>
 						</thead>
 						<tbody>
+						<?php $no=1; ?>
 							@foreach($data as $row)
 							<tr>
-								<td>{{$row->id}}</td>
-								<td>{{$row->tanggal_mulai}}</td>
-								<td>{{$row->tanggal_selesai}}</td>
+								<td>{{$no++}}</td>
+								<td>{{date('d-m-Y', strtotime($row->tanggal_mulai))}}</td>
+								<td>{{date('d-m-Y',strtotime($row->tanggal_selesai))}}</td>
 								<td>{{$row->detail_proker?$row->detail_proker->jenis_kegiatan:''}}</td>
 								<td>{{$row->detail_proker->jenis_layanans->name}}</td>
 								<td>{{$row->bidang_usahas->name}}</td>

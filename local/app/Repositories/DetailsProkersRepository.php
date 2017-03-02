@@ -65,4 +65,16 @@ class DetailsProkersRepository
         }
         return false;
     }
+
+    public function jmlPenerimaManfaat()
+    {
+        $jml_penerima = array();
+        $result = Details_proker::all();
+        foreach($result as $row)
+        {
+            $jml_penerima[] = $row->jml_penerima;
+        }
+
+        return array_sum($jml_penerima);
+    }
 }

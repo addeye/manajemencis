@@ -67,4 +67,16 @@ class KegiatanKonsultanRepository
         }
         return false;
     }
+
+    public function jmlPesertaKegiatan()
+    {
+        $jumlah_peserta = array();
+        $result = Kegiatan_konsultan::all();
+        foreach($result as $row)
+        {
+            $jumlah_peserta[] = $row->jumlah_peserta;
+        }
+
+        return array_sum($jumlah_peserta);
+    }
 }

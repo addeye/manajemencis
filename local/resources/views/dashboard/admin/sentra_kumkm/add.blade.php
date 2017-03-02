@@ -72,13 +72,13 @@
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Total UMKM</label>
-                            <div class="col-sm-1">
+                            <div class="col-sm-2">
                                 <input type="number" class="form-control" name="total_umkm" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Total Pegawai</label>
-                            <div class="col-sm-1">
+                            <div class="col-sm-2">
                                 <input type="number" class="form-control" name="total_pegawai" required>
                             </div>
                         </div>

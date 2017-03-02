@@ -6,118 +6,203 @@
  * Time: 16:40
  */
 ?>
-        <!-- Bootstrap 3.3.2 -->
-<link href="{{ url("admin-lte/bootstrap/css/bootstrap.min.css") }}" rel="stylesheet" type="text/css" />
-<div class="row">
-    <div class="col-xs-6">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">{{$data->plut_name}}</h3>
 
-            </div>
-            <!-- / box Header -->
-            <div class="box-body">
-                {{--<img class="img-responsive" src="{{url('images/'.$data->photo_gedung)}}">--}}
-                <dl>
-                    <dt>ID Lembaga</dt>
-                    <dd>{{$data->id_lembaga}}</dd>
-                    <dt>SKPD Penanggungjawab</dt>
-                    <dd>{{$data->skpd_name}}</dd>
-                    <dt>Alamat</dt>
-                    <dd>{{$data->skpd_alamat}}</dd>
-                    <dt>Telepon</dt>
-                    <dd>{{$data->skpd_telp}}</dd>
-                    <dt>E-mail</dt>
-                    <dd>{{$data->skpd_email}}</dd>
-                    <dt>Whatsapp</dt>
-                    <dd>{{$data->skpd_whatsapp}}</dd>
-                </dl>
-                <dl>
-                    <dt>Nama PLUT-KUMKM</dt>
-                    <dd>{{$data->plut_name}}</dd>
-                    <dt>Bentuk Kelembagaan</dt>
-                    <dd>{{$data->plut_bentuk_kelembagaan}}</dd>
-                    <dt>Provinsi</dt>
-                    <dd>{{$data->provinces?$data->provinces->name:'--'}}</dd>
-                    <dt>Kabupaten/Kota</dt>
-                    <dd>{{$data->regencies?$data->regencies->name:'--'}}</dd>
-                    <dt>Alamat</dt>
-                    <dd>{{$data->plut_alamat}}</dd>
-                    <dt>Telepon</dt>
-                    <dd>{{$data->plut_telp}}</dd>
-                    <dt>E-mail</dt>
-                    <dd>{{$data->plut_email}}</dd>
-                    <dt>Whatsapp</dt>
-                    <dd>{{$data->plut_whatsapp}}</dd>
-                    <dt>Website</dt>
-                    <dd>{{$data->plut_website}}</dd>
-                    <dt>Facebook</dt>
-                    <dd>{{$data->plut_facebook}}</dd>
-                </dl>
-
-                <dl>
-                    <dt>Tahun Perolehan</dt>
-                    <dd>{{$data->tahun_perolehan}}</dd>
-                    <dt>Mulai Operasional</dt>
-                    <dd>{{$data->mulai_operasional}}</dd>
-                    <dt>Tanggal Peresmian</dt>
-                    <dd>{{$data->tgl_peresmian}}</dd>
-                    <dt>Diresmikan Oleh</dt>
-                    <dd>{{$data->diresmikan_oleh}}</dd>
-                    <dt>Hibah Tahun</dt>
-                    <dd>{{$data->hibah_tahun}}</dd>
-                    <dt>Telah bersinergi dengan pihak</dt>
-                    <dd>{{$data->ket_bersinergi}}</dd>
-                    <dt>Produk Unggulan Daerah</dt>
-                    <dd>{{$data->produk_unggulan}}</dd>
-                    <dt>Yang sudah branding dan masuk pasar Lokal/Nasional/Ekspor</dt>
-                    <dd>{{$data->pemasaran}}</dd>
-                    <dt>Produk lain yang potensial</dt>
-                    <dd>{{$data->produk_potensial}}</dd>
-                    <dt>Jumlah UMKM yang telah memanfaatkan e-commarce</dt>
-                    <dd>{{$data->jml_umkm_ecommarce}}</dd>
-                    <dt>Jumlah produk yang di pasarkan secara on-line</dt>
-                    <dd>{{$data->jml_produk_online}}</dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-6">
-                <!-- /.box -->
-        <div class="box box-success">
-            <div class="box-header with-border">
-                <h3 class="box-title">Daftar Sentra Binaan</h3>
-                <!-- /.box-tools -->
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body table-responsive">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                    <tr>
-                        <th class="col-xs-1">ID</th>
-                        <th>Nama Sentra</th>
-                        <th>Jumlah UMKM</th>
-                        <th>Bidang Usaha</th>
-                        <th>Wilayah Pemasaran</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($data->sentra_binaan as $row)
-                        <tr>
-                            <td>{{$row->id}}</td>
-                            <td>{{$row->nama_sentra}}</td>
-                            <td>{{$row->jml_ukmk_Sentra}}</td>
-                            <td>{{$row->bidang_usaha_sentra}}</td>
-                            <td>{{$row->wilayah_pemasaran}}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-
-                </table>
-            </div>
-            <!-- /.box-body -->
-        </div>
-        {{----}}
-        {{----}}
-    </div>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Export Word</title>
+    <style>
+        table th {
+            vertical-align: top;
+        }
+        table th {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div style="text-align: center">
+    <h2>Profil CIS PLUT-UMKM</h2>
+    <h3>{{$data->plut_name}}</h3>
 </div>
+<div style="text-align: left">
+    <table width="100%" border="0" cellspacing="0" cellpadding="5">
+        <tr>
+            <th>1.</th>
+            <th>SKPD Penanggungjawab</th>
+            <th>:</th>
+            <td>{{$data->skpd_name}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Alamat</th>
+            <th>:</th>
+            <td>{{$data->skpd_alamat}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Telepon</th>
+            <th>:</th>
+            <td>{{$data->skpd_telp}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>E-Mail</th>
+            <th>:</th>
+            <td>{{$data->skpd_email}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Whatsapp</th>
+            <th>:</th>
+            <td>{{$data->skpd_whatsapp}}</td>
+        </tr>
+        <tr>
+            <th>2.</th>
+            <th>Nama PLUT-KUMKM</th>
+            <th>:</th>
+            <td>{{$data->plut_name}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Bentuk Kelembagaan</th>
+            <th>:</th>
+            <td>{{$data->plut_bentuk_kelembagaan}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Provinsi</th>
+            <th>:</th>
+            <td>{{$data->provinces->name}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Kabupaten/Kota</th>
+            <th>:</th>
+            <td>{{$data->regencies->name}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Alamat</th>
+            <th>:</th>
+            <td>{{$data->plut_alamat}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Telepon</th>
+            <th>:</th>
+            <td>{{$data->plut_telp}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>E-Mail</th>
+            <th>:</th>
+            <td>{{$data->plut_email}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Whatsapp</th>
+            <th>:</th>
+            <td>{{$data->plut_whatsapp}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Website</th>
+            <th>:</th>
+            <td>{{$data->plut_website}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Facebook</th>
+            <th>:</th>
+            <td>{{$data->plut_facebook}}</td>
+        </tr>
+        <tr>
+            <th>3.</th>
+            <th>Tahun Perolehan</th>
+            <th>:</th>
+            <td>{{$data->tahun_perolehan}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Mulai Operasional</th>
+            <th>:</th>
+            <td>{{$data->mulai_operasional}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Tanggal Peresmian</th>
+            <th>:</th>
+            <td>{{$data->tgl_peresmian}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Diresmikan Oleh</th>
+            <th>:</th>
+            <td>{{$data->diresmikan_oleh}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Hibah Tahun</th>
+            <th>:</th>
+            <td>{{$data->hibah_tahun}}</td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <th>Telah bersinergi dengan pihak</th>
+            <th>:</th>
+            <td>{{$data->ket_bersinergi}}</td>
+        </tr>
+        <tr>
+            <th>5</th>
+            <th>Sentra Binaan Yang Terlibat</th>
+            <th>:</th>
+            <td>
+                @foreach($data->sentra_binaan as $row)
+                <ul>
+                    <li>Nama Sentra : {{$row->nama_sentra}}</li>
+                    <li>Jumlah UMKM : {{$row->jml_ukmk_sentra}}</li>
+                    <li>Produk/Bidang Usaha : {{$row->bidang_usaha_sentra}}</li>
+                    <li>Wilayah Pemasaran : {{$row->wilayah_pemasaran}}</li>
+                </ul>
+                    @endforeach
+            </td>
+        </tr>
+        <tr>
+            <th>6</th>
+            <th>Produk Unggulan Daerah</th>
+            <th>:</th>
+            <td>{{$data->produk_unggulan}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Yang sudah branding dan masuk pasar Lokal/Nasional/Ekspor</th>
+            <th>:</th>
+            <td>{{$data->pemasaran}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Produk Lain Yang Potensial</th>
+            <th>:</th>
+            <td>{{$data->produk_potensial}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th colspan="3">Digitalisasi UMKM</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Jumlah UMKM yang telah memanfaatkan e-commarce</th>
+            <th>:</th>
+            <td>{{$data->jml_umkm_ecommarce}}</td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Jumlah produk yang di pasarkan secara on-line</th>
+            <th>:</th>
+            <td>{{$data->jml_produk_online}}</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

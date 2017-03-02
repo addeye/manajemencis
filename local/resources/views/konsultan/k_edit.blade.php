@@ -15,7 +15,8 @@
 <link rel="stylesheet" href="{{ url('admin-lte/plugins/iCheck/all.css') }}">
 <!-- Select2 -->
 <link rel="stylesheet" href="{{ url('admin-lte/plugins/select2/select2.min.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.6/select2-bootstrap.css">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.6/select2-bootstrap.css">
 
 @endsection
 
@@ -34,44 +35,57 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_1">
-                                <form method="post" action="{{ url('konsultan/'.$data->id.'/update') }}" class="form-horizontal" enctype="multipart/form-data">
+                                <form method="post" action="{{ url('konsultan/'.$data->id.'/update') }}"
+                                      class="form-horizontal" enctype="multipart/form-data">
                                     <input type="hidden" name="user_id" value="{{ $data->user_id }}">
                                     <input type="hidden" name="_method" value="PUT">
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">No Registrasi*</label>
+
                                         <div class="col-sm-5">
-                                            <input type="text" name="no_registrasi" class="form-control" placeholder="Nomor Registrasi.." value="{{ $data->no_registrasi }}">
+                                            <input type="text" name="no_registrasi" class="form-control"
+                                                   placeholder="Nomor Registrasi.." value="{{ $data->no_registrasi }}">
+
                                             <p class="text-danger">{{ $errors->first('nama_lengkap') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Nama Lengkap*</label>
+
                                         <div class="col-sm-5">
-                                            <input type="text" name="nama_lengkap" class="form-control" placeholder="Nama Lengkap.." value="{{ $data->nama_lengkap }}" required>
+                                            <input type="text" name="nama_lengkap" class="form-control"
+                                                   placeholder="Nama Lengkap.." value="{{ $data->nama_lengkap }}"
+                                                   required>
+
                                             <p class="text-danger">{{ $errors->first('nama_lengkap') }}</p>
                                         </div>
                                     </div>
                                     <!-- radio -->
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Jenis Kelamin*</label>
+
                                         <div class="col-sm-5">
                                             <label>
-                                                <input type="radio" name="jenis_kelamin" value="L" class="minimal" {{ $data->jenis_kelamin=='L'?'checked':'' }}>
+                                                <input type="radio" name="jenis_kelamin" value="L"
+                                                       class="minimal" {{ $data->jenis_kelamin=='L'?'checked':'' }}>
                                                 Laki - laki
                                             </label>
                                             &nbsp;
                                             &nbsp;
                                             <label>
-                                                <input type="radio" value="P" name="jenis_kelamin" class="minimal" {{ $data->jenis_kelamin=='P'?'checked':'' }}>
+                                                <input type="radio" value="P" name="jenis_kelamin"
+                                                       class="minimal" {{ $data->jenis_kelamin=='P'?'checked':'' }}>
                                                 Perempuan
                                             </label>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Provinsi*</label>
+
                                         <div class="col-sm-5">
-                                            <select name="provinces_id" id="provinces" class="form-control select2" required>
+                                            <select name="provinces_id" id="provinces" class="form-control select2"
+                                                    required>
                                                 <option value="">Pilih Provinsi</option>
                                                 @foreach($provinces as $row)
                                                     <option value="{{ $row->id }}" {{$data->provinces_id==$row->id?'selected':''}} >{{ $row->id }} {{ $row->name }}</option>
@@ -81,7 +95,9 @@
                                     </div>
                                     <div id="ajaxRegencies">
                                         <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-2 control-label">Kabupaten/Kota</label>
+                                            <label for="inputEmail3"
+                                                   class="col-sm-2 control-label">Kabupaten/Kota</label>
+
                                             <div class="col-md-5">
                                                 <select class="form-control" name="regency_id">
                                                     <option value="">Pilih Kabupaten/Kota</option>
@@ -94,41 +110,58 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Alamat</label>
+
                                         <div class="col-sm-5">
-                                            <textarea class="form-control" name="alamat" rows="4">{{ $data->alamat }}</textarea>
+                                            <textarea class="form-control" name="alamat"
+                                                      rows="4">{{ $data->alamat }}</textarea>
+
                                             <p class="text-danger">{{ $errors->first('alamat') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Kode Pos</label>
+
                                         <div class="col-sm-3">
-                                            <input type="text" name="kode_pos" class="form-control" placeholder="Kode Pos.." value="{{ $data->kode_pos }}" required>
+                                            <input type="text" name="kode_pos" class="form-control"
+                                                   placeholder="Kode Pos.." value="{{ $data->kode_pos }}" >
+
                                             <p class="text-danger">{{ $errors->first('kode_pos') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Lahir</label>
+
                                         <div class="col-sm-3">
-                                            <input type="text" id="datemask" name="tanggal_lahir" value="{{ date('d/m/Y', strtotime($data->tanggal_lahir)) }}" class="form-control" placeholder="Tanggal Lahir..">
+                                            <input type="text" id="datemask" name="tanggal_lahir"
+                                                   value="{{ date('d/m/Y', strtotime($data->tanggal_lahir)) }}"
+                                                   class="form-control" placeholder="Tanggal Lahir..">
+
                                             <p class="text-danger">{{ $errors->first('tangal_lahir') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Telepon</label>
+
                                         <div class="col-sm-3">
-                                            <input type="number" name="telepon" class="form-control" placeholder="Telepon.." value="{{ $data->telepon }}" required>
+                                            <input type="number" name="telepon" class="form-control"
+                                                   placeholder="Telepon.." value="{{ $data->telepon }}" >
+
                                             <p class="text-danger">{{ $errors->first('email') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+
                                         <div class="col-sm-3">
-                                            <input type="email" name="email" class="form-control" placeholder="Email Address.." value="{{ $data->email }}" required>
+                                            <input type="email" name="email" class="form-control"
+                                                   placeholder="Email Address.." value="{{ $data->email }}" required>
+
                                             <p class="text-danger">{{ $errors->first('email') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Pendidikan</label>
+
                                         <div class="col-sm-3">
                                             <select class="form-control" name="pendidikan_id">
                                                 <option value="">Pendidikan Terakhir</option>
@@ -140,61 +173,89 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Perguruan Tinggi Terakhir</label>
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Perguruan Tinggi
+                                            Terakhir</label>
+
                                         <div class="col-sm-5">
-                                            <input type="text" name="perguruan_terakhir" class="form-control" placeholder="Nama sekolah/perguruan tinggi terakhir.." value="{{$data->perguruan_terakhir}}" required>
+                                            <input type="text" name="perguruan_terakhir" class="form-control"
+                                                   placeholder="Nama sekolah/perguruan tinggi terakhir.."
+                                                   value="{{$data->perguruan_terakhir}}" >
+
                                             <p class="text-danger">{{ $errors->first('perguruan_terakhir') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Jurusan</label>
+
                                         <div class="col-sm-3">
-                                            <input type="text" name="jurusan" class="form-control" placeholder="Jurusan.." value="{{ $data->jurusan }}" required>
+                                            <input type="text" name="jurusan" class="form-control"
+                                                   placeholder="Jurusan.." value="{{ $data->jurusan }}" >
+
                                             <p class="text-danger">{{ $errors->first('jurusan') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Bidang Keahlian</label>
+
                                         <div class="col-sm-5">
-                                            <input type="text" name="bidang_keahlian" class="form-control" placeholder="Kompetensi/Bidang Keahlian Pendampingan.." value="{{$data->bidang_keahlian}}" required>
+                                            <input type="text" name="bidang_keahlian" class="form-control"
+                                                   placeholder="Kompetensi/Bidang Keahlian Pendampingan.."
+                                                   value="{{$data->bidang_keahlian}}" >
+
                                             <p class="text-danger">{{ $errors->first('<i class="fa fa-exclamation-circle"></i> bidang_keahlian') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Pengalaman Pendampingan KUMKM</label>
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Pengalaman Pendampingan
+                                            KUMKM</label>
+
                                         <div class="col-sm-5">
-                                            <textarea class="form-control" name="pengalaman" placeholder="Pengalaman Dalam Pendampingan KUMKM" rows="4">{{$data->pengalaman}}</textarea>
+                                            <textarea class="form-control" name="pengalaman"
+                                                      placeholder="Pengalaman Dalam Pendampingan KUMKM"
+                                                      rows="4">{{$data->pengalaman}}</textarea>
+
                                             <p class="text-danger">{{ $errors->first('<i class="fa fa-exclamation-circle"></i> pengalaman') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat</label>
+
                                         <div class="col-sm-5">
-                                            <input type="text" name="sertifikat" class="form-control" placeholder="Sertifikat yang dimiliki terkait dengan pendampingan KUMKM.." value="{{$data->pengalaman}}" required>
+                                            <input type="text" name="sertifikat" class="form-control"
+                                                   placeholder="Sertifikat yang dimiliki terkait dengan pendampingan KUMKM.."
+                                                   value="{{$data->pengalaman}}" >
+
                                             <p class="text-danger"> {{ $errors->first('sertifikat') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Asosiasi</label>
+
                                         <div class="col-sm-5">
-                                            <input type="text" name="asosiasi" class="form-control" placeholder="Asosiasi pendampingan KUMKM yang diikuti.." value="{{ $data->asosiasi }}" required>
+                                            <input type="text" name="asosiasi" class="form-control"
+                                                   placeholder="Asosiasi pendampingan KUMKM yang diikuti.."
+                                                   value="{{ $data->asosiasi }}" >
+
                                             <p class="text-danger">{{ $errors->first('sertifikat') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Lembaga</label>
+
                                         <div class="col-sm-5">
                                             <select name="lembaga_id" class="form-control select2">
                                                 <option value="">Pilih Lembaga</option>
                                                 @foreach($lembaga as $row)
-                                                    <option value="{{ $row->id }}" {{ $data->lembaga_id==$row->id?'selected':'' }}>{{ $row->name }}</option>
+                                                    <option value="{{ $row->id }}" {{ $data->lembaga_id==$row->id?'selected':'' }}>{{ $row->plut_name }}</option>
                                                 @endforeach
                                             </select>
+
                                             <p class="text-danger">{{ $errors->first('lembaga_id') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Bidang Layanan</label>
+
                                         <div class="col-sm-5">
                                             <select name="bidang_layanan_id" class="form-control">
                                                 <option value="">Pilih Bidang Layanan</option>
@@ -202,38 +263,51 @@
                                                     <option value="{{ $row->id }}" {{$data->bidang_layanan_id==$row->id?'selected':''}} >{{ $row->name }}</option>
                                                 @endforeach
                                             </select>
+
                                             <p class="text-danger">{{ $errors->first('lembaga_id') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Pas Photo</label>
+
                                         <div class="col-sm-3">
                                             <input type="file" name="pas_photo">
+
                                             <p class="help-block">Maksimal file 500KB</p>
+
                                             <p class="text-danger">{{ $errors->first('pas_photo') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Ijazah</label>
+
                                         <div class="col-sm-3">
                                             <input type="file" name="ijazah">
+
                                             <p class="help-block">Maksimal file 500KB</p>
+
                                             <p class="text-danger">{{ $errors->first('ijazah') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Scan KTP</label>
+
                                         <div class="col-sm-3">
                                             <input type="file" name="scan_ktp">
+
                                             <p class="help-block">Maksimal file 500KB</p>
+
                                             <p class="text-danger">{{ $errors->first('scan_ktp') }}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Sertifikat</label>
+
                                         <div class="col-sm-3">
                                             <input type="file" name="sertifikat_1">
+
                                             <p class="help-block">Maksimal file 500KB</p>
+
                                             <p class="text-danger">{{ $errors->first('sertifikat_1') }}</p>
                                         </div>
                                     </div>
@@ -266,7 +340,7 @@
     <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
 
     <script>
-        $(function(){
+        $(function () {
             //Initialize Select2 Elements
             $(".select2").select2({
                 theme: "bootstrap"
@@ -293,14 +367,14 @@
 
         });
         urlregencies = $('#urlregencies').val();
-        $('#provinces').change(function(){
+        $('#provinces').change(function () {
             $.ajax({
-                url: urlregencies+'/'+this.value,
-                type : 'GET',
-                cache : false,
-                dataType : 'html'
+                url: urlregencies + '/' + this.value,
+                type: 'GET',
+                cache: false,
+                dataType: 'html'
             })
-                    .success(function(response){
+                    .success(function (response) {
                         $('#ajaxRegencies').html(response);
                     })
         });

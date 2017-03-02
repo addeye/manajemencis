@@ -59,7 +59,7 @@
                         <dt>Asosiasi</dt>
                         <dd>{{ $data->asosiasi }}</dd>
                         <dt>Lembaga</dt>
-                        <dd>{{ $data->lembagas->name }}</dd>
+                        <dd>{{ $data->lembagas->plut_name }}</dd>
                         <dt>Bidang Layanan</dt>
                         <dd>{{ $data->bidang_layanans->name }}</dd>
                     </dl>
