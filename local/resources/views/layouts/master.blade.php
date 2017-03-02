@@ -37,6 +37,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.6/select2-bootstrap.css">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css">
+
+
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="{{url('admin-lte/plugins/datepicker/datepicker3.css')}}">
+
     @yield('css')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -100,6 +105,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
 <script src="{{ url('admin-lte/plugins/input-mask/jquery.inputmask.js') }}"></script>
 
+<!-- bootstrap datepicker -->
+<script src="{{url('admin-lte/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+
 <!-- Select2 -->
 <script src="{{ url('admin-lte/plugins/select2/select2.full.min.js') }}"></script>
 
@@ -114,6 +122,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         $(".select2").select2({
             theme: "bootstrap"
+        });
+
+        //Date picker
+        $('.datepicker').datepicker({
+            autoclose: true,
+            format: 'yyyy-mm-dd',
         });
 
         $("[data-mask]").inputmask();

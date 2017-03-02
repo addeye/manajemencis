@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'AuthController@login');
+Route::get('/', 'AuthController@beranda')->middleware('guest');
 Route::get('/login', 'AuthController@login');
 Route::post('/dologin', 'AuthController@dologin');
 Route::get('/logout', 'AuthController@logout');

@@ -35,7 +35,7 @@ class KegiatanKonsultanController extends Controller
         (
             'head_title' => 'Data Kegiatan Konsultan',
             'title' => 'Kegiatan Konsultan',
-            'data' => $this->kegiatankonsultan->getAll()
+            'data' => $this->kegiatankonsultan->getAllByKonsultan()
         );
 //        return $data;
         return view('dashboard.konsultan.kegiatan.list',$data);

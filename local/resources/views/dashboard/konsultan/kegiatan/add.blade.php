@@ -25,10 +25,20 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Mulai/Selesai</label>
                             <div class="col-sm-3">
-                                <input type="date" name="tanggal_mulai" class="form-control" placeholder="Tanggal mulai.." required>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" name="tanggal_mulai" class="form-control pull-right datepicker">
+                                </div>
                             </div>
                             <div class="col-sm-3">
-                                <input type="date" name="tanggal_selesai" class="form-control" placeholder="Tanggal selesai.." required>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" name="tanggal_selesai" class="form-control pull-right datepicker">
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
