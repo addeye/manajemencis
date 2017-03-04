@@ -181,6 +181,8 @@ return [
         Pyaesone17\ActiveState\ActiveStateServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
 
+        \Maatwebsite\Excel\ExcelServiceProvider::class
+
     ],
 
     /*
@@ -230,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Active' => Pyaesone17\ActiveState\ActiveFacade::class,
         'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
+        'Excel' => \Maatwebsite\Excel\Facades\Excel::class
     ],
 
 ];

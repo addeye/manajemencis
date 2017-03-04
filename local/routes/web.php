@@ -226,7 +226,8 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
-    Route::group(['namespace' => 'Konsultan', ['middleware' => ['konsultan']]], function () {
+    Route::group(['namespace' => 'Konsultan', ['middleware' => ['konsultan']]], function ()
+    {
 
         Route::get('k/lembaga', 'LembagaController@getLembaga');
         Route::get('k/lembaga/detail', 'LembagaController@detailData');
@@ -239,14 +240,10 @@ Route::group(['middleware' => ['auth']], function () {
          * for Sentra Binaan
          */
         Route::group(['prefix' => 'sentra_binaan'], function () {
-//            Route::get('/', 'CisFilemanageraController@getAll');
-//            Route::get('/create', 'CisFilemanageraController@addData');
             Route::post('k/', 'SentraBinaanController@doAddData');
             Route::get('k/{id}', 'SentraBinaanController@editData');
             Route::put('k/{id}/update', 'SentraBinaanController@doEditData');
             Route::get('k/{id}/delete', 'SentraBinaanController@deleteData');
-//            Route::get('/{id}/detail', 'CisFilemanageraController@detailData');
-//            Route::get('/report/all', 'CisFilemanageraController@getAllColumn');
         });
 
         Route::group(['prefix' => 'k/proker'], function () {
@@ -275,7 +272,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::put('/{id}/update', 'KegiatanKonsultanController@doEditData');
             Route::get('/{id}/delete', 'KegiatanKonsultanController@deleteData');
         });
+
+        Route::get('importKegiatan','ImportController@importExcelKegiatan');
+        Route::get('downloadKegiatan','ImportController@downloadExcelKegiatan');
+        Route::post('importKegiatan','ImportController@doImportKegiatan');
+
     });
+
+    //for admin
     Route::group(['namespace' => 'Admin', 'prefix' => 'adm', 'middleware' => ['admin']], function () {
         /**
          * for lembaga
@@ -341,28 +345,28 @@ Route::group(['middleware' => ['auth']], function () {
 
 });
 Auth::routes();
-Route::get('testword',function(){
-    // Creating the new document...
-    $phpWord = new \PhpOffice\PhpWord\PhpWord();
-
-    /* Note: any element you append to a document must reside inside of a Section. */
-
-    // Adding an empty Section to the document...
-    $section = $phpWord->addSection();
-
-// Adding Text element to the Section having font styled by default...
-    $section->addText(
-        htmlspecialchars(
-            '"Learn from yesterday, live for today, hope for tomorrow. '
-            . 'The important thing is not to stop questioning." '
-            . '(Albert Einstein)'
-        )
-    );
-
-// Saving the document as HTML file...
-    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord);
-    $objWriter->save('document/helloWorld.docx');
-    return response()->download('document/helloWorld.docx');
-});
+//Route::get('testword',function(){
+//    // Creating the new document...
+//    $phpWord = new \PhpOffice\PhpWord\PhpWord();
+//
+//    /* Note: any element you append to a document must reside inside of a Section. */
+//
+//    // Adding an empty Section to the document...
+//    $section = $phpWord->addSection();
+//
+//// Adding Text element to the Section having font styled by default...
+//    $section->addText(
+//        htmlspecialchars(
+//            '"Learn from yesterday, live for today, hope for tomorrow. '
+//            . 'The important thing is not to stop questioning." '
+//            . '(Albert Einstein)'
+//        )
+//    );
+//
+//// Saving the document as HTML file...
+//    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord);
+//    $objWriter->save('document/helloWorld.docx');
+//    return response()->download('document/helloWorld.docx');
+//});
 
 
