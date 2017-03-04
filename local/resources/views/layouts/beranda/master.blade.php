@@ -91,6 +91,7 @@
     </header>
     <!-- Full Width Column -->
     <div class="content-wrapper">
+        @yield('banner')
         <div class="container">
             <!-- Content Header (Page header) -->
             <!-- Main content -->
