@@ -122,6 +122,7 @@
 <script src="{{url('admin-lte/dist/js/app.min.js')}}" type="text/javascript"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('admin-lte/dist/js/demo.js')}}" type="text/javascript"></script>
+@yield('script')
 </body>
 </html>
 

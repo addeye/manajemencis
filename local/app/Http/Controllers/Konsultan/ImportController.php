@@ -16,12 +16,15 @@ class ImportController extends Controller
 {
     public function importExcelKegiatan()
     {
-        return 'import';
+        $data = array(
+            'title' => 'Form Import Data'
+        );
+        return view('dashboard.konsultan.kegiatan.import_form',$data);
     }
 
     public function downloadExcelKegiatan()
     {
-        return 'downloadfile';
+        return response()->download('');
     }
 
     public function doImportKegiatan(Request $request)

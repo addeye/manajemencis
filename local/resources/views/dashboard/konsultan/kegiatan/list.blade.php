@@ -19,6 +19,7 @@
 				<div class="box-header">
 					<h3 class="box-title">{{$title}}</h3>
 					<div class="pull-right">
+						<a class="btn btn-info" href="{{ url('importKegiatan') }}">Import Data</a>
 						<a class="btn btn-primary" href="{{ url('k/kegiatan/create') }}">Tambah Data</a>
 					</div>
 				</div>
