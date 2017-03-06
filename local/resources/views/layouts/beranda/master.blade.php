@@ -51,7 +51,15 @@
             .carousel-inner>.item>a>img, .carousel-inner>.item>img {
                 line-height: 1;
                 width: 100%;
-                height: 600px;
+                height: 600px !important;
+            }
+        }
+
+        @media (min-width: 531px) {
+            .carousel-inner > .item > a > img, .carousel-inner > .item > img {
+                line-height: 1;
+                width: 100%;
+                height: 200px !important;
             }
         }
     </style>

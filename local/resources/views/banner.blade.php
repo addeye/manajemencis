@@ -17,24 +17,14 @@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="{{url('banner/banner.jpg')}}" alt="...">
+            @foreach($banner as $row)
+            <div id="myCarousel" class="item">
+                <img src="{{url('banner/'.$row->image)}}" alt="...">
                 <div class="carousel-caption">
-                    ...
+                    {{$row->keterangan}}
                 </div>
             </div>
-            <div class="item">
-                <img src="{{url('banner/banner.jpg')}}" alt="...">
-                <div class="carousel-caption">
-                    ...
-                </div>
-            </div>
-            <div class="item">
-                <img src="{{url('banner/banner.jpg')}}" alt="...">
-                <div class="carousel-caption">
-                    ...
-                </div>
-            </div>
+                @endforeach
         </div>
 
         <!-- Controls -->

@@ -224,6 +224,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/{id}/delete', 'SentraKumkmController@deleteData');
             Route::get('/report/all', 'SentraKumkmController@getAllColumn');
         });
+
+        //banner
+        Route::get('sbanner','BannerController@index');
+        Route::get('sbanner/add','BannerController@add');
+        Route::post('sbanner','BannerController@doAdd');
+        Route::get('sbanner/{id}/edit','BannerController@edit');
+        Route::put('sbanner/{id}/edit','BannerController@doEdit');
+        Route::get('sbanner/{id}/delete','BannerController@destroy');
     });
 
     Route::group(['namespace' => 'Konsultan', ['middleware' => ['konsultan']]], function ()
@@ -276,7 +284,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('importKegiatan','ImportController@importExcelKegiatan');
         Route::get('downloadKegiatan','ImportController@downloadExcelKegiatan');
         Route::post('importKegiatan','ImportController@doImportKegiatan');
-
     });
 
     //for admin

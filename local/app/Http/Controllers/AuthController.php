@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\Repositories\AuthRepository;
+use App\Repositories\BannerRepository;
 use App\Repositories\KegiatanKonsultanRepository;
 use App\Repositories\ProkerKonsultanRepository;
 use App\Repositories\SentraKumkmRepository;
@@ -21,16 +22,18 @@ class AuthController extends Controller
     protected $sentra;
     protected $kegiatan;
     protected $proker;
+    protected $banner;
 
     public function __construct(AuthRepository $auth,
                                 SentraKumkmRepository $sentraKumkmRepository,
                                 ProkerKonsultanRepository $prokerKonsultanRepository,
-                                KegiatanKonsultanRepository $kegiatanKonsultanRepository)
+                                KegiatanKonsultanRepository $kegiatanKonsultanRepository, BannerRepository $bannerRepository)
     {
         $this->auth = $auth;
         $this->sentra = $sentraKumkmRepository;
         $this->kegiatan = $kegiatanKonsultanRepository;
         $this->proker = $prokerKonsultanRepository;
+        $this->banner = $bannerRepository;
     }
 
     public function beranda()
@@ -41,6 +44,7 @@ class AuthController extends Controller
             'jml_proker' => count($this->proker->getAll()),
             'jml_kegiatan' => count($this->kegiatan->getAll()),
             'jml_penerima' => $this->kegiatan->jmlPesertaKegiatan(),
+            'banner' => $this->banner->getAll()
         );
         return view('beranda',$data);
     }

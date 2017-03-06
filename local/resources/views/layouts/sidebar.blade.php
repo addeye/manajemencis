@@ -158,6 +158,8 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
+                        <li class="{{active_check('sbanner',true)}}"><a href="{{ url('sbanner') }}"><i
+                                        class="fa fa-circle-o"></i> Banner</a></li>
                         <li class="{{active_check('tingkat',true)}}"><a href="{{ url('tingkat') }}"><i
                                         class="fa fa-circle-o"></i> Tingkat</a></li>
                         <li class="{{active_check('roles',true)}}"><a href="{{ url('roles') }}"><i

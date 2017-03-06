@@ -9,7 +9,7 @@
 @extends('layouts.beranda.master')
 
 @section('banner')
-    @include('banner')
+    @include('banner',['banner'=>$banner])
     @endsection
 
 @section('content')
@@ -162,6 +162,8 @@
             $('.scroll').slimScroll({
                 height: '250px'
             });
+
+            $('#myCarousel').addClass('active');
         });
     </script>
     @endsection
