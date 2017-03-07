@@ -212,6 +212,9 @@
                         </div>
                     </form>
                 </div>
+                <div id="loading" class="overlay" style="display: none;">
+                    <i class="fa fa-refresh fa-spin"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -231,6 +234,9 @@
             urlregencies = $('#urlregencies').val();
             $('#provinces').change(function(){
                 $.ajax({
+                    beforeSend:function(){
+                        $("#loading").show();
+                    },
                     url: urlregencies+'/'+this.value,
                     type : 'GET',
                     cache : false,
@@ -241,6 +247,7 @@
                             $(".select2").select2({
                                 theme: "bootstrap"
                             });
+                            $("#loading").hide();
                         })
             });
         });

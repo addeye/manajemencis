@@ -51,15 +51,7 @@
             .carousel-inner>.item>a>img, .carousel-inner>.item>img {
                 line-height: 1;
                 width: 100%;
-                height: 600px !important;
-            }
-        }
-
-        @media (min-width: 531px) {
-            .carousel-inner > .item > a > img, .carousel-inner > .item > img {
-                line-height: 1;
-                width: 100%;
-                height: 200px !important;
+                height: 502px;
             }
         }
     </style>
@@ -79,7 +71,7 @@
         <nav class="navbar navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="#" class="navbar-brand">
+                    <a href="{{url('/')}}" class="navbar-brand">
                         <div style="float: left"><img class="img-logo" src="{{url('cis-logo.png')}}"></div>
                         <div class="title-logo">PLUT-KUMKM</div>
                     </a>

@@ -72,7 +72,7 @@
         </div>
         <!-- ./col -->
         <div class="col-md-3 col-sm-6 col-xs-6">
-            <a href="#">
+            <a target="_blank" href="http://cis-nasional.id/">
                 <div class="info-box">
                     <span class="info-box-icon bg-aqua"><i class="fa fa-bank"></i></span>
                     <div class="info-box-content">
@@ -84,7 +84,7 @@
             <!-- /.info-box -->
         </div>
         <div class="col-md-3 col-sm-6 col-xs-6">
-            <a href="#">
+            <a href="{{url('kontak')}}">
                 <div class="info-box">
                     <span class="info-box-icon bg-green"><i class="fa fa-phone-square"></i></span>
 

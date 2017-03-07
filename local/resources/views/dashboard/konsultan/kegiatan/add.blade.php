@@ -114,6 +114,9 @@
                         </div>
                     </form>
                 </div>
+                <div id="loading" class="overlay" style="display: none;">
+                    <i class="fa fa-refresh fa-spin"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -126,6 +129,9 @@
         urldetail = $('#urldetailproker').val();
         $('#proker_id').change(function(){
             $.ajax({
+                beforeSend:function(){
+                    $("#loading").show();
+                },
                 url: urldetail+'/'+this.value,
                 type : 'GET',
                 cache : false,
@@ -133,6 +139,7 @@
             })
                     .success(function(response){
                         $('#ajaxDetailProker').html(response);
+                        $("#loading").hide();
                     })
         });
 
@@ -140,6 +147,9 @@
         {
             urldetailkegiatan = $('#urldetaildproker').val();
             $.ajax({
+                beforeSend:function(){
+                    $("#loading").show();
+                },
                 url : urldetailkegiatan+'/'+id,
                 type : 'GET',
                 cache : false,
@@ -147,6 +157,7 @@
             })
                     .success(function(response){
                         $('#ajaxDetailKegiatanProker').html(response);
+                        $("#loading").hide();
                     });
         }
     </script>

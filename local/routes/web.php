@@ -15,6 +15,7 @@ Route::get('/', 'AuthController@beranda')->middleware('guest');
 Route::get('/login', 'AuthController@login');
 Route::post('/dologin', 'AuthController@dologin');
 Route::get('/logout', 'AuthController@logout');
+Route::get('kontak','KontakController@tampil');
 
 /*For Common*/
 Route::group(['prefix' => 'common'], function () {
@@ -232,6 +233,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('sbanner/{id}/edit','BannerController@edit');
         Route::put('sbanner/{id}/edit','BannerController@doEdit');
         Route::get('sbanner/{id}/delete','BannerController@destroy');
+
+        Route::get('set_kontak','KontakController@index');
+        Route::post('set_kontak','KontakController@doEdit');
     });
 
     Route::group(['namespace' => 'Konsultan', ['middleware' => ['konsultan']]], function ()

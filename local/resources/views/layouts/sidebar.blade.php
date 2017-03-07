@@ -150,7 +150,7 @@
                 </li>
                 <li class=""><a href=""><i class="fa fa-dashboard"></i> <span>Digitalisasi UMKM</span></a></li>
                 <li class=""><a href=""><i class="fa fa-dashboard"></i> <span>Produk Unggulan</span></a></li>
-                <li class="treeview {{active_check('roles',true)}} {{active_check('u',true)}} {{active_check('tingkat',true)}}">
+                <li class="treeview {{active_check('roles',true)}} {{active_check('u',true)}} {{active_check('set_kontak',true)}} {{active_check('sbanner',true)}} {{active_check('tingkat',true)}}">
                     <a href="#">
                         <i class="fa fa-cog"></i> <span>Setting</span>
             <span class="pull-right-container">
@@ -160,6 +160,8 @@
                     <ul class="treeview-menu">
                         <li class="{{active_check('sbanner',true)}}"><a href="{{ url('sbanner') }}"><i
                                         class="fa fa-circle-o"></i> Banner</a></li>
+                        <li class="{{active_check('set_kontak',true)}}"><a href="{{ url('set_kontak') }}"><i
+                                        class="fa fa-circle-o"></i> Kontak</a></li>
                         <li class="{{active_check('tingkat',true)}}"><a href="{{ url('tingkat') }}"><i
                                         class="fa fa-circle-o"></i> Tingkat</a></li>
                         <li class="{{active_check('roles',true)}}"><a href="{{ url('roles') }}"><i

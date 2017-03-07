@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: deyelovi
- * Date: 06/03/2017
- * Time: 14:44
+ * Date: 07/03/2017
+ * Time: 12:39
  */
 ?>
 @extends('layouts.master')
@@ -12,27 +12,37 @@
 
     <div class="row">
         <div class="col-xs-12">
+            @include('layouts.alert')
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{$title}}</h3>
                 </div>
                 <!-- / box Header -->
                 <div class="box-body">
-                    <form method="post" action="{{ url('sbanner/'.$data->id.'/edit') }}" class="form-horizontal" enctype="multipart/form-data">
-                        <input type="hidden" name="_method" value="PUT">
+                    <form method="post" action="{{ url('set_kontak') }}" class="form-horizontal">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Keterangan</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Identitas</label>
                             <div class="col-sm-5">
-                                <textarea name="keterangan" class="form-control" required>{{$data->keterangan}}</textarea>
+                                <textarea class="form-control" name="identitas" rows="3">{{$data->identitas}}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Gambar</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Alamat</label>
                             <div class="col-sm-5">
-                                <img src="{{url('banner/'.$data->image)}}" class="img-responsive" alt="Responsive image">
-                                <input type="file" name="image">
-                                <p class="text-danger">{{ $errors->first('image') }}</p>
+                                <textarea class="form-control" name="alamat" rows="3">{{$data->alamat}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="email" class="form-control" value="{{$data->email}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Website</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="website" class="form-control" value="{{$data->website}}">
                             </div>
                         </div>
                         <div class="form-group">

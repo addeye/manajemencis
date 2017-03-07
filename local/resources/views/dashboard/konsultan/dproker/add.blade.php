@@ -79,6 +79,9 @@
                         </div>
                     </form>
                 </div>
+                <div id="loading" class="overlay" style="display: none;">
+                    <i class="fa fa-refresh fa-spin"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -91,12 +94,16 @@
             var id = this.value;
             var url = $('#url').val();
             $.ajax({
+                beforeSend:function(){
+                    $("#loading").show();
+                },
                 url : url+'/'+id,
                 type : 'GET',
                 cache : false
             })
                     .success(function(response){
                         $('#ajaxFormProsesOutput').html(response);
+                        $("#loading").hide();
                     });
         });
     </script>

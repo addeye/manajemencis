@@ -117,6 +117,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
     $(function () {
 
+        $("[data-toggle=popover]").popover();
+
         //Datemask dd/mm/yyyy
         $(".datemaskyear").inputmask("9999", {"placeholder": "yyyy"});
 

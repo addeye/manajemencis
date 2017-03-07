@@ -242,6 +242,9 @@
                         </div>
                     </form>
                 </div>
+                <div id="loading" class="overlay" style="display: none;">
+                    <i class="fa fa-refresh fa-spin"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -257,36 +260,48 @@
         var urlVillages = $('#urlVillages').val();
         $('#provinces_id').change(function(){
             $.ajax({
+                beforeSend:function(){
+                    $("#loading").show();
+                },
                 url : urlRegencies+'/'+this.value,
                 type : 'GET',
                 cache : false
             })
                     .success(function(response){
                         $('#ajaxRegencies').html(response);
+                        $("#loading").hide();
                     });
         });
 
         function regencies(id)
         {
             $.ajax({
+                beforeSend:function(){
+                    $("#loading").show();
+                },
                 url : urlDisticts+'/'+id,
                 type : 'GET',
                 cache : false
             })
                     .success(function(response){
                         $('#ajaxDistics').html(response);
+                        $("#loading").hide();
                     });
         }
 
         function districts(id)
         {
             $.ajax({
+                beforeSend:function(){
+                    $("#loading").show();
+                },
                 url : urlVillages+'/'+id,
                 type : 'GET',
                 cache : false
             })
                     .success(function(response){
                         $('#ajaxVillages').html(response);
+                        $("#loading").hide();
                     });
         }
     </script>
