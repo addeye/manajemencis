@@ -236,6 +236,13 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('set_kontak','KontakController@index');
         Route::post('set_kontak','KontakController@doEdit');
+
+        Route::get('pengumuman','PengumumanController@index');
+        Route::get('pengumuman/add','PengumumanController@add');
+        Route::post('pengumuman','PengumumanController@doAdd');
+        Route::get('pengumuman/{id}','PengumumanController@edit');
+        Route::put('pengumuman/{id}','PengumumanController@doEdit');
+        Route::get('pengumuman/{id}/delete','PengumumanController@destroy');
     });
 
     Route::group(['namespace' => 'Konsultan', ['middleware' => ['konsultan']]], function ()

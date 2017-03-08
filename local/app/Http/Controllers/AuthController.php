@@ -12,6 +12,7 @@ namespace App\Http\Controllers;
 use App\Repositories\AuthRepository;
 use App\Repositories\BannerRepository;
 use App\Repositories\KegiatanKonsultanRepository;
+use App\Repositories\PengumumanRepository;
 use App\Repositories\ProkerKonsultanRepository;
 use App\Repositories\SentraKumkmRepository;
 use Illuminate\Http\Request;
@@ -23,17 +24,20 @@ class AuthController extends Controller
     protected $kegiatan;
     protected $proker;
     protected $banner;
+    protected $pengumuman;
 
     public function __construct(AuthRepository $auth,
                                 SentraKumkmRepository $sentraKumkmRepository,
                                 ProkerKonsultanRepository $prokerKonsultanRepository,
-                                KegiatanKonsultanRepository $kegiatanKonsultanRepository, BannerRepository $bannerRepository)
+                                KegiatanKonsultanRepository $kegiatanKonsultanRepository,
+                                BannerRepository $bannerRepository, PengumumanRepository $pengumumanRepository)
     {
         $this->auth = $auth;
         $this->sentra = $sentraKumkmRepository;
         $this->kegiatan = $kegiatanKonsultanRepository;
         $this->proker = $prokerKonsultanRepository;
         $this->banner = $bannerRepository;
+        $this->pengumuman = $pengumumanRepository;
     }
 
     public function beranda()
@@ -44,7 +48,8 @@ class AuthController extends Controller
             'jml_proker' => count($this->proker->getAll()),
             'jml_kegiatan' => count($this->kegiatan->getAll()),
             'jml_penerima' => $this->kegiatan->jmlPesertaKegiatan(),
-            'banner' => $this->banner->getAll()
+            'banner' => $this->banner->getAll(),
+            'pengumuman' => $this->pengumuman->getAll()
         );
         return view('beranda',$data);
     }

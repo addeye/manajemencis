@@ -125,23 +125,21 @@
                     <h3 class="box-title">Pengumuman</h3>
                 </div>
                 <div class="box-body chat scroll" id="chat-box">
-                    @for($a=1; $a<=10; $a++)
+                    @foreach($pengumuman as $row)
                     <!-- chat item -->
                     <div class="item">
-                        <img src="{{url('admin-lte/dist/img/user4-128x128.jpg')}}" alt="user image" class="online">
+                        <img src="{{url('images/'.$row->user->path)}}" alt="user image" class="online">
                         <p class="message">
                             <a href="#" class="name">
                                 <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
-                                Admin CIS PLUT-KUMKM
+                                {{$row->user->name}} - {{$row->judul}}
                             </a>
-                            I would like to meet you to discuss the latest news about
-                            the arrival of the new theme. They say it is going to be one the
-                            best themes on the market
+                            {{$row->keterangan}}
                         </p>
                         <!-- /.attachment -->
                     </div>
                     <!-- /.item -->
-                    @endfor
+                    @endforeach
                 </div>
                 <!-- /.chat -->
             </div>
