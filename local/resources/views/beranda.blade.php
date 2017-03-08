@@ -73,25 +73,22 @@
         <!-- ./col -->
         <div class="col-md-3 col-sm-6 col-xs-6">
             <a target="_blank" href="http://cis-nasional.id/">
-                <div class="info-box">
-                    <span class="info-box-icon bg-aqua"><i class="fa fa-bank"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Seputar Plut</span>
+                <div class="text-center">
+                    <i class="fa fa-bank fa-5x"></i>
+                    <div class="caption">
+                        <h4>Seputar PLUT</h4>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
             </a>
             <!-- /.info-box -->
         </div>
         <div class="col-md-3 col-sm-6 col-xs-6">
             <a href="{{url('kontak')}}">
-                <div class="info-box">
-                    <span class="info-box-icon bg-green"><i class="fa fa-phone-square"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Kontak</span>
+                <div class="text-center">
+                    <i class="fa fa-phone-square fa-5x"></i>
+                    <div class="caption">
+                        <h4>Kontak</h4>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
             </a>
             <!-- /.info-box -->
@@ -99,12 +96,11 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-6">
             <a href="#">
-                <div class="info-box">
-                    <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Konsultasi</span>
+                <div class="text-center">
+                    <i class="fa fa-users fa-5x"></i>
+                    <div class="caption">
+                        <h4>Konsultasi</h4>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
             </a>
             <!-- /.info-box -->
@@ -112,13 +108,11 @@
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-6">
             <a href="#">
-                <div class="info-box">
-                    <span class="info-box-icon bg-red"><i class="fa fa-globe"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">Informasi Pasar</span>
+                <div class="text-center">
+                    <i class="fa fa-globe fa-5x"></i>
+                    <div class="caption">
+                        <h4>Informasi Pasar</h4>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
             </a>
             <!-- /.info-box -->
