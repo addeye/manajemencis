@@ -95,7 +95,7 @@
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-6">
-            <a href="#">
+            <a href="{{url('konsultasi')}}">
                 <div class="text-center">
                     <i class="fa fa-users fa-5x"></i>
                     <div class="caption">
@@ -122,7 +122,7 @@
             <div class="box box-success">
                 <div class="box-header">
                     <i class="fa fa-info-circle"></i>
-                    <h3 class="box-title">Pengumuman</h3>
+                    <h3 class="box-title">Info Terbaru</h3>
                 </div>
                 <div class="box-body chat scroll" id="chat-box">
                     @foreach($pengumuman as $row)
@@ -131,7 +131,7 @@
                         <img src="{{url('images/'.$row->user->path)}}" alt="user image" class="online">
                         <p class="message">
                             <a href="#" class="name">
-                                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> 2:15</small>
+                                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{$row->dibuat}}</small>
                                 {{$row->user->name}} - {{$row->judul}}
                             </a>
                             {{$row->keterangan}}

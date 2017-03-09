@@ -51,6 +51,7 @@ class AuthController extends Controller
             'banner' => $this->banner->getAll(),
             'pengumuman' => $this->pengumuman->getAll()
         );
+
         return view('beranda',$data);
     }
 

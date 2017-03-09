@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'id',
 
     /*
     |--------------------------------------------------------------------------
@@ -181,7 +181,8 @@ return [
         Pyaesone17\ActiveState\ActiveStateServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
 
-        \Maatwebsite\Excel\ExcelServiceProvider::class
+        \Maatwebsite\Excel\ExcelServiceProvider::class,
+        Fadion\Maneuver\ManeuverServiceProvider::class
 
     ],
 

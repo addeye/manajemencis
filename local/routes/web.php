@@ -27,6 +27,9 @@ Route::group(['prefix' => 'common'], function () {
     Route::get('proses_output/{jenis_layanan_id}', 'CommonController@getProsesOutput');
 });
 
+Route::get('konsultasi','KonsultasiController@add');
+Route::post('konsultasi','KonsultasiController@doAdd');
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/home', 'HomeController@index');
@@ -243,6 +246,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('pengumuman/{id}','PengumumanController@edit');
         Route::put('pengumuman/{id}','PengumumanController@doEdit');
         Route::get('pengumuman/{id}/delete','PengumumanController@destroy');
+
+        Route::get('listkonsultan','KonsultasiController@index');
     });
 
     Route::group(['namespace' => 'Konsultan', ['middleware' => ['konsultan']]], function ()

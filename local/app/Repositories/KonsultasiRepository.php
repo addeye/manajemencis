@@ -2,42 +2,40 @@
 /**
  * Created by PhpStorm.
  * User: deyelovi
- * Date: 08/03/2017
- * Time: 14:23
+ * Date: 09/03/2017
+ * Time: 15:51
  */
 
 namespace App\Repositories;
 
 
-use App\Pengumuman;
-use Illuminate\Support\Facades\Auth;
+use App\Konsultasi;
 
-class PengumumanRepository
+class KonsultasiRepository
 {
-    protected $pengumuman;
+    protected $konsultasi;
 
-    public function __construct(Pengumuman $pengumuman)
+    public function __construct(Konsultasi $konsultasi)
     {
-        $this->pengumuman = $pengumuman;
+        $this->konsultasi = $konsultasi;
     }
 
     // Select All
     Public function getAll()
     {
-        return $this->pengumuman->orderBy('id','desc')->get();
+        return $this->konsultasi->all();
     }
 
     // Select where id
     public function getById($id)
     {
-        return $this->pengumuman->find($id);
+        return $this->konsultasi->find($id);
     }
 
     // Insert into
     public function create($data=array())
     {
-        $data['user_id'] = Auth::user()->id;
-        $result = $this->pengumuman->create($data);
+        $result = $this->konsultasi->create($data);
         if ($result)
         {
             return true;
@@ -50,7 +48,7 @@ class PengumumanRepository
     // Update
     public function update($id,$data=array())
     {
-        $result =$this->pengumuman->find($id)->update($data);
+        $result =$this->konsultasi->find($id)->update($data);
         if ($result)
         {
             return true;
@@ -62,7 +60,7 @@ class PengumumanRepository
     // Delete
     public function delete($id)
     {
-        $result = $this->pengumuman->destroy($id);
+        $result = $this->konsultasi->destroy($id);
         if ($result)
         {
             return true;
