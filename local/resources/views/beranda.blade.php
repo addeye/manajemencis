@@ -24,7 +24,7 @@
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="#" class="small-box-footer">Total Sentra UMKM <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">Total Sentra <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -67,7 +67,7 @@
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#" class="small-box-footer">Penerima Manfaat <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">Total Penerima <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -134,7 +134,7 @@
                                 <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{$row->dibuat}}</small>
                                 {{$row->user->name}} - {{$row->judul}}
                             </a>
-                            {{$row->keterangan}}
+                            {!! $row->keterangan !!}
                         </p>
                         <!-- /.attachment -->
                     </div>

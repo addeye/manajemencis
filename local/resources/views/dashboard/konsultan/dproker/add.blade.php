@@ -55,12 +55,12 @@
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Jadwal Pelaksana</label>
-                            <div class="col-sm-3">
-                                <select class="form-control" name="jadwal_pelaksana">
+                            <div class="col-sm-5">
+                                <select class="form-control select2" name="jadwal_pelaksana[]" multiple="multiple" data-placeholder="Pilih Jadwal Pelaksana" style="width: 100%;">
                                     <option value="">Pilih Minggu Ke</option>
                                     @for($i=1; $i<=56; $i++)
                                         <option value="{{ 'Minggu Ke-'.$i }}">{{ 'Minggu Ke-'.$i }}</option>
-                                        @endfor
+                                    @endfor
                                 </select>
                             </div>
                         </div>

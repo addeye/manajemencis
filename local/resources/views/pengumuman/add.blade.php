@@ -11,7 +11,6 @@
 @extends('layouts.master')
 
 @section('content')
-
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
@@ -31,7 +30,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Keterangan</label>
                             <div class="col-sm-5">
-                                <textarea class="form-control" name="keterangan" placeholder="Keterangan..." required></textarea>
+                                <textarea class="form-control wysihtml5" name="keterangan" placeholder="Keterangan..." required></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -50,3 +49,16 @@
         </div>
     </div>
 @endsection
+
+@section('css')
+        <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="{{url('admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+@endsection
+
+@section('script')
+        <!-- Bootstrap WYSIHTML5 -->
+<script src="{{url('admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
+    <script>
+        $(".wysihtml5").wysihtml5();
+    </script>
+    @endsection

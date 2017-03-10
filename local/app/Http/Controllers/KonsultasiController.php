@@ -20,11 +20,11 @@ class KonsultasiController extends Controller
     public function index()
     {
         $data=array(
-            'title' => 'Daftar Konsultasi',
+            'title' => 'Daftar Konsultasi Masuk',
             'konsultasi' => $this->konsultasi->getAll()
         );
 
-        return $data;
+        return view('konsultasi.list',$data);
     }
 
     public function add()

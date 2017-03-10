@@ -24,8 +24,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- DataTables -->
     <link href="{{ url("admin-lte/plugins/datatables/dataTables.bootstrap.css") }}" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="{{ url("admin-lte/dist/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
     <link rel="icon" href="{{url('cis-ico.png')}}" sizes="32x32" />
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
           page. However, you can choose any other skin. Make sure you
@@ -34,15 +32,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link href="{{ url("admin-lte/dist/css/skins/skin-blue.min.css")}}" rel="stylesheet" type="text/css" />
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ url('admin-lte/plugins/select2/select2.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.6/select2-bootstrap.css">
 
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css">
-
 
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="{{url('admin-lte/plugins/datepicker/datepicker3.css')}}">
 
     @yield('css')
+
+            <!-- Theme style -->
+    <link href="{{ url("admin-lte/dist/css/AdminLTE.min.css")}}" rel="stylesheet" type="text/css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -111,6 +110,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Select2 -->
 <script src="{{ url('admin-lte/plugins/select2/select2.full.min.js') }}"></script>
 
+
+
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the
       user experience -->
@@ -122,9 +123,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         //Datemask dd/mm/yyyy
         $(".datemaskyear").inputmask("9999", {"placeholder": "yyyy"});
 
-        $(".select2").select2({
-            theme: "bootstrap"
-        });
+        $(".select2").select2();
 
         //Date picker
         $('.datepicker').datepicker({

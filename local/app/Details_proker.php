@@ -20,6 +20,13 @@ class Details_proker extends Model
         'mitra_kerja',
     ];
 
+    protected $appends = array('jadwal');
+
+    public function getJadwalAttribute()
+    {
+        return explode(", ",$this->jadwal_pelaksana);
+    }
+
     public function prokers()
     {
         return $this->belongsTo(Proker_konsultan::class,'proker_id');

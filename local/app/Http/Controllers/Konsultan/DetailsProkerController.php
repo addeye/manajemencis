@@ -48,7 +48,8 @@ class DetailsProkerController extends Controller
     public function doAddData(Request $request)
     {
         $data = $request->all();
-//        return $data;
+        $teks=implode(", ",$request->jadwal_pelaksana);
+        $data['jadwal_pelaksana'] = $teks;
         $result = $this->detailproker->create($data);
         if($result)
         {
@@ -69,7 +70,8 @@ class DetailsProkerController extends Controller
     public function doEditData(Request $request,$id)
     {
         $data = $request->all();
-//        return $data;
+        $teks=implode(", ",$request->jadwal_pelaksana);
+        $data['jadwal_pelaksana'] = $teks;
         $result = $this->detailproker->update($id,$data);
         if($result)
         {

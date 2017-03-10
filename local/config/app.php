@@ -182,7 +182,8 @@ return [
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
 
         \Maatwebsite\Excel\ExcelServiceProvider::class,
-        Fadion\Maneuver\ManeuverServiceProvider::class
+        Fadion\Maneuver\ManeuverServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class
 
     ],
 

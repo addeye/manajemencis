@@ -16,18 +16,18 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <form role="form">
+            <form role="form" method="post" action="#">
                 <!-- text input -->
                 <div class="form-group">
-                    <label>Nama</label>
-                    <input type="text" class="form-control" placeholder="Nama..">
+                    <label>Nama lengkap sesuai KTP *</label>
+                    <input type="text" class="form-control" name="nama" placeholder="Nama lengkap.." value="{{old('nama')}}">
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" class="form-control" placeholder="Email anda..">
+                    <label>Email *</label>
+                    <input type="text" class="form-control" name="email" placeholder="Email anda.." value="{{old('email')}}">
                 </div>
                 <div class="form-group">
-                    <label>No Hp</label>
+                    <label>No Hp *</label>
                     <input type="text" class="form-control" placeholder="No Hp anda..">
                 </div>
                 <!-- textarea -->
@@ -51,6 +51,7 @@
                             @endforeach
                     </select>
                 </div>
+                {!! app('captcha')->display() !!}
                 <div class="box-footer">
                     <a href="{{url('/')}}" class="btn btn-default">Kembali</a>
                     <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i> Kirim</button>
