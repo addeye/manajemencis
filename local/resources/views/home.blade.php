@@ -66,6 +66,9 @@
             <div class="box-header">
                 <i class="fa fa-info-circle"></i>
                 <h3 class="box-title">Info Terbaru</h3>
+                <div class="pull-right">
+                    <a href="#" class="small-box-footer pull-right">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
             </div>
             <div class="box-body chat scroll" id="chat-box">
                 @foreach($pengumuman as $row)
@@ -94,6 +97,9 @@
             <div class="box-header">
                 <i class="fa fa-comments-o"></i>
                 <h3 class="box-title">Konsultasi Online</h3>
+                <div class="pull-right">
+                    <a href="#" class="small-box-footer pull-right">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
             </div>
             <div class="box-body chat scroll" id="chat-box">
                 @foreach($konsultasi as $row)
@@ -101,7 +107,7 @@
                 <div class="item">
                     <span class="fa fa-user fa-3x"></span>
                     <p class="message">
-                        <a href="#" class="name">
+                        <a href="{{url('konsultasi/'.$row->id.'/detail')}}" class="name">
                             <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{$row->dibuat}}</small>
                             {{$row->nama}} - {{$row->email}}
                         </a>
@@ -114,9 +120,6 @@
                 @endforeach
             </div>
             <!-- /.chat -->
-            <div class="box-footer">
-                <a href="#" class="small-box-footer pull-right">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
         </div>
         <!-- /.box (chat box) -->
     </div>

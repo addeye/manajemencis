@@ -24,7 +24,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4><i class="icon fa fa-check"></i> Peringatan!</h4>
+        <h4><i class="icon fa fa-check"></i> Berhasil!</h4>
         {!! session('success') !!}
     </div>
 @endif
@@ -36,7 +36,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4><i class="icon fa fa-info"></i> Peringatan!</h4>
+        <h4><i class="icon fa fa-info"></i> Informasi!</h4>
         {!! session('info') !!}
     </div>
 @endif

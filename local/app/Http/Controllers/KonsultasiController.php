@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\BidangLayananRepository;
 use App\Repositories\KonsultasiRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class KonsultasiController extends Controller
@@ -12,7 +13,8 @@ class KonsultasiController extends Controller
     protected $konsultasi;
     protected $bidanglayanan;
 
-    public function __construct(KonsultasiRepository $konsultasiRepository, BidangLayananRepository $bidangLayananRepository)
+    public function __construct(KonsultasiRepository $konsultasiRepository,
+                                BidangLayananRepository $bidangLayananRepository)
     {
         $this->konsultasi = $konsultasiRepository;
         $this->bidanglayanan = $bidangLayananRepository;
@@ -68,11 +70,69 @@ class KonsultasiController extends Controller
         $result = $this->konsultasi->create($data);
         if($result)
         {
-            return redirect('konsultasi')->with('success','Terimakasih ! Formulir anda sudah kami terima informasi selanjutnya cek melalui Email anda');
+            return redirect('konsultasi')->with('success','Terima kasih ! Informasi selanjutnya cek melalui Email anda');
         }
         else
         {
             return redirect('konsultasi')->with('error','Maaf ! Terjadi kesalahan dalam sistem silhkan hubungi Administrator');
+        }
+    }
+
+    public function detail($id)
+    {
+        $data=array(
+            'user' => Auth::user(),
+            'data' => $this->konsultasi->getById($id)
+        );
+
+        return view('konsultasi.detail',$data);
+    }
+
+    public function doEdit(Request $request,$id)
+    {
+        $data = $request->all();
+        $rules = [
+            'respon' => 'required'
+        ];
+        $messages = [
+            'respon.required' => 'Respon tidak boleh kosong...'
+        ];
+
+        $validator = Validator::make($data,$rules,$messages);
+        if($validator->fails())
+        {
+            return redirect('konsultasi/'.$id.'/detail')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        if(Auth::user()->role_id==1)
+        {
+            return redirect('konsultasi/'.$id.'/detail')->with('error','Anda tidak boleh sebagai Admin Nasional');
+        }
+
+        if(Auth::user()->role_id==2)
+        {
+            $lembaga_id = Auth::user()->adminlembagas->lembaga_id;
+        }
+        elseif(Auth::user()->role_id==3)
+        {
+            $lembaga_id = Auth::user()->konsultans->lembaga_id;
+        }
+
+        $data=[
+            'lembaga_id' => $lembaga_id,
+            'user_id' => Auth::user()->id,
+            'respon' => $request->respon
+        ];
+        $result = $this->konsultasi->update($id,$data);
+        if($result)
+        {
+            return redirect('konsultasi/'.$id.'/detail')->with('success','Respon anda berhasil terkirim');
+        }
+        else
+        {
+            return redirect('konsultasi/'.$id.'/detail')->with('error','Terjadi kesalahan sistem silahkan hubungi Administrator');
         }
     }
 }

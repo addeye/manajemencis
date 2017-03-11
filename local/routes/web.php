@@ -36,6 +36,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile', 'HomeController@profile');
     Route::put('/profile/{id}/update', 'HomeController@doProfile');
 
+    Route::get('konsultasi/{id}/detail','KonsultasiController@detail');
+    Route::put('konsultasi/{id}','KonsultasiController@doEdit');
+
     Route::group(['middleware' => ['superadmin']], function () {
         /*For Provinsi*/
         Route::get('/provinces', 'ProvincesController@getAll');
