@@ -110,6 +110,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Select2 -->
 <script src="{{ url('admin-lte/plugins/select2/select2.full.min.js') }}"></script>
 
+<!-- SlimScroll -->
+<script src="{{url('admin-lte/plugins/slimScroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
+
 
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.

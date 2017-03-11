@@ -41,7 +41,7 @@ class CreateKonsultansTable extends Migration
             $table->text('sertifikat');
             $table->string('asosiasi');
             $table->integer('lembaga_id')->unsigned();
-            $table->foreign('lembaga_id')->references('id')->on('lembagas');
+            $table->foreign('lembaga_id')->references('id')->on('cis_lembagas');
             $table->integer('bidang_layanan_id')->unsigned();
             $table->foreign('bidang_layanan_id')->references('id')->on('bidang_layanans');
             $table->timestamps();

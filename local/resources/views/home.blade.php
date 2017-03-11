@@ -13,7 +13,7 @@
             <div class="icon">
                 <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">Total Sentra UMKM <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">Total Sentra <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -21,47 +21,108 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>{{$jml_proker}}</h3>
-                <p>Proker Konsultan</p>
+                <h3>{{0}}</h3>
+                <p>Produk Unggulan</p>
             </div>
             <div class="icon">
                 <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">Total Proker Konsultan<i class="fa fa-arrow-circle-right"></i></a>
+            <a href="#" class="small-box-footer">Total Produk<i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
-    <div style="">
-        <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-yellow">
-                <div class="inner">
-                    <h3>{{$jml_kegiatan}}</h3>
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3>{{$jml_kegiatan}}</h3>
 
-                    <p>Jumlah Kegiatan</p>
+                <p>Jumlah Kegiatan</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">Total Kegiatan <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3>{{$jml_penerima}}</h3>
+                <p>Penerima Manfaat</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">Total Penerima <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-xs-12 col-md-6">
+        <!-- Chat box -->
+        <div class="box box-success">
+            <div class="box-header">
+                <i class="fa fa-info-circle"></i>
+                <h3 class="box-title">Info Terbaru</h3>
+            </div>
+            <div class="box-body chat scroll" id="chat-box">
+                @foreach($pengumuman as $row)
+                        <!-- chat item -->
+                <div class="item">
+                    <img src="{{url('images/'.$row->user->path)}}" alt="user image" class="online">
+                    <p class="message">
+                        <a href="#" class="name">
+                            <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{$row->dibuat}}</small>
+                            {{$row->user->name}} - {{$row->judul}}
+                        </a>
+                        {!! $row->keterangan !!}
+                    </p>
+                    <!-- /.attachment -->
                 </div>
-                <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
+                <!-- /.item -->
+                @endforeach
+            </div>
+            <!-- /.chat -->
+        </div>
+        <!-- /.box (chat box) -->
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <!-- Chat box -->
+        <div class="box box-info">
+            <div class="box-header">
+                <i class="fa fa-comments-o"></i>
+                <h3 class="box-title">Konsultasi Online</h3>
+            </div>
+            <div class="box-body chat scroll" id="chat-box">
+                @foreach($konsultasi as $row)
+                        <!-- chat item -->
+                <div class="item">
+                    <span class="fa fa-user fa-3x"></span>
+                    <p class="message">
+                        <a href="#" class="name">
+                            <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{$row->dibuat}}</small>
+                            {{$row->nama}} - {{$row->email}}
+                        </a>
+                        {!! $row->permasalahan_bisnis !!}
+                    </p>
+                    <small class="pull-right">Repson {{$row->lembaga_id?$row->lembaga->plut_name:'Belum ada'}}</small>
+                    <!-- /.attachment -->
                 </div>
-                <a href="#" class="small-box-footer">Jumlah Laporan Kegiatan <i class="fa fa-arrow-circle-right"></i></a>
+                <!-- /.item -->
+                @endforeach
+            </div>
+            <!-- /.chat -->
+            <div class="box-footer">
+                <a href="#" class="small-box-footer pull-right">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
+        <!-- /.box (chat box) -->
+    </div>
+
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-            <!-- small box -->
-            <div class="small-box bg-red">
-                <div class="inner">
-                    <h3>{{$jml_penerima}}</h3>
-                    <p>Penerima Manfaat</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">Jumlah Penerima Manfaat <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-md-12" style="display: none">
+    <div class="col-md-12" style="display: none">
             <!-- LINE CHART -->
             <div class="box box-info">
                 <div class="box-header with-border">
@@ -80,7 +141,7 @@
             </div>
             <!-- /.box -->
         </div>
-    </div>
+
 </div>
 @endsection
 
@@ -111,5 +172,12 @@
         lineColors: ['#3c8dbc'],
         hideHover: 'auto'
     });
+
+    $(function(){
+        $('.scroll').slimScroll({
+            height: '250px'
+        });
+    });
+
 </script>
 @endsection

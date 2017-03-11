@@ -16,13 +16,16 @@ class CreateKonsultasisTable extends Migration
         Schema::create('konsultasi', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->text('alamat');
-            $table->string('bidang_usaha');
-            $table->string('usaha');
             $table->string('email');
             $table->string('telp');
-            $table->integer('bidang_layanan_id')->unsigned();
-            $table->foreign('bidang_layanan_id')->references('id')->on('bidang_layanans');
+            $table->text('alamat')->nullable();
+            $table->string('produk')->nullable();
+            $table->text('permasalahan_bisnis');
+            $table->integer('lembaga_id')->unsigned()->nullable();
+            $table->foreign('lembaga_id')->references('id')->on('cis_lembagas');
+            $table->text('respon')->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

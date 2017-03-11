@@ -5,6 +5,8 @@ use App\Repositories\AdminLembagaRepository;
 use App\Repositories\DetailsProkersRepository;
 use App\Repositories\KegiatanKonsultanRepository;
 use App\Repositories\KonsultanRepository;
+use App\Repositories\KonsultasiRepository;
+use App\Repositories\PengumumanRepository;
 use App\Repositories\ProkerKonsultanRepository;
 use App\Repositories\SentraKumkmRepository;
 use App\Repositories\UserRepository;
@@ -23,6 +25,8 @@ class HomeController extends Controller
     protected $adminlembaga;
     protected $kegiatan;
     protected $detailProker;
+    protected $pengumuman;
+    protected $konsultasi;
 
     public function __construct(UserRepository $user,
                                 SentraKumkmRepository $sentraKumkmRepository,
@@ -30,7 +34,8 @@ class HomeController extends Controller
                                 KonsultanRepository $konsultanRepository,
                                 AdminLembagaRepository $adminLembagaRepository,
                                 KegiatanKonsultanRepository $kegiatanKonsultanRepository,
-                                DetailsProkersRepository $detailsProkersRepository)
+                                DetailsProkersRepository $detailsProkersRepository,
+                                PengumumanRepository $pengumumanRepository, KonsultasiRepository $konsultasiRepository)
     {
         $this->user = $user;
         $this->sentra = $sentraKumkmRepository;
@@ -39,6 +44,8 @@ class HomeController extends Controller
         $this->adminlembaga = $adminLembagaRepository;
         $this->kegiatan = $kegiatanKonsultanRepository;
         $this->detailProker = $detailsProkersRepository;
+        $this->pengumuman = $pengumumanRepository;
+        $this->konsultasi = $konsultasiRepository;
     }
     public function index()
     {
@@ -48,6 +55,8 @@ class HomeController extends Controller
             'jml_proker' => count($this->proker->getAll()),
             'jml_kegiatan' => count($this->kegiatan->getAll()),
             'jml_penerima' => $this->kegiatan->jmlPesertaKegiatan(),
+            'pengumuman' => $this->pengumuman->getAll(),
+            'konsultasi' => $this->konsultasi->getAll()
         );
         return view('home',$data);
 

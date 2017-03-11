@@ -16,6 +16,7 @@ use App\Repositories\PengumumanRepository;
 use App\Repositories\ProkerKonsultanRepository;
 use App\Repositories\SentraKumkmRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -66,6 +67,26 @@ class AuthController extends Controller
             'email' => $request->email,
             'password' => $request->password
         );
+
+        $rules = array(
+            'email' => 'required|email',
+            'password' => 'required'
+        );
+
+        $message = array(
+            'email.required' => 'Email harus di isi',
+            'email.email' => 'Pastikan email anda benar',
+            'password.required' => 'Password tidak boleh kosong'
+        );
+
+        $validator = Validator::make($data,$rules,$message);
+        if($validator->fails())
+        {
+            return redirect('login')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
         if($this->auth->getCheckUser($data))
         {
             return redirect()->intended('home');

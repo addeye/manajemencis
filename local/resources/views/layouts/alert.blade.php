@@ -12,7 +12,8 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        {{ session('error') }}
+        <h4><i class="icon fa fa-ban"></i> Peringatan!</h4>
+        {!! session('error') !!}
     </div>
 @endif
 {{--End Alert--}}
@@ -23,7 +24,8 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        {{ session('success') }}
+        <h4><i class="icon fa fa-check"></i> Peringatan!</h4>
+        {!! session('success') !!}
     </div>
 @endif
 {{--End Alert--}}
@@ -34,7 +36,8 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        {{ session('info') }}
+        <h4><i class="icon fa fa-info"></i> Peringatan!</h4>
+        {!! session('info') !!}
     </div>
 @endif
 {{--End Alert--}}

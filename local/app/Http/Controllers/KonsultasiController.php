@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\BidangLayananRepository;
 use App\Repositories\KonsultasiRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class KonsultasiController extends Controller
 {
@@ -37,6 +38,41 @@ class KonsultasiController extends Controller
 
     public function doAdd(Request $request)
     {
-        return $request->all();
+        $data =  $request->all();
+        $rules = array(
+            'nama'                  => 'required',
+            'email'                 => 'required|email',
+            'telp'                  => 'required|numeric',
+            'alamat'                => 'nullable',
+            'produk'                => 'nullable',
+            'permasalahan_bisnis'   => 'required'
+        );
+
+        $message =array(
+            'nama.required'                 => 'Nama tidak boleh kosong',
+            'email.required'                => 'Email tidak boleh kosong',
+            'email.email'                   => 'Isi kan alamat email dengan benar',
+            'telp.required'                 => 'No telp tidak boleh kosong',
+            'telp.numeric'                  => 'Inputan Telp harus terisi angka',
+            'permasalahan_bisnis.required'  => 'Sertakan permasalahan bisnis anda'
+        );
+
+        $validator = Validator::make($data,$rules,$message);
+        if($validator->fails())
+        {
+            return redirect('konsultasi')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $result = $this->konsultasi->create($data);
+        if($result)
+        {
+            return redirect('konsultasi')->with('success','Terimakasih ! Formulir anda sudah kami terima informasi selanjutnya cek melalui Email anda');
+        }
+        else
+        {
+            return redirect('konsultasi')->with('error','Maaf ! Terjadi kesalahan dalam sistem silhkan hubungi Administrator');
+        }
     }
 }

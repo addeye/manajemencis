@@ -25,7 +25,7 @@ class CreateDetailsProkersTable extends Migration
             $table->string('ket_output');
             $table->integer('jml_penerima');
             $table->integer('anggaran');
-            $table->string('jadwal_pelaksana');
+            $table->text('jadwal_pelaksana');
             $table->string('mitra_kerja');
             $table->timestamps();
         });

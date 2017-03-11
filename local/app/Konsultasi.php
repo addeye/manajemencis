@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Konsultasi extends Model
@@ -9,6 +10,24 @@ class Konsultasi extends Model
     protected $table = 'konsultasi';
 
     protected $fillable = [
-        'nama','alamat','bidang_usaha','email','telp','bidang_layanan_id'
+        'nama','email','telp','alamat','produk','permasalahan_bisnis','lembaga_id','respon','user_id'
     ];
+
+    protected $appends = array('dibuat');
+
+    public function getDibuatAttribute()
+    {
+        Carbon::setLocale('id');
+        return $this->created_at->diffForHumans();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
+    }
+
+    public function lembaga()
+    {
+        return $this->belongsTo(Cis_lembaga::class,'lembaga_id');
+    }
 }

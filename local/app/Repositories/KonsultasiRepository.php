@@ -23,7 +23,7 @@ class KonsultasiRepository
     // Select All
     Public function getAll()
     {
-        return $this->konsultasi->all();
+        return $this->konsultasi->orderBy('id','desc')->get();
     }
 
     // Select where id

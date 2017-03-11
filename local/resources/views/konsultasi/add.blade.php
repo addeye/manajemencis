@@ -16,42 +16,40 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <form role="form" method="post" action="#">
+            @include('layouts.alert')
+            <form role="form" method="post" action="{{url('konsultasi')}}">
+                {{ csrf_field() }}
                 <!-- text input -->
-                <div class="form-group">
+                <div class="form-group {{$errors->has('nama')?'has-error':''}}">
                     <label>Nama lengkap sesuai KTP *</label>
                     <input type="text" class="form-control" name="nama" placeholder="Nama lengkap.." value="{{old('nama')}}">
+                    <span class="help-block">{{$errors->first('nama')}}</span>
                 </div>
-                <div class="form-group">
+                <div class="form-group {{$errors->has('email')?'has-error':''}}">
                     <label>Email *</label>
                     <input type="text" class="form-control" name="email" placeholder="Email anda.." value="{{old('email')}}">
+                    <span class="help-block">{{$errors->first('email')}}</span>
                 </div>
-                <div class="form-group">
-                    <label>No Hp *</label>
-                    <input type="text" class="form-control" placeholder="No Hp anda..">
+                <div class="form-group {{$errors->has('telp')?'has-error':''}}">
+                    <label>No Telp/Hp *</label>
+                    <input type="text" class="form-control" name="telp" placeholder="No Hp anda.." value="{{old('telp')}}">
+                    <span class="help-block">{{$errors->first('telp')}}</span>
                 </div>
                 <!-- textarea -->
                 <div class="form-group">
                     <label>Alamat</label>
-                    <textarea class="form-control" rows="3" placeholder="Alamat anda ..."></textarea>
+                    <textarea class="form-control" rows="3" name="alamat" placeholder="Alamat lengkapi dengan Provinsi Kabupaten/kota..">{{old('')}}</textarea>
                 </div>
                 <div class="form-group">
-                    <label>Bidang Usaha</label>
-                    <input type="text" class="form-control" placeholder="Bidang usaha anda..">
+                    <label>Produk</label>
+                    <input type="text" class="form-control" name="produk" placeholder="Apa produk anda.." value="{{old('produk')}}">
                 </div>
-                <div class="form-group">
-                    <label>Nama Usaha</label>
-                    <input type="text" class="form-control" placeholder="Nama Usaha..">
+                <div class="form-group {{$errors->has('permasalahan_bisnis')?'has-error':''}}">
+                    <label>Permasalahan Bisnis *</label>
+                    <textarea class="form-control" rows="4" name="permasalahan_bisnis" placeholder="Apa permaslahan bisnis anda..">{{old('permasalahan_bisnis')}}</textarea>
+                    <span class="help-block">{{$errors->first('permasalahan_bisnis')}}</span>
                 </div>
-                <div class="form-group">
-                    <label>Bidang Layanan</label>
-                    <select class="form-control" name="bidang_layanan_id">
-                        @foreach($bidanglayanan as $row)
-                            <option value="{{$row->id}}">{{$row->name}}</option>
-                            @endforeach
-                    </select>
-                </div>
-                {!! app('captcha')->display() !!}
+                {{--{!! app('captcha')->display() !!}--}}
                 <div class="box-footer">
                     <a href="{{url('/')}}" class="btn btn-default">Kembali</a>
                     <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i> Kirim</button>
