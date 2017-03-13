@@ -107,7 +107,7 @@
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-6">
-            <a href="#">
+            <a href="{{url('informasi')}}">
                 <div class="text-center">
                     <i class="fa fa-globe fa-5x"></i>
                     <div class="caption">

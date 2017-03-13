@@ -30,6 +30,13 @@ Route::group(['prefix' => 'common'], function () {
 Route::get('konsultasi','KonsultasiController@add');
 Route::post('konsultasi','KonsultasiController@doAdd');
 
+Route::get('informasi','InformasiPasarController@index');
+Route::get('informasi/tambah/{opsi}','InformasiPasarController@add');
+Route::post('informasi','InformasiPasarController@doAdd');
+Route::get('informasi/{id}/edit','InformasiPasarController@edit');
+Route::put('informasi/{id}','InformasiPasarController@doEdit');
+Route::delete('informasi/{id}',array('uses' => 'InformasiPasarController@destroy', 'as' => 'Informasi.delete'));
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/home', 'HomeController@index');

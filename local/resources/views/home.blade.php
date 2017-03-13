@@ -113,7 +113,10 @@
                         </a>
                         {!! $row->permasalahan_bisnis !!}
                     </p>
-                    <small class="pull-right">Repson {{$row->lembaga_id?$row->lembaga->plut_name:'Belum ada'}}</small>
+                    <small class="pull-right">
+                        Respon : {{$row->lembaga_id?$row->lembaga->plut_name:'Belum ada'}}
+                        <br>{{$row->user->name}}
+                    </small>
                     <!-- /.attachment -->
                 </div>
                 <!-- /.item -->
