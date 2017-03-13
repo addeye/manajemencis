@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Http\Traits\UploadTrait;
 use App\Repositories\AdminLembagaRepository;
 use App\Repositories\DetailsProkersRepository;
+use App\Repositories\InformasiPasarRepository;
 use App\Repositories\KegiatanKonsultanRepository;
 use App\Repositories\KonsultanRepository;
 use App\Repositories\KonsultasiRepository;
@@ -27,6 +28,7 @@ class HomeController extends Controller
     protected $detailProker;
     protected $pengumuman;
     protected $konsultasi;
+    protected $informasi;
 
     public function __construct(UserRepository $user,
                                 SentraKumkmRepository $sentraKumkmRepository,
@@ -35,7 +37,8 @@ class HomeController extends Controller
                                 AdminLembagaRepository $adminLembagaRepository,
                                 KegiatanKonsultanRepository $kegiatanKonsultanRepository,
                                 DetailsProkersRepository $detailsProkersRepository,
-                                PengumumanRepository $pengumumanRepository, KonsultasiRepository $konsultasiRepository)
+                                PengumumanRepository $pengumumanRepository,
+                                KonsultasiRepository $konsultasiRepository, InformasiPasarRepository $informasiPasarRepository)
     {
         $this->user = $user;
         $this->sentra = $sentraKumkmRepository;
@@ -46,6 +49,7 @@ class HomeController extends Controller
         $this->detailProker = $detailsProkersRepository;
         $this->pengumuman = $pengumumanRepository;
         $this->konsultasi = $konsultasiRepository;
+        $this->informasi = $informasiPasarRepository;
     }
     public function index()
     {
@@ -56,7 +60,8 @@ class HomeController extends Controller
             'jml_kegiatan' => count($this->kegiatan->getAll()),
             'jml_penerima' => $this->kegiatan->jmlPesertaKegiatan(),
             'pengumuman' => $this->pengumuman->getAll(),
-            'konsultasi' => $this->konsultasi->getAll()
+            'konsultasi' => $this->konsultasi->getAll(),
+            'informasi' => $this->informasi->getAll()
         );
         return view('home',$data);
 

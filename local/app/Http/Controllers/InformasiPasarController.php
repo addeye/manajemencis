@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\InformasiPasarRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class InformasiPasarController extends Controller
@@ -85,6 +86,21 @@ class InformasiPasarController extends Controller
         else
         {
             return redirect('informasi')->with('error','Maaf ! Terjadi kesalahan dalam sistem silhkan hubungi Administrator');
+        }
+    }
+
+    public function detail($id)
+    {
+        $data = array(
+            'data' => $this->informasi_pasar->getById($id)
+        );
+        if(Auth::user())
+        {
+            return view('informasi_pasar.detail_auth',$data);
+        }
+        else
+        {
+            return view('informasi_pasar.detail',$data);
         }
     }
 

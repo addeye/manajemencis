@@ -36,6 +36,7 @@ Route::post('informasi','InformasiPasarController@doAdd');
 Route::get('informasi/{id}/edit','InformasiPasarController@edit');
 Route::put('informasi/{id}','InformasiPasarController@doEdit');
 Route::delete('informasi/{id}',array('uses' => 'InformasiPasarController@destroy', 'as' => 'Informasi.delete'));
+Route::get('informasi/{id}/detail','InformasiPasarController@detail');
 
 Route::group(['middleware' => ['auth']], function () {
 

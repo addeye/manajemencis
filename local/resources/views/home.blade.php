@@ -115,11 +115,42 @@
                     </p>
                     <small class="pull-right">
                         Respon : {{$row->lembaga_id?$row->lembaga->plut_name:'Belum ada'}}
-                        <br>{{$row->user->name}}
+                        <br>{{$row->user?$row->user->name:''}}
                     </small>
                     <!-- /.attachment -->
                 </div>
                 <!-- /.item -->
+                @endforeach
+            </div>
+            <!-- /.chat -->
+        </div>
+        <!-- /.box (chat box) -->
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+        <!-- Chat box -->
+        <div class="box box-info">
+            <div class="box-header">
+                <i class="fa fa-globe"></i>
+                <h3 class="box-title">Informasi Pasar</h3>
+            </div>
+            <div class="box-body chat scroll" id="chat-box">
+                @foreach($informasi as $data)
+                    <div class="col-md-12 box-footer box-comments">
+                        <div class="box-comment">
+                            <!-- User image -->
+                            <img class="img-circle img-sm" src="{{url('images/default.png')}}" alt="User Image">
+                            <div class="comment-text">
+                              <span class="username"> {{$data->nama_lengkap}} - {{$data->email}}
+                                  <span class="text-muted pull-right">{{$data->dibuat}}</span>
+                              </span><!-- /.username -->
+                                <span style="font-weight: bold">{{$data->nama_produk}}</span>
+                                <p>{{$data->keterangan}}</p>
+                            </div>
+                            <!-- /.comment-text -->
+                            <span class="pull-right text-muted">{{count($data->comment)}} Comment <a href="{{url('informasi/'.$data->id.'/detail')}}">Selengkapnya..</a></span>
+                        </div>
+                    </div>
                 @endforeach
             </div>
             <!-- /.chat -->

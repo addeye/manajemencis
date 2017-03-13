@@ -46,10 +46,11 @@
                               <span class="username"> {{$data->nama_lengkap}}
                                   <span class="text-muted pull-right">{{$data->dibuat}}</span>
                               </span><!-- /.username -->
-                                {{$data->keterangan}}
+                                <span style="font-weight: bold">{{$data->nama_produk}}</span>
+                                <p>{{$data->keterangan}}</p>
                             </div>
                             <!-- /.comment-text -->
-                            <span class="pull-right text-muted"><a href="#">{{count($data->comment)}} Comment</a></span>
+                            <span class="pull-right text-muted">{{count($data->comment)}} Comment <a href="{{url('informasi/'.$data->id.'/detail')}}">Selengkapnya..</a></span>
                         </div>
                     </div>
                 @endforeach

@@ -78,7 +78,7 @@
                 </div>
                 {{--{!! app('captcha')->display() !!}--}}
                 <div class="box-footer">
-                    <a href="{{url('/')}}" class="btn btn-default">Kembali</a>
+                    <a href="{{url('informasi')}}" class="btn btn-default">Kembali</a>
                     <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i> Kirim</button>
                 </div>
             </form>
