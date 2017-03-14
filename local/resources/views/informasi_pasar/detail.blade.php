@@ -54,7 +54,7 @@
                             <div class="comment-text">
                       <span class="username">
                         {{$row->nama}} - {{$row->email}}
-                          <span class="text-muted pull-right">{{$data->dibuat}}</span>
+                          <span class="text-muted pull-right">{{$row->dibuat}}</span>
                       </span><!-- /.username -->
                                 {{$row->komentar}}
                             </div>
@@ -67,18 +67,18 @@
                             <!-- /.box-footer -->
                     <div class="box-footer">
                         @if(!$data->lembaga_id)
-                            <form >
-                                <input type="hidden" name="_method" value="PUT">
+                            <form action="{{url('comment')}}" method="post">
+                                <input type="hidden" name="informasi_pasar_id" value="{{$data->id}}">
                                 {{ csrf_field() }}
                                 <img class="img-responsive img-circle img-sm" src="{{url('images/default.png')}}" alt="Alt Text">
                                 <div class="img-push">
-                                    <div class="input-group {{$errors->has('respon')?'has-error':''}}">
+                                    <div class="input-group {{$errors->has('komentar')?'has-error':''}}">
                                         <input type="text" name="komentar" placeholder="Ketik komentar anda disini..." class="form-control">
                                       <span class="input-group-btn">
                                         <button type="submit" class="btn btn-primary btn-flat">Kirim</button>
                                       </span>
                                     </div>
-                                    <span class="help-block">{{$errors->first('respon')}}</span>
+                                    <span class="help-block">{{$errors->first('komentar')}}</span>
                                 </div>
                             </form>
                         @endif

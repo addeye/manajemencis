@@ -38,6 +38,8 @@ Route::put('informasi/{id}','InformasiPasarController@doEdit');
 Route::delete('informasi/{id}',array('uses' => 'InformasiPasarController@destroy', 'as' => 'Informasi.delete'));
 Route::get('informasi/{id}/detail','InformasiPasarController@detail');
 
+Route::post('comment','CommentPasarController@doAdd');
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/home', 'HomeController@index');
