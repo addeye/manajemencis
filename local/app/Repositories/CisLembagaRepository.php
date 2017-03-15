@@ -11,17 +11,21 @@ namespace App\Repositories;
 
 use App\Admin_lembaga;
 use App\Cis_lembaga;
+use App\Kegiatan_konsultan;
 use Illuminate\Support\Facades\Auth;
 
 class CisLembagaRepository
 {
     protected $cislembaga;
     protected $adminlembaga;
+    protected $kegiatan;
 
-    public function __construct(Cis_lembaga $cis_lembaga, Admin_lembaga $admin_lembaga)
+    public function __construct(Cis_lembaga $cis_lembaga,
+                                Admin_lembaga $admin_lembaga, Kegiatan_konsultan $kegiatan_konsultan)
     {
         $this->cislembaga = $cis_lembaga;
         $this->adminlembaga = $admin_lembaga;
+        $this->kegiatan = $kegiatan_konsultan;
     }
 
     public function getAll()

@@ -26,6 +26,10 @@ Route::group(['prefix' => 'common'], function () {
     Route::get('detail/kegiatan/{id}', 'CommonController@getDetailKegiatan');
     Route::get('proses_output/{jenis_layanan_id}', 'CommonController@getProsesOutput');
 });
+Route::get('sentra_umkm','CommonController@getSentra');
+Route::get('produk_unggulan','CommonController@getProduk');
+Route::get('kegiatan','CommonController@getKegiatan');
+Route::get('penerima','CommonController@getPenerima');
 
 Route::get('konsultasi','KonsultasiController@add');
 Route::post('konsultasi','KonsultasiController@doAdd');

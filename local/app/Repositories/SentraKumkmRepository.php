@@ -26,7 +26,7 @@ class SentraKumkmRepository
 
     Public function getAll()
     {
-        return Sentra_kumkm::all();
+        return Sentra_kumkm::orderBy('id','desc')->get();
     }
 
     // Select where id

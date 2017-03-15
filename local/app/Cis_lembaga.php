@@ -58,4 +58,9 @@ class Cis_lembaga extends Model
     {
         return $this->belongsTo(Regencies::class,'regency_id');
     }
+
+    public function konsultan()
+    {
+        return $this->hasMany(Konsultan::class,'lembaga_id');
+    }
 }

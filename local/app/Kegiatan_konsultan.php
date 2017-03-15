@@ -28,6 +28,11 @@ class Kegiatan_konsultan extends Model
         return $this->belongsTo(Bidang_usaha::class,'bidang_usaha_id');
     }
 
+    public function konsultan()
+    {
+        return $this->belongsTo(Konsultasi::class,'konsultan_id');
+    }
+
     public function prokers()
     {
         return $this->belongsTo(Proker_konsultan::class,'proker_id');

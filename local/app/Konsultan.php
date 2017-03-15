@@ -74,4 +74,9 @@ class Konsultan extends Model
     {
         return $this->belongsTo(Bidang_layanan::class,'bidang_layanan_id');
     }
+
+    public function kegiatan()
+    {
+        return $this->hasMany(Kegiatan_konsultan::class,'konsultan_id');
+    }
 }
