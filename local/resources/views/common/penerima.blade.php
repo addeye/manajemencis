@@ -24,13 +24,11 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body scroll">
-                @foreach($cis as $data)
+                @foreach($data as $row)
                     <div style="margin-bottom: 5px;" class="col-md-12 box-footer box-comments contact-name">
                         <div class="box-comment">
                             <div class="comment-text">
-                              <span class="username"> {{$data->plut_name}}</span>
-                                <a href="{{url('kegiatan/'.$data->id)}}" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i> Detail</a>
-                                <small class="label pull-right bg-green">Total {{$data->jml_kegiatan}} Kegiatan</small>
+                              <span style="font-weight: bold" class="username">Tahun {{$row->the_year}} - <span style="font-size: 23px;">{{$row->count}} UMKM Penerima Manfaat</span></span>
                             </div>
                             <!-- /.comment-text -->
                         </div>

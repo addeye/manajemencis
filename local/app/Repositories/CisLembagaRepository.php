@@ -86,4 +86,20 @@ class CisLembagaRepository
         $lembaga_id = Auth::user()->konsultans->lembaga_id;
         return $this->cislembaga->find($lembaga_id);
     }
+
+    public function getKegiatanById($id)
+    {
+        $data = $this->cislembaga->find($id);
+        $kegiatan=array();
+        foreach($data->konsultan as $row)
+        {
+            foreach($row->kegiatan as $kg)
+            {
+                $kegiatan[] = $kg;
+            }
+
+        }
+
+        return $kegiatan;
+    }
 }

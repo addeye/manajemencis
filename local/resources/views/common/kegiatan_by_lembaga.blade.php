@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: deyelovi
- * Date: 15/03/2017
- * Time: 15:07
+ * Date: 16/03/2017
+ * Time: 11:19
  */
 ?>
 @extends('layouts.beranda.master')
@@ -20,17 +20,19 @@
                         <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
                 </div>
+                <br>
+                <a href="{{url('kegiatan')}}" class="btn btn-warning btn-xs"><i class="fa fa-reply"></i> Kembali</a>
                 <!-- /.box-tools -->
             </div>
             <!-- /.box-header -->
             <div class="box-body scroll">
-                @foreach($cis as $data)
+                @foreach($data as $row)
                     <div style="margin-bottom: 5px;" class="col-md-12 box-footer box-comments contact-name">
                         <div class="box-comment">
                             <div class="comment-text">
-                              <span class="username"> {{$data->plut_name}}</span>
-                                <a href="{{url('kegiatan/'.$data->id)}}" class="btn btn-info btn-xs"><i class="fa fa-info-circle"></i> Detail</a>
-                                <small class="label pull-right bg-green">Total {{$data->jml_kegiatan}} Kegiatan</small>
+                                <span class="username"> {{date('d-m-Y',strtotime($row->tanggal_mulai))}} - {{date('d-m-Y',strtotime($row->tanggal_selesai))}}</span>
+                                <p>{{$row->detail_proker->jenis_kegiatan}}</p>
+                                <p><i class="fa fa-map-marker"></i> Lokasi {{$row->lokasi_kegiatan}}</p>
                             </div>
                             <!-- /.comment-text -->
                         </div>
@@ -63,4 +65,3 @@
         });
     </script>
 @endsection
-

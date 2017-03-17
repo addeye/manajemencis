@@ -8,6 +8,7 @@ use App\Repositories\BidangLayananRepository;
 use App\Repositories\CisLembagaRepository;
 use App\Repositories\DetailsProkersRepository;
 use App\Repositories\DistrictsRepository;
+use App\Repositories\KegiatanKonsultanRepository;
 use App\Repositories\ProkerKonsultanRepository;
 use App\Repositories\ProvincesRepository;
 use App\Repositories\RegenciesRepository;
@@ -25,6 +26,7 @@ class CommonController extends Controller
     protected $sentra;
     protected $cis;
     protected $bidanglayanan;
+    protected $kegiatan;
 
     public function __construct(ProvincesRepository $provinces,
                                 RegenciesRepository $regencies,
@@ -33,7 +35,9 @@ class CommonController extends Controller
                                 DetailsProkersRepository $dproker,
                                 Jenis_layanan $jenis_layanan,
                                 SentraKumkmRepository $sentraKumkmRepository,
-                                CisLembagaRepository $cisLembagaRepository, BidangLayananRepository $bidangLayananRepository)
+                                CisLembagaRepository $cisLembagaRepository,
+                                BidangLayananRepository $bidangLayananRepository,
+                                KegiatanKonsultanRepository $kegiatanKonsultanRepository)
     {
         $this->provinces = $provinces;
         $this->regencies = $regencies;
@@ -44,6 +48,7 @@ class CommonController extends Controller
         $this->sentra = $sentraKumkmRepository;
         $this->cis = $cisLembagaRepository;
         $this->bidanglayanan = $bidangLayananRepository;
+        $this->kegiatan = $kegiatanKonsultanRepository;
     }
 
     public function getRegencies($provinces_id)
@@ -104,7 +109,6 @@ class CommonController extends Controller
     public function getKegiatan()
     {
         $cis = $this->cis->getAll();
-        $bidang = $this->bidanglayanan->getAll();
         $jml = 0;
 
         foreach($cis as $key=>$row)
@@ -115,24 +119,10 @@ class CommonController extends Controller
                 $jml = $jml + count($kons->kegiatan);
             }
 
-            foreach($bidang as $k=>$bid)
-            {
-                $jmlperbidang = 0;
-                foreach($konsultan as $rr)
-                {
-                    if($bid->id==$rr->bidang_layanan_id)
-                    {
-                        $jmlperbidang = $jmlperbidang + count($rr->kegiatan);
-                    }
-                }
-
-                $bidang[$k]->jumlah_kegiatan = $jmlperbidang;
-            }
-
             $cis[$key]->jml_kegiatan = $jml;
-            $cis[$key]->bidanglayanan = $bidang;
             $jml = 0;
         }
+
         $data = array(
             'title' => 'Data Kegiatan',
             'cis' => $cis
@@ -140,8 +130,23 @@ class CommonController extends Controller
         return view('common.kegiatan',$data);
     }
 
+    public function getKegiatanByLembaga($id)
+    {
+        $data = array(
+            'title' => 'Detail Kegiatan',
+            'data' => $this->cis->getKegiatanById($id)
+        );
+        return view('common.kegiatan_by_lembaga',$data);
+    }
+
     public function getPenerima()
     {
+        $data = array(
+            'title' => 'Jumlah Penerima',
+            'data' => $this->kegiatan->jmlPesertaKegiatanPerTahun()
+        );
+
+        return view('common.penerima',$data);
 
     }
 }

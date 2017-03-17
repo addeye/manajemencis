@@ -11,6 +11,7 @@ namespace App\Repositories;
 
 use App\Kegiatan_konsultan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class KegiatanKonsultanRepository
 {
@@ -78,5 +79,14 @@ class KegiatanKonsultanRepository
         }
 
         return array_sum($jumlah_peserta);
+    }
+
+    public function jmlPesertaKegiatanPerTahun()
+    {
+        $kegiatan = DB::table('kegiatan_konsultans')
+            ->select(DB::raw("SUM(jumlah_peserta) as count, DATE_FORMAT(tanggal_mulai, '%Y') as the_year"))
+            ->groupBy('the_year')
+            ->get();
+        return $kegiatan;
     }
 }
