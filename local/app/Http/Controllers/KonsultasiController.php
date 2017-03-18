@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\KonsultasiOnline;
 use App\Repositories\BidangLayananRepository;
 use App\Repositories\KonsultasiRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class KonsultasiController extends Controller
@@ -125,9 +127,14 @@ class KonsultasiController extends Controller
             'user_id' => Auth::user()->id,
             'respon' => $request->respon
         ];
+
+        $konsultasiRow = $this->konsultasi->getById($id);
+
         $result = $this->konsultasi->update($id,$data);
         if($result)
         {
+            Mail::to($konsultasiRow->email)->send(new KonsultasiOnline($id,Auth::user()->id));
+
             return redirect('konsultasi/'.$id.'/detail')->with('success','Respon anda berhasil terkirim');
         }
         else

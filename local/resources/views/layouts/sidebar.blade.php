@@ -148,7 +148,6 @@
                                         class="fa fa-circle-o"></i> Report Sentra</a></li>
                     </ul>
                 </li>
-                <li class=""><a href="#"><i class="fa fa-dashboard"></i> <span>Digitalisasi UMKM</span></a></li>
                 <li class=""><a href="#"><i class="fa fa-dashboard"></i> <span>Produk Unggulan</span></a></li>
                 <li class="{{active_check('pengumuman',true)}}"><a href="{{url('pengumuman')}}"><i class="fa fa-info-circle"></i> <span>Pengumuman</span></a></li>
                 <li class="treeview {{active_check('roles',true)}} {{active_check('u',true)}} {{active_check('set_kontak',true)}} {{active_check('sbanner',true)}} {{active_check('tingkat',true)}}">
