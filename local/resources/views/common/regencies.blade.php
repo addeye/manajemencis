@@ -4,13 +4,11 @@
         <select onchange="regencies(this.value)" class="form-control select2" name="regency_id" required>
             <option value="">Pilih Kabupaten/Kota</option>
             @foreach($regencies as $row)
-                <option value="{{ $row->id }}">{{ $row->id }} {{ $row->name }}</option>
+                <option value="{{ $row->id }}">{{ $row->name }}</option>
             @endforeach
         </select>
     </div>
 </div>
 <script>
-    $(".select2").select2({
-        theme: "bootstrap"
-    });
+    $(".select2").select2();
 </script>

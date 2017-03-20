@@ -26,6 +26,13 @@ Route::group(['prefix' => 'common'], function () {
     Route::get('detail/kegiatan/{id}', 'CommonController@getDetailKegiatan');
     Route::get('proses_output/{jenis_layanan_id}', 'CommonController@getProsesOutput');
 });
+
+Route::group(['prefix' => 'common'], function () {
+    Route::get('ff/regencies/{provinces_id}', 'CommonController@getFfRegencies');
+    Route::get('ff/districts/{regencies_id}', 'CommonController@getFfDistricts');
+    Route::get('ff/villages/{districts_id}', 'CommonController@getFfVillages');
+});
+
 Route::get('sentra_umkm','CommonController@getSentra');
 Route::get('produk_unggulan','CommonController@getProduk');
 Route::get('kegiatan','CommonController@getKegiatan');
@@ -384,30 +391,17 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
+
+    Route::group(['prefix' => 'kumkm'], function () {
+        Route::get('/', 'KumkmController@index');
+        Route::get('/create', 'KumkmController@add');
+        Route::post('/', 'KumkmController@doAdd');
+        Route::get('/{id}', 'KumkmController@edit');
+        Route::put('/{id}/update', 'KumkmController@doEdit');
+        Route::get('/{id}/delete', 'KumkmController@delete');
+    });
+
 });
 Auth::routes();
-//Route::get('testword',function(){
-//    // Creating the new document...
-//    $phpWord = new \PhpOffice\PhpWord\PhpWord();
-//
-//    /* Note: any element you append to a document must reside inside of a Section. */
-//
-//    // Adding an empty Section to the document...
-//    $section = $phpWord->addSection();
-//
-//// Adding Text element to the Section having font styled by default...
-//    $section->addText(
-//        htmlspecialchars(
-//            '"Learn from yesterday, live for today, hope for tomorrow. '
-//            . 'The important thing is not to stop questioning." '
-//            . '(Albert Einstein)'
-//        )
-//    );
-//
-//// Saving the document as HTML file...
-//    $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord);
-//    $objWriter->save('document/helloWorld.docx');
-//    return response()->download('document/helloWorld.docx');
-//});
 
 

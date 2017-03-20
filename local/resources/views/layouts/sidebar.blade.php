@@ -120,7 +120,7 @@
                                         class="fa fa-circle-o"></i> Report Konsultan</a></li>
                     </ul>
                 </li>
-                <li class="treeview">
+                <li class="treeview {{active_check('kumkm',true)}}">
                     <a href="#">
                         <i class="fa fa-briefcase"></i> <span>Manajemen UMKM</span>
             <span class="pull-right-container">
@@ -128,8 +128,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Input Data</a></li>
-                        <li><a href="pages/examples/profile.html"><i class="fa fa-circle-o"></i> Pendampingan</a></li>
+                        <li class="{{active_check('kumkm')}}"><a href="{{url('kumkm')}}"><i class="fa fa-circle-o"></i>
+                                View KUMKM</a></li>
+                        <li class="{{active_check('kumkm/create')}}"><a href="{{url('kumkm/create')}}"><i
+                                        class="fa fa-circle-o"></i> Input KUMKM</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i> Pendampingan</a></li>
                     </ul>
                 </li>
                 <li class="treeview {{active_check('sentra',true)}}">
@@ -149,7 +152,8 @@
                     </ul>
                 </li>
                 <li class=""><a href="#"><i class="fa fa-dashboard"></i> <span>Produk Unggulan</span></a></li>
-                <li class="{{active_check('pengumuman',true)}}"><a href="{{url('pengumuman')}}"><i class="fa fa-info-circle"></i> <span>Pengumuman</span></a></li>
+                <li class="{{active_check('pengumuman',true)}}"><a href="{{url('pengumuman')}}"><i
+                                class="fa fa-info-circle"></i> <span>Pengumuman</span></a></li>
                 <li class="treeview {{active_check('roles',true)}} {{active_check('u',true)}} {{active_check('set_kontak',true)}} {{active_check('sbanner',true)}} {{active_check('tingkat',true)}}">
                     <a href="#">
                         <i class="fa fa-cog"></i> <span>Setting</span>
@@ -184,7 +188,8 @@
                                 class="fa fa-dashboard"></i> <span>Biodata</span></a></li>
                 <li class="{{active_check('k/lembaga',true)}}"><a href="{{ url('k/lembaga/detail') }}"><i
                                 class="fa fa-home"></i> View Lembaga</a></li>
-                <li class="{{active_check('k/proker',true)}} {{active_check('k/dproker',true)}}"><a href="{{ url('k/proker') }}"><i class="fa fa-home"></i>
+                <li class="{{active_check('k/proker',true)}} {{active_check('k/dproker',true)}}"><a
+                            href="{{ url('k/proker') }}"><i class="fa fa-home"></i>
                         Program Kerja</a></li>
                 <li class="{{active_check('k/kegiatan',true)}}"><a href="{{ url('k/kegiatan') }}"><i
                                 class="fa fa-home"></i> Kegiatan</a></li>
@@ -213,11 +218,12 @@
                                         class="fa fa-circle-o"></i> Add Sentra</a></li>
                         <li class="{{active_check('adm/sentra')}}"><a href="{{url('adm/sentra')}}"><i
                                         class="fa fa-circle-o"></i> View Sentra</a></li>
-                        <li class="{{active_check('adm/sentra/report/all')}}"><a href="{{url('adm/sentra/report/all')}}"><i
+                        <li class="{{active_check('adm/sentra/report/all')}}"><a
+                                    href="{{url('adm/sentra/report/all')}}"><i
                                         class="fa fa-circle-o"></i> Report Sentra</a></li>
                     </ul>
                 </li>
-                <li class="treeview {{active_check('lembaga',true)}}">
+                <li class="treeview {{active_check('kumkm',true)}}">
                     <a href="#">
                         <i class="fa fa-home"></i> <span>Data UMKM</span>
             <span class="pull-right-container">
@@ -225,11 +231,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="{{active_check('lembaga/create')}}"><a href="#"><i
+                        <li class="{{active_check('kumkm/create')}}"><a href="{{url('kumkm/create')}}"><i
                                         class="fa fa-circle-o"></i> Add UMKM</a></li>
-                        <li class="{{active_check('lembaga')}}"><a href="#"><i
+                        <li class="{{active_check('kumkm')}}"><a href="{{url('kumkm')}}"><i
                                         class="fa fa-circle-o"></i> View UMKM</a></li>
-                        <li class="{{active_check('lembaga/report/all')}}"><a href="#"><i
+                        <li class="{{active_check('kumkm/report')}}"><a href="#"><i
                                         class="fa fa-circle-o"></i> Report UMKM</a></li>
                     </ul>
                 </li>

@@ -24,7 +24,7 @@
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="{{url('sentra_umkm')}}" class="small-box-footer">Total Sentra <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{url('sentra_umkm')}}" class="small-box-footer">Detil Sentra <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -38,7 +38,7 @@
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">Total Produk<i class="fa fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">Detil Produk <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -53,7 +53,7 @@
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="{{url('kegiatan')}}" class="small-box-footer">Total Kegiatan <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{url('kegiatan')}}" class="small-box-footer">Detil Kegiatan <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -67,7 +67,7 @@
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="{{url('penerima')}}" class="small-box-footer">Total Penerima <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{url('penerima')}}" class="small-box-footer">Detil Penerima <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->

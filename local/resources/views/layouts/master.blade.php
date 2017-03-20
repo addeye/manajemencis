@@ -38,6 +38,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="{{url('admin-lte/plugins/datepicker/datepicker3.css')}}">
 
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="{{url('admin-lte/plugins/iCheck/all.css')}}">
+
     @yield('css')
 
             <!-- Theme style -->
@@ -113,6 +116,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- SlimScroll -->
 <script src="{{url('admin-lte/plugins/slimScroll/jquery.slimscroll.min.js')}}" type="text/javascript"></script>
 
+<!-- iCheck 1.0.1 -->
+<script src="{{url('admin-lte/plugins/iCheck/icheck.min.js')}}"></script>
+
 
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
@@ -169,6 +175,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script>
     $(document).ready(function() {
 
+        //iCheck for checkbox and radio inputs
+        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            checkboxClass: 'icheckbox_minimal-blue',
+            radioClass: 'iradio_minimal-blue'
+        });
 
         var table = $('#example').DataTable( {
             "paging": true,

@@ -244,9 +244,7 @@
                 })
                         .success(function(response){
                             $('#ajaxRegencies').html(response);
-                            $(".select2").select2({
-                                theme: "bootstrap"
-                            });
+                            $(".select2").select2();
                             $("#loading").hide();
                         })
             });

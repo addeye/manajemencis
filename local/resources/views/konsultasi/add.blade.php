@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group {{$errors->has('permasalahan_bisnis')?'has-error':''}}">
                     <label>Permasalahan Bisnis *</label>
-                    <textarea class="form-control" rows="4" name="permasalahan_bisnis" placeholder="Apa permaslahan bisnis anda..">{{old('permasalahan_bisnis')}}</textarea>
+                    <textarea class="form-control" rows="4" name="permasalahan_bisnis" placeholder="Uraikan permasalahan bisnis yang anda alami..">{{old('permasalahan_bisnis')}}</textarea>
                     <span class="help-block">{{$errors->first('permasalahan_bisnis')}}</span>
                 </div>
                 {{--{!! app('captcha')->display() !!}--}}

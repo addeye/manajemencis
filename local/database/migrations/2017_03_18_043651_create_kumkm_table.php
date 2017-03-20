@@ -15,7 +15,10 @@ class CreateKumkmTable extends Migration
     {
         Schema::create('kumkm', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('lembaga_id')->unsigned()->nullable();
+            $table->foreign('lembaga_id')->references('id')->on('cis_lembagas');
             $table->string('nama_usaha');
+            $table->string('nama_pemilik')->nullable();
             $table->string('id_kumkm')->nullable();
             $table->string('telp')->nullable();
             $table->string('no_ktp')->nullable();
@@ -42,8 +45,7 @@ class CreateKumkmTable extends Migration
             $table->string('district_id')->nullable();
             $table->foreign('district_id')->references('id')->on('districts');
             $table->bigInteger('village_id')->nullable();
-            $table->foreign('village_id')->references('id')->on('villages');
-            $table->text('alamat');
+            $table->text('alamat')->nullable();
 
             $table->integer('kas_tunai')->nullable();
             $table->integer('persediaan')->nullable();

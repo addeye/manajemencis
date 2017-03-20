@@ -68,8 +68,8 @@ class KonsultasiController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-
         $result = $this->konsultasi->create($data);
+
         if($result)
         {
             return redirect('konsultasi')->with('success','Terima kasih ! Informasi selanjutnya cek melalui Email anda');
