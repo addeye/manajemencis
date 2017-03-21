@@ -34,16 +34,16 @@
                 <li class="treeview {{active_check('bidanglayanan',true)}} {{active_check('jenislayanan',true)}} {{active_check('bidangusaha',true)}} {{active_check('provinces',true)}} {{active_check('regencies',true)}} {{active_check('districts',true)}}">
                     <a href="#">
                         <i class="fa fa-cube"></i> <span>Master Data</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('bidanglayanan',true)}} {{active_check('jenislayanan',true)}} {{ active_check('bidangusaha',true) }}">
                             <a href="#"><i class="fa fa-circle-o"></i> Bidang
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                             </a>
                             <ul class="treeview-menu">
                                 <li class="{{ active_check('bidanglayanan',true) }}"><a href="{{url('bidanglayanan')}}"><i
@@ -56,9 +56,9 @@
                         </li>
                         <li class="{{active_check('provinces',true)}} {{active_check('regencies',true)}} {{active_check('districts',true)}}">
                             <a href="#"><i class="fa fa-circle-o"></i> Wilayah
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                             </a>
                             <ul class="treeview-menu">
                                 <li class="{{active_check('provinces',true)}}"><a href="{{ url('provinces') }}"><i
@@ -74,9 +74,9 @@
                 <li class="treeview {{active_check('cislembaga',true)}}">
                     <a href="#">
                         <i class="fa fa-home"></i> <span>Lembaga</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('cislembaga/create')}}"><a href="{{ url('cislembaga/create') }}"><i
@@ -92,9 +92,9 @@
                 <li class="treeview {{active_check('admin',true)}}">
                     <a href="#">
                         <i class="fa fa-home"></i> <span>Admin</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('admin/create')}}"><a href="{{ url('admin/create') }}"><i
@@ -107,9 +107,9 @@
                 <li class="treeview {{active_check('konsultan',true)}}">
                     <a href="#">
                         <i class="fa fa-users"></i> <span>Konsultan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('konsultan/create')}}"><a href="{{ url('konsultan/create') }}"><i
@@ -123,24 +123,22 @@
                 <li class="treeview {{active_check('kumkm',true)}}">
                     <a href="#">
                         <i class="fa fa-briefcase"></i> <span>Manajemen UMKM</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('kumkm')}}"><a href="{{url('kumkm')}}"><i class="fa fa-circle-o"></i>
-                                View KUMKM</a></li>
-                        <li class="{{active_check('kumkm/create')}}"><a href="{{url('kumkm/create')}}"><i
-                                        class="fa fa-circle-o"></i> Input KUMKM</a></li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Pendampingan</a></li>
+                                Data UMKM</a></li>
+                        <li><a href="#"><i class="fa fa-circle-o"></i> Pendampingan UMKM</a></li>
                     </ul>
                 </li>
                 <li class="treeview {{active_check('sentra',true)}}">
                     <a href="#">
                         <i class="fa fa-university"></i> <span>Sentra UMKM</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('sentra/create')}}"><a href="{{ url('sentra/create') }}"><i
@@ -157,9 +155,9 @@
                 <li class="treeview {{active_check('roles',true)}} {{active_check('u',true)}} {{active_check('set_kontak',true)}} {{active_check('sbanner',true)}} {{active_check('tingkat',true)}}">
                     <a href="#">
                         <i class="fa fa-cog"></i> <span>Setting</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('sbanner',true)}}"><a href="{{ url('sbanner') }}"><i
@@ -193,6 +191,22 @@
                         Program Kerja</a></li>
                 <li class="{{active_check('k/kegiatan',true)}}"><a href="{{ url('k/kegiatan') }}"><i
                                 class="fa fa-home"></i> Kegiatan</a></li>
+                <li class="treeview {{active_check('kumkm',true)}}">
+                    <a href="#">
+                        <i class="fa fa-home"></i> <span>Data UMKM</span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{{active_check('kumkm/create')}}"><a href="{{url('kumkm/create')}}"><i
+                                        class="fa fa-circle-o"></i> Add UMKM</a></li>
+                        <li class="{{active_check('kumkm')}}"><a href="{{url('kumkm')}}"><i
+                                        class="fa fa-circle-o"></i> Data UMKM</a></li>
+                        <li class="{{active_check('kumkm/report')}}"><a href="#"><i
+                                        class="fa fa-circle-o"></i> Report UMKM</a></li>
+                    </ul>
+                </li>
             </ul>
         @endif
 
@@ -209,9 +223,9 @@
                 <li class="treeview {{active_check('adm/sentra',true)}}">
                     <a href="#">
                         <i class="fa fa-home"></i> <span>Sentra UMKM</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('adm/sentra/create')}}"><a href="{{url('adm/sentra/create')}}"><i
@@ -226,15 +240,15 @@
                 <li class="treeview {{active_check('kumkm',true)}}">
                     <a href="#">
                         <i class="fa fa-home"></i> <span>Data UMKM</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('kumkm/create')}}"><a href="{{url('kumkm/create')}}"><i
                                         class="fa fa-circle-o"></i> Add UMKM</a></li>
                         <li class="{{active_check('kumkm')}}"><a href="{{url('kumkm')}}"><i
-                                        class="fa fa-circle-o"></i> View UMKM</a></li>
+                                        class="fa fa-circle-o"></i> Data UMKM</a></li>
                         <li class="{{active_check('kumkm/report')}}"><a href="#"><i
                                         class="fa fa-circle-o"></i> Report UMKM</a></li>
                     </ul>
@@ -242,9 +256,9 @@
                 <li class="treeview {{active_check('lembaga',true)}}">
                     <a href="#">
                         <i class="fa fa-home"></i> <span>Layanan Konsultasi</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('lembaga/create')}}"><a href="#"><i
@@ -258,9 +272,9 @@
                 <li class="treeview {{active_check('lembaga',true)}}">
                     <a href="#">
                         <i class="fa fa-file"></i> <span>Laporan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('lembaga/create')}}"><a href="#"><i

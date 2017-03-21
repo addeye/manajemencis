@@ -29,26 +29,31 @@
                             <th>Nama</th>
                             <th>Bentuk Kelembagaan</th>
                             <th>Alamat</th>
+
                             <th>Telepon</th>
                             <th>Email</th>
                             <th>Whatsapp</th>
                             <th>Website</th>
                             <th>Facebook</th>
+
                             <th>SKDP</th>
                             <th>Alamat SKPD</th>
                             <th>Telepon SKPD</th>
                             <th>Email SKPD</th>
                             <th>Whatsapp SKPD</th>
+
                             <th>Tahun Perolehan</th>
                             <th>Mulai Operasional</th>
                             <th>Tanggal Peresmian</th>
                             <th>Diresmikan Oleh</th>
                             <th>Hibah Tahun</th>
+
                             <th>Bersinergi dengan pihak</th>
                             <th>Produk Unggulan Daerah</th>
                             <th>Sudah Branding dan Masuk Pasar Lokal/Nasional/Ekspor</th>
                             <th>Produk lain yang potensial</th>
                             <th>Jumlah UMKM ecommarce</th>
+
                             <th>Jumlah Produk Online</th>
                         </tr>
                         </thead>
@@ -61,26 +66,31 @@
                                 <td>{{$row->plut_name}}</td>
                                 <td>{{$row->plut_bentuk_kelembagaan}}</td>
                                 <td>{{$row->plut_alamat}}</td>
+
                                 <td>{{$row->plut_telp}}</td>
                                 <td>{{$row->plut_email}}</td>
                                 <td>{{$row->plut_whatsapp}}</td>
                                 <td>{{$row->plut_website}}</td>
                                 <td>{{$row->plut_facebook}}</td>
+
                                 <td>{{$row->skpd_name}}</td>
                                 <td>{{$row->skpd_alamat}}</td>
                                 <td>{{$row->skpd_telp}}</td>
                                 <td>{{$row->skpd_email}}</td>
                                 <td>{{$row->skpd_whatsapp}}</td>
+
                                 <td>{{$row->tahun_perolehan}}</td>
                                 <td>{{date('d-m-Y',strtotime($row->mulai_operasional))}}</td>
                                 <td>{{date('d-m-Y',strtotime($row->tgl_peresmian))}}</td>
                                 <td>{{$row->diresmikan_oleh}}</td>
                                 <td>{{$row->hibah_tahun}}</td>
+
                                 <td>{{$row->ket_bersinergi}}</td>
                                 <td>{{$row->produk_unggulan}}</td>
                                 <td>{{$row->pemasaran}}</td>
                                 <td>{{$row->produk_potensial}}</td>
                                 <td>{{$row->jml_umkm_ecommarce}}</td>
+
                                 <td>{{$row->jml_produk_online}}</td>
                             </tr>
                         @endforeach
@@ -93,60 +103,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css">
-@endsection
-
-@section('script')
-    <script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-    <script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            var table = $('#example').DataTable( {
-                "paging": true,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": false,
-                "bSortable": true,
-                "info": true,
-                "autoWidth": false,
-                buttons: [
-                    {
-                        extend: 'pdf',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'excel',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        exportOptions: {
-                            columns: ':visible'
-                        }
-                    },
-                    {
-                        extend: 'colvis',
-                        collectionLayout: 'fixed two-column',
-                        text: 'Filter Kolom'
-                    }
-                ],
-            } );
-
-            table.buttons().container()
-                    .appendTo( '#example_wrapper .col-sm-6:eq(0)' );
-        } );
-    </script>
 @endsection

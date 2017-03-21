@@ -6,7 +6,7 @@
  * Time: 10:20
  */
 ?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -55,6 +55,7 @@
             }
         }
     </style>
+    @yield('css')
     <link rel="icon" href="{{url('cis-ico.png')}}" sizes="32x32" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

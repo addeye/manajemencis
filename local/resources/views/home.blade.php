@@ -1,5 +1,14 @@
 @extends('layouts.master')
 
+@section('css')
+    <style>
+        /*Info*/
+        .item .info {
+            margin-left: 55px;
+        }
+    </style>
+    @endsection
+
 @section('content')
         <!-- Small boxes (Stat box) -->
 <div class="row">
@@ -80,8 +89,8 @@
                             <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{$row->dibuat}}</small>
                             {{$row->user->name}} - {{$row->judul}}
                         </a>
-                        {!! $row->keterangan !!}
                     </p>
+                    <div class="info">{!! $row->keterangan !!}</div>
                     <!-- /.attachment -->
                 </div>
                 <!-- /.item -->

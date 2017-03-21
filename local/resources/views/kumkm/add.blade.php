@@ -24,7 +24,7 @@
                             <div class="col-md-6">
                                 <div class="form-group {{$errors->has('id_kumkm')?'has-error':''}}">
                                     <label>ID KUMKM</label>
-                                    <input type="text" name="id_kumkm" class="form-control" placeholder="4 Digit ID CIS Lembaga & 6 Gigit no urut ..." value="{{old('id_kumkm')}}">
+                                    <input type="text" name="id_kumkm" class="form-control" placeholder="4 Digit ID CIS Lembaga & 6 Digit no urut ..." value="{{old('id_kumkm')}}">
                                     <span class="help-block">{{$errors->first('id_kumkm')}}</span>
                                 </div>
                                 <div class="form-group {{$errors->has('nama_usaha')?'has-error':''}}">
@@ -115,6 +115,7 @@
                                 <div class="form-group {{$errors->has('sentra_id')?'has-error':''}}">
                                     <label>Sentra ID</label>
                                     <select name="sentra_id" class="form-control select2">
+                                        <option value="0">Pilih Sentra</option>
                                         @foreach($sentra as $row)
                                             <option value="{{$row->id}}" {{old('sentra_id')==$row->id?'selected':''}}>{{$row->name}}</option>
                                             @endforeach
@@ -147,7 +148,7 @@
                                     <textarea rows="4" class="form-control" name="alamat" placeholder="Alamat usaha">{{old('alamat')}}</textarea>
                                     <span class="help-block">{{$errors->first('alamat')}}</span>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group {{$errors->has('provinces_id')?'has-error':''}}">
                                     <label>Provinsi</label>
                                     <select id="provinces_id" name="provinces_id" class="form-control select2">
                                         <option value="">Pilih Provinsi</option>
@@ -155,29 +156,33 @@
                                             <option value="{{$row->id}}">{{$row->name}}</option>
                                         @endforeach
                                     </select>
+                                    <span class="help-block">{{$errors->first('provinces_id')}}</span>
                                 </div>
                                 <div id="ajaxRegencies">
-                                    <div class="form-group">
+                                    <div class="form-group {{$errors->has('regency_id')?'has-error':''}}">
                                         <label>Kabupaten Kota</label>
                                         <select onchange="regencies(this.value)" name="regency_id" class="form-control select2">
                                             <option value="">Pilih Kabupaten Kota</option>
                                         </select>
+                                        <span class="help-block">{{$errors->first('regency_id')}}</span>
                                     </div>
                                 </div>
                                 <div id="ajaxDistics">
-                                    <div class="form-group">
+                                    <div class="form-group {{$errors->has('district_id')?'has-error':''}}">
                                         <label>Kecamatan</label>
                                         <select onchange="districts(this.value)" class="form-control select2" name="district_id">
                                             <option value="">Pilih Kecamatan</option>
                                         </select>
+                                        <span class="help-block">{{$errors->first('district_id')}}</span>
                                     </div>
                                 </div>
                                 <div id="ajaxVillages">
-                                    <div class="form-group">
+                                    <div class="form-group {{$errors->has('village_id')?'has-error':''}}">
                                         <label>Kelurahan</label>
                                         <select class="form-control select2" name="village_id">
                                             <option value="">Pilih Kelurahan</option>
                                         </select>
+                                        <span class="help-block">{{$errors->first('village_id')}}</span>
                                     </div>
                                 </div>
                                 <!-- /.form-group -->

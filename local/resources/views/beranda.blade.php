@@ -12,6 +12,15 @@
     @include('banner',['banner'=>$banner])
     @endsection
 
+@section('css')
+    <style>
+        /*Info*/
+        .item .info {
+            margin-left: 55px;
+        }
+    </style>
+    @endsection
+
 @section('content')
     <div class="row">
         <div class="col-lg-3 col-xs-6">
@@ -134,8 +143,8 @@
                                 <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{$row->dibuat}}</small>
                                 {{$row->user->name}} - {{$row->judul}}
                             </a>
-                            {!! $row->keterangan !!}
                         </p>
+                        <div class="info">{!! $row->keterangan !!}</div>
                         <!-- /.attachment -->
                     </div>
                     <!-- /.item -->

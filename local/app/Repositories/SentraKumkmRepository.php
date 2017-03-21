@@ -77,4 +77,10 @@ class SentraKumkmRepository
         $lembaga_id = Auth::user()->adminlembagas->lembaga_id;
         return $this->sentra->where('id_lembaga',$lembaga_id)->get();
     }
+
+    public function getSentraByKosultan()
+    {
+        $lembaga_id = Auth::user()->konsultans->lembaga_id;
+        return $this->sentra->where('id_lembaga',$lembaga_id)->get();
+    }
 }

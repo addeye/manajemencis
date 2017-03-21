@@ -63,10 +63,22 @@ class CommonController extends Controller
         return view('common.regencies_ff',$data);
     }
 
+    public function getDistricts($regencies_id)
+    {
+        $data['districts'] = $this->districts->getByRegencies($regencies_id);
+        return view('common.districts',$data);
+    }
+
     public function getFfDistricts($regencies_id)
     {
         $data['districts'] = $this->districts->getByRegencies($regencies_id);
         return view('common.districts_ff',$data);
+    }
+
+    public function getVillages($districts_id)
+    {
+        $data['villages'] = $this->villages->getByDistrict($districts_id);
+        return view('common.villages',$data);
     }
 
     public function getFfVillages($districts_id)

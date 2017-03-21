@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\Kumkm;
+use Illuminate\Support\Facades\Auth;
 
 class KumkmRepository
 {
@@ -22,7 +23,20 @@ class KumkmRepository
     // Select All
     Public function getAll()
     {
-        return $this->kumkm->all();
+        if(Auth::user()->role_id==2)
+        {
+            $lembaga_id = Auth::user()->adminlembagas->lembaga_id;
+            return $this->kumkm->where('lembaga_id',$lembaga_id)->get();
+        }
+        elseif(Auth::user()->role_id==3)
+        {
+            $lembaga_id = Auth::user()->konsultans->lembaga_id;
+            return $this->kumkm->where('lembaga_id',$lembaga_id)->get();
+        }
+        elseif(Auth::user()->role_id==1)
+        {
+            return $this->kumkm->all();
+        }
     }
 
     // Select where id
