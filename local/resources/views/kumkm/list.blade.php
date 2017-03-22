@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <!-- / box Header -->
-                <div class="box-body">
+                <div class="box-body table-responsive">
                     <table id="example" class="table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -32,6 +32,7 @@
                             <th>Nama Usaha</th>
                             <th>Telp</th>
                             <th>Email</th>
+                            <th>Detail</th>
                             <th>Aksi</th>
                         </tr>
                         </thead>
@@ -44,6 +45,9 @@
                                 <td>{{$row->nama_usaha}}</td>
                                 <td>{{$row->telp}}</td>
                                 <td>{{$row->email}}</td>
+                                <td>
+                                    <a href="{{url('kumkm/detail/'.$row->id)}}" class="btn btn-info btn-xs"><i class="fa fa-dollar"></i> Info</a>
+                                </td>
                                 <td>
                                     <a href="{{ url('kumkm/'.$row->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="left" title="Edit Data {{$row->name}}">
                                         <i class="glyphicon glyphicon-edit"></i>

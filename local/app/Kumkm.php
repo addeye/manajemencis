@@ -23,4 +23,29 @@ class Kumkm extends Model
         'legalitas_lokasi','jangkauan_pasar','terima_pendampingan','masalah_lembaga','masalah_sdm',
         'masalah_produksi','masalah_pembiayaan','masalah_pemasaran','masalah_lainnya'
     ];
+
+    public function provinces()
+    {
+        return $this->belongsTo(Provinces::class,'provinces_id');
+    }
+
+    public function regencies()
+    {
+        return $this->belongsTo(Regencies::class,'regency_id');
+    }
+
+    public function districts()
+    {
+        return $this->belongsTo(Districts::class,'district_id');
+    }
+
+    public function villages()
+    {
+        return $this->belongsTo(Villages::class,'village_id');
+    }
+
+    public function sentra_kumkm()
+    {
+        return $this->belongsTo(Sentra_kumkm::class,'sentra_id');
+    }
 }

@@ -186,6 +186,11 @@
                                     </div>
                                 </div>
                                 <!-- /.form-group -->
+                                <div class="form-group {{$errors->has('foto_usaha')?'has-error':''}}">
+                                    <label>Foto Usaha</label>
+                                    <input type="file" name="foto_usaha">
+                                    <span class="help-block">{{$errors->first('foto_usaha')}}</span>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">

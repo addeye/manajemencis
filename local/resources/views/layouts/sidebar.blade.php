@@ -203,7 +203,7 @@
                                         class="fa fa-circle-o"></i> Add UMKM</a></li>
                         <li class="{{active_check('kumkm')}}"><a href="{{url('kumkm')}}"><i
                                         class="fa fa-circle-o"></i> Data UMKM</a></li>
-                        <li class="{{active_check('kumkm/report')}}"><a href="#"><i
+                        <li class="{{active_check('kumkm/report/all')}}"><a href="{{url('kumkm/report/all')}}"><i
                                         class="fa fa-circle-o"></i> Report UMKM</a></li>
                     </ul>
                 </li>
@@ -249,7 +249,7 @@
                                         class="fa fa-circle-o"></i> Add UMKM</a></li>
                         <li class="{{active_check('kumkm')}}"><a href="{{url('kumkm')}}"><i
                                         class="fa fa-circle-o"></i> Data UMKM</a></li>
-                        <li class="{{active_check('kumkm/report')}}"><a href="#"><i
+                        <li class="{{active_check('kumkm/report/all')}}"><a href="{{url('kumkm/report/all')}}"><i
                                         class="fa fa-circle-o"></i> Report UMKM</a></li>
                     </ul>
                 </li>

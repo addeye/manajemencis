@@ -399,6 +399,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/{id}', 'KumkmController@edit');
         Route::put('/{id}/update', 'KumkmController@doEdit');
         Route::get('/{id}/delete', 'KumkmController@delete');
+        Route::get('/detail/{id}','KumkmController@detail');
+        Route::put('/detail/{id}','KumkmController@doDetail');
+        Route::get('report/all','KumkmController@report');
     });
 
 });

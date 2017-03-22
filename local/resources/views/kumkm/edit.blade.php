@@ -18,7 +18,7 @@
                 </div>
                 <!-- / box Header -->
                 <div class="box-body">
-                    <form method="post" action="{{ url('kumkm/'.$data->id.'/update') }}" class="">
+                    <form method="post" action="{{ url('kumkm/'.$data->id.'/update') }}" class="" enctype="multipart/form-data">
                         <input type="hidden" name="_method" value="PUT">
                         {{ csrf_field() }}
                         <div class="row">
@@ -192,6 +192,12 @@
                                     </div>
                                 </div>
                                 <!-- /.form-group -->
+                                <div class="form-group {{$errors->has('foto_usaha')?'has-error':''}}">
+                                    <label>Foto Usaha</label>
+                                    <img width="100" src="{{url('foto_usaha/'.$data->foto_usaha)}}" class="img-responsive thumbnail" alt="Responsive image">
+                                    <input type="file" name="foto_usaha">
+                                    <span class="help-block">{{$errors->first('foto_usaha')}}</span>
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
