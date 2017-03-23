@@ -22,7 +22,7 @@
             <div class="icon">
                 <i class="ion ion-bag"></i>
             </div>
-            <a href="#" class="small-box-footer">Detil Sentra <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{url('sentra_umkm')}}" class="small-box-footer">Detil Sentra <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -51,7 +51,7 @@
             <div class="icon">
                 <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">Detil Kegiatan <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{url('kegiatan')}}" class="small-box-footer">Detil Kegiatan <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -65,7 +65,7 @@
             <div class="icon">
                 <i class="ion ion-person-add"></i>
             </div>
-            <a href="#" class="small-box-footer">Detil Penerima <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{url('penerima')}}" class="small-box-footer">Detil Penerima <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -107,7 +107,7 @@
                 <i class="fa fa-comments-o"></i>
                 <h3 class="box-title">Konsultasi Online</h3>
                 <div class="pull-right">
-                    <a href="#" class="small-box-footer pull-right">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url('konsultasi/all')}}" class="small-box-footer pull-right">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="box-body chat scroll" id="chat-box">
@@ -122,6 +122,7 @@
                         </a>
                         {!! $row->permasalahan_bisnis !!}
                     </p>
+                    <p style="font-weight: bold">{{$row->alamat}}</p>
                     <small class="pull-right">
                         Respon : {{$row->lembaga_id?$row->lembaga->plut_name:'Belum ada'}}
                         <br>{{$row->user?$row->user->name:''}}

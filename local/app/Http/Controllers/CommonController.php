@@ -9,12 +9,15 @@ use App\Repositories\CisLembagaRepository;
 use App\Repositories\DetailsProkersRepository;
 use App\Repositories\DistrictsRepository;
 use App\Repositories\KegiatanKonsultanRepository;
+use App\Repositories\KonsultanRepository;
+use App\Repositories\KonsultasiRepository;
 use App\Repositories\ProkerKonsultanRepository;
 use App\Repositories\ProvincesRepository;
 use App\Repositories\RegenciesRepository;
 use App\Repositories\SentraKumkmRepository;
 use App\Repositories\VillagesRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommonController extends Controller
 {
@@ -27,6 +30,7 @@ class CommonController extends Controller
     protected $cis;
     protected $bidanglayanan;
     protected $kegiatan;
+    protected $konsultasi;
 
     public function __construct(ProvincesRepository $provinces,
                                 RegenciesRepository $regencies,
@@ -37,7 +41,8 @@ class CommonController extends Controller
                                 SentraKumkmRepository $sentraKumkmRepository,
                                 CisLembagaRepository $cisLembagaRepository,
                                 BidangLayananRepository $bidangLayananRepository,
-                                KegiatanKonsultanRepository $kegiatanKonsultanRepository)
+                                KegiatanKonsultanRepository $kegiatanKonsultanRepository,
+                                KonsultasiRepository $konsultasiRepository)
     {
         $this->provinces = $provinces;
         $this->regencies = $regencies;
@@ -49,6 +54,7 @@ class CommonController extends Controller
         $this->cis = $cisLembagaRepository;
         $this->bidanglayanan = $bidangLayananRepository;
         $this->kegiatan = $kegiatanKonsultanRepository;
+        $this->konsultasi = $konsultasiRepository;
     }
 
     public function getRegencies($provinces_id)
@@ -115,8 +121,14 @@ class CommonController extends Controller
             'title' => 'Data Sentra UMKM',
             'sentra' => $this->sentra->getAll()
         );
-
-        return view('common.sentra_umkm',$data);
+        if(Auth::user())
+        {
+            return view('common.sentra_umkm_auth',$data);
+        }
+        else
+        {
+            return view('common.sentra_umkm',$data);
+        }
     }
 
     public function getProduk()
@@ -145,7 +157,14 @@ class CommonController extends Controller
             'title' => 'Data Kegiatan',
             'cis' => $cis
         );
-        return view('common.kegiatan',$data);
+        if(Auth::user())
+        {
+            return view('common.kegiatan_auth',$data);
+        }
+        else
+        {
+            return view('common.kegiatan',$data);
+        }
     }
 
     public function getKegiatanByLembaga($id)
@@ -154,7 +173,14 @@ class CommonController extends Controller
             'title' => 'Detail Kegiatan',
             'data' => $this->cis->getKegiatanById($id)
         );
-        return view('common.kegiatan_by_lembaga',$data);
+        if(Auth::user())
+        {
+            return view('common.kegiatan_by_lembaga_auth',$data);
+        }
+        else
+        {
+            return view('common.kegiatan_by_lembaga',$data);
+        }
     }
 
     public function getPenerima()
@@ -163,8 +189,24 @@ class CommonController extends Controller
             'title' => 'Jumlah Penerima',
             'data' => $this->kegiatan->jmlPesertaKegiatanPerTahun()
         );
+        if(Auth::user())
+        {
+            return view('common.penerima_auth',$data);
+        }
+        else
+        {
+            return view('common.penerima',$data);
+        }
 
-        return view('common.penerima',$data);
 
+    }
+
+    public function getKonsultasi()
+    {
+        $data = array(
+            'title' => 'Konsultasi',
+            'konsultasi' => $this->konsultasi->getAll()
+        );
+        return view('common.konsultasi',$data);
     }
 }

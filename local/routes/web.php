@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('konsultasi/{id}/detail','KonsultasiController@detail');
     Route::put('konsultasi/{id}','KonsultasiController@doEdit');
 
+    Route::get('konsultasi/all','CommonController@getKonsultasi');
+
     Route::group(['middleware' => ['superadmin']], function () {
         /*For Provinsi*/
         Route::get('/provinces', 'ProvincesController@getAll');
