@@ -62,7 +62,7 @@
                                     <span class="help-block">{{$errors->first('ket_badan_usaha')}}</span>
                                 </div>
                                 <div class="form-group {{$errors->has('ket_badan_usaha')?'has-error':''}}">
-                                    <label>Ket Badan Usaha / Badan Hukum</label>
+                                    <label>Nomor Pengesahan Badan Usaha</label>
                                     <input type="text" name="ket_badan_usaha" class="form-control" placeholder="Keterangan badan usaha..." value="{{$data->ket_badan_usaha}}">
                                     <span class="help-block">{{$errors->first('ket_badan_usaha')}}</span>
                                 </div>
@@ -76,10 +76,15 @@
                                     </div>
                                     <span class="help-block">{{$errors->first('tgl_mulai_usaha')}}</span>
                                 </div>
-                                <div class="form-group {{$errors->has('sektor_usaha')?'has-error':''}}">
-                                    <label>Sektor Usaha</label>
-                                    <input type="text" name="sektor_usaha" class="form-control" placeholder="Sektor Usaha..." value="{{$data->sektor_usaha}}">
-                                    <span class="help-block">{{$errors->first('sektor_usaha')}}</span>
+                                <div class="form-group {{$errors->has('bidang_usaha')?'has-error':''}}">
+                                    <label>Bidang Usaha</label>
+                                    <select name="bidang_usaha" class="form-control">
+                                        <option value="0">Pilih Bidang Usaha</option>
+                                        @foreach($bidang_usaha as $row)
+                                            <option value="{{$row->id}}" {{$data->bidang_usaha==$row->id?'selected':''}}>{{$row->name}}</option>
+                                        @endforeach
+                                    </select>
+                                    <span class="help-block">{{$errors->first('bidang_usaha')}}</span>
                                 </div>
                                 <div class="form-group {{$errors->has('skala_usaha')?'has-error':''}}">
                                     <label>Skala Usaha</label>

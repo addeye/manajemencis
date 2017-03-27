@@ -99,7 +99,7 @@
                                 <td>{{$row->ket_badan_usaha}}</td>
                                 <td>{{$row->tgl_mulai_usaha}}</td>
                                 <td>{{$row->sektor_usaha}}</td>
-                                <td>{{$row->skala_usaha}}</td>
+                                <td>{{$row->bidangusaha?$row->bidangusaha->name:''}}</td>
                                 <td>{{$row->usaha_utama}}</td>
                                 <td>{{$row->hasil_produk}}</td>
                                 <td>{{$row->sentra?'Ya':'Tidak'}}</td>

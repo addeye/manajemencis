@@ -38,7 +38,7 @@
                     <p><b>{{$data->permasalahan_bisnis}}</b></p>
                 </div>
                 <!-- /.box-body -->
-                @if($data->lembaga_id)
+                @if($data->user)
                     <div class="box-footer box-comments">
                         <div class="box-comment">
                             <!-- User image -->
@@ -58,7 +58,7 @@
                     @endif
                             <!-- /.box-footer -->
                     <div class="box-footer">
-                        @if(!$data->lembaga_id)
+                        @if(!$data->user)
                         <form action="{{url('konsultasi/'.$data->id)}}" method="post">
                             <input type="hidden" name="_method" value="PUT">
                             {{ csrf_field() }}

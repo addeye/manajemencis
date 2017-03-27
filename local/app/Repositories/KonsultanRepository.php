@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\Konsultan;
+use App\Konsultasi;
 use App\User;
 
 class KonsultanRepository
@@ -117,5 +118,10 @@ class KonsultanRepository
             return true;
         }
         return false;
+    }
+
+    public function getByLembagaId($lembaga_id)
+    {
+        return Konsultan::where('lembaga_id',$lembaga_id)->get();
     }
 }

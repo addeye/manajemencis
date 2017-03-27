@@ -129,7 +129,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li class="{{active_check('kumkm')}}"><a href="{{url('kumkm')}}"><i class="fa fa-circle-o"></i>
-                                Data UMKM</a></li>
+                                View UMKM</a></li>
                         <li><a href="#"><i class="fa fa-circle-o"></i> Pendampingan UMKM</a></li>
                     </ul>
                 </li>
@@ -202,7 +202,7 @@
                         <li class="{{active_check('kumkm/create')}}"><a href="{{url('kumkm/create')}}"><i
                                         class="fa fa-circle-o"></i> Add UMKM</a></li>
                         <li class="{{active_check('kumkm')}}"><a href="{{url('kumkm')}}"><i
-                                        class="fa fa-circle-o"></i> Data UMKM</a></li>
+                                        class="fa fa-circle-o"></i> View UMKM</a></li>
                         <li class="{{active_check('kumkm/report/all')}}"><a href="{{url('kumkm/report/all')}}"><i
                                         class="fa fa-circle-o"></i> Report UMKM</a></li>
                     </ul>
@@ -248,7 +248,7 @@
                         <li class="{{active_check('kumkm/create')}}"><a href="{{url('kumkm/create')}}"><i
                                         class="fa fa-circle-o"></i> Add UMKM</a></li>
                         <li class="{{active_check('kumkm')}}"><a href="{{url('kumkm')}}"><i
-                                        class="fa fa-circle-o"></i> Data UMKM</a></li>
+                                        class="fa fa-circle-o"></i> View UMKM</a></li>
                         <li class="{{active_check('kumkm/report/all')}}"><a href="{{url('kumkm/report/all')}}"><i
                                         class="fa fa-circle-o"></i> Report UMKM</a></li>
                     </ul>

@@ -124,7 +124,7 @@
                     </p>
                     <p style="font-weight: bold">{{$row->alamat}}</p>
                     <small class="pull-right">
-                        Respon : {{$row->lembaga_id?$row->lembaga->plut_name:'Belum ada'}}
+                        Respon : {{$row->user?$row->lembaga->plut_name:'Belum ada'}}
                         <br>{{$row->user?$row->user->name:''}}
                     </small>
                     <!-- /.attachment -->

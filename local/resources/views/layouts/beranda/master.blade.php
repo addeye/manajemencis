@@ -18,6 +18,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
     <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ url('admin-lte/plugins/select2/select2.min.css') }}">
     <!-- Theme style -->
     <link href="{{url('admin-lte/dist/css/AdminLTE.min.css')}}" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -154,6 +156,8 @@
 <script src="{{url('admin-lte/dist/js/app.min.js')}}" type="text/javascript"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('admin-lte/dist/js/demo.js')}}" type="text/javascript"></script>
+<!-- Select2 -->
+<script src="{{ url('admin-lte/plugins/select2/select2.full.min.js') }}"></script>
 @yield('script')
 </body>
 </html>

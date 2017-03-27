@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\UploadTrait;
+use App\Repositories\BidangUsahaRepository;
 use App\Repositories\DistrictsRepository;
 use App\Repositories\KumkmRepository;
 use App\Repositories\ProvincesRepository;
@@ -25,6 +26,7 @@ class KumkmController extends Controller
     protected $districts;
     protected $villages;
     protected $sentra;
+    protected $bidang;
 
     public function __construct(KumkmRepository $kumkmRepository,
                                 UserRepository $userRepository,
@@ -32,7 +34,8 @@ class KumkmController extends Controller
                                 RegenciesRepository $regenciesRepository,
                                 DistrictsRepository $districtsRepository,
                                 VillagesRepository $villagesRepository,
-                                SentraKumkmRepository $sentraKumkmRepository)
+                                SentraKumkmRepository $sentraKumkmRepository,
+                                BidangUsahaRepository $bidangUsahaRepository)
     {
         $this->kumkm = $kumkmRepository;
         $this->userrepo = $userRepository;
@@ -41,6 +44,7 @@ class KumkmController extends Controller
         $this->districts = $districtsRepository;
         $this->villages = $villagesRepository;
         $this->sentra = $sentraKumkmRepository;
+        $this->bidang = $bidangUsahaRepository;
     }
 
     public function index()
@@ -56,8 +60,9 @@ class KumkmController extends Controller
     public function add()
     {
         $data = array(
-            'title' => 'Tambah Data KUMKM',
+            'title' => 'Tambah Data KUMKM Form 1/2',
             'provinces' => $this->provinces->getAll(),
+            'bidang_usaha' => $this->bidang->getAll()
         );
 
         if(Auth::user()->role_id==2)
@@ -89,7 +94,7 @@ class KumkmController extends Controller
             'badan_usaha'       => 'nullable',
             'ket_badan_usaha'   => 'nullable',
             'tgl_mulai_usaha'   => 'nullable',
-            'sektor_usaha'      => 'nullable',
+            'bidang_usaha'      => 'nullable',
             'skala_usaha'       => 'nullable',
             'usaha_utama'       => 'nullable',
             'hasil_produk'      => 'nullable',
@@ -171,7 +176,7 @@ class KumkmController extends Controller
         $result = $this->kumkm->create($data);
         if($result)
         {
-            return redirect('kumkm')->with('success','Berhasil ! Akun KUMKM telah berhasil dibuat');
+            return redirect('kumkm/detail/'.$result->id)->with('success','Berhasil ! Akun KUMKM telah berhasil dibuat silahkan melengkapi data From Ke 2');
         }
         else
         {
@@ -189,8 +194,22 @@ class KumkmController extends Controller
             'regencies' => $this->regencies->getByProvinces($rowdata->provinces_id),
             'districts' => $this->districts->getByRegencies($rowdata->regency_id),
             'villages'  => $this->villages->getByDistrict($rowdata->district_id),
-            'sentra'    => $this->sentra->getSentraByAdmin(),
+            'bidang_usaha' => $this->bidang->getAll()
         );
+        if(Auth::user()->role_id==2)
+        {
+            $sentra = $this->sentra->getSentraByAdmin();
+        }
+        elseif(Auth::user()->role_id==3)
+        {
+            $sentra = $this->sentra->getSentraByKosultan();
+        }
+        elseif(Auth::user()->role_id==1)
+        {
+            $sentra = $this->sentra->getAll();
+        }
+
+        $data['sentra'] = $sentra;
         return view('kumkm.edit',$data);
     }
 
@@ -211,7 +230,7 @@ class KumkmController extends Controller
             'usaha_utama'       => 'nullable',
             'hasil_produk'      => 'nullable',
             'sentra'            => 'nullable',
-            'sentra_id'         => 'nullable',
+            'sentra_id'           => 'nullable',
             'tk_tetap'          => 'nullable|numeric',
             'tk_tidak_tetap'    => 'nullable|numeric',
             'email'             => 'required|email',
@@ -271,7 +290,7 @@ class KumkmController extends Controller
     {
         $data = array(
             'data' => $this->kumkm->getById($id),
-            'title' => 'Keuangan'
+            'title' => 'Tambah Data KUMKM Form 2/2',
         );
         return view('kumkm.detail',$data);
     }
@@ -416,5 +435,14 @@ class KumkmController extends Controller
         {
             return redirect('kumkm')->with('info','Data Bidang Layanan Berhasil Dihapus');
         }
+    }
+
+    public function show($id)
+    {
+        $data=array(
+            'title' => 'Data KMUMK',
+            'data'  => $this->kumkm->getById($id)
+        );
+        return view('kumkm.show',$data);
     }
 }

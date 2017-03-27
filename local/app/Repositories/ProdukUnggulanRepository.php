@@ -2,43 +2,43 @@
 /**
  * Created by PhpStorm.
  * User: deyelovi
- * Date: 09/03/2017
- * Time: 15:51
+ * Date: 24/03/2017
+ * Time: 13:37
  */
 
 namespace App\Repositories;
 
 
-use App\Konsultasi;
+use App\ProdukUnggulan;
 
-class KonsultasiRepository
+class ProdukUnggulanRepository
 {
-    protected $konsultasi;
+    protected $produk;
 
-    public function __construct(Konsultasi $konsultasi)
+    public function __construct(ProdukUnggulan $produkUnggulan)
     {
-        $this->konsultasi = $konsultasi;
+        $this->produk = $produkUnggulan;
     }
 
-    // Select All
+    //Select All
     Public function getAll()
     {
-        return $this->konsultasi->orderBy('id','desc')->get();
+        return $this->produk->all();
     }
 
     // Select where id
     public function getById($id)
     {
-        return $this->konsultasi->find($id);
+        return $this->produk->find($id);
     }
 
     // Insert into
     public function create($data=array())
     {
-        $result = $this->konsultasi->create($data);
+        $result = $this->produk->create($data);
         if ($result)
         {
-            return $result;
+            return true;
         }
 
         return false;
@@ -48,7 +48,7 @@ class KonsultasiRepository
     // Update
     public function update($id,$data=array())
     {
-        $result =$this->konsultasi->find($id)->update($data);
+        $result =$this->produk->find($id)->update($data);
         if ($result)
         {
             return true;
@@ -60,7 +60,7 @@ class KonsultasiRepository
     // Delete
     public function delete($id)
     {
-        $result = $this->konsultasi->destroy($id);
+        $result = $this->produk->destroy($id);
         if ($result)
         {
             return true;

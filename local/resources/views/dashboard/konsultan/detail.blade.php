@@ -75,7 +75,7 @@
                 <div class="box-body">
                     <dl class="dl-horizontal">
                         <dt>Pas Photo</dt>
-                        <dd><img src="{{ url('lampiran/'.$data->pas_photo) }}" class="img-responsive" alt="Responsive image"></dd>
+                        <dd><img src="{{ url('images/'.$data->pas_photo) }}" class="img-responsive" alt="Responsive image"></dd>
                         <dt>Scan KTP</dt>
                         <dd><img src="{{ url('lampiran/'.$data->scan_ktp) }}" class="img-responsive" alt="Responsive image"></dd>
                         <dt>Ijazah</dt>

@@ -48,12 +48,11 @@
                                 <td>{{$row->telp}}</td>
                                 <td>{{$row->email}}</td>
                                 <td>
-                                    <a href="{{url('kumkm/detail/'.$row->id)}}" class="btn btn-info btn-xs"><i class="fa fa-dollar"></i> Info</a>
+                                    <a href="{{url('kumkm/'.$row->id.'/show')}}" class="btn btn-info btn-xs">Info</a>
                                 </td>
                                 <td>
-                                    <a href="{{ url('kumkm/'.$row->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="left" title="Edit Data {{$row->name}}">
-                                        <i class="glyphicon glyphicon-edit"></i>
-                                    </a>
+                                    <a href="{{ url('kumkm/'.$row->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="left" title="Form 1 {{$row->name}}">Form 1</a>
+                                    <a href="{{url('kumkm/detail/'.$row->id)}}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="left" title="Form 2 {{$row->name}}">Form 2</a>
                                     <a href="{{ url('kumkm/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="Hapus Data {{$row->name}}">
                                         <i class="glyphicon glyphicon-trash"></i>
                                     </a>

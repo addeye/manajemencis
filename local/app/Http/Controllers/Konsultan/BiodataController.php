@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Konsultan;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Traits\UploadTrait;
 use App\Repositories\BidangLayananRepository;
 use App\Repositories\CisLembagaRepository;
 use App\Repositories\KonsultanRepository;
@@ -25,6 +26,7 @@ use Illuminate\Support\Facades\Validator;
 
 class BiodataController extends Controller
 {
+    use UploadTrait;
     protected $konsultan;
     protected $provinces;
     protected $regencies;
@@ -76,6 +78,7 @@ class BiodataController extends Controller
     public function doEditData(Request $request, $id)
     {
         $data = $request->all();
+        $old = $this->konsultan->getById($id);
 
         $validator = Validator::make($request->all(), [
             'ijazah' => 'image|max:1024',
@@ -89,32 +92,31 @@ class BiodataController extends Controller
                 ->withInput();
         }
 
+        if($request->hasFile('pas_photo'))
+        {
+            $files = Input::file('pas_photo');
+            $name = $this->upload_image($files,'images',$old->pas_photo);
+            $data['pas_photo'] = $name;
+        }
         if($request->hasFile('ijazah'))
         {
             $files = Input::file('ijazah');
-            //getting timestamp
-            $timestamp = str_replace(['',':'],' Ijazah -',Carbon::now()->toDateTimeString());
-            $name = $timestamp.'-'.$files->getClientOriginalName();
+            $name = $this->upload_image($files,'lampiran',$old->ijazah);
             $data['ijazah'] = $name;
-            $files->move(public_path().'/lampiran/',$name);
+        }
+        if($request->hasFile('scan_ktp'))
+        {
+            $files = Input::file('scan_ktp');
+            //getting timestamp
+            $name = $this->upload_image($files,'lampiran',$old->scan_ktp);
+            $data['scan_ktp'] = $name;
         }
         if($request->hasFile('sertifikat_1'))
         {
             $files = Input::file('sertifikat_1');
             //getting timestamp
-            $timestamp = str_replace(['',':'],' Sertifikat1 -',Carbon::now()->toDateTimeString());
-            $name = $timestamp.'-'.$files->getClientOriginalName();
+            $name = $this->upload_image($files,'lampiran',$old->sertifikat_1);
             $data['sertifikat_1'] = $name;
-            $files->move(public_path().'/lampiran/',$name);
-        }
-        if($request->hasFile('sertifikat_2'))
-        {
-            $files = Input::file('sertifikat_2');
-            //getting timestamp
-            $timestamp = str_replace(['',':'],' sertifikat2 -',Carbon::now()->toDateTimeString());
-            $name = $timestamp.'-'.$files->getClientOriginalName();
-            $data['sertifikat_2'] = $name;
-            $files->move(public_path().'/lampiran/',$name);
         }
 
         $result = $this->konsultan->update($id,$data);

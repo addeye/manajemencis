@@ -10,7 +10,7 @@ class Kumkm extends Model
 
     protected $fillable = [
         'nama_usaha','lembaga_id','nama_pemilik','id_kumkm','telp','no_ktp','npwp','email',
-        'badan_usaha','ket_badan_usaha','tgl_mulai_usaha','sektor_usaha',
+        'badan_usaha','ket_badan_usaha','tgl_mulai_usaha','bidang_usaha',
         'skala_usaha','usaha_utama','hasil_produk','sentra','sentra_id',
         'tk_tetap','tk_tidak_tetap','foto_usaha','provinces_id','regency_id',
         'district_id','village_id','alamat','kas_tunai','persediaan','harga_tetap',
@@ -47,5 +47,10 @@ class Kumkm extends Model
     public function sentra_kumkm()
     {
         return $this->belongsTo(Sentra_kumkm::class,'sentra_id');
+    }
+
+    public function bidangusaha()
+    {
+        return $this->belongsTo(Bidang_usaha::class,'bidang_usaha');
     }
 }

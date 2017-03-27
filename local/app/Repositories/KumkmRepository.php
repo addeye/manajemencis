@@ -51,7 +51,7 @@ class KumkmRepository
         $result = $this->kumkm->create($data);
         if ($result)
         {
-            return true;
+            return $result;
         }
 
         return false;

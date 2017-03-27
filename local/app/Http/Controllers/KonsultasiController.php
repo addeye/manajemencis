@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\KonsultasiAlert;
 use App\Mail\KonsultasiOnline;
 use App\Repositories\BidangLayananRepository;
+use App\Repositories\CisLembagaRepository;
+use App\Repositories\KonsultanRepository;
 use App\Repositories\KonsultasiRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,12 +17,17 @@ class KonsultasiController extends Controller
 {
     protected $konsultasi;
     protected $bidanglayanan;
+    protected $cislembaga;
+    protected $konsultan;
 
     public function __construct(KonsultasiRepository $konsultasiRepository,
-                                BidangLayananRepository $bidangLayananRepository)
+                                BidangLayananRepository $bidangLayananRepository,
+                                CisLembagaRepository $cisLembagaRepository, KonsultanRepository $konsultanRepository)
     {
         $this->konsultasi = $konsultasiRepository;
         $this->bidanglayanan = $bidangLayananRepository;
+        $this->cislembaga = $cisLembagaRepository;
+        $this->konsultan = $konsultanRepository;
     }
 
     public function index()
@@ -35,7 +43,7 @@ class KonsultasiController extends Controller
     public function add()
     {
         $data = array(
-            'bidanglayanan' => $this->bidanglayanan->getAll()
+            'lembaga' => $this->cislembaga->getAll()
         );
         return view('konsultasi.add',$data);
     }
@@ -43,13 +51,26 @@ class KonsultasiController extends Controller
     public function doAdd(Request $request)
     {
         $data =  $request->all();
+        $dataemail = array();
+        $konsultan = $this->konsultan->getByLembagaId($request->lembaga_id);
+        foreach($konsultan as $row)
+        {
+            $dataemail[] = $row->email;
+        }
+
+//        $dataemail = array(
+//            'mokhamad27@gmail.com',
+//            'ari_l2k@yahoo.com',
+//        );
+
         $rules = array(
             'nama'                  => 'required',
             'email'                 => 'required|email',
             'telp'                  => 'required|numeric',
             'alamat'                => 'nullable',
             'produk'                => 'nullable',
-            'permasalahan_bisnis'   => 'required'
+            'permasalahan_bisnis'   => 'required',
+            'lembaga_id'            => 'required'
         );
 
         $message =array(
@@ -58,7 +79,8 @@ class KonsultasiController extends Controller
             'email.email'                   => 'Isi kan alamat email dengan benar',
             'telp.required'                 => 'No telp tidak boleh kosong',
             'telp.numeric'                  => 'Inputan Telp harus terisi angka',
-            'permasalahan_bisnis.required'  => 'Sertakan permasalahan bisnis anda'
+            'permasalahan_bisnis.required'  => 'Sertakan permasalahan bisnis anda',
+            'lembaga_id.required'           => 'Silahkan pilih Lembaga terdekat'
         );
 
         $validator = Validator::make($data,$rules,$message);
@@ -69,9 +91,13 @@ class KonsultasiController extends Controller
                 ->withInput();
         }
         $result = $this->konsultasi->create($data);
-
         if($result)
         {
+            foreach($dataemail as $email)
+            {
+                Mail::to($email)->send(new KonsultasiAlert($result->id));
+            }
+
             return redirect('konsultasi')->with('success','Terima kasih ! Informasi selanjutnya cek melalui Email anda');
         }
         else

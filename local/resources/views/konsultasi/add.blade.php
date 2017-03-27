@@ -49,6 +49,16 @@
                     <textarea class="form-control" rows="4" name="permasalahan_bisnis" placeholder="Uraikan permasalahan bisnis yang anda alami..">{{old('permasalahan_bisnis')}}</textarea>
                     <span class="help-block">{{$errors->first('permasalahan_bisnis')}}</span>
                 </div>
+                <div class="form-group {{$errors->has('lembaga_id')?'has-error':''}}">
+                    <label>Pilihan lembaga terdekat *</label>
+                    <select name="lembaga_id" class="form-control select2">
+                        <option value="">Pilih Lembaga</option>
+                        @foreach($lembaga as $row)
+                            <option value="{{$row->id}}" {{old('lembaga_id')==$row->id?'selected':''}}>{{$row->plut_name}}</option>
+                            @endforeach
+                    </select>
+                    <span class="help-block">{{$errors->first('lembaga_id')}}</span>
+                </div>
                 {{--{!! app('captcha')->display() !!}--}}
                 <div class="box-footer">
                     <a href="{{url('/')}}" class="btn btn-default">Kembali</a>
@@ -58,4 +68,12 @@
         </div>
         <!-- /.box-body -->
     </div>
+    @endsection
+
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $(".select2").select2();
+        });
+    </script>
     @endsection

@@ -26,7 +26,7 @@ class CreateKumkmTable extends Migration
             $table->string('badan_usaha')->nullable();
             $table->string('ket_badan_usaha')->nullable();
             $table->string('tgl_mulai_usaha')->nullable();
-            $table->string('sektor_usaha')->nullable();
+            $table->integer('bidang_usaha')->default(0);
             $table->string('skala_usaha')->nullable();
             $table->string('usaha_utama')->nullable();
             $table->string('hasil_produk')->nullable();
