@@ -20,6 +20,7 @@ use App\Repositories\TingkatsRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Response;
 
 class LembagaController extends Controller
 {
@@ -91,5 +92,35 @@ class LembagaController extends Controller
         {
             return redirect('k/lembaga/detail')->with('info','Data Lembaga '.$data['plut_name'].' Sudah Di Update');
         }
+    }
+
+    public function exportWord($id)
+    {
+        $lembaga = $this->cislembaga->getById($id);
+        $name = $lembaga->plut_name;
+//        $dir = 'document/'.$name.'.docx';
+//
+//        $phpWord = new PhpWord();
+//
+        $data['data'] = $lembaga;
+//        $section = $phpWord->addSection();
+        $html = view('dashboard.admin.lembaga.exportword',$data)->render();
+//
+//// Adding Text element to the Section having font styled by default...
+//        Html::addHtml($section,$html);
+//
+//// Saving the document as HTML file...
+//        $objWriter = IOFactory::createWriter($phpWord);
+//        $objWriter->save($dir);
+//        return response()->download($dir);
+
+        $headers = array(
+            "Content-type"=>"text/html",
+            "Content-Disposition"=>"attachment;Filename=".$name.".doc"
+        );
+
+        $content = $html;
+
+        return Response::make($content,200, $headers);
     }
 }

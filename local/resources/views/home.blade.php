@@ -76,7 +76,7 @@
                 <i class="fa fa-info-circle"></i>
                 <h3 class="box-title">Info Terbaru</h3>
                 <div class="pull-right">
-                    <a href="#" class="small-box-footer pull-right">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url('info')}}" class="small-box-footer pull-right">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <div class="box-body chat scroll" id="chat-box">

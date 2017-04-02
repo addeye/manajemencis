@@ -18,11 +18,13 @@
 			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">{{$title}}</h3>
+					@if(Auth::user()->role_id ==1)
 					<div class="pull-right">
 						<a class="btn btn-primary" href="{{ url('bidanglayanan/create') }}">
 							<i class="fa fa-plus"></i> Tambah Data
 						</a>
 					</div>
+					@endif
 				</div>
 				<!-- / box Header -->
 				<div class="box-body">
@@ -31,8 +33,9 @@
 							<tr>
 								<th class="col-xs-1">Kode</th>
 								<th>Name</th>
+								@if(Auth::user()->role_id ==1)
 								<th>Aksi</th>
-								
+								@endif
 							</tr>
 						</thead>
 						<tbody>
@@ -41,6 +44,7 @@
 								
 								<td>{{$row->id}}</td>
 								<td>{{$row->name}}</td>
+								@if(Auth::user()->role_id ==1)
 								<td>
                                 	<a href="{{ url('bidanglayanan/'.$row->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="left" title="Edit Data {{$row->name}}">
 										<i class="glyphicon glyphicon-edit"></i>
@@ -49,6 +53,7 @@
 										<i class="glyphicon glyphicon-trash"></i>
 									</a>
 								</td>
+								@endif
 							</tr>
 							 @endforeach
 						</tbody>

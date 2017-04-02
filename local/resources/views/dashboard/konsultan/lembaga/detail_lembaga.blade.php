@@ -18,6 +18,8 @@
                 <div class="box-header">
                     <h3 class="box-title">{{$title}}</h3> <small>Konsultan</small>
                     <div class="box-tools pull-right">
+                        <a href="{{ url('k/lembaga/export/word/'.$data->id) }}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="left" title="Export Word {{$data->plut_name}}"><i
+                                    class="fa fa-file-word-o"></i></a>
                         <a href="{{ url('k/lembaga') }}" class="btn btn-success btn-xs"><i
                                     class="glyphicon glyphicon-edit"></i> Edit</a>
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>

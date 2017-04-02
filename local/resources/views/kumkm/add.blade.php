@@ -18,7 +18,7 @@
                 </div>
                 <!-- / box Header -->
                 <div class="box-body">
-                    <form method="post" action="{{ url('kumkm') }}" class="">
+                    <form method="post" action="{{ url('kumkm') }}" class="" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-6">

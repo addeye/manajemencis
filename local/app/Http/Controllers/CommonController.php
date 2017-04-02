@@ -8,9 +8,11 @@ use App\Repositories\BidangLayananRepository;
 use App\Repositories\CisLembagaRepository;
 use App\Repositories\DetailsProkersRepository;
 use App\Repositories\DistrictsRepository;
+use App\Repositories\InformasiPasarRepository;
 use App\Repositories\KegiatanKonsultanRepository;
 use App\Repositories\KonsultanRepository;
 use App\Repositories\KonsultasiRepository;
+use App\Repositories\PengumumanRepository;
 use App\Repositories\ProkerKonsultanRepository;
 use App\Repositories\ProvincesRepository;
 use App\Repositories\RegenciesRepository;
@@ -31,6 +33,8 @@ class CommonController extends Controller
     protected $bidanglayanan;
     protected $kegiatan;
     protected $konsultasi;
+    protected $pengumuman;
+    protected $informasi;
 
     public function __construct(ProvincesRepository $provinces,
                                 RegenciesRepository $regencies,
@@ -42,7 +46,9 @@ class CommonController extends Controller
                                 CisLembagaRepository $cisLembagaRepository,
                                 BidangLayananRepository $bidangLayananRepository,
                                 KegiatanKonsultanRepository $kegiatanKonsultanRepository,
-                                KonsultasiRepository $konsultasiRepository)
+                                KonsultasiRepository $konsultasiRepository,
+                                PengumumanRepository $pengumumanRepository,
+                                InformasiPasarRepository $informasiPasarRepository)
     {
         $this->provinces = $provinces;
         $this->regencies = $regencies;
@@ -55,6 +61,8 @@ class CommonController extends Controller
         $this->bidanglayanan = $bidangLayananRepository;
         $this->kegiatan = $kegiatanKonsultanRepository;
         $this->konsultasi = $konsultasiRepository;
+        $this->pengumuman = $pengumumanRepository;
+        $this->informasi = $informasiPasarRepository;
     }
 
     public function getRegencies($provinces_id)
@@ -208,5 +216,23 @@ class CommonController extends Controller
             'konsultasi' => $this->konsultasi->getAll()
         );
         return view('common.konsultasi',$data);
+    }
+
+    public function getInfo()
+    {
+        $data = array(
+            'title' => 'Info Terbaru',
+            'pengumuman' => $this->pengumuman->getAll()
+        );
+        return view('common.info_terkini',$data);
+    }
+
+    public function getInformasiPasar()
+    {
+        $data = array(
+            'title' => 'Informasi Pasar',
+            'informasi' => $this->informasi->getAll()
+        );
+        return view('common.informasi_pasar',$data);
     }
 }

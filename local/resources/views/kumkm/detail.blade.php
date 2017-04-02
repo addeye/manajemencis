@@ -203,7 +203,7 @@
                                 </div>
                                 <div class="form-group {{$errors->has('p2_nama_produk')?'has-error':''}}">
                                     <label>NAMA PRODUK</label>
-                                    <input type="text" name="p2_nama_produk" class="form-control" placeholder="Jumlah tenaga kerja ..." value="{{$data->p2_nama_produk}}">
+                                    <input type="text" name="p2_nama_produk" class="form-control" placeholder="" value="{{$data->p2_nama_produk}}">
                                     <span class="help-block">{{$errors->first('p2_nama_produk')}}</span>
                                 </div>
                                 <div class="form-group {{$errors->has('p2_deskripsi')?'has-error':''}}">
@@ -213,7 +213,7 @@
                                 </div>
                                 <div class="form-group {{$errors->has('p2_harga')?'has-error':''}}">
                                     <label>HARGA</label>
-                                    <input type="text" name="p2_harga" class="form-control" placeholder="Alamat email.." value="{{$data->p2_harga}}" readonly>
+                                    <input type="text" name="p2_harga" class="form-control" placeholder="Alamat email.." value="{{$data->p2_harga}}">
                                     <span class="help-block">{{$errors->first('p2_harga')}}</span>
                                 </div>
                                 <!-- /.form-group -->

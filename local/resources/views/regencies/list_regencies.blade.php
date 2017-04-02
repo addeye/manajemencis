@@ -14,9 +14,11 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{ $title }}</h3>
+                    @if(Auth::user()->role_id ==1)
                     <div class="pull-right">
                         <a class="btn btn-primary" href="{{ url('regencies/create') }}">Tambah Data</a>
                     </div>
+                    @endif
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -37,8 +39,10 @@
                             <td>{{ $row->name }}</td>
                             <td>
                                 <a href="{{ url('regencies/'.$row->id.'/districts') }}" class="btn btn-info btn-xs"><i class="glyphicon glyphicon-list"></i></a>
+                                @if(Auth::user()->role_id ==1)
                                 <a href="{{ url('regencies/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                 <a href="{{ url('regencies/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
+                                @endif
                             </td>
                         </tr>
                             @endforeach

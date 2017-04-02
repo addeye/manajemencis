@@ -50,6 +50,9 @@ Route::put('informasi/{id}','InformasiPasarController@doEdit');
 Route::delete('informasi/{id}',array('uses' => 'InformasiPasarController@destroy', 'as' => 'Informasi.delete'));
 Route::get('informasi/{id}/detail','InformasiPasarController@detail');
 
+Route::get('info','CommonController@getInfo');
+Route::get('informasipasar','CommonController@getInformasiPasar');
+
 Route::post('comment','CommentPasarController@doAdd');
 
 Route::group(['middleware' => ['auth']], function () {
@@ -63,33 +66,48 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('konsultasi/all','CommonController@getKonsultasi');
 
+    Route::get('produk_unggulan','ProdukUnggulanController@getAll');
+    Route::get('produk_unggulan/create','ProdukUnggulanController@add');
+    Route::post('produk_unggulan','ProdukUnggulanController@doAdd');
+    Route::get('produk_unggulan/{id}','ProdukUnggulanController@edit');
+    Route::put('produk_unggulan/{id}','ProdukUnggulanController@doEdit');
+    Route::get('produk_unggulan/{id}/delete','ProdukUnggulanController@delete');
+
+    /*for see data*/
+    Route::get('/provinces', 'ProvincesController@getAll');
+    Route::get('/provinces/{id}/regencies', 'ProvincesController@getRegenciesByProvinces');
+    Route::get('/regencies', 'RegenciesController@getAll');
+    Route::get('/regencies/{id}/districts', 'RegenciesController@getDistrictsByRegencies');
+    Route::get('/districts/{id}/villages', 'DistrictsController@getVillagesByDistricts');
+    Route::get('/districts', 'DistrictsController@getAll');
+    Route::get('/bidangusaha', 'BidangUsahaController@getAll');
+    Route::get('/bidanglayanan', 'BidangLayananController@getAll');
+    Route::get('/jenislayanan', 'JenisLayananController@getAll');
+    Route::get('/report/konsultan', 'KonsultanController@getByCis');
+    Route::get('/report/lembaga', 'CisLembagaController@getAllColumn');
+
     Route::group(['middleware' => ['superadmin']], function () {
         /*For Provinsi*/
-        Route::get('/provinces', 'ProvincesController@getAll');
+
         Route::get('/provinces/create', 'ProvincesController@addData');
         Route::post('/provinces', 'ProvincesController@doAddData');
         Route::get('/provinces/{id}', 'ProvincesController@editData');
         Route::put('/provinces/{id}/update', 'ProvincesController@doEditData');
         Route::get('/provinces/{id}/delete', 'ProvincesController@deleteData');
-        Route::get('/provinces/{id}/regencies', 'ProvincesController@getRegenciesByProvinces');
 
         /*For Kabupaten Kota*/
-        Route::get('/regencies', 'RegenciesController@getAll');
         Route::get('/regencies/create', 'RegenciesController@addData');
         Route::post('/regencies', 'RegenciesController@doAddData');
         Route::get('/regencies/{id}', 'RegenciesController@editData');
         Route::put('/regencies/{id}/update', 'RegenciesController@doEditData');
         Route::get('/regencies/{id}/delete', 'RegenciesController@deleteData');
-        Route::get('/regencies/{id}/districts', 'RegenciesController@getDistrictsByRegencies');
 
         /*For Kecamatan*/
-        Route::get('/districts', 'DistrictsController@getAll');
         Route::get('/districts/create', 'DistrictsController@addData');
         Route::post('/districts', 'DistrictsController@doAddData');
         Route::get('/districts/{id}', 'DistrictsController@editData');
         Route::put('/districts/{id}/update', 'DistrictsController@doEditData');
         Route::get('/districts/{id}/delete', 'DistrictsController@deleteData');
-        Route::get('/districts/{id}/villages', 'DistrictsController@getVillagesByDistricts');
 
         /*For Kelurahan*/
         Route::get('/districts/villages/create/{id}', 'VillagesController@addData');
@@ -99,7 +117,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/districts/villages/{id}/delete', 'VillagesController@deleteData');
 
         /*For Bidang Layanan */
-        Route::get('/bidanglayanan', 'BidangLayananController@getAll');
         Route::get('/bidanglayanan/create', 'BidangLayananController@addData');
         Route::post('/bidanglayanan', 'BidangLayananController@doAddData');
         Route::get('/bidanglayanan/{id}', 'BidangLayananController@editData');
@@ -107,7 +124,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/bidanglayanan/{id}/delete', 'BidangLayananController@deleteData');
 
         /* Jenis Layanan */
-        Route::get('/jenislayanan', 'JenisLayananController@getAll');
         Route::get('/jenislayanan/create', 'JenisLayananController@addData');
         Route::post('/jenislayanan', 'JenisLayananController@doAddData');
         Route::get('/jenislayanan/{id}', 'JenisLayananController@editData');
@@ -116,7 +132,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 
         /* View Bidang Usaha*/
-        Route::get('/bidangusaha', 'BidangUsahaController@getAll');
         Route::get('/bidangusaha/create', 'BidangUsahaController@addData');
         Route::post('/bidangusaha', 'BidangUsahaController@doAddData');
         Route::get('/bidangusaha/{id}', 'BidangUsahaController@editData');
@@ -283,6 +298,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('k/lembaga', 'LembagaController@getLembaga');
         Route::get('k/lembaga/detail', 'LembagaController@detailData');
         Route::put('k/lembaga/{id}/update', 'LembagaController@doEditData');
+        Route::get('k/lembaga/export/word/{id}','LembagaController@exportWord');
         Route::get('bio/konsultan', 'BiodataController@index');
         Route::get('bio/konsultan/edit', 'BiodataController@editData');
         Route::put('bio/konsultan/{id}/update', 'BiodataController@doEditData');

@@ -18,11 +18,13 @@
 			<div class="box">
 				<div class="box-header">
 					<h3 class="box-title">{{$title}}</h3>
+					@if(Auth::user()->role_id ==1)
 					<div class="pull-right">
 						<a class="btn btn-primary" href="{{ url('jenislayanan/create') }}">
 							<i class="fa fa-plus"></i> Tambah Data
 						</a>
 					</div>
+					@endif
 				</div>
 
 				<!-- / box Header -->
@@ -34,7 +36,9 @@
 								<th>Nama Bidang Layanan</th>
 								<th>Nama IKU</th>
 								<th>Ket</th>
+								@if(Auth::user()->role_id ==1)
 								<th>Aksi</th>
+								@endif
 								
 							</tr>
 						</thead>
@@ -48,10 +52,12 @@
 								<td>{{$row->bidang_layanan->name}}</td>
 								<td>{{$row->name}}</td>
 								<td>{{$row->proses_or_output}}</td>
+								@if(Auth::user()->role_id ==1)
 								<td>
 									<a href="{{ url('jenislayanan/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
 									<a href="{{ url('jenislayanan/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>
 								</td>
+								@endif
 							</tr>
 							 @endforeach
 						</tbody>

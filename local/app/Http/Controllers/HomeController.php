@@ -38,7 +38,8 @@ class HomeController extends Controller
                                 KegiatanKonsultanRepository $kegiatanKonsultanRepository,
                                 DetailsProkersRepository $detailsProkersRepository,
                                 PengumumanRepository $pengumumanRepository,
-                                KonsultasiRepository $konsultasiRepository, InformasiPasarRepository $informasiPasarRepository)
+                                KonsultasiRepository $konsultasiRepository,
+                                InformasiPasarRepository $informasiPasarRepository)
     {
         $this->user = $user;
         $this->sentra = $sentraKumkmRepository;

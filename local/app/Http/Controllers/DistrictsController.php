@@ -49,7 +49,6 @@ class DistrictsController extends Controller
             'district_id' => $districts_id,
             'villages' => $this->villages->getByDistrict($districts_id)
         );
-        return $data;
         return view('districts.list_villages',$data);
     }
 

@@ -33,7 +33,7 @@ class KegiatanKonsultanController extends Controller
     {
         $data = Array
         (
-            'head_title' => 'Data Kegiatan Konsultan',
+            'head_title' => 'Data Pelaporan Kegiatan Konsultan',
             'title' => 'Kegiatan Konsultan',
             'data' => $this->kegiatankonsultan->getAllByKonsultan()
         );
@@ -45,7 +45,7 @@ class KegiatanKonsultanController extends Controller
     {
         $data = Array
         (
-            'title' => 'Tambah Kegiatan Konsultan',
+            'title' => 'Tambah Pelaporan Kegiatan Konsultan',
             'jenis_layanan' => $this->jenislayanan->getByBidangLayanan(),
             'bidang_usaha' => $this->bidangusaha->getAll(),
             'proker' => $this->proker->getAllByKonsultan()
@@ -68,7 +68,7 @@ class KegiatanKonsultanController extends Controller
     {
         $rowkegiatan = $this->kegiatankonsultan->getById($id);
         $data = array(
-            'title' => 'Edit Kegiatan',
+            'title' => 'Edit Pelaporan Kegiatan',
             'data' => $rowkegiatan,
             'bidang_usaha' => $this->bidangusaha->getAll(),
             'proker' => $this->proker->getAllByKonsultan(),

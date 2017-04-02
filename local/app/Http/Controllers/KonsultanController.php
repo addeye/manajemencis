@@ -14,6 +14,7 @@ use App\Repositories\ProvincesRepository;
 use App\Repositories\RegenciesRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
 
@@ -250,5 +251,27 @@ class KonsultanController extends Controller
         {
             $this->konsultan->delete($row);
         }
+    }
+
+    public function getByCis()
+    {
+        $user = Auth::user();
+        if($user->role_id == 2)
+        {
+            $lembaga_id = $user->adminlembagas->lembaga_id;
+        }
+        elseif($user->role_id == 3)
+        {
+            $lembaga_id = $user->konsultans->lembaga_id;
+        }
+
+        $data = Array
+        (
+            'head_title' => 'Laporan Data Konsultan',
+            'title' => 'Laporan Data Konsultan',
+            'konsultan' => $this->konsultan->getByLembagaId($lembaga_id)
+
+        );
+        return view('konsultan.k_report',$data);
     }
 }

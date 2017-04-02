@@ -109,7 +109,7 @@ class KumkmController extends Controller
             'regency_id'        => 'required',
             'district_id'       => 'required',
             'village_id'        => 'required',
-            'foto_usaha'        => 'nullable|image'
+            'foto_usaha'        => 'nullable|image|mimes:jpeg,png,jpg,gif,svg'
         );
 
         $messages = array(
