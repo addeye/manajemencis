@@ -33,6 +33,7 @@
                                 <img src="{{url('banner/'.$data->image)}}" class="img-responsive" alt="Responsive image">
                                 <input type="file" name="image">
                                 <p class="text-danger">{{ $errors->first('image') }}</p>
+                                <p class="text-info">Ukura 3543 x 1342 pixels</p>
                             </div>
                         </div>
                         <div class="form-group">

@@ -67,12 +67,12 @@
                                     <span class="help-block">{{$errors->first('ket_badan_usaha')}}</span>
                                 </div>
                                 <div class="form-group {{$errors->has('tgl_mulai_usaha')?'has-error':''}}">
-                                    <label>Tanggal Mulai Usaha</label>
+                                    <label>Tahun Mulai Usaha</label>
                                     <div class="input-group date">
                                         <div class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </div>
-                                        <input type="text" name="tgl_mulai_usaha" class="form-control datepicker" placeholder="Tanggal mulai usaha..." value="{{$data->tgl_mulai_usaha}}" readonly>
+                                        <input type="text" name="tgl_mulai_usaha" class="form-control datemaskyear" placeholder="Tahun mulai usaha..." value="{{$data->tgl_mulai_usaha}}">
                                     </div>
                                     <span class="help-block">{{$errors->first('tgl_mulai_usaha')}}</span>
                                 </div>

@@ -32,6 +32,7 @@
                             <div class="col-sm-5">
                                 <input type="file" name="image" required>
                                 <p class="text-danger">{{ $errors->first('image') }}</p>
+                                <p class="text-info">Ukura 3543 x 1342 pixels</p>
                             </div>
                         </div>
                         <div class="form-group">

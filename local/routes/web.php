@@ -338,6 +338,7 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/{id}', 'KegiatanKonsultanController@editData');
             Route::put('/{id}/update', 'KegiatanKonsultanController@doEditData');
             Route::get('/{id}/delete', 'KegiatanKonsultanController@deleteData');
+            Route::get('report/all','KegiatanKonsultanController@report');
         });
 
         Route::get('importKegiatan','ImportController@importExcelKegiatan');

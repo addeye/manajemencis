@@ -36,7 +36,7 @@
                             <label for="inputEmail3" class="col-sm-2 control-label">Program Kerja</label>
                             <div class="col-sm-5">
                                 <select class="form-control" id="proker_id" name="proker_id" required>
-                                    <option value="">Pilih</option>
+                                    <option value="0">Pilih</option>
                                     @foreach($proker as $row)
                                         <option value="{{$row->id}}" {{$data->proker_id==$row->id?'selected':''}} >{{$row->tahun_kegiatan}} {{ $row->program }}</option>
                                     @endforeach
@@ -44,6 +44,7 @@
                             </div>
                         </div>
                         <div id="ajaxDetailProker"></div>
+                        @if($dproker)
                         <div class="form-group">
                             <div class="col-sm-2"></div>
                             <div class="col-sm-10">
@@ -75,6 +76,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Bidang Usaha</label>
                             <div class="col-sm-5">
@@ -87,6 +89,12 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Judul Kegiatan</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="judul_kegiatan" class="form-control" placeholder="Judul kegiatan.." value="{{ $data->judul_kegiatan }}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Lokasi Kegiatan</label>
                             <div class="col-sm-5">
                                 <input type="text" name="lokasi_kegiatan" class="form-control" placeholder="Lokasi kegiatan.." value="{{ $data->lokasi_kegiatan }}" required>
@@ -95,13 +103,16 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Jumlah Penerima Manfaat</label>
                             <div class="col-sm-2">
-                                <input type="text" name="jumlah_peserta" class="form-control" placeholder="Jumlah.." value="{{ $data->jumlah_peserta }}" required>
+                                <input type="number" name="jumlah_peserta" class="form-control" placeholder="Jumlah.." value="{{ $data->jumlah_peserta }}" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Output</label>
                             <div class="col-sm-2">
-                                <input type="text" name="output" class="form-control" placeholder="Jumlah.." value="{{ $data->output }}" required>
+                                <input type="number" name="output" class="form-control" placeholder="Jumlah.." value="{{ $data->output }}" required>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" name="ket_output" class="form-control" placeholder="Keterangan Output.." value="{{ $data->ket_output }}" required>
                             </div>
                         </div>
                         <div class="form-group">

@@ -44,8 +44,8 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Program Kerja</label>
                             <div class="col-sm-5">
-                                <select class="form-control" id="proker_id" name="proker_id" required>
-                                    <option value="">Pilih</option>
+                                <select class="form-control" id="proker_id" name="proker_id">
+                                    <option value="0">Pilih</option>
                                     @foreach($proker as $row)
                                         <option value="{{$row->id}}">{{$row->tahun_kegiatan}} {{ $row->program }}</option>
                                     @endforeach
@@ -57,6 +57,12 @@
                             <div class="col-sm-2"></div>
                             <div class="col-sm-10">
                                 <div id="ajaxDetailKegiatanProker"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Judul Kegiatan</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="judul_kegiatan" class="form-control" placeholder="Judul kegiatan.." required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -87,11 +93,14 @@
                             <div class="col-sm-2">
                                 <input type="number" name="output" class="form-control" placeholder="Jumlah.." required>
                             </div>
+                            <div class="col-sm-4">
+                                <input type="text" name="ket_output" class="form-control" placeholder="Keterangan Output.." required>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Sumber Daya</label>
                             <div class="col-sm-5">
-                                <input type="text" name="sumber_daya" class="form-control" placeholder="Sumber daya.." required>
+                                <input type="text" name="sumber_daya" class="form-control" placeholder="Semua sumber daya yang mendukung terlaksana kegiatan.." required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -103,7 +112,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Rencana Tindak Lanjut</label>
                             <div class="col-sm-5">
-                                <textarea class="form-control" name="rencana_tindak_lanjut" rows="4" placeholder="Rencana Tindak Lanjut" required></textarea>
+                                <textarea class="form-control" name="rencana_tindak_lanjut" rows="4" placeholder="Hal-hal yang dilakukan setelah kegiatan.." required></textarea>
                             </div>
                         </div>
                         <div class="form-group">

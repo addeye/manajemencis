@@ -19,7 +19,6 @@
 				<div class="box-header">
 					<h3 class="box-title">{{$title}}</h3>
 					<div class="pull-right">
-						<a class="btn btn-info" href="{{ url('importKegiatan') }}">Import Data</a>
 						<a class="btn btn-primary" href="{{ url('k/kegiatan/create') }}">Tambah Data</a>
 					</div>
 				</div>
@@ -51,8 +50,8 @@
 								<td>{{$no++}}</td>
 								<td>{{date('d-m-Y', strtotime($row->tanggal_mulai))}}</td>
 								<td>{{date('d-m-Y',strtotime($row->tanggal_selesai))}}</td>
-								<td>{{$row->detail_proker?$row->detail_proker->jenis_kegiatan:''}}</td>
-								<td>{{$row->detail_proker->jenis_layanans->name}}</td>
+								<td>{{$row->detail_proker?$row->detail_proker->jenis_kegiatan:$row->judul_kegiatan}}</td>
+								<td>{{$row->detail_proker?$row->detail_proker->jenis_layanans->name:'-'}}</td>
 								<td>{{$row->bidang_usahas->name}}</td>
 								<td>{{$row->lokasi_kegiatan}}</td>
 								<td>{{$row->jumlah_peserta}}</td>

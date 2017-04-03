@@ -34,7 +34,7 @@ class KegiatanKonsultanController extends Controller
         $data = Array
         (
             'head_title' => 'Data Pelaporan Kegiatan Konsultan',
-            'title' => 'Kegiatan Konsultan',
+            'title' => 'Pelaporan Kegiatan Konsultan',
             'data' => $this->kegiatankonsultan->getAllByKonsultan()
         );
 //        return $data;
@@ -94,5 +94,17 @@ class KegiatanKonsultanController extends Controller
         {
             return redirect('k/kegiatan')->with('info','Data Kegiatan Berhasil Dihapus');
         }
+    }
+
+    public function report()
+    {
+        $data = Array
+        (
+            'head_title' => 'Data Pelaporan Kegiatan Konsultan',
+            'title' => 'Pelaporan Kegiatan Konsultan',
+            'data' => $this->kegiatankonsultan->getAllByKonsultan()
+        );
+//        return $data;
+        return view('dashboard.konsultan.kegiatan.report',$data);
     }
 }

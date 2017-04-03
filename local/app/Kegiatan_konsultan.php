@@ -21,6 +21,8 @@ class Kegiatan_konsultan extends Model
         'rencana_tindak_lanjut',
         'proker_id',
         'detail_proker_id',
+        'judul_kegiatan',
+        'ket_output'
     ];
 
     public function bidang_usahas()

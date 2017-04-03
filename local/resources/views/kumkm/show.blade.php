@@ -49,7 +49,7 @@
                                             <dd>{{$data->badan_usaha}}</dd>
                                             <dt>No Pengesahan Badan Usaha</dt>
                                             <dd>{{$data->ket_badan_usaha}}</dd>
-                                            <dt>Tanggal Mulai Usaha</dt>
+                                            <dt>Tahun Mulai Usaha</dt>
                                             <dd>{{$data->tgl_mulai_usaha}}</dd>
                                             <dt>Bidang Usaha</dt>
                                             <dd>{{$data->bidang_usaha}}</dd>

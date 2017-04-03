@@ -32,7 +32,7 @@
                             <th>Email</th>
                             <th>Badan Usaha</th>
                             <th>No Badan Usaha</th>
-                            <th>Tanggal Mulai Usaha</th>
+                            <th>Tahun Mulai Usaha</th>
                             <th>Sektor Usaha</th>
                             <th>Skala Usaha</th>
                             <th>Usaha Utama/Pokok</th>

@@ -14,8 +14,7 @@ class ChangeBidangUsahaIdTableProdukUnggulan extends Migration
     public function up()
     {
         Schema::table('produk_unggulan', function (Blueprint $table) {
-            $table->integer('bidang_usaha')->unsigned()->nullable()->change();
-            $table->foreign('bidang_usaha')->references('id')->on('bidang_usahas');
+
         });
     }
 

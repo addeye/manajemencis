@@ -92,7 +92,7 @@
         </ul>
     </li>
     <li class=""><a href="javascript:void(0)"><i class="fa fa-compass"></i> <span>Pendampingan UMKM</span></a></li>
-    <li class="treeview {{active_check('kumkm',true)}}">
+    <li class="treeview {{active_check('k/kegiatan',true)}}">
         <a href="#">
             <i class="fa fa-home"></i> <span>Pelaporan Kegiatan</span>
                 <span class="pull-right-container">
