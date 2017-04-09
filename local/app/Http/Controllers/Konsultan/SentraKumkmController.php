@@ -50,14 +50,14 @@ class SentraKumkmController extends Controller
         $data = array(
             'head_title' => 'Sentra KUMKM',
             'title' => 'Data Sentra KUMKM',
-            'data' => $this->sentrakumkm->getSentraByAdmin(),
+            'data' => $this->sentrakumkm->getSentraByKosultan(),
         );
         return view('dashboard.konsultan.sentra_kumkm.list',$data);
     }
 
     public function addData()
     {
-        $lembaga_id = Auth::user()->adminlembagas->lembaga_id;
+        $lembaga_id = Auth::user()->konsultans->lembaga_id;
         $datalembaga = $this->cislembaga->getById($lembaga_id);
         $provinces_id = $datalembaga?$datalembaga->provinces_id:'0';
         $data = array(
@@ -76,7 +76,7 @@ class SentraKumkmController extends Controller
     public function editData($id)
     {
         $rowsentra = $this->sentrakumkm->getById($id);
-        $lembaga_id = Auth::user()->adminlembagas->lembaga_id;
+        $lembaga_id = Auth::user()->konsultans->lembaga_id;
         $datalembaga = $this->cislembaga->getById($lembaga_id);
         $data = array(
             'head_title' => 'Sentra UMKM',
@@ -96,7 +96,7 @@ class SentraKumkmController extends Controller
     public function doAddData(Request $request)
     {
         $data = $request->all();
-        $id_lembaga = Auth::user()->adminlembagas->lembaga_id;
+        $id_lembaga = Auth::user()->konsultans->lembaga_id;
         $datalembaga = $this->cislembaga->getById($id_lembaga);
         $data['id_lembaga'] = $id_lembaga;
         $data['provinces_id'] = $datalembaga->provinces_id;
@@ -104,7 +104,7 @@ class SentraKumkmController extends Controller
         $result = $this->sentrakumkm->create($data);
         if($result)
         {
-            return redirect('k/sentra')->with('success','Data Sentra KUMKM Berhasil Disimpan');
+            return redirect('sentra_kumkm')->with('success','Data Sentra KUMKM Berhasil Disimpan');
         }
     }
 
@@ -114,7 +114,7 @@ class SentraKumkmController extends Controller
         $result = $this->sentrakumkm->update($id,$data);
         if($result)
         {
-            return redirect('k/sentra')->with('info','Data Sentra KUMKM Berhasil Diupdate');
+            return redirect('sentra_kumkm')->with('info','Data Sentra KUMKM Berhasil Diupdate');
         }
     }
 
@@ -123,7 +123,7 @@ class SentraKumkmController extends Controller
         $result = $this->sentrakumkm->delete($id);
         if($result)
         {
-            return redirect('k/sentra')->with('info','Data Sentra KUMKM Berhasil Dihapus');
+            return redirect('sentra_kumkm')->with('info','Data Sentra KUMKM Berhasil Dihapus');
         }
     }
 
@@ -132,8 +132,8 @@ class SentraKumkmController extends Controller
         $data = array(
             'head_title' => 'Sentra KUMKM',
             'title' => 'Laporan Sentra KUMKM',
-            'data' => $this->sentrakumkm->getSentraByAdmin(),
+            'data' => $this->sentrakumkm->getSentraByKosultan(),
         );
-        return view('dashboard.admin.sentra_kumkm.report',$data);
+        return view('dashboard.konsultan.sentra_kumkm.report',$data);
     }
 }

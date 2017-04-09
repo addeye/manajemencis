@@ -72,6 +72,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('produk_unggulan/{id}','ProdukUnggulanController@edit');
     Route::put('produk_unggulan/{id}','ProdukUnggulanController@doEdit');
     Route::get('produk_unggulan/{id}/delete','ProdukUnggulanController@delete');
+    Route::get('produk_unggulan/report/all','ProdukUnggulanController@getAllReport');
+
+    Route::get('pendampingan','PendampinganController@getAll');
+    Route::get('pendampingan/create','PendampinganController@add');
+    Route::post('pendampingan','PendampinganController@doAdd');
+    Route::get('pendampingan/{id}','PendampinganController@edit');
+    Route::put('pendampingan/{id}','PendampinganController@doEdit');
+    Route::delete('pendampingan/{id}/delete','PendampinganController@delete');
+    Route::get('pendampingan/report/all','PendampinganController@getAllReport');
 
     /*for see data*/
     Route::get('/provinces', 'ProvincesController@getAll');
@@ -344,6 +353,19 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('importKegiatan','ImportController@importExcelKegiatan');
         Route::get('downloadKegiatan','ImportController@downloadExcelKegiatan');
         Route::post('importKegiatan','ImportController@doImportKegiatan');
+
+        /**
+         * For Sentra KUMKM
+         */
+        Route::group(['prefix' => 'sentra_kumkm'], function () {
+            Route::get('/', 'SentraKumkmController@getAll');
+            Route::get('/create', 'SentraKumkmController@addData');
+            Route::post('/', 'SentraKumkmController@doAddData');
+            Route::get('/{id}', 'SentraKumkmController@editData');
+            Route::put('/{id}/update', 'SentraKumkmController@doEditData');
+            Route::get('/{id}/delete', 'SentraKumkmController@deleteData');
+            Route::get('/report/all', 'SentraKumkmController@getAllColumn');
+        });
     });
 
     //for admin

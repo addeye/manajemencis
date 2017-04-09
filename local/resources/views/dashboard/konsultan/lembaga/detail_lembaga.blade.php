@@ -96,7 +96,7 @@
         </div>
         <div class="col-xs-6">
             @include('layouts.alert')
-            <div class="box box-success collapsed-box">
+            <div class="box box-success collapsed-box" style="display: none;">
                 <div class="box-header with-border">
                     <h3 class="box-title">Tambah Sentra Binaan</h3>
 
@@ -138,7 +138,7 @@
                 <!-- /.box-body -->
             </div>
             <!-- /.box -->
-            <div class="box box-success">
+            <div class="box box-success" style="">
                 <div class="box-header with-border">
                     <h3 class="box-title">Daftar Sentra Binaan</h3>
                     <!-- /.box-tools -->
@@ -153,22 +153,16 @@
                             <th>Jumlah UMKM</th>
                             <th>Bidang Usaha</th>
                             <th>Wilayah Pemasaran</th>
-                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($data->sentra_binaan as $row)
+                        @foreach($sentra as $row)
                             <tr>
-                                <td>{{$row->id}}</td>
-                                <td>{{$row->nama_sentra}}</td>
-                                <td>{{$row->jml_ukmk_Sentra}}</td>
-                                <td>{{$row->bidang_usaha_sentra}}</td>
-                                <td>{{$row->wilayah_pemasaran}}</td>
-                                <td>
-                                    <a href="{{ url('sentra_binaan/k/'.$row->id.'/delete') }}"
-                                       onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i
-                                                class="glyphicon glyphicon-trash"></i></a>
-                                </td>
+                                <td>{{$row->id_sentra}}</td>
+                                <td>{{$row->name}}</td>
+                                <td>{{$row->total_umkm}}</td>
+                                <td>{{$row->bidang_usaha_id}}</td>
+                                <td>{{$row->pemasaran}}</td>
                             </tr>
                         @endforeach
                         </tbody>

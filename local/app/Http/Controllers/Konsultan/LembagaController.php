@@ -16,6 +16,7 @@ use App\Repositories\KonsultanRepository;
 use App\Repositories\LembagaRepository;
 use App\Repositories\ProvincesRepository;
 use App\Repositories\RegenciesRepository;
+use App\Repositories\SentraKumkmRepository;
 use App\Repositories\TingkatsRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,12 +35,14 @@ class LembagaController extends Controller
     protected $provinces;
     protected $regencies;
     protected $cislembaga;
+    protected $sentraKumkm;
 
     public function __construct(LembagaRepository $lembaga,
                                 KonsultanRepository $konsultan,
                                 TingkatsRepository $tingkat,
                                 ProvincesRepository $provinces,
-                                RegenciesRepository $regencies, CisLembagaRepository $cisLembagaRepository)
+                                RegenciesRepository $regencies,
+                                CisLembagaRepository $cisLembagaRepository, SentraKumkmRepository $sentraKumkmRepository)
     {
         $this->lembaga = $lembaga;
         $this->konsultan = $konsultan;
@@ -47,6 +50,7 @@ class LembagaController extends Controller
         $this->provinces = $provinces;
         $this->regencies = $regencies;
         $this->cislembaga = $cisLembagaRepository;
+        $this->sentraKumkm = $sentraKumkmRepository;
     }
 
     public function getLembaga()
@@ -67,7 +71,8 @@ class LembagaController extends Controller
         $data = Array
         (
             'title' => 'Detail Lembaga',
-            'data' => $this->cislembaga->getLembagaForKonsultan()
+            'data' => $this->cislembaga->getLembagaForKonsultan(),
+            'sentra' => $this->sentraKumkm->getSentraByKosultan()
 
         );
         return view('dashboard.konsultan.lembaga.detail_lembaga',$data);

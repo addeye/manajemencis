@@ -24,6 +24,11 @@ class Kumkm extends Model
         'masalah_produksi','masalah_pembiayaan','masalah_pemasaran','masalah_lainnya'
     ];
 
+    public function lembaga()
+    {
+        return $this->belongsTo(Cis_lembaga::class,'lembaga_id');
+    }
+
     public function provinces()
     {
         return $this->belongsTo(Provinces::class,'provinces_id');

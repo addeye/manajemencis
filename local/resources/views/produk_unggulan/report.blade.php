@@ -16,24 +16,30 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{$title}}</h3>
-                        <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ url('produk_unggulan/create') }}">
-                                <i class="fa fa-plus"></i> Tambah Data
-                            </a>
-                        </div>
                 </div>
                 <!-- / box Header -->
-                <div class="box-body">
+                <div class="box-body table-responsive">
                     <table id="example" class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th class="col-xs-1">No</th>
                             <th>Nama Produk</th>
                             <th>Merek</th>
+                            <th>Legalitas</th>
                             <th>Bidang Usaha</th>
-                            <th>Perusahaan</th>
+                            <th>Satuan</th>
+                            <th>Kapasitas/Bulan</th>
+                            <th>Omset/Bulan</th>
                             <th>Pemilik</th>
-                            <th>Aksi</th>
+                            <th>Perusahaan</th>
+                            <th>Alamat</th>
+                            <th>Provinsi</th>
+                            <th>Kabupaten/Kota</th>
+                            <th>Telp</th>
+                            <th>Email</th>
+                            <th>Sentra</th>
+                            <th>Nama Sentra</th>
+                            <th>Lembaga</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -43,17 +49,21 @@
                                 <td>{{$no++}}</td>
                                 <td>{{$row->nama_produk}}</td>
                                 <td>{{$row->merek}}</td>
+                                <td>{{$row->legalitas}}</td>
                                 <td>{{$row->bidangUsaha->name}}</td>
-                                <td>{{$row->nama_perusahaan}}</td>
+                                <td>{{$row->satuan}}</td>
+                                <td>{{$row->kapasitas_perbulan}}</td>
+                                <td>{{$row->omset_perbulan}}</td>
                                 <td>{{$row->nama_pemilik}}</td>
-                                <td>
-                                    <a href="{{ url('produk_unggulan/'.$row->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="left" title="Edit Data {{$row->name}}">
-                                        <i class="glyphicon glyphicon-edit"></i>
-                                    </a>
-                                    <a href="{{ url('produk_unggulan/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="Hapus Data {{$row->name}}">
-                                        <i class="glyphicon glyphicon-trash"></i>
-                                    </a>
-                                </td>
+                                <td>{{$row->nama_perusahaan}}</td>
+                                <td>{{$row->alamat}}</td>
+                                <td>{{$row->provinces->name}}</td>
+                                <td>{{$row->regencies->name}}</td>
+                                <td>{{$row->telp}}</td>
+                                <td>{{$row->email}}</td>
+                                <td>{{$row->sentra?'Ya':'Tidak'}}</td>
+                                <td>{{$row->sentra_kumkm?$row->sentra_kumkm->name:'-'}}</td>
+                                <td>{{$row->lembaga?$row->lembaga->plut_name:'-'}}</td>
                             </tr>
                         @endforeach
                         </tbody>

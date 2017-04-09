@@ -123,7 +123,7 @@
                                         <option value="0">Pilih Sentra</option>
                                         @foreach($sentra as $row)
                                             <option value="{{$row->id}}" {{old('sentra_id')==$row->id?'selected':''}}>{{$row->name}}</option>
-                                            @endforeach
+                                        @endforeach
                                     </select>
                                     <span class="help-block">{{$errors->first('sentra_id')}}</span>
                                 </div>

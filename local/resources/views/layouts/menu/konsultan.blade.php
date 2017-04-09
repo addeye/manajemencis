@@ -54,7 +54,7 @@
                     class="fa fa-home"></i> Lembaga</a></li>
     <li class="{{ Active::check('bio/konsultan',true) }}"><a href="{{ url('bio/konsultan') }}"><i
                     class="fa fa-dashboard"></i> <span>Biodata</span></a></li>
-    <li class="treeview {{active_check('adm/sentra',true)}}">
+    <li class="treeview {{active_check('sentra_kumkm',true)}}">
         <a href="#">
             <i class="fa fa-home"></i> <span>Sentra UMKM</span>
             <span class="pull-right-container">
@@ -62,16 +62,31 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li class="{{active_check('adm/sentra/create')}}"><a href="{{url('adm/sentra/create')}}"><i
+            <li class="{{active_check('sentra_kumkm/create')}}"><a href="{{url('sentra_kumkm/create')}}"><i
                             class="fa fa-circle-o"></i> Add Sentra</a></li>
-            <li class="{{active_check('adm/sentra')}}"><a href="{{url('adm/sentra')}}"><i
+            <li class="{{active_check('sentra_kumkm')}}"><a href="{{url('sentra_kumkm')}}"><i
                             class="fa fa-circle-o"></i> View Sentra</a></li>
-            <li class="{{active_check('adm/sentra/report/all')}}"><a
-                        href="{{url('adm/sentra/report/all')}}"><i
+            <li class="{{active_check('sentra_kumkm/report/all')}}"><a
+                        href="{{url('sentra_kumkm/report/all')}}"><i
                             class="fa fa-circle-o"></i> Report Sentra</a></li>
         </ul>
     </li>
-    <li class=""><a href="javascript:void(0)"><i class="fa fa-shopping-cart"></i> <span>Produk Unggulan</span></a></li>
+    <li class="treeview {{active_check('produk_unggulan',true)}} {{active_check('produk_unggulan/report/all')}}">
+        <a href="#">
+            <i class="fa fa-shopping-cart"></i> <span>Produk Unggulan</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+                </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{active_check('produk_unggulan/create')}}"><a href="{{url('produk_unggulan/create')}}"><i
+                            class="fa fa-circle-o"></i> Add Produk Unggulan</a></li>
+            <li class="{{active_check('produk_unggulan')}}"><a href="{{url('produk_unggulan')}}"><i
+                            class="fa fa-circle-o"></i> View Produk Unggulan</a></li>
+            <li class="{{active_check('produk_unggulan/report/all')}}"><a href="{{url('produk_unggulan/report/all')}}"><i
+                            class="fa fa-circle-o"></i> Report Produk Unggulan</a></li>
+        </ul>
+    </li>
     <li class="{{active_check('k/proker',true)}} {{active_check('k/dproker',true)}}"><a
                 href="{{ url('k/proker') }}"><i class="fa fa-home"></i>
             Program Kerja</a></li>
@@ -91,7 +106,22 @@
                             class="fa fa-circle-o"></i> Report UMKM</a></li>
         </ul>
     </li>
-    <li class=""><a href="javascript:void(0)"><i class="fa fa-compass"></i> <span>Pendampingan UMKM</span></a></li>
+    <li class="treeview {{active_check('pendampingan',true)}}">
+        <a href="#">
+            <i class="fa fa-compass"></i> <span>Pendampingan UMKM</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+                </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{active_check('pendampingan/create')}}"><a href="{{url('pendampingan/create')}}"><i
+                            class="fa fa-circle-o"></i> Add Pendampingan UMKM</a></li>
+            <li class="{{active_check('pendampingan')}}"><a href="{{url('pendampingan')}}"><i
+                            class="fa fa-circle-o"></i> View Pendampingan UMKM</a></li>
+            <li class="{{active_check('pendampingan/report/all')}}"><a href="{{url('pendampingan/report/all')}}"><i
+                            class="fa fa-circle-o"></i> Report Pendampingan UMKM</a></li>
+        </ul>
+    </li>
     <li class="treeview {{active_check('k/kegiatan',true)}}">
         <a href="#">
             <i class="fa fa-home"></i> <span>Pelaporan Kegiatan</span>
