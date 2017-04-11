@@ -37,7 +37,7 @@
                         <div class="col-md-12 box-footer box-comments contact-name">
                             <div class="box-comment">
                                 <!-- User image -->
-                                <img class="img-circle img-sm" src="{{url('images/default.png')}}" alt="User Image">
+                                <img class="img-circle img-sm" src="{{url('images/market.png')}}" alt="User Image">
                                 <div class="comment-text">
                               <span class="username"> {{$data->nama_lengkap}} - {{$data->email}}
                                   <span class="text-muted pull-right">{{$data->dibuat}}</span>

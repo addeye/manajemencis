@@ -17,7 +17,7 @@
             <div class="box box-widget">
                 <div class="box-header with-border">
                     <div class="user-block">
-                        <img class="img-circle" src="{{url('images/default.png')}}" alt="User Image">
+                        <img class="img-circle" src="{{url('images/market.png')}}" alt="User Image">
                         <span class="username"><a href="#">{{$data->nama_lengkap}}</a></span>
                         <span class="description">{{$data->dibuat}}</span>
                     </div>
@@ -68,7 +68,7 @@
                             <form action="{{url('comment')}}" method="post">
                                 <input type="hidden" name="informasi_pasar_id" value="{{$data->id}}">
                                 {{ csrf_field() }}
-                                <img class="img-responsive img-circle img-sm" src="{{url('images/default.png')}}" alt="Alt Text">
+                                <img class="img-responsive img-circle img-sm" src="{{url('images/market.png')}}" alt="Alt Text">
                                 <div class="img-push">
                                     <div class="input-group {{$errors->has('komentar')?'has-error':''}}">
                                         <input type="text" name="komentar" placeholder="Ketik komentar anda disini..." class="form-control">

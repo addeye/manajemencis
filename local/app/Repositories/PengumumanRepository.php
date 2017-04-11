@@ -24,7 +24,7 @@ class PengumumanRepository
     // Select All
     Public function getAll()
     {
-        return $this->pengumuman->orderBy('id','desc')->get();
+        return $this->pengumuman->orderBy('id','desc')->take(10)->get();
     }
 
     // Select where id
