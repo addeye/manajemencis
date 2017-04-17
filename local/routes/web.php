@@ -308,8 +308,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('k/lembaga/detail', 'LembagaController@detailData');
         Route::put('k/lembaga/{id}/update', 'LembagaController@doEditData');
         Route::get('k/lembaga/export/word/{id}','LembagaController@exportWord');
+        Route::get('k/lembaga/{id}/print','LembagaController@printLembaga');
+
         Route::get('bio/konsultan', 'BiodataController@index');
         Route::get('bio/konsultan/edit', 'BiodataController@editData');
+        Route::get('bio/konsultan/print/{id?}', 'BiodataController@printData');
         Route::put('bio/konsultan/{id}/update', 'BiodataController@doEditData');
 
         /**

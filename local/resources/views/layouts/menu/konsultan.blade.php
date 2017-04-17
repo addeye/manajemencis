@@ -52,8 +52,20 @@
     </li>
     <li class="{{active_check('k/lembaga',true)}}"><a href="{{ url('k/lembaga/detail') }}"><i
                     class="fa fa-home"></i> Lembaga</a></li>
-    <li class="{{ Active::check('bio/konsultan',true) }}"><a href="{{ url('bio/konsultan') }}"><i
-                    class="fa fa-dashboard"></i> <span>Biodata</span></a></li>
+    <li class="treeview {{ Active::check('bio/konsultan',true) }} {{active_check('report/konsultan')}}">
+        <a href="#">
+            <i class="fa fa-home"></i> <span>Biodata</span>
+            <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{ Active::check('bio/konsultan',true) }}"><a href="{{ url('bio/konsultan') }}"><i
+                            class="fa fa-circle-o"></i> Biodata</a></li>
+            <li class="{{active_check('report/konsultan')}}"><a href="{{url('report/konsultan')}}"><i
+                            class="fa fa-circle-o"></i> Report Konsultan</a></li>
+        </ul>
+    </li>
     <li class="treeview {{active_check('sentra_kumkm',true)}}">
         <a href="#">
             <i class="fa fa-home"></i> <span>Sentra UMKM</span>
@@ -87,9 +99,6 @@
                             class="fa fa-circle-o"></i> Report Produk Unggulan</a></li>
         </ul>
     </li>
-    <li class="{{active_check('k/proker',true)}} {{active_check('k/dproker',true)}}"><a
-                href="{{ url('k/proker') }}"><i class="fa fa-home"></i>
-            Program Kerja</a></li>
     <li class="treeview {{active_check('kumkm',true)}}">
         <a href="#">
             <i class="fa fa-home"></i> <span>Data UMKM</span>
@@ -122,6 +131,9 @@
                             class="fa fa-circle-o"></i> Report Pendampingan UMKM</a></li>
         </ul>
     </li>
+    <li class="{{active_check('k/proker',true)}} {{active_check('k/dproker',true)}}"><a
+                href="{{ url('k/proker') }}"><i class="fa fa-home"></i>
+            Program Kerja</a></li>
     <li class="treeview {{active_check('k/kegiatan',true)}}">
         <a href="#">
             <i class="fa fa-home"></i> <span>Pelaporan Kegiatan</span>

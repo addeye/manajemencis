@@ -44,6 +44,11 @@ class Cis_lembaga extends Model
         return $this->hasMany(Sentra_binaan::class,'cis_lembaga_id');
     }
 
+    public function sentra_kumkm()
+    {
+        return $this->hasMany(Sentra_kumkm::class,'id_lembaga');
+    }
+
     public function cis_filemanager()
     {
         return $this->hasMany(Cis_filemanager::class,'cis_lembaga_id');

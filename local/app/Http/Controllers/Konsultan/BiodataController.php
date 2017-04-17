@@ -61,6 +61,26 @@ class BiodataController extends Controller
         return view('dashboard.konsultan.detail',$data);
     }
 
+    public function printData($id='')
+    {
+        if($id)
+        {
+            $row = $this->konsultan->getByUserId($id);
+        }
+       else
+       {
+           $row = $this->konsultan->getByUserId(Auth::user()->id);
+       }
+        $data = Array
+        (
+            'title' => 'Biodata Konsultan',
+            'data' => $row
+
+        );
+//        return $data;
+        return view('dashboard.konsultan.print_bio',$data);
+    }
+
     public function editData()
     {
         $data = array(

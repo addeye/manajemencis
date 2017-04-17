@@ -13,17 +13,17 @@
 @section('content')
 
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{$title}}</h3> <small>Konsultan</small>
                     <div class="box-tools pull-right">
-                        <a href="{{ url('k/lembaga/export/word/'.$data->id) }}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="left" title="Export Word {{$data->plut_name}}"><i
+                        <a href="javascript:void(0)" onclick="loadOtherPage()" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Print {{$data->plut_name}}"><i
+                                    class="fa fa-print"></i></a>
+                        <a href="{{ url('k/lembaga/export/word/'.$data->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Export Word {{$data->plut_name}}"><i
                                     class="fa fa-file-word-o"></i></a>
-                        <a href="{{ url('k/lembaga') }}" class="btn btn-success btn-xs"><i
+                        <a href="{{ url('k/lembaga') }}" class="btn btn-success"><i
                                     class="glyphicon glyphicon-edit"></i> Edit</a>
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-                        </button>
                     </div>
                 </div>
                 <!-- / box Header -->
@@ -94,7 +94,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-6">
             @include('layouts.alert')
             <div class="box box-success collapsed-box" style="display: none;">
                 <div class="box-header with-border">
@@ -252,4 +252,20 @@
             </div>
         </div>
     </div>
+    <input id="urlcetak" value="{{ url('k/lembaga/'.$data->id.'/print') }}">
+@endsection
+
+@section('script')
+    <script>
+        function loadOtherPage() {
+            var urlcetak = $("#urlcetak").val();
+
+            var fullurl = urlcetak;
+
+            $("<iframe>")                             // create a new iframe element
+                    .hide()                               // make it invisible
+                    .attr("src", fullurl) // point the iframe to the page you want to print
+                    .appendTo("body");                    // add iframe to the DOM to cause it to load the page
+        }
+    </script>
 @endsection

@@ -128,4 +128,13 @@ class LembagaController extends Controller
 
         return Response::make($content,200, $headers);
     }
+
+    public function printLembaga($id)
+    {
+        $data = array(
+            'lembaga' => $this->cislembaga->getById($id)
+        );
+
+        return view('dashboard.konsultan.lembaga.print',$data);
+    }
 }

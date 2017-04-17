@@ -14,12 +14,14 @@
 
     <div class="row">
         @include('layouts.alert')
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{$title}} {{ $data->name }}</h3>
                     <div class="pull-right">
-                        <a href="{{ url('bio/konsultan/edit') }}" class="btn btn-xs btn-primary"><i class="fa  fa-edit"></i> Edit</a>
+                        <a href="javascript:void(0)" onclick="loadOtherPage()" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Print Biodata"><i
+                                    class="fa fa-print"></i></a>
+                        <a href="{{ url('bio/konsultan/edit') }}" class="btn btn-success"><i class="fa  fa-edit"></i> Edit</a>
                     </div>
                 </div>
                 <!-- / box Header -->
@@ -66,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-6">
+        <div class="col-md-6">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Data Berkas</h3>
@@ -87,4 +89,20 @@
             </div>
         </div>
     </div>
+    <input id="urlcetak" value="{{ url('bio/konsultan/print') }}">
+@endsection
+
+@section('script')
+    <script>
+        function loadOtherPage() {
+            var urlcetak = $("#urlcetak").val();
+
+            var fullurl = urlcetak;
+
+            $("<iframe>")                             // create a new iframe element
+                    .hide()                               // make it invisible
+                    .attr("src", fullurl) // point the iframe to the page you want to print
+                    .appendTo("body");                    // add iframe to the DOM to cause it to load the page
+        }
+    </script>
 @endsection
