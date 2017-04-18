@@ -15,6 +15,10 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{$title}}</h3>
+                    <div class="pull-right">
+                        <a href="javascript:void(0)" onclick="loadOtherPage()" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Print Data KUMKM"><i
+                                    class="fa fa-print"></i> Print</a>
+                    </div>
                 </div>
                 <!-- / box Header -->
                 <div class="box-body">
@@ -70,13 +74,13 @@
                                             <dt>Alamat</dt>
                                             <dd>{{$data->alamat}}</dd>
                                             <dt>Provinsi</dt>
-                                            <dd>{{$data->provinces_id}}</dd>
+                                            <dd>{{$data->provinces->name}}</dd>
                                             <dt>Kabupaten/Kota</dt>
-                                            <dd>{{$data->regency_id}}</dd>
+                                            <dd>{{$data->regencies->name}}</dd>
                                             <dt>Kecamatan</dt>
-                                            <dd>{{$data->district_id}}</dd>
+                                            <dd>{{$data->districts->name}}</dd>
                                             <dt>Kelurahan</dt>
-                                            <dd>{{$data->village_id}}</dd>
+                                            <dd>{{$data->villages->name}}</dd>
                                         </dl>
                                     </div>
                                     <!-- /.box-body -->
@@ -224,4 +228,20 @@
             </div>
         </div>
     </div>
+    <input id="urlcetak" value="{{ url('kumkm/'.$data->id.'/print') }}">
+@endsection
+
+@section('script')
+    <script>
+        function loadOtherPage() {
+            var urlcetak = $("#urlcetak").val();
+
+            var fullurl = urlcetak;
+
+            $("<iframe>")                             // create a new iframe element
+                    .hide()                               // make it invisible
+                    .attr("src", fullurl) // point the iframe to the page you want to print
+                    .appendTo("body");                    // add iframe to the DOM to cause it to load the page
+        }
+    </script>
 @endsection

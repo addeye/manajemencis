@@ -452,4 +452,13 @@ class KumkmController extends Controller
         );
         return view('kumkm.show',$data);
     }
+
+    public function printData($id)
+    {
+        $data=array(
+            'title' => 'Cetak KMUMK',
+            'data'  => $this->kumkm->getById($id)
+        );
+        return view('kumkm.print',$data);
+    }
 }

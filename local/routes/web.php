@@ -447,6 +447,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/detail/{id}','KumkmController@doDetail');
         Route::get('report/all','KumkmController@report');
         Route::get('/{id}/show','KumkmController@show');
+        Route::get('{id}/print','KumkmController@printData');
     });
 
 });
