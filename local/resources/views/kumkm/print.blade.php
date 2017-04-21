@@ -54,7 +54,7 @@
     </tr>
     <tr>
         <th>Bidang Usaha</th>
-        <td> {{$data->bidang_usaha}}</td>
+        <td> {{$data->bidangusaha?$data->bidangusaha->name:'-'}}</td>
         <th>Skala Usaha</th>
         <td> {{$data->skala_usaha}}</td>
     </tr>

@@ -56,7 +56,7 @@
                                             <dt>Tahun Mulai Usaha</dt>
                                             <dd>{{$data->tgl_mulai_usaha}}</dd>
                                             <dt>Bidang Usaha</dt>
-                                            <dd>{{$data->bidang_usaha}}</dd>
+                                            <dd>{{$data->bidangusaha?$data->bidangusaha->name:'-'}}</dd>
                                             <dt>Skala Usaha</dt>
                                             <dd>{{$data->skala_usaha}}</dd>
                                             <dt>Usaha Utama</dt>

@@ -16,13 +16,14 @@
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{$title}}</h3>
-                    @if(Auth::user()->role_id != 1)
                     <div class="pull-right">
+                        @if(Auth::user()->role_id != 1)
                         <a class="btn btn-primary" href="{{ url('kumkm/create') }}">
                             <i class="fa fa-plus"></i> Tambah Data
                         </a>
+                        @endif
+                        <a class="btn btn-info" href="{{url('kumkm/report/all')}}">Report KUMKM</a>
                     </div>
-                    @endif
                 </div>
                 <!-- / box Header -->
                 <div class="box-body table-responsive">

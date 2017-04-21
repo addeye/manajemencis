@@ -33,7 +33,7 @@
                             <th>Badan Usaha</th>
                             <th>No Badan Usaha</th>
                             <th>Tahun Mulai Usaha</th>
-                            <th>Sektor Usaha</th>
+                            <th>Bidang Usaha</th>
                             <th>Skala Usaha</th>
                             <th>Usaha Utama/Pokok</th>
                             <th>Produk Yang Dihasilkan</th>
@@ -98,8 +98,8 @@
                                 <td>{{$row->badan_usaha}}</td>
                                 <td>{{$row->ket_badan_usaha}}</td>
                                 <td>{{$row->tgl_mulai_usaha}}</td>
-                                <td>{{$row->sektor_usaha}}</td>
                                 <td>{{$row->bidangusaha?$row->bidangusaha->name:''}}</td>
+                                <td>{{$row->skala_usaha}}</td>
                                 <td>{{$row->usaha_utama}}</td>
                                 <td>{{$row->hasil_produk}}</td>
                                 <td>{{$row->sentra?'Ya':'Tidak'}}</td>
