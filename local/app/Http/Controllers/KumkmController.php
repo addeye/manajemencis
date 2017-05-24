@@ -142,11 +142,16 @@ class KumkmController extends Controller
                 ->withErrors($validator);
         }
 
-        if($request->email=='')
+        if(!$request->has('email'))
         {
             $rand = mt_rand(100000,999999);
             $email = 'umkm_'.$rand.'@gmail.com';
             $data['email'] = $email;
+        }
+        else
+        {
+            $data['email'] = $request->email;
+            $email = $request->email;
         }
 
         $datauser = array(

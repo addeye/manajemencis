@@ -23,6 +23,8 @@
                         <thead>
                         <tr>
                             <th class="col-xs-1">No</th>
+                            <th>ID Lembaga</th>
+                            <th>Nama Lembaga</th>
                             <th class="col-xs-2">ID KUMKM</th>
                             <th>Nama Usaha</th>
                             <th>Nama Pemilik</th>
@@ -88,6 +90,8 @@
                         @foreach($kumkm as $row)
                             <tr>
                                 <td>{{$no++}}</td>
+                                <td>{{$row->lembaga->id_lembaga}}</td>
+                                <td>{{$row->lembaga->plut_name}}</td>
                                 <td>{{$row->id_kumkm}}</td>
                                 <td>{{$row->nama_usaha}}</td>
                                 <td>{{$row->nama_pemilik}}</td>
