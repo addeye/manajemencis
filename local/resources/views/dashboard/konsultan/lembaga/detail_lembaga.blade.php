@@ -22,8 +22,6 @@
                                     class="fa fa-print"></i></a>
                         <a href="{{ url('k/lembaga/export/word/'.$data->id) }}" class="btn btn-info" data-toggle="tooltip" data-placement="left" title="Export Word {{$data->plut_name}}"><i
                                     class="fa fa-file-word-o"></i></a>
-                        <a href="{{ url('k/lembaga') }}" class="btn btn-success"><i
-                                    class="glyphicon glyphicon-edit"></i> Edit</a>
                     </div>
                 </div>
                 <!-- / box Header -->

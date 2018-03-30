@@ -27,17 +27,11 @@
         <!-- Sidebar Menu -->
         @if(Auth::user()->role_id==1)
                 @include('layouts.menu.superadmin')
-        @endif
-
-        @if(Auth::user()->role_id==3)
-            {{--For Konsultan--}}
+        @elseif(Auth::user()->role_id==3)
                 @include('layouts.menu.konsultan')
+                @else
+                @include('layouts.menu.admin')
         @endif
-
-        @if(Auth::user()->role_id==2)
-            {{--For admin--}}
-            @include('layouts.menu.admin')
-            @endif
                     <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->

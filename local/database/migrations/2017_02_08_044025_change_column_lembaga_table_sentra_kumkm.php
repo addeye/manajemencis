@@ -15,7 +15,7 @@ class ChangeColumnLembagaTableSentraKumkm extends Migration
     {
         Schema::table('sentra_kumkms', function (Blueprint $table) {
             $table->integer('id_lembaga')->unsigned()->change();
-            $table->foreign('id_lembaga')->references('id')->on('lembagas');
+            $table->foreign('id_lembaga')->references('id')->on('cis_lembagas');
         });
     }
 

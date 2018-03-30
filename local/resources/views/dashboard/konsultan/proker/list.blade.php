@@ -25,46 +25,66 @@
 					</div>
 				</div>
 				<!-- / box Header -->
+				<div class="col-md-12">
+					<form  class="form-inline" method="get">
+						<div class="form-group">
+							<label for="">Proker Plut</label>
+							<select class="form-control" name="proker_id">
+								<option value="">Pilih Proker</option>
+								@foreach ($proker as $p)
+									<option value="{{$p->id}}" {{$proker_id==$p->id?'selected':''}}>{{$p->program}} ({{$p->tahun_kegiatan}})</option>
+								@endforeach
+							</select>
+						</div>
+						<button class="btn btn-info"><i class="fa fa-search"></i> Cari</button>
+					</form>
+				</div>
 				<div class="box-body table-responsive">
-						<table id="example" class="table table-bordered table-striped">
+						<table class="table table-bordered table-striped">
 						<thead>
 							<tr>
 								<th class="col-xs-1">No</th>
-								<th>Tahun Kegiatan</th>
-								<th>Program</th>
+								<th>Kegiatan</th>
 								<th>Tujuan</th>
-								<th>Detail</th>
+								<th>Sasaran</th>
+								<th>Jumlah Sasaran</th>
+								<th>Indikator</th>
+								<th>Output</th>
+								<th>Jadwal</th>
+								<th>Mitra</th>
 								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
-						<?php $no=1;?>
+						<?php $no = 1;?>
 							@foreach($data as $row)
 							<tr>
 								<td>{{$no++}}</td>
-								<td>{{$row->tahun_kegiatan}}</td>
-								<td>{{$row->program}}</td>
+								<td>{{$row->jenis_kegiatan}}</td>
 								<td>{{$row->tujuan}}</td>
+								<td>{{$row->sasaran}}</td>
+								<td>{{$row->jml_penerima}}</td>
+								<td>{{$row->indikator}}</td>
+								<td>{{$row->ket_output}}</td>
+								<td>{{$row->jadwal_pelaksana}}</td>
+								<td>{{$row->mitra_kerja}}</td>
 								<td>
-									<a href="{{ url('k/dproker/'.$row->id) }}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="left" title="Detail Kegiatan Proker">
-										Detail
-									</a>
-								</td>
-								<td>
-                                	<a href="{{ url('k/proker/'.$row->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="left" title="Edit Data">
-										<i class="glyphicon glyphicon-edit"></i>
-									</a>
-                                	<a href="{{ url('k/proker/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="Hapus Data">
-										<i class="glyphicon glyphicon-trash"></i>
-									</a>
-								</td>
+										<a href="{{ url('k/proker/'.$row->id) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="left" title="Edit Data">
+											<i class="glyphicon glyphicon-edit"></i>
+										</a>
+										<a href="{{ url('k/proker/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="Hapus Data">
+											<i class="glyphicon glyphicon-trash"></i>
+										</a>
+									</td>
 							</tr>
 							 @endforeach
 						</tbody>
 
 					</table>
 				</div>
-
+				<div class="text-center">
+                {{$data->appends($_GET)->links()}}
+            </div>
 
 			</div>
 		</div>

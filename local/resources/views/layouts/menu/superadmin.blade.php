@@ -11,7 +11,7 @@
     <!-- Optionally, you can add icons to the links -->
     <li class="{{ Active::check('home') }}"><a href="{{ url('home') }}"><i class="fa fa-dashboard"></i>
             <span>Dashboard</span></a></li>
-    <li class="treeview {{active_check('bidanglayanan',true)}} {{active_check('jenislayanan',true)}} {{active_check('bidangusaha',true)}} {{active_check('provinces',true)}} {{active_check('regencies',true)}} {{active_check('districts',true)}}">
+    <li class="treeview {{active_check('bidanglayanan',true)}} {{active_check('jenislayanan',true)}} {{active_check('bidangusaha',true)}} {{active_check('provinces',true)}} {{active_check('regencies',true)}} {{active_check('districts',true)}} {{ active_check('standart-layanan',true) }}">
         <a href="#">
             <i class="fa fa-cube"></i> <span>Master Data</span>
                             <span class="pull-right-container">
@@ -19,7 +19,7 @@
                             </span>
         </a>
         <ul class="treeview-menu">
-            <li class="{{active_check('bidanglayanan',true)}} {{active_check('jenislayanan',true)}} {{ active_check('bidangusaha',true) }}">
+            <li class="{{active_check('bidanglayanan',true)}} {{active_check('jenislayanan',true)}} {{ active_check('bidangusaha',true) }} {{ active_check('standart-layanan',true) }}">
                 <a href="#"><i class="fa fa-circle-o"></i> Bidang
                                 <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -32,6 +32,8 @@
                                     class="fa fa-circle-o"></i> IKU Layanan</a></li>
                     <li class="{{ active_check('bidangusaha',true) }}"><a href="{{ url('bidangusaha') }}"><i
                                     class="fa fa-circle-o"></i> Bidang Usaha</a></li>
+                    <li class="{{ active_check('standart-layanan',true) }}"><a href="{{ url('standart-layanan') }}"><i
+                                    class="fa fa-circle-o"></i> Standart Layanan</a></li>
                 </ul>
             </li>
             <li class="{{active_check('provinces',true)}} {{active_check('regencies',true)}} {{active_check('districts',true)}}">
@@ -69,7 +71,7 @@
         </ul>
     </li>
 
-    <li class="treeview {{active_check('admin',true)}}">
+    <li class="treeview {{active_check('admin',true)}} {{active_check('proker-plut')}}">
         <a href="#">
             <i class="fa fa-home"></i> <span>Admin</span>
 <span class="pull-right-container">
@@ -81,6 +83,8 @@
                             class="fa fa-circle-o"></i> Add Admin</a></li>
             <li class="{{active_check('admin')}}"><a href="{{ url('admin') }}"><i
                             class="fa fa-circle-o"></i> View Admin</a></li>
+            <li class="{{active_check('proker-plut')}}"><a href="{{ url('proker-plut') }}"><i
+                            class="fa fa-circle-o"></i> Proker Plut</a></li>
         </ul>
     </li>
 
@@ -98,6 +102,232 @@
                             class="fa fa-circle-o"></i> View Konsultan</a></li>
             <li class="{{active_check('konsultan/report')}}"><a href="{{ url('konsultan/report') }}"><i
                             class="fa fa-circle-o"></i> Report Konsultan</a></li>
+        </ul>
+    </li>
+    <li class="treeview {{active_check('database-koperasi',true)}} {{active_check('database-koperasi-laporan')}} {{active_check('database-umkm-laporan')}} {{active_check('database-umkm')}}">
+        <a href="#">
+            <i class="fa fa-cubes">
+            </i>
+            <span>
+                Database
+            </span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right">
+                </i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="treeview {{active_check('database-koperasi',true)}} {{active_check('database-koperasi-laporan')}}">
+                <a href="#">
+                    <i class="fa fa-circle-o">
+                    </i>
+                    <span>
+                        Data Koperasi
+                    </span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right">
+                        </i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{active_check('database-koperasi',true)}}">
+                        <a href="{{ url('database-koperasi') }}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            View Koperasi
+                        </a>
+                    </li>
+                    <li class="{{active_check('database-koperasi-laporan')}}">
+                        <a href="{{ url('database-koperasi-laporan') }}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            Report Koperasi
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview {{active_check('database-umkm-laporan')}} {{active_check('database-umkm')}}">
+                <a href="#">
+                    <i class="fa fa-circle-o">
+                    </i>
+                    <span>
+                        Data UMKM
+                    </span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right">
+                        </i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{active_check('database-umkm')}}">
+                        <a href="{{url('database-umkm')}}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            View UMKM
+                        </a>
+                    </li>
+                    <li class="{{active_check('database-umkm-laporan')}}">
+                        <a href="{{url('database-umkm-laporan')}}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            Report UMKM
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview {{active_check('sentra_kumkm',true)}}">
+                <a href="#">
+                    <i class="fa fa-circle-o">
+                    </i>
+                    <span>
+                        Sentra UMKM
+                    </span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right">
+                        </i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{active_check('sentra_kumkm/create')}}">
+                        <a href="{{url('sentra_kumkm/create')}}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            Add Sentra
+                        </a>
+                    </li>
+                    <li class="{{active_check('sentra_kumkm')}}">
+                        <a href="{{url('sentra_kumkm')}}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            View Sentra
+                        </a>
+                    </li>
+                    <li class="{{active_check('sentra_kumkm/report/all')}}">
+                        <a href="{{url('sentra_kumkm/report/all')}}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            Report Sentra
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview {{active_check('produk_unggulan',true)}} {{active_check('produk_unggulan/report/all')}}">
+                <a href="#">
+                    <i class="fa fa-circle-o">
+                    </i>
+                    <span>
+                        Produk Unggulan
+                    </span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right">
+                        </i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{active_check('produk_unggulan/create')}}">
+                        <a href="{{url('produk_unggulan/create')}}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            Add Produk Unggulan
+                        </a>
+                    </li>
+                    <li class="{{active_check('produk_unggulan')}}">
+                        <a href="{{url('produk_unggulan')}}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            View Produk Unggulan
+                        </a>
+                    </li>
+                    <li class="{{active_check('produk_unggulan/report/all')}}">
+                        <a href="{{url('produk_unggulan/report/all')}}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            Report Produk Unggulan
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li class="treeview {{active_check('sasaran-program-koperasi',true)}} {{active_check('sasaran-program-umkm',true)}} {{active_check('program-kerja-pendampingan',true)}}">
+        <a href="#">
+            <i class="fa fa-compass">
+            </i>
+            <span>
+                Pendampingan
+            </span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right">
+                </i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="treeview {{active_check('sasaran-program-koperasi',true)}} {{active_check('sasaran-program-umkm',true)}} {{active_check('program-kerja-pendampingan',true)}}">
+                <a href="#">
+                    <i class="fa fa-circle-o">
+                    </i>
+                    <span>
+                        Sasaran Program
+                    </span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right">
+                        </i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{active_check('sasaran-program-koperasi',true)}}">
+                        <a href="{{ url('sasaran-program-koperasi') }}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            Koperasi
+                        </a>
+                    </li>
+                    <li class="{{active_check('sasaran-program-umkm',true)}}">
+                        <a href="{{ url('sasaran-program-umkm') }}">
+                            <i class="fa fa-circle-o">
+                            </i>
+                            UMKM
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="{{active_check('program-kerja-pendampingan',true)}}">
+                <a href="{{ url('program-kerja-pendampingan') }}">
+                    <i class="fa fa-circle-o">
+                    </i>
+                    Program Kerja
+                </a>
+            </li>
+            <li class="">
+                <a href="javascript:void">
+                    <i class="fa fa-circle-o">
+                    </i>
+                    Pelaksanaan Pendampingan
+                </a>
+            </li>
+            <li class="">
+                <a href="javascript:void">
+                    <i class="fa fa-circle-o">
+                    </i>
+                    Penilaian
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li class="treeview {{active_check('kinerja-master',true)}} {{active_check('rekap-kinerja',true)}}">
+        <a href="#">
+            <i class="fa fa-users"></i> <span>Pelaporan Kinerja</span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{active_check('kinerja-master/create')}}"><a href="{{ url('kinerja-master/create') }}"><i
+                            class="fa fa-circle-o"></i> Add/Edit Kinerja</a></li>
+            <li class="{{active_check('kinerja-master')}}"><a href="{{ url('kinerja-master') }}"><i
+                            class="fa fa-circle-o"></i> View Kinerja</a></li>
+            <li class="{{active_check('rekap-kinerja')}}"><a href="{{ url('rekap-kinerja') }}"><i
+                            class="fa fa-circle-o"></i> Rekap Kinerja</a></li>
         </ul>
     </li>
     <li class="treeview {{active_check('kumkm',true)}}">
@@ -129,7 +359,29 @@
                             class="fa fa-circle-o"></i> Report Sentra</a></li>
         </ul>
     </li>
-    <li class=""><a href="#"><i class="fa fa-dashboard"></i> <span>Produk Unggulan</span></a></li>
+    <li class="treeview {{active_check('laporan-produk')}} {{active_check('laporan-sentra')}} {{active_check('laporan-kegiatan')}} {{active_check('laporan-program')}} {{active_check('laporan-kinerja')}} {{active_check('laporan-proker-plut')}} {{active_check('progres-data')}}">
+        <a href="#">
+            <i class="fa fa-list"></i> <span>Laporan</span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{active_check('laporan-produk')}}"><a href="{{url('laporan-produk')}}"><i class="fa fa-circle-o"></i> Produk Unggulan</a></li>
+            <li class="{{active_check('laporan-sentra')}}"><a href="{{url('laporan-sentra')}}"><i class="fa fa-circle-o"></i> Sentra UMKM</a></li>
+            <li class="{{active_check('laporan-kegiatan')}}"><a href="{{url('laporan-kegiatan')}}"><i class="fa fa-circle-o"></i> Kegiatan Konsultan</a></li>
+            <li class="{{active_check('laporan-program')}}"><a href="{{url('laporan-program')}}"><i class="fa fa-circle-o"></i> Program Kerja</a></li>
+            <li class="{{active_check('laporan-proker-plut')}}"><a href="{{url('laporan-proker-plut')}}"><i class="fa fa-circle-o"></i> Program Kerja PLUT</a></li>
+            <li class="{{active_check('laporan-kinerja')}}"><a href="{{url('laporan-kinerja')}}"><i class="fa fa-circle-o"></i> Kinerja</a></li>
+            <li class="{{active_check('progres-data')}}">
+                <a href="{{url('progres-data')}}">
+                    <i class="fa fa-circle-o">
+                    </i>
+                    Progres Data
+                </a>
+            </li>
+        </ul>
+    </li>
     <li class="{{active_check('pengumuman',true)}}"><a href="{{url('pengumuman')}}"><i
                     class="fa fa-info-circle"></i> <span>Pengumuman</span></a></li>
     <li class="treeview {{active_check('roles',true)}} {{active_check('u',true)}} {{active_check('set_kontak',true)}} {{active_check('sbanner',true)}} {{active_check('tingkat',true)}}">

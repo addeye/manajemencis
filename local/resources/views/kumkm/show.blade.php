@@ -74,13 +74,13 @@
                                             <dt>Alamat</dt>
                                             <dd>{{$data->alamat}}</dd>
                                             <dt>Provinsi</dt>
-                                            <dd>{{$data->provinces->name}}</dd>
+                                            <dd>{{$data->provinces?$data->provinces->name:'-'}}</dd>
                                             <dt>Kabupaten/Kota</dt>
-                                            <dd>{{$data->regencies->name}}</dd>
+                                            <dd>{{$data->regencies?$data->regencies->name:'-'}}</dd>
                                             <dt>Kecamatan</dt>
-                                            <dd>{{$data->districts->name}}</dd>
+                                            <dd>{{$data->districts?$data->districts->name:'-'}}</dd>
                                             <dt>Kelurahan</dt>
-                                            <dd>{{$data->villages->name}}</dd>
+                                            <dd>{{$data->villages?$data->villages->name:'-'}}</dd>
                                         </dl>
                                     </div>
                                     <!-- /.box-body -->

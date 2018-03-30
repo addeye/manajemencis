@@ -42,6 +42,7 @@
                                     <button type="button" id="selectAll" class="btn btn-xs btn-default">Semua</button>
                                 </th>
                                 <th>No Registrasi</th>
+                                <th>Status</th>
                                 <th>Nama Lengkap</th>
                                 <th>ID Lembaga</th>
                                 <th>Lembaga</th>
@@ -57,6 +58,7 @@
                             <tr>
                                 <th></th>
                                 <th>No Registrasi</th>
+                                <th>Status</th>
                                 <th>Nama Lengkap</th>
                                 <th>ID Lembaga</th>
                                 <th>Lembaga</th>
@@ -73,6 +75,7 @@
                                 <tr>
                                     <td><input name="idkonsultan[]" type="checkbox" value="{{$row->id}}"></td>
                                     <td>{{$row->no_registrasi}}</td>
+                                    <td>{{$row->user->status}}</td>
                                     <td>{{$row->nama_lengkap}}</td>
                                     <td>{{$row->lembagas?$row->lembagas->id_lembaga:'-'}}</td>
                                     <td>{{$row->lembagas?$row->lembagas->plut_name:'-'}}</td>

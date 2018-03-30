@@ -139,7 +139,7 @@
             <div class="pull-right hidden-xs">
                 <b>Version</b> 1.0.0
             </div>
-            <strong>Copyright &copy; 2017 <a href="http://peacbromo.co.id/">PEACBromo</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; {{date('Y')}} <a href="http://peacbromo.co.id/">PEACBromo</a>.</strong> All rights reserved.
         </div><!-- /.container -->
     </footer>
 </div><!-- ./wrapper -->

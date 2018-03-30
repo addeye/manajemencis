@@ -7,6 +7,7 @@
  */
 
 namespace App\Repositories;
+use Auth;
 
 
 use App\ProdukUnggulan;
@@ -23,7 +24,19 @@ class ProdukUnggulanRepository
     //Select All
     Public function getAll()
     {
-        return $this->produk->all();
+        $user = Auth::user();
+        if($user->role_id == 1)
+        {
+            return $this->produk->all();
+        }
+        elseif ($user->role_id == 2) {
+            $lembaga_id = $user->adminlembagas->lembaga_id;
+            return $this->produk->where('lembaga_id','=',$lembaga_id)->get();
+        }
+        elseif ($user->role_id == 3) {
+            $lembaga_id = $user->konsultans->lembaga_id;
+            return $this->produk->where('lembaga_id','=',$lembaga_id)->get();
+        }
     }
 
     // Select where id

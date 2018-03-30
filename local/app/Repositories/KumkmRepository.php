@@ -26,16 +26,35 @@ class KumkmRepository
         if(Auth::user()->role_id==2)
         {
             $lembaga_id = Auth::user()->adminlembagas->lembaga_id;
-            return $this->kumkm->where('lembaga_id',$lembaga_id)->get();
+            return $this->kumkm->with('lembaga','provinces','regencies','districts','villages','sentra_kumkm','bidangusaha')->where('lembaga_id',$lembaga_id)->paginate(10);
         }
         elseif(Auth::user()->role_id==3)
         {
             $lembaga_id = Auth::user()->konsultans->lembaga_id;
-            return $this->kumkm->where('lembaga_id',$lembaga_id)->get();
+            return $this->kumkm->with('lembaga','provinces','regencies','districts','villages','sentra_kumkm','bidangusaha')->where('lembaga_id',$lembaga_id)->paginate(10);
         }
         elseif(Auth::user()->role_id==1)
         {
-            return $this->kumkm->all();
+            return $this->kumkm->with('lembaga','provinces','regencies','districts','villages','sentra_kumkm','bidangusaha')->paginate(10);
+        }
+    }
+
+    public function getBySearch($search)
+    {
+
+        if(Auth::user()->role_id==2)
+        {
+            $lembaga_id = Auth::user()->adminlembagas->lembaga_id;
+            return $this->kumkm->with('lembaga','provinces','regencies','districts','villages','sentra_kumkm','bidangusaha')->where('lembaga_id',$lembaga_id)->where('nama_usaha','LIKE',"%$search%")->paginate(10);
+        }
+        elseif(Auth::user()->role_id==3)
+        {
+            $lembaga_id = Auth::user()->konsultans->lembaga_id;
+            return $this->kumkm->with('lembaga','provinces','regencies','districts','villages','sentra_kumkm','bidangusaha')->where('lembaga_id',$lembaga_id)->where('nama_usaha','LIKE',"%$search%")->paginate(10);
+        }
+        elseif(Auth::user()->role_id==1)
+        {
+            return $this->kumkm->with('lembaga','provinces','regencies','districts','villages','sentra_kumkm','bidangusaha')->where('nama_usaha','LIKE',"%$search%")->paginate(10);
         }
     }
 

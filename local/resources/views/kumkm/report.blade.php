@@ -12,14 +12,32 @@
 
     <div class="row">
         <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <form class="form-inline" action="{{url('kumkm/export/donwload/xlsx')}}" method="get">
+                        <div class="form-group">
+                            <select name="lembaga" class="form-control">
+                                <option value="semua">Pilih Semua Lembaga</option>
+                                @foreach($lembaga as $row)
+                                    <option value="{{$row->id}}">{{$row->plut_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <button class="btn btn-info">Download Excel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
             @include('layouts.alert')
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">{{$title}}</h3>
+                    <h3 class="box-title">{{$title}}</h3>                    
                 </div>
                 <!-- / box Header -->
                 <div class="box-body table-responsive">
-                    <table id="example" class="table table-bordered table-striped">
+                <p>Total : {{$kumkm->total()}}</p>
+                    <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th class="col-xs-1">No</th>
@@ -154,6 +172,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    {{$kumkm->appends(Request::input())->links()}}
                 </div>
             </div>
         </div>

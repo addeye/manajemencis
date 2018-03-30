@@ -23,11 +23,26 @@
                         </a>
                         @endif
                         <a class="btn btn-info" href="{{url('kumkm/report/all')}}">Report KUMKM</a>
+                        @if(Auth::user()->role_id == 1)
+                        <a class="btn btn-info" href="{{url('kumkm/import/data')}}">Import KUMKM</a>
+                        @endif
                     </div>
                 </div>
                 <!-- / box Header -->
                 <div class="box-body table-responsive">
-                    <table id="example" class="table table-bordered table-striped">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <form class="form-inline" method="get" action="">
+                                <div class="form-group">
+                                    <input type="text" name="search" class="form-control" placeholder="Nama Usaha" value="{{Request::get('search')}}">
+                                </div>
+                                <button type="submit" class="btn btn-info">Cari</button>
+                                <a href="{{url('kumkm')}}" class="btn btn-info">Reset</a>
+                            </form>
+                        </div>
+                    </div>
+                    <p>Total : {{$kumkm->total()}}</p>
+                    <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
                             <th class="col-xs-1">No</th>
@@ -40,7 +55,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php $no=1; ?>
+                        <?php $no = 1;?>
                         @foreach($kumkm as $row)
                             <tr>
                                 <td>{{$no++}}</td>
@@ -63,6 +78,7 @@
                         </tbody>
 
                     </table>
+                    {{$kumkm->appends(Request::input())->links()}}
                 </div>
             </div>
         </div>

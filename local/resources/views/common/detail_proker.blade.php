@@ -3,9 +3,11 @@
     <div class="col-sm-5">
         <select onchange="detailKegiatan(this.value)" class="form-control" name="detail_proker_id">
             <option value="0">Pilih</option>
+            @if($detail)
             @foreach($detail as $row)
                 <option value="{{$row->id}}">{{$row->jenis_kegiatan}}</option>
             @endforeach
+            @endif
         </select>
         <p class="text-danger">* Tidak wajib dipilih jika tidak ada dalam Program kerja</p>
     </div>

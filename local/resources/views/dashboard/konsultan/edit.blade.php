@@ -37,6 +37,7 @@
                                 <form method="post" action="{{ url('bio/konsultan/'.$data->id.'/update') }}" class="form-horizontal" enctype="multipart/form-data">
                                     <input type="hidden" name="user_id" value="{{ $data->user_id }}">
                                     <input type="hidden" name="_method" value="PUT">
+                                    <input type="hidden" name="status" value="Aktif">
                                     {{ csrf_field() }}
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">No Registrasi*</label>

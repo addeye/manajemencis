@@ -229,6 +229,17 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Status Akun</label>
+
+                            <div class="col-sm-3">
+                                <select class="form-control" name="status">
+                                    <option>Pilih Status</option>
+                                    <option value="aktif" {{old('status')=='aktif'?'selected':''}}>Aktif</option>
+                                    <option value="nonaktif" {{old('status')=='nonaktif'?'selected':''}}>Nonaktif</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">Simpan</button>
                                 <a href="{{ url('konsultan') }}" class="btn btn-default">Kembali</a>

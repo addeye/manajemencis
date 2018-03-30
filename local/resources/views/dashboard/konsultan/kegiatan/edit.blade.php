@@ -14,70 +14,68 @@
 
     <div class="row">
         <div class="col-xs-12">
+            @include('layouts.alert')
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{$title}}</h3>
                 </div>
                 <!-- / box Header -->
                 <div class="box-body">
-                    <form method="post" action="{{ url('k/kegiatan/'.$data->id.'/update') }}" class="form-horizontal">
+                    <form method="post" action="{{ url('k/kegiatan/'.$data->id.'/update') }}" class="form-horizontal" enctype="multipart/form-data">
                         <input type="hidden" name="_method" value="PUT">
                         {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Mulai</label>
+                        <div class="form-group {{ $errors->has('tanggal_mulai') ? ' has-error' : '' }} {{ $errors->has('tanggal_selesai') ? ' has-error' : '' }}">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Mulai/Selesai</label>
                             <div class="col-sm-3">
-                                <input type="date" name="tanggal_mulai" class="form-control" placeholder="Tanggal mulai.." value="{{ $data->tanggal_mulai }}" required>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" name="tanggal_mulai" class="form-control pull-right datepicker-realformat" value="{{date('d-m-Y',strtotime($data->tanggal_mulai))}}">
+                                    <span class="help-block">
+                                      <strong>{{ $errors->first('tanggal_mulai') }}</strong>
+                                    </span>
+                                </div>
                             </div>
                             <div class="col-sm-3">
-                                <input type="date" name="tanggal_selesai" class="form-control" placeholder="Tanggal selesai.." value="{{ $data->tanggal_selesai }}" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Program Kerja</label>
-                            <div class="col-sm-5">
-                                <select class="form-control" id="proker_id" name="proker_id" required>
-                                    <option value="0">Pilih</option>
-                                    @foreach($proker as $row)
-                                        <option value="{{$row->id}}" {{$data->proker_id==$row->id?'selected':''}} >{{$row->tahun_kegiatan}} {{ $row->program }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div id="ajaxDetailProker"></div>
-                        @if($dproker)
-                        <div class="form-group">
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-10">
-                                <div id="ajaxDetailKegiatanProker">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Jenis Kegiatan :</label>
-                                        <div class="col-sm-10">
-                                            <p class="form-control-static">{{$dproker->jenis_kegiatan}}</p>
-                                        </div>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Indikator Kinerja Utama :</label>
-                                        <div class="col-sm-10">
-                                            <p class="form-control-static">{{$dproker->jenis_layanans->name}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Target Output:</label>
-                                        <div class="col-sm-10">
-                                            <p class="form-control-static">{{$dproker->output}} - {{$dproker->ket_output}}</p>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Jumlah Penerima:</label>
-                                        <div class="col-sm-10">
-                                            <p class="form-control-static">{{$dproker->jml_penerima}}</p>
-                                        </div>
-                                    </div>
+                                    <input type="text" name="tanggal_selesai" value="{{date('d-m-Y',strtotime($data->tanggal_selesai))}}" class="form-control pull-right datepicker-realformat">
+                                    <span class="help-block">
+                                      <strong>{{ $errors->first('tanggal_selesai') }}</strong>
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        @endif
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('bidang_layanan_id') ? ' has-error' : '' }}">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Bidang Layanan</label>
+                            <div class="col-sm-5">
+                                <select name="bidang_layanan_id[]" class="form-control select2" multiple="true" required>
+                                    <option value="">Pilih Bidang Layanan</option>
+                                    @foreach ($bidang_layanan as $row)
+                                        <option value="{{$row->id}}" {{in_array($row->id,$data->kegiatan_konsultan_bidang->pluck('bidang_layanan_id')->toArray())?'selected':''}}>{{$row->name}}</option>
+                                    @endforeach
+                                </select>
+                                <span class="help-block">
+                                      <strong>{{ $errors->first('bidang_layanan_id') }}</strong>
+                                </span>
+                            </div>
+                            <div class="col-sm-5">
+                                <p>Bidang layananan yang terlibat</p>
+                            </div>
+                        </div>
+                        <div class="form-group {{ $errors->has('judul_kegiatan') ? ' has-error' : '' }}">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Judul Kegiatan</label>
+                            <div class="col-sm-5">
+                                <input type="text" name="judul_kegiatan" class="form-control" placeholder="Judul kegiatan.." value="{{ $data->judul_kegiatan }}" required>
+                            </div>
+                            <span class="help-block">
+                                      <strong>{{ $errors->first('judul_kegiatan') }}</strong>
+                                </span>
+                        </div>
+                        <div class="form-group {{ $errors->has('bidang_usaha_id') ? ' has-error' : '' }}">
                             <label for="inputEmail3" class="col-sm-2 control-label">Bidang Usaha</label>
                             <div class="col-sm-5">
                                 <select class="form-control" name="bidang_usaha_id" required>
@@ -86,57 +84,81 @@
                                         <option value="{{$row->id}}" {{$data->bidang_usaha_id==$row->id?'selected':''}}>{{$row->name}}</option>
                                     @endforeach
                                 </select>
+                                <span class="help-block">
+                                      <strong>{{ $errors->first('bidang_usaha_id') }}</strong>
+                                </span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Judul Kegiatan</label>
-                            <div class="col-sm-5">
-                                <input type="text" name="judul_kegiatan" class="form-control" placeholder="Judul kegiatan.." value="{{ $data->judul_kegiatan }}" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('lokasi_kegiatan') ? ' has-error' : '' }}">
                             <label for="inputEmail3" class="col-sm-2 control-label">Lokasi Kegiatan</label>
                             <div class="col-sm-5">
                                 <input type="text" name="lokasi_kegiatan" class="form-control" placeholder="Lokasi kegiatan.." value="{{ $data->lokasi_kegiatan }}" required>
+                                <span class="help-block">
+                                      <strong>{{ $errors->first('lokasi_kegiatan') }}</strong>
+                                </span>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('jumlah_peserta') ? ' has-error' : '' }}">
                             <label for="inputEmail3" class="col-sm-2 control-label">Jumlah Penerima Manfaat</label>
                             <div class="col-sm-2">
                                 <input type="number" name="jumlah_peserta" class="form-control" placeholder="Jumlah.." value="{{ $data->jumlah_peserta }}" required>
+                                <span class="help-block">
+                                      <strong>{{ $errors->first('jumlah_peserta') }}</strong>
+                                </span>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group {{ $errors->has('output') ? ' has-error' : '' }} {{ $errors->has('ket_output') ? ' has-error' : '' }}">
                             <label for="inputEmail3" class="col-sm-2 control-label">Output</label>
                             <div class="col-sm-2">
                                 <input type="number" name="output" class="form-control" placeholder="Jumlah.." value="{{ $data->output }}" required>
+                                <span class="help-block">
+                                      <strong>{{ $errors->first('output') }}</strong>
+                                </span>
                             </div>
                             <div class="col-sm-4">
                                 <input type="text" name="ket_output" class="form-control" placeholder="Keterangan Output.." value="{{ $data->ket_output }}" required>
+                                <span class="help-block">
+                                      <strong>{{ $errors->first('ket_output') }}</strong>
+                                </span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Sumber Daya</label>
                             <div class="col-sm-5">
-                                <input type="text" name="sumber_daya" class="form-control" placeholder="Sumber daya.." value="{{ $data->sumber_daya }}" required>
+                                <input type="text" name="sumber_daya" class="form-control" value="{{$data->sumber_daya}}" placeholder="Semua sumber daya yang mendukung terlaksana kegiatan.." required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Mitra Kegiatan</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Mitra Kerja</label>
                             <div class="col-sm-5">
-                                <input type="text" name="sumber_daya" class="form-control" placeholder="Sumber daya.." value="{{ $data->mitra_kegiatan }}" required>
+                                <textarea class="form-control" name="mitra_kegiatan" rows="4" placeholder="Mitra Kerja.." required>{{$data->mitra_kegiatan}}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Mitra Kegiatan</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Rencana Tindak Lanjut</label>
                             <div class="col-sm-5">
-                                <textarea class="form-control" name="rencana_tindak_lanjut">{{$data->rencana_tindak_lanjut}}</textarea>
+                                <textarea class="form-control" name="rencana_tindak_lanjut" rows="4" placeholder="Hal-hal yang dilakukan setelah kegiatan.." required>{{$data->rencana_tindak_lanjut}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Unggah Gambar</label>
+                            <div class="col-sm-3">
+                                <input type="file" name="image">
+                                <p>Ukuran File Gambar Max 1 MB </p>
+                                <p class="text-danger">{{ $errors->first('image') }}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Gambar</label>
+                            <div class="col-sm-3">
+                                <img src="{{ asset('kegiatan/'.$data->image) }}" style="width: 200px;">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">Simpan</button>
-                                <button type="button" onclick="history.go(-1);" class="btn btn-default">Kembali</button>
+                                <a href="{{ url('k/kegiatan') }}" class="btn btn-default">Kembali</a>
                             </div>
                         </div>
                     </form>

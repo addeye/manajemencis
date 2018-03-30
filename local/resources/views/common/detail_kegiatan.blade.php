@@ -7,6 +7,7 @@
  */
 ?>
 
+@if($data)
 <div class="form-group">
     <label class="col-sm-2 control-label">Jenis Kegiatan :</label>
     <div class="col-sm-10">
@@ -31,3 +32,4 @@
         <p class="form-control-static">{{$data->jml_penerima}}</p>
     </div>
 </div>
+@endif

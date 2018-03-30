@@ -16,13 +16,13 @@
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>{{$jml_sentra}}</h3>
-                <p>Sentra UMKM</p>
+                <h3>{{$jml_kumkm}}</h3>
+                <p>UMKM</p>
             </div>
             <div class="icon">
                 <i class="ion ion-bag"></i>
             </div>
-            <a href="{{url('sentra_umkm')}}" class="small-box-footer">Detil Sentra <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{url('sentra_umkm')}}" class="small-box-footer">Detil UMKM <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -30,7 +30,7 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>{{0}}</h3>
+                <h3>{{$jml_produk}}</h3>
                 <p>Produk Unggulan</p>
             </div>
             <div class="icon">
@@ -69,12 +69,12 @@
         </div>
     </div>
     <!-- ./col -->
-    <div class="col-xs-12 col-md-6">
+    <div class="col-xs-12 col-md-12">
         <!-- Chat box -->
         <div class="box box-success">
             <div class="box-header">
                 <i class="fa fa-info-circle"></i>
-                <h3 class="box-title">Info Terbaru</h3>
+                <h3 class="box-title">Info Terkini</h3>
                 <div class="pull-right">
                     <a href="{{url('info')}}" class="small-box-footer pull-right">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
@@ -94,73 +94,6 @@
                     <!-- /.attachment -->
                 </div>
                 <!-- /.item -->
-                @endforeach
-            </div>
-            <!-- /.chat -->
-        </div>
-        <!-- /.box (chat box) -->
-    </div>
-    <div class="col-xs-12 col-md-6">
-        <!-- Chat box -->
-        <div class="box box-info">
-            <div class="box-header">
-                <i class="fa fa-comments-o"></i>
-                <h3 class="box-title">Konsultasi Online</h3>
-                <div class="pull-right">
-                    <a href="{{url('konsultasi/all')}}" class="small-box-footer pull-right">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-            </div>
-            <div class="box-body chat scroll" id="chat-box">
-                @foreach($konsultasi as $row)
-                        <!-- chat item -->
-                <div class="item">
-                    <span class="fa fa-user fa-3x"></span>
-                    <p class="message">
-                        <a href="{{url('konsultasi/'.$row->id.'/detail')}}" class="name">
-                            <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{$row->dibuat}}</small>
-                            {{$row->nama}} - {{$row->email}}
-                        </a>
-                        {!! $row->permasalahan_bisnis !!}
-                    </p>
-                    <p style="font-weight: bold">{{$row->alamat}}</p>
-                    <small class="pull-right">
-                        Respon : {{$row->user?$row->lembaga->plut_name:'Belum ada'}}
-                        <br>{{$row->user?$row->user->name:''}}
-                    </small>
-                    <!-- /.attachment -->
-                </div>
-                <!-- /.item -->
-                @endforeach
-            </div>
-            <!-- /.chat -->
-        </div>
-        <!-- /.box (chat box) -->
-    </div>
-
-    <div class="col-xs-12 col-md-6">
-        <!-- Chat box -->
-        <div class="box box-info">
-            <div class="box-header">
-                <i class="fa fa-globe"></i>
-                <h3 class="box-title">Informasi Pasar</h3>
-            </div>
-            <div class="box-body chat scroll" id="chat-box">
-                @foreach($informasi as $data)
-                    <div class="col-md-12 box-footer box-comments">
-                        <div class="box-comment">
-                            <!-- User image -->
-                            <img class="img-circle img-sm" src="{{url('images/market.png')}}" alt="User Image">
-                            <div class="comment-text">
-                              <span class="username"> {{$data->nama_lengkap}} - {{$data->email}}
-                                  <span class="text-muted pull-right">{{$data->dibuat}}</span>
-                              </span><!-- /.username -->
-                                <span style="font-weight: bold">{{$data->nama_produk}}</span>
-                                <p>{{$data->keterangan}}</p>
-                            </div>
-                            <!-- /.comment-text -->
-                            <span class="pull-right text-muted">{{count($data->comment)}} Comment <a href="{{url('informasi/'.$data->id.'/detail')}}">Selengkapnya..</a></span>
-                        </div>
-                    </div>
                 @endforeach
             </div>
             <!-- /.chat -->

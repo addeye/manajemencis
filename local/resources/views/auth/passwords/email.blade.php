@@ -16,6 +16,9 @@
 
             <div class="col-md-9">
                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                <span class="help-block">
+                                        <strong>Masukkan Email anda yang terdaftar</strong>
+                                    </span>
 
                 @if ($errors->has('email'))
                     <span class="help-block">

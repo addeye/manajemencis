@@ -5,7 +5,7 @@
  * Date: 21/01/2017
  * Time: 7:30
  */
-        ?>
+?>
         <!-- Main Header -->
 <header class="main-header">
 
@@ -39,6 +39,23 @@
                                 <small>{{ Auth::user()->roles->name }} </small>
                             </p>
                         </li>
+                        @if (Auth::user()->konsultans)
+                            <li class="user-body">
+                            <div class="row">
+                              <div class="col-xs-1 text-center">
+                                <a href="#"></a>
+                              </div>
+                              <div class="col-xs-10 text-center">
+                                <a href="{{ url('bio/konsultan') }}"><i class="fa fa-user"></i> BIODATA KONSULTAN</a>
+                              </div>
+                              <div class="col-xs-1 text-center">
+                                <a href="#"></a>
+                              </div>
+                            </div>
+                            <!-- /.row -->
+                          </li>
+                        @endif
+
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">

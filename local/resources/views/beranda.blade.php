@@ -27,13 +27,13 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>{{$jml_sentra}}</h3>
-                    <p>Sentra UMKM</p>
+                    <h3>{{$jml_koperasi}}</h3>
+                    <p>Data Koperasi</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-bag"></i>
                 </div>
-                <a href="{{url('sentra_umkm')}}" class="small-box-footer">Detil Sentra <i class="fa fa-arrow-circle-right"></i></a>
+                {{-- <a href="{{url('sentra_umkm')}}" class="small-box-footer">Detil UMKM <i class="fa fa-arrow-circle-right"></i></a> --}}
             </div>
         </div>
         <!-- ./col -->
@@ -41,13 +41,13 @@
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3>{{0}}</h3>
-                    <p>Produk Unggulan</p>
+                    <h3>{{$jml_kumkm}}</h3>
+                    <p>Data UMKM</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">Detil Produk <i class="fa fa-arrow-circle-right"></i></a>
+                {{-- <a href="#" class="small-box-footer">Detil Produk <i class="fa fa-arrow-circle-right"></i></a> --}}
             </div>
         </div>
         <!-- ./col -->
@@ -55,14 +55,14 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3>{{$jml_kegiatan}}</h3>
+                    <h3>{{$koperasi_dampingan}}</h3>
 
-                    <p>Jumlah Kegiatan</p>
+                    <p>Koperasi Dampingan</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-pie-graph"></i>
                 </div>
-                <a href="{{url('kegiatan')}}" class="small-box-footer">Detil Kegiatan <i class="fa fa-arrow-circle-right"></i></a>
+                {{-- <a href="{{url('kegiatan')}}" class="small-box-footer">Detil Kegiatan <i class="fa fa-arrow-circle-right"></i></a> --}}
             </div>
         </div>
         <!-- ./col -->
@@ -70,13 +70,29 @@
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>{{$jml_penerima}}</h3>
-                    <p>Penerima Manfaat</p>
+                    <h3>{{$umkm_dampingan}}</h3>
+                    <p>UMKM Dampingan</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="{{url('penerima')}}" class="small-box-footer">Detil Penerima <i class="fa fa-arrow-circle-right"></i></a>
+                {{-- <a href="{{url('penerima')}}" class="small-box-footer">Detil Penerima <i class="fa fa-arrow-circle-right"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title"><i class="fa fa-bookmark"></i> Pendampingan</h3>
+                </div>
+                <div class="box-body">
+                    <div class="no-padding">
+                      <ul class="nav nav-stacked">
+                        @foreach ($bidanglayanan as $row)
+                        <li><a href="javascript:void">{{$row->name}} <span class="pull-right badge bg-blue">0</span></a></li>
+                        @endforeach
+                      </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- ./col -->
@@ -104,11 +120,11 @@
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-6">
-            <a href="{{url('konsultasi')}}">
+            <a href="{{ url('info-konsultan') }}">
                 <div class="text-center">
                     <i class="fa fa-users fa-5x"></i>
                     <div class="caption">
-                        <h4>Konsultasi</h4>
+                        <h4>Konsultan</h4>
                     </div>
                 </div>
             </a>
@@ -116,11 +132,11 @@
         </div>
         <!-- /.col -->
         <div class="col-md-3 col-sm-6 col-xs-6">
-            <a href="{{url('informasi')}}">
+            <a href="{{ url('info-plut') }}">
                 <div class="text-center">
                     <i class="fa fa-globe fa-5x"></i>
                     <div class="caption">
-                        <h4>Informasi Pasar</h4>
+                        <h4>Daftar Plut</h4>
                     </div>
                 </div>
             </a>
@@ -131,7 +147,7 @@
             <div class="box box-success">
                 <div class="box-header">
                     <i class="fa fa-info-circle"></i>
-                    <h3 class="box-title">Info Terbaru</h3>
+                    <h3 class="box-title">Info Terkini</h3>
                 </div>
                 <div class="box-body chat scroll" id="chat-box">
                     @foreach($pengumuman as $row)

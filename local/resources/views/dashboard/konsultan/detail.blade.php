@@ -89,7 +89,7 @@
             </div>
         </div>
     </div>
-    <input id="urlcetak" value="{{ url('bio/konsultan/print') }}">
+    <input type="hidden" id="urlcetak" value="{{ url('bio/konsultan/print') }}">
 @endsection
 
 @section('script')

@@ -58,7 +58,7 @@
 							<tr>
 								<td>{{$no++}}</td>
 								<td>{{$row->id_sentra}}</td>
-								<td>{{$row->lembagas->name}}</td>
+								<td>{{$row->lembagas->plut_name}}</td>
 								<td>{{$row->name}}</td>
 								<td>{{$row->tahun_berdiri}}</td>
 								<td>{{$row->total_umkm}}</td>

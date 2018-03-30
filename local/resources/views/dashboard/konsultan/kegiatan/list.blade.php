@@ -31,7 +31,6 @@
 								<th>Tanggal Mulai</th>
 								<th>Tanggal Selesai</th>
 								<th>Nama Kegiatan</th>
-								<th>IKU</th>
 								<th>Bidang Usaha</th>
 								<th>Lokasi Kegiatan</th>
 								<th>Jumlah Peserta</th>
@@ -39,19 +38,19 @@
 								<th>Sumber Daya</th>
 								<th>Mitra Kegiatan</th>
 								<th>Rencana Tindak Lanjut</th>
+								<th>Bidang Layanan</th>
 								<th>Action</th>
-								
+
 							</tr>
 						</thead>
 						<tbody>
-						<?php $no=1; ?>
+						<?php $no = 1;?>
 							@foreach($data as $row)
 							<tr>
 								<td>{{$no++}}</td>
 								<td>{{date('d-m-Y', strtotime($row->tanggal_mulai))}}</td>
 								<td>{{date('d-m-Y',strtotime($row->tanggal_selesai))}}</td>
-								<td>{{$row->detail_proker?$row->detail_proker->jenis_kegiatan:$row->judul_kegiatan}}</td>
-								<td>{{$row->detail_proker?$row->detail_proker->jenis_layanans->name:'-'}}</td>
+								<td>{{$row->judul_kegiatan}}</td>
 								<td>{{$row->bidang_usahas->name}}</td>
 								<td>{{$row->lokasi_kegiatan}}</td>
 								<td>{{$row->jumlah_peserta}}</td>
@@ -59,6 +58,13 @@
 								<td>{{$row->sumber_daya}}</td>
 								<td>{{$row->mitra_kegiatan}}</td>
 								<td>{{$row->rencana_tindak_lanjut}}</td>
+								<td>
+									<ul>
+										@foreach ($row->kegiatan_konsultan_bidang as $kbd)
+											<li>{{$kbd->bidang_layanan->name}}</li>
+										@endforeach
+									</ul>
+								</td>
 								<td>
                                 	<a href="{{ url('k/kegiatan/'.$row->id) }}" class="btn btn-success btn-xs"><i class="glyphicon glyphicon-edit"></i></a>
                                 	<a href="{{ url('k/kegiatan/'.$row->id.'/delete') }}" onclick="return ConfirmDelete()" class="btn btn-danger btn-xs"><i class="glyphicon glyphicon-trash"></i></a>

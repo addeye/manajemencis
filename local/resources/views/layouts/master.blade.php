@@ -52,6 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body class="skin-blue">
 <div class="wrapper">
@@ -136,6 +137,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $('.datepicker').datepicker({
             autoclose: true,
             format: 'yyyy-mm-dd',
+        });
+
+        $('.datepicker-realformat').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy',
         });
 
         $("[data-mask]").inputmask();
@@ -293,6 +299,30 @@ scratch. This page gets rid of all links and provides the needed markup only.
     $(document).ready(function(){
         $("[data-toggle=popover]").popover();
     });
+</script>
+
+<script>
+$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+});
+$(document).on('click', 'a.jquery-postback', function(e) {
+    e.preventDefault(); // does not go through with the link.
+
+    var $this = $(this);
+    if(ConfirmDelete())
+    {
+        $.post({
+            type: $this.data('method'),
+            url: $this.attr('href')
+        }).done(function (data) {
+            alert('Berhasil Hapus data');
+            location.reload();
+        });
+    }
+
+});
 </script>
 
 @yield('script')

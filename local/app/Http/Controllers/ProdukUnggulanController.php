@@ -38,8 +38,8 @@ class ProdukUnggulanController extends Controller
             'head_title' => 'Data Produk Unggulan',
             'title' => 'Data Produk Unggulan',
             'produk' => $this->produk->getAll()
-
         );
+        
 
         return view('produk_unggulan.list',$data);
     }
@@ -132,9 +132,18 @@ class ProdukUnggulanController extends Controller
             $data['sentra_id'] = 0;
         }
 
+        $user = Auth::user();
+
         if(!$request->has('lembaga_id'))
         {
-            $data['lembaga_id'] = Auth::user()->konsultans->lembaga_id;
+            if($user->role_id ==3)
+            {
+                $data['lembaga_id'] = $user->konsultans->lembaga_id;
+            }
+            elseif ($user->role_id ==2) 
+            {
+                $data['lembaga_id'] = $user->adminlembagas->lembaga_id;
+            }
         }
 
         $result = $this->produk->create($data);
