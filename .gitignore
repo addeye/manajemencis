@@ -1,8 +1,15 @@
-# Created by .ignore support plugin (hsz.mobi)
 /node_modules
 /public/storage
-/local/vendor
+/public/banner
+/public/document
+/public/foto_usaha
+/public/images
+/public/kegiatan
+/public/lampiran
+/public/produk
+/public/admin-lte
+/vendor
 /.idea
 Homestead.json
 Homestead.yaml
-local.env
+.env
