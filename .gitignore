@@ -7,7 +7,7 @@
 /public/kegiatan
 /public/lampiran
 /public/produk
-/public/admin-lte
+# /public/admin-lte
 /vendor
 /.idea
 Homestead.json
