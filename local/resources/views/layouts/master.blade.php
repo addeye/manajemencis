@@ -6,7 +6,7 @@
  * Time: 7:32
  */
 ?>
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
@@ -21,7 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Font Awesome Icons -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <!-- Ionicons -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
     <!-- DataTables -->
     <link href="{{ url("admin-lte/plugins/datatables/dataTables.bootstrap.css") }}" rel="stylesheet" type="text/css" />
     <link rel="icon" href="{{url('cis-ico.png')}}" sizes="32x32" />
@@ -40,6 +40,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- iCheck for checkboxes and radio inputs -->
     <link rel="stylesheet" href="{{url('admin-lte/plugins/iCheck/all.css')}}">
+
+    <style type="text/css">
+        .title-navbar{
+            margin-left: 17%;
+            font-size: 20px;
+            color: white;
+        }
+    </style>
 
     @yield('css')
 

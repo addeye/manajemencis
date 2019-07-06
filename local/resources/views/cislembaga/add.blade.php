@@ -29,6 +29,17 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label  class="col-sm-2 control-label">Type Lembaga</label>
+                            <div class="col-sm-5">
+                                <select name="type" id="" class="form-control">
+                                    <option value=""></option>
+                                    <option value="Nasional">Nasional</option>
+                                    <option value="Provinsi">Provinsi</option>
+                                    <option value="Kab/Kota">Kab/Kota</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label  class="col-sm-2 control-label">SKPD Penanggungjawab</label>
                             <div class="col-sm-5">
                                 <input type="text" name="skpd_name" class="form-control" placeholder="Nama SKPD.." required>

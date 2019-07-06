@@ -39,6 +39,26 @@
 						<a href="{{ url('program-kerja-pendampingan-export?lembaga_id='.$lembaga_id.'&sasaran_program_id='.$sasaran_program_id
 						) }}" class="btn btn-info"><i class="fa fa-file-excel-o"></i></a>
 					</form>
+					<div class="row">
+						<div class="col-md-2 row">
+							<form id="formchecklock" method="post" action="{{ url('program-kerja-pendampingan-lock') }}" onsubmit="return confirm('Apakah anda yakin ? ')">
+								{{ csrf_field() }}
+								<div class="form-group">
+									<div class="inputselectlock"></div>
+									<button type="submit" class="btn btn-danger col-xs-12"><i class="fa fa-lock"></i> Lock</button>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-2 row">
+							<form id="formcheckunlock" method="post" action="{{ url('program-kerja-pendampingan-unlock') }}" onsubmit="return confirm('Apakah anda yakin ? ')">
+								{{ csrf_field() }}
+								<div class="form-group">
+									<div class="inputselectunlock"></div>
+									<button type="submit" class="btn btn-info col-xs-12"><i class="fa fa-unlock"></i> UnLock</button>
+								</div>
+							</form>
+						</div>
+					</div>
 					<div class="">
 		                <div>Showing {{($data->currentpage()-1)*$data->perpage()+1}} to {{$data->currentpage()*$data->perpage()}}
 		                of  {{$data->total()}} entries
@@ -47,7 +67,8 @@
 		                <table class="table table-bordered table-striped">
 							<thead>
 							<tr>
-								<th></th>
+								<th rowspan="2"><button type="button" class="btn btn-default btn-xs disabled"><i class="fa fa-gear"></i></button></th>
+                                <th rowspan="2"><input id="checkAll" type="checkbox"></th>
 								<th>No</th>
 								<th>KUMKM</th>
 								<th>Identifikasi Permasalahan <br> (Per Bidang Layanan)</th>
@@ -70,6 +91,7 @@
 			                                        </button>
 			                                    </form>
 										</td>
+										<td align="center"><input id="checksub" type="checkbox" name="program_id[]" class="checkProgram" value="{{$row->id}}"></td>
 										<td>{{$no++}}</td>
 										<td>{{$row->sasaran_program->ukmtable->nama_kumkm}}</td>
 										<td>{{$row->permasalahan}}</td>
@@ -104,6 +126,34 @@
 
         $(".lockform").on("submit", function(){
             return confirm("Apakah kamu yakin Status Lock Diganti?");
+        });
+
+		$("#checkAll").change(function() {
+            if(this.checked) {
+                $('.checkProgram').prop('checked',true);
+                $('.checkProgram').each(function(){
+                	$('.inputselectlock').append('<input id="proglock'+this.value+'" type="hidden" name="program_id_to_lock[]" value="'+this.value+'"/>');
+                	$('.inputselectunlock').append('<input id="progunlock'+this.value+'" type="hidden" name="program_id_to_unlock[]" value="'+this.value+'"/>');
+                });
+            }
+            else
+            {
+              $('.checkProgram').prop('checked',false);
+              $('.inputselectlock').html('');
+              $('.inputselectunlock').html('');
+            }
+        });
+
+        $(".checkProgram").change(function() {
+            if(this.checked) {
+                $('.inputselectlock').append('<input id="proglock'+this.value+'" type="hidden" name="program_id_to_lock[]" value="'+this.value+'"/>');
+                $('.inputselectunlock').append('<input id="progunlock'+this.value+'" type="hidden" name="program_id_to_unlock[]" value="'+this.value+'"/>');
+            }
+            else
+            {
+              $('#proglock'+this.value).remove();
+              $('#progunlock'+this.value).remove();
+            }
         });
     });
 </script>

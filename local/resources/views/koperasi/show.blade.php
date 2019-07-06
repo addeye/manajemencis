@@ -16,14 +16,14 @@
 				<div class="box-header">
 					<h3 class="box-title">KOPERASI</h3>
 					<div class="pull-right">
-						<a href="{{ url('koperasi') }}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-original-title="Kembali"><i class="fa fa-reply"></i></a>
-						<a class="btn btn-success btn-xs" href="{{ url('koperasi/'.$data->id.'/edit') }}">
+						<a href="{{ url('database-koperasi') }}" class="btn btn-warning btn-xs" data-toggle="tooltip" data-original-title="Kembali"><i class="fa fa-reply"></i></a>
+						{{-- <a class="btn btn-success btn-xs" href="{{ url('koperasi/'.$data->id.'/edit') }}">
 							<i class="fa fa-pencil"></i> Edit
 						</a>
 						<a class="btn btn-danger btn-xs" onclick="event.preventDefault(); ConfirmDelete({{$data->id}});" href="javascript:void(0)" role="menuitem" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash" aria-hidden="true"></i> Hapus</a>
 						<form id="delete-form-{{$data->id}}" action="{{ url('koperasi/'.$data->id) }}" method="POST" style="display: none;">{{ csrf_field() }}
 	                        <input type="hidden" name="_method" value="DELETE">
-	                    </form>
+	                    </form> --}}
 					</div>
 				</div>
 				<!-- / box Header -->
@@ -57,7 +57,9 @@
 					</table>
 					<div class="table-responsive">
 						<table class="table table-bordered">
-						<caption>Detail <a class="btn btn-primary btn-xs" href="{{ url('koperasi-detail-add/'.$data->id) }}"><i class="fa fa-plus"></i> Tambah</a></caption>
+						<caption>Detail
+							{{-- <a class="btn btn-primary btn-xs" href="{{ url('koperasi-detail-add/'.$data->id) }}"><i class="fa fa-plus"></i> Tambah</a> --}}
+						</caption>
 						<tr>
 							<th rowspan="2">Keadaan</th>
 							<th rowspan="2">Tanggal<br>RAT<br>Tahun Buku</th>
@@ -67,7 +69,7 @@
 							<th rowspan="2">Volume Usaha</th>
 							<th rowspan="2">Sisa Hasil</th>
 							<th rowspan="2">Kegiatan Usaha</th>
-							<th rowspan="2">Act</th>
+							{{-- <th rowspan="2">Act</th> --}}
 						</tr>
 						<tr>
 							<th>Anggota</th>
@@ -88,14 +90,14 @@
 								<td>{{number_format($row->volume_usaha)}}</td>
 								<td>{{number_format($row->sisa_hasil)}}</td>
 								<td>{{$row->kegiatan_usaha}}</td>
-								<td>
+								{{-- <td>
 									<a href="{{ url('koperasi-detail-edit/'.$data->id.'/'.$row->id) }}" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i></a>
 
 									<a class="btn btn-danger btn-xs" onclick="event.preventDefault(); ConfirmDeleteDetail({{$row->id}});" href="javascript:void(0)" role="menuitem" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
 				                    <form id="deletedetail-form-{{$row->id}}" action="{{ url('koperasi-detail-del/'.$row->id) }}" method="POST" style="display: none;">{{ csrf_field() }}
 				                        <input type="hidden" name="_method" value="DELETE">
 				                    </form>
-								</td>
+								</td> --}}
 							</tr>
 						@endforeach
 					</table>

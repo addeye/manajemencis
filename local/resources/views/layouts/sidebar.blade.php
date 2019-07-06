@@ -26,11 +26,15 @@
         </div>
         <!-- Sidebar Menu -->
         @if(Auth::user()->role_id==1)
-                @include('layouts.menu.superadmin')
+            @include('layouts.menu.superadmin')
         @elseif(Auth::user()->role_id==3)
-                @include('layouts.menu.konsultan')
-                @else
-                @include('layouts.menu.admin')
+            @include('layouts.menu.konsultan')
+        @elseif(Auth::user()->role_id==2)
+            @include('layouts.menu.admin')
+        @elseif(Auth::user()->role_id==5)
+            @include('layouts.menu.pengelolah')
+        @elseif(Auth::user()->role_id==6)
+            @include('layouts.menu.monev')
         @endif
                     <!-- /.sidebar-menu -->
     </section>

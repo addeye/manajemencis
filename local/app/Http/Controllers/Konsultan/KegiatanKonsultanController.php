@@ -15,264 +15,293 @@ use App\Repositories\ProkerKonsultanRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
-class KegiatanKonsultanController extends Controller {
+class KegiatanKonsultanController extends Controller
+{
+    use UploadTrait;
 
-	use UploadTrait;
+    protected $kegiatankonsultan;
+    protected $jenislayanan;
+    protected $bidangusaha;
+    protected $proker;
+    protected $dproker;
 
-	protected $kegiatankonsultan;
-	protected $jenislayanan;
-	protected $bidangusaha;
-	protected $proker;
-	protected $dproker;
+    public function __construct(
+        KegiatanKonsultanRepository $kegiatankonsultan,
+        JenisLayananRepository $jenislayanan,
+        BidangUsahaRepository $bidangusaha,
+        ProkerKonsultanRepository $proker,
+        DetailsProkersRepository $detailsProkersRepository
+    ) {
+        $this->kegiatankonsultan = $kegiatankonsultan;
+        $this->jenislayanan = $jenislayanan;
+        $this->bidangusaha = $bidangusaha;
+        $this->proker = $proker;
+        $this->dproker = $detailsProkersRepository;
+    }
 
-	public function __construct(KegiatanKonsultanRepository $kegiatankonsultan,
-		JenisLayananRepository $jenislayanan,
-		BidangUsahaRepository $bidangusaha, ProkerKonsultanRepository $proker, DetailsProkersRepository $detailsProkersRepository) {
-		$this->kegiatankonsultan = $kegiatankonsultan;
-		$this->jenislayanan = $jenislayanan;
-		$this->bidangusaha = $bidangusaha;
-		$this->proker = $proker;
-		$this->dproker = $detailsProkersRepository;
-	}
+    public function getAll()
+    {
+        // return $data;
+        $data = [
+            'head_title' => 'Data Pelaporan Kegiatan Konsultan',
+            'title' => 'Pelaporan Kegiatan Konsultan',
+            'data' => $this->kegiatankonsultan->getAllByKonsultan(),
+        ];
+        // return $data;
+        return view('dashboard.konsultan.kegiatan.list', $data);
+    }
 
-	public function getAll() {
-		// return $data;
-		$data = Array
-			(
-			'head_title' => 'Data Pelaporan Kegiatan Konsultan',
-			'title' => 'Pelaporan Kegiatan Konsultan',
-			'data' => $this->kegiatankonsultan->getAllByKonsultan(),
-		);
-		// return $data;
-		return view('dashboard.konsultan.kegiatan.list', $data);
-	}
+    public function addData()
+    {
+        $user = Auth::user();
 
-	public function addData() {
-		$user = Auth::user();
+        $data = [
+            'title' => 'Tambah Pelaporan Kegiatan Konsultan',
+            'bidang_usaha' => $this->bidangusaha->getAll(),
+            'bidang_layanan' => Bidang_layanan::all(),
+            'proker' => $this->dproker->getByKonsultanOrigin($user->konsultans->id),
+        ];
+        // return $data;
+        return view('dashboard.konsultan.kegiatan.add', $data);
+    }
 
-		$data = Array
-			(
-			'title' => 'Tambah Pelaporan Kegiatan Konsultan',
-			'bidang_usaha' => $this->bidangusaha->getAll(),
-			'bidang_layanan' => Bidang_layanan::all(),
-			'proker' => $this->dproker->getByKonsultanOrigin($user->konsultans->id),
+    public function doAddData(Request $request)
+    {
+        $user = Auth::user();
 
-		);
-		// return $data;
-		return view('dashboard.konsultan.kegiatan.add', $data);
-	}
+        $data = $request->all();
 
-	public function doAddData(Request $request) {
-		$user = Auth::user();
+        $rules = [
+            'tanggal_mulai' => 'required|date|date_format:d-m-Y',
+            'tanggal_selesai' => 'required|date|date_format:d-m-Y',
+            'judul_kegiatan' => 'required',
+            'bidang_usaha_id' => 'required',
+            'lokasi_kegiatan' => 'required',
+            'jumlah_peserta' => 'required|numeric',
+            'output' => 'required|numeric',
+            'ket_output' => 'required|max:255',
+            'mitra_kegiatan' => 'nullable|max:1000'
+        ];
 
-		$data = $request->all();
+        $messages = [
+            'tanggal_mulai.required' => 'Harus terisi',
+            'tanggal_mulai.date' => 'Format harus tanggal',
+            'tanggal_mulai.date_format' => 'Format tanggal DD-MM-YYYY',
+            'tanggal_selesai.required' => 'Harus terisi',
+            'tanggal_selesai.date' => 'Tanggal selesai harus berupa tanggal',
+            'tanggal_selesai.date_format' => 'Format tanggal selesai DD-MM-YYYY',
+            'judul_kegiatan.required' => 'Judul harus terisi',
+            'bidang_usaha_id.required' => 'Bidang harus terisi',
+            'lokasi_kegiatan.required' => 'Harus terisi lokasi nya',
+            'jumlah_peserta.required' => 'Harus terisi jumlah pesertanya',
+            'jumlah_peserta.numeric' => 'Jumlah peserta harus berupa angka',
+            'output.required' => 'Output harus terisi',
+            'output.numeric' => 'Output harus berupa angka',
+            'ket_output.required' => 'Keterangan output harus terisi',
+            'ket_output.max' => 'Maksimal kata hanya 255 karakter. pastikan pendek saja',
+            'mitra_kegiatan.max' => 'Maksimal inputan hanya 1000 karakter, pastikan jangan terlalu panjang sekali'
+        ];
 
-		$rules = [
-			'tanggal_mulai' => 'required|date|date_format:d-m-Y',
-			'tanggal_selesai' => 'required|date|date_format:d-m-Y',
-			'judul_kegiatan' => 'required',
-			'bidang_usaha_id' => 'required',
-			'lokasi_kegiatan' => 'required',
-			'jumlah_peserta' => 'required|numeric',
-			'output' => 'required|numeric',
-			'ket_output' => 'required|max:255',
-		];
+        $validator = Validator::make($data, $rules, $messages);
 
-		$messages = [
-			'tanggal_mulai.required' => 'Harus terisi',
-			'tanggal_mulai.date' => 'Format harus tanggal',
-			'tanggal_mulai.date_format' => 'Format tanggal DD-MM-YYYY',
-			'tanggal_selesai.required' => 'Harus terisi',
-			'tanggal_selesai.date' => 'Tanggal selesai harus berupa tanggal',
-			'tanggal_selesai.date_format' => 'Format tanggal selesai DD-MM-YYYY',
-			'judul_kegiatan.required' => 'Judul harus terisi',
-			'bidang_usaha_id.required' => 'Bidang harus terisi',
-			'lokasi_kegiatan.required' => 'Harus terisi lokasi nya',
-			'jumlah_peserta.required' => 'Harus terisi jumlah pesertanya',
-			'jumlah_peserta.numeric' => 'Jumlah peserta harus berupa angka',
-			'output.required' => 'Output harus terisi',
-			'output.numeric' => 'Output harus berupa angka',
-			'ket_output.required' => 'Keterangan output harus terisi',
-			'ket_output.max' => 'Maksimal kata hanya 255 karakter. pastikan pendek saja',
-		];
+        if ($validator->fails()) {
+            return redirect('k/kegiatan/create')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
-		$validator = Validator::make($data, $rules, $messages);
+        $cek = strtotime($request->tanggal_mulai) > strtotime($request->tanggal_selesai);
 
-		if ($validator->fails()) {
-			return redirect('k/kegiatan/create')
-				->withErrors($validator)
-				->withInput();
-		}
+        if ($cek) {
+            return redirect('k/kegiatan/create')->with('error', 'Tidak Boleh Tanggal Selesai lebih besar dari Tanggal Mulai')->withInput();
+        }
 
-		$cek = strtotime($request->tanggal_mulai) > strtotime($request->tanggal_selesai);
+        if ($request->hasFile('image')) {
+            $files = Input::file('image');
+            //getting timestamp
+            $name = $this->upload_image($files, 'kegiatan');
+            $data['image'] = $name;
+        }
 
-		if ($cek) {
-			return redirect('k/kegiatan/create')->with('error', 'Tidak Boleh Tanggal Selesai lebih besar dari Tanggal Mulai')->withInput();
-		}
+        $data['bidang_layanan_id'] = $user->konsultans->bidang_layanan_id;
+        $result = $this->kegiatankonsultan->create($data);
 
-		if ($request->hasFile('image')) {
-			$files = Input::file('image');
-			//getting timestamp
-			$name = $this->upload_image($files, 'kegiatan');
-			$data['image'] = $name;
-		}
+        if ($result) {
+            foreach ($request->bidang_layanan_id as $key => $value) {
+                $bidang = new KegiatanKonsultanBidang();
+                $bidang->kegiatan_konsultan_id = $result->id;
+                $bidang->bidang_layanan_id = $value;
+                $bidang->save();
+            }
 
-		$data['bidang_layanan_id'] = $user->konsultans->bidang_layanan_id;
-		$result = $this->kegiatankonsultan->create($data);
+            return redirect('k/kegiatan')->with('success', 'Data Kegiatan Berhasil Disimpan');
+        }
+    }
 
-		if ($result) {
+    public function editData($id)
+    {
+        $user = Auth::user();
+        $rowkegiatan = $this->kegiatankonsultan->getById($id);
+        $data = [
+            'title' => 'Edit Pelaporan Kegiatan',
+            'data' => $rowkegiatan,
+            'bidang_usaha' => $this->bidangusaha->getAll(),
+            'bidang_layanan' => Bidang_layanan::all(),
+            'proker' => $this->dproker->getByKonsultanOrigin($user->konsultans->id),
+        ];
+        return view('dashboard.konsultan.kegiatan.edit', $data);
+    }
 
-			foreach ($request->bidang_layanan_id as $key => $value) {
-				$bidang = new KegiatanKonsultanBidang();
-				$bidang->kegiatan_konsultan_id = $result->id;
-				$bidang->bidang_layanan_id = $value;
-				$bidang->save();
-			}
+    public function doEditData(Request $request, $id)
+    {
+        $user = Auth::user();
+        $data = $request->all();
 
-			return redirect('k/kegiatan')->with('success', 'Data Kegiatan Berhasil Disimpan');
-		}
-	}
+        $rules = [
+            'tanggal_mulai' => 'required|date|date_format:d-m-Y',
+            'tanggal_selesai' => 'required|date|date_format:d-m-Y',
+            'judul_kegiatan' => 'required',
+            'bidang_usaha_id' => 'required',
+            'lokasi_kegiatan' => 'required',
+            'jumlah_peserta' => 'required|numeric',
+            'output' => 'required|numeric',
+            'ket_output' => 'required|max:255',
+        ];
 
-	public function editData($id) {
-		$user = Auth::user();
-		$rowkegiatan = $this->kegiatankonsultan->getById($id);
-		$data = array(
-			'title' => 'Edit Pelaporan Kegiatan',
-			'data' => $rowkegiatan,
-			'bidang_usaha' => $this->bidangusaha->getAll(),
-			'bidang_layanan' => Bidang_layanan::all(),
-			'proker' => $this->dproker->getByKonsultanOrigin($user->konsultans->id),
-		);
-		return view('dashboard.konsultan.kegiatan.edit', $data);
-	}
+        $messages = [
+            'tanggal_mulai.required' => 'Harus terisi',
+            'tanggal_mulai.date' => 'Format harus tanggal',
+            'tanggal_mulai.date_format' => 'Format tanggal DD-MM-YYYY',
+            'tanggal_selesai.required' => 'Harus terisi',
+            'tanggal_selesai.date' => 'Tanggal selesai harus berupa tanggal',
+            'tanggal_selesai.date_format' => 'Format tanggal selesai DD-MM-YYYY',
+            'judul_kegiatan.required' => 'Judul harus terisi',
+            'bidang_usaha_id.required' => 'Bidang harus terisi',
+            'lokasi_kegiatan.required' => 'Harus terisi lokasi nya',
+            'jumlah_peserta.required' => 'Harus terisi jumlah pesertanya',
+            'jumlah_peserta.numeric' => 'Jumlah peserta harus berupa angka',
+            'output.required' => 'Output harus terisi',
+            'output.numeric' => 'Output harus berupa angka',
+            'ket_output.required' => 'Keterangan output harus terisi',
+            'ket_output.max' => 'Maksimal kata hanya 255 karakter. pastikan pendek saja',
+        ];
 
-	public function doEditData(Request $request, $id) {
-		$user = Auth::user();
-		$data = $request->all();
+        $validator = Validator::make($data, $rules, $messages);
 
-		$rules = [
-			'tanggal_mulai' => 'required|date|date_format:d-m-Y',
-			'tanggal_selesai' => 'required|date|date_format:d-m-Y',
-			'judul_kegiatan' => 'required',
-			'bidang_usaha_id' => 'required',
-			'lokasi_kegiatan' => 'required',
-			'jumlah_peserta' => 'required|numeric',
-			'output' => 'required|numeric',
-			'ket_output' => 'required|max:255',
-		];
+        if ($validator->fails()) {
+            return redirect('k/kegiatan/' . $id)
+                ->withErrors($validator)
+                ->withInput();
+        }
 
-		$messages = [
-			'tanggal_mulai.required' => 'Harus terisi',
-			'tanggal_mulai.date' => 'Format harus tanggal',
-			'tanggal_mulai.date_format' => 'Format tanggal DD-MM-YYYY',
-			'tanggal_selesai.required' => 'Harus terisi',
-			'tanggal_selesai.date' => 'Tanggal selesai harus berupa tanggal',
-			'tanggal_selesai.date_format' => 'Format tanggal selesai DD-MM-YYYY',
-			'judul_kegiatan.required' => 'Judul harus terisi',
-			'bidang_usaha_id.required' => 'Bidang harus terisi',
-			'lokasi_kegiatan.required' => 'Harus terisi lokasi nya',
-			'jumlah_peserta.required' => 'Harus terisi jumlah pesertanya',
-			'jumlah_peserta.numeric' => 'Jumlah peserta harus berupa angka',
-			'output.required' => 'Output harus terisi',
-			'output.numeric' => 'Output harus berupa angka',
-			'ket_output.required' => 'Keterangan output harus terisi',
-			'ket_output.max' => 'Maksimal kata hanya 255 karakter. pastikan pendek saja',
-		];
+        $cek = strtotime($request->tanggal_mulai) > strtotime($request->tanggal_selesai);
 
-		$validator = Validator::make($data, $rules, $messages);
+        if ($cek) {
+            return redirect('k/kegiatan/' . $id)->with('error', 'Tidak Boleh Tanggal Selesai lebih besar dari Tanggal Mulai')->withInput();
+        }
 
-		if ($validator->fails()) {
-			return redirect('k/kegiatan/' . $id)
-				->withErrors($validator)
-				->withInput();
-		}
+        if ($request->hasFile('image')) {
+            $files = Input::file('image');
+            //getting timestamp
 
-		$cek = strtotime($request->tanggal_mulai) > strtotime($request->tanggal_selesai);
+            $oldkegiatan = $this->kegiatankonsultan->getById($id);
 
-		if ($cek) {
-			return redirect('k/kegiatan/' . $id)->with('error', 'Tidak Boleh Tanggal Selesai lebih besar dari Tanggal Mulai')->withInput();
-		}
+            $name = $this->upload_image($files, 'kegiatan', $oldkegiatan->image);
 
-		if ($request->hasFile('image')) {
-			$files = Input::file('image');
-			//getting timestamp
+            $data['image'] = $name;
+        }
 
-			$oldkegiatan = $this->kegiatankonsultan->getById($id);
+        $data['bidang_layanan_id'] = $user->konsultans->bidang_layanan_id;
 
-			$name = $this->upload_image($files, 'kegiatan', $oldkegiatan->image);
+        $result = $this->kegiatankonsultan->update($id, $data);
 
-			$data['image'] = $name;
-		}
+        if ($result) {
+            $keg = Kegiatan_konsultan::with('kegiatan_konsultan_bidang')->find($id);
 
-		$data['bidang_layanan_id'] = $user->konsultans->bidang_layanan_id;
+            if ($keg->kegiatan_konsultan_bidang->count() > 0) {
+                KegiatanKonsultanBidang::where('kegiatan_konsultan_id', $keg->id)->delete();
+            }
 
-		$result = $this->kegiatankonsultan->update($id, $data);
+            foreach ($request->bidang_layanan_id as $key => $value) {
+                $bidang = new KegiatanKonsultanBidang();
+                $bidang->kegiatan_konsultan_id = $keg->id;
+                $bidang->bidang_layanan_id = $value;
+                $bidang->save();
+            }
 
-		if ($result) {
+            return redirect('k/kegiatan/' . $id)->with('info', 'Data Kegiatan Berhasil Diupdate');
+        }
+    }
 
-			$keg = Kegiatan_konsultan::with('kegiatan_konsultan_bidang')->find($id);
+    public function deleteData($id)
+    {
+        // return redirect('k/kegiatan')->with('error', 'Batas waktu input telah berakhir');
+        $old = $this->kegiatankonsultan->getById($id);
+        $this->delete_image('kegiatan', $old->image);
 
-			if ($keg->kegiatan_konsultan_bidang->count() > 0) {
-				KegiatanKonsultanBidang::where('kegiatan_konsultan_id', $keg->id)->delete();
-			}
+        $result = $this->kegiatankonsultan->delete($id);
+        if ($result) {
+            return redirect('k/kegiatan')->with('info', 'Data Kegiatan Berhasil Dihapus');
+        }
+    }
 
-			foreach ($request->bidang_layanan_id as $key => $value) {
-				$bidang = new KegiatanKonsultanBidang();
-				$bidang->kegiatan_konsultan_id = $keg->id;
-				$bidang->bidang_layanan_id = $value;
-				$bidang->save();
-			}
+    public function report()
+    {
+        $tanggal_mulai = Input::get('tanggal_mulai');
+        $tanggal_selesai = Input::get('tanggal_selesai');
+        $lembaga_id = Auth::user()->konsultans->lembaga_id;
 
-			return redirect('k/kegiatan/' . $id)->with('info', 'Data Kegiatan Berhasil Diupdate');
-		}
-	}
+        $rules = [
+            'tanggal_mulai' => 'required',
+            'tanggal_selesai' => 'required',
+        ];
 
-	public function deleteData($id) {
-		// return redirect('k/kegiatan')->with('error', 'Batas waktu input telah berakhir');
-		$old = $this->kegiatankonsultan->getById($id);
-		$this->delete_image('kegiatan', $old->image);
+        $content = Kegiatan_konsultan::query();
 
-		$result = $this->kegiatankonsultan->delete($id);
-		if ($result) {
-			return redirect('k/kegiatan')->with('info', 'Data Kegiatan Berhasil Dihapus');
-		}
-	}
+        $tanggal_mulai_db = date('Y-m-d', strtotime($tanggal_mulai));
+        $tanggal_selesai_db = date('Y-m-d', strtotime($tanggal_selesai));
 
-	public function report(Request $request) {
-		$tahun = $request->tahun;
-		if (!$request->has('tahun')) {
-			$tahun = date('Y');
-		}
-		$data = Array
-			(
-			'head_title' => 'Data Pelaporan Kegiatan Konsultan',
-			'title' => 'Pelaporan Kegiatan Konsultan',
-			'data' => $this->kegiatankonsultan->getAllByKonsultan($tahun),
-			'tahun' => $tahun,
-		);
-		// return $data;
-		return view('dashboard.konsultan.kegiatan.report', $data);
-	}
+        $content->whereHas('konsultan', function ($q) use ($lembaga_id) {$q->where('lembaga_id', $lembaga_id);});
+        if ($tanggal_mulai) {
+            $content->where('tanggal_mulai', '>=', $tanggal_mulai_db);
+        }
 
-	public function getKegiatanKonsultan() {
-		$konsultan_id = Input::get('konsultan_id');
-		$tahun = Input::get('tahun');
+        if ($tanggal_selesai) {
+            $content->where('tanggal_mulai', '<=', $tanggal_selesai_db);
+        }
 
-		$data = array(
-			'kegiatan' => Kegiatan_konsultan::where('konsultan_id', $konsultan_id)->whereYear('tanggal_mulai', $tahun)->get(),
-		);
-		// return $data;
+        $data = [
+            'head_title' => 'Data Pelaporan Kegiatan Konsultan',
+            'title' => 'Pelaporan Kegiatan Konsultan',
+            'data' => $content->get(),
+            'tanggal_mulai' => $tanggal_mulai,
+            'tanggal_selesai' => $tanggal_selesai
+        ];
+        // return $data;
+        return view('dashboard.konsultan.kegiatan.report', $data);
+    }
 
-		return view('dashboard.konsultan.laporan_kegiatan_ajax', $data);
-	}
+    public function getKegiatanKonsultan()
+    {
+        $konsultan_id = Input::get('konsultan_id');
+        $tahun = Input::get('tahun');
 
-	public function getDetailProkerById($id) {
-		$result = $this->dproker->getById($id);
-		if ($result) {
-			return $result;
-		}
-		return [];
-	}
+        $data = [
+            'kegiatan' => Kegiatan_konsultan::where('konsultan_id', $konsultan_id)->whereYear('tanggal_mulai', $tahun)->get(),
+        ];
+        // return $data;
+
+        return view('dashboard.konsultan.laporan_kegiatan_ajax', $data);
+    }
+
+    public function getDetailProkerById($id)
+    {
+        $result = $this->dproker->getById($id);
+        if ($result) {
+            return $result;
+        }
+        return [];
+    }
 }

@@ -437,12 +437,12 @@
             </li> --}}
         </ul>
         </li>
-    {{-- <li class="treeview {{active_check('kinerja-konsultan',true)}}">
+    <li class="treeview {{active_check('kinerja-konsultan',true)}}">
         <a href="#">
             <i class="fa fa-users">
             </i>
             <span>
-                Kinerja CIS
+                Capaian IKU
             </span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right">
@@ -450,23 +450,23 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li class="{{active_check('kinerja-konsultan/create')}}">
+            {{-- <li class="{{active_check('kinerja-konsultan/create')}}">
                 <a href="{{ url('kinerja-konsultan/create') }}">
                     <i class="fa fa-circle-o">
                     </i>
                     Add Kinerja
                 </a>
-            </li>
+            </li> --}}
             <li class="{{active_check('kinerja-konsultan')}}">
                 <a href="{{ url('kinerja-konsultan') }}">
                     <i class="fa fa-circle-o">
                     </i>
-                    View Kinerja
+                    View Capaian IKU
                 </a>
             </li>
         </ul>
-    </li> --}}
-    <li class="treeview {{active_check('laporan-sentra-umkm')}} {{active_check('laporan-data-umkm')}} {{active_check('laporan-produk-umkm')}} {{active_check('laporan-kinerjacis')}} {{active_check('laporan-prokerkonsultan')}} {{active_check('laporan-kegiatankonsultan')}} {{active_check('koperasi-laporan')}} {{active_check('data-kumkm-laporan')}} {{active_check('sasaran-koperasi-laporan')}} {{active_check('sasaran-kumkm-laporan')}} {{active_check('program-kerja-laporan')}} {{active_check('k/kegiatan/report/all')}} {{active_check('pelaksanaan-pendampingan-laporan')}} {{active_check('pelaksanaan-pendampingan-laporan-bulanan')}}">
+    </li>
+    <li class="treeview {{active_check('kons/laporan-pelaksanaan-final')}} {{active_check('kons/laporan-pelaksanaan-pendampingan')}} {{active_check('kons/laporan-program-pendampingan')}} {{active_check('kons/laporan-pendampingan-sasaran-umkm')}} {{active_check('kons/laporan-pendampingan-sasaran-koperasi')}} {{active_check('kons/laporan-pendampingan-koperasi')}} {{active_check('kons/laporan-pendampingan-umkm')}} {{active_check('laporan-sentra-umkm')}} {{active_check('laporan-data-umkm')}} {{active_check('laporan-produk-umkm')}} {{active_check('laporan-kinerjacis')}} {{active_check('laporan-prokerkonsultan')}} {{active_check('laporan-kegiatankonsultan')}} {{active_check('koperasi-laporan')}} {{active_check('data-kumkm-laporan')}} {{active_check('sasaran-koperasi-laporan')}} {{active_check('sasaran-kumkm-laporan')}} {{active_check('program-kerja-laporan')}} {{active_check('k/kegiatan/report/all')}} {{active_check('pelaksanaan-pendampingan-laporan')}} {{active_check('pelaksanaan-pendampingan-laporan-bulanan')}} {{active_check('pelaksanaan-pendampingan-laporan-triwulan')}} {{active_check('pelaksanaan-pendampingan-laporan-tahunan')}}">
         <a href="#">
             <i class="fa fa-list">
             </i>
@@ -522,7 +522,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview {{active_check('sasaran-koperasi-laporan')}} {{active_check('sasaran-kumkm-laporan')}} {{active_check('program-kerja-laporan')}} {{active_check('pelaksanaan-pendampingan-laporan')}} {{active_check('pelaksanaan-pendampingan-laporan-bulanan')}}">
+            <li class="treeview {{active_check('sasaran-koperasi-laporan')}} {{active_check('sasaran-kumkm-laporan')}} {{active_check('program-kerja-laporan')}} {{active_check('pelaksanaan-pendampingan-laporan')}} {{active_check('pelaksanaan-pendampingan-laporan-bulanan')}} {{active_check('pelaksanaan-pendampingan-laporan-triwulan')}} {{active_check('pelaksanaan-pendampingan-laporan-tahunan')}}">
                 <a href="#">
                     <i class="fa fa-circle-o">
                     </i>
@@ -585,15 +585,15 @@
                             Laporan Bulanan
                         </a>
                     </li>
-                    <li class="">
-                        <a href="javascript:void">
+                    <li class="{{active_check('pelaksanaan-pendampingan-laporan-triwulan')}}">
+                        <a href="{{ url('pelaksanaan-pendampingan-laporan-triwulan') }}">
                             <i class="fa fa-circle-o">
                             </i>
                             Laporan Triwulan
                         </a>
                     </li>
-                    <li class="">
-                        <a href="javascript:void">
+                    <li class="{{active_check('pelaksanaan-pendampingan-laporan-tahunan')}}">
+                        <a href="{{ url('pelaksanaan-pendampingan-laporan-tahunan') }}">
                             <i class="fa fa-circle-o">
                             </i>
                             Laporan Tahunan
@@ -607,6 +607,23 @@
                     </i>
                     Kegiatan Konsultan
                 </a>
+            </li>
+            <li class="treeview {{active_check('kons/laporan-pelaksanaan-final')}} {{active_check('kons/laporan-pelaksanaan-pendampingan')}} {{active_check('kons/laporan-program-pendampingan')}} {{active_check('kons/laporan-pendampingan-sasaran-umkm')}} {{active_check('kons/laporan-pendampingan-sasaran-koperasi')}} {{active_check('kons/laporan-pendampingan-koperasi')}} {{active_check('kons/laporan-pendampingan-umkm')}}">
+                <a href="{{ url('progres-pendampingan') }}">
+                    <i class="fa fa-circle-o"></i>  Laporan 7a-7g
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{active_check('kons/laporan-pendampingan-koperasi')}}"><a href="{{url('kons/laporan-pendampingan-koperasi')}}"><i class="fa fa-circle-o"></i> Laporan 7a</a></li>
+                    <li class="{{active_check('kons/laporan-pendampingan-umkm')}}"><a href="{{url('kons/laporan-pendampingan-umkm')}}"><i class="fa fa-circle-o"></i> Laporan 7b</a></li>
+                    <li class="{{active_check('kons/laporan-pendampingan-sasaran-koperasi')}}"><a href="{{url('kons/laporan-pendampingan-sasaran-koperasi')}}"><i class="fa fa-circle-o"></i> Laporan 7c</a></li>
+                    <li class="{{active_check('kons/laporan-pendampingan-sasaran-umkm')}}"><a href="{{url('kons/laporan-pendampingan-sasaran-umkm')}}"><i class="fa fa-circle-o"></i> Laporan 7d</a></li>
+                    <li class="{{active_check('kons/laporan-program-pendampingan')}}"><a href="{{url('kons/laporan-program-pendampingan')}}"><i class="fa fa-circle-o"></i> Laporan 7e</a></li>
+                    <li class="{{active_check('kons/laporan-pelaksanaan-pendampingan')}}"><a href="{{url('kons/laporan-pelaksanaan-pendampingan')}}"><i class="fa fa-circle-o"></i> Laporan 7f</a></li>
+                    <li class="{{active_check('kons/laporan-pelaksanaan-final')}}"><a href="{{url('kons/laporan-pelaksanaan-final')}}"><i class="fa fa-circle-o"></i> Laporan 7g</a></li>
+                </ul>
             </li>
         </ul>
     </li>

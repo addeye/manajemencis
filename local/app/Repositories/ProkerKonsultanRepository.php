@@ -30,7 +30,11 @@ class ProkerKonsultanRepository {
 	}
 
 	public function getAllByLembagaIdLock($lembaga_id) {
-		return Proker_konsultan::where('lembaga_id', $lembaga_id)->where('status_lock', 'Yes')->get();
+		return Proker_konsultan::where('lembaga_id', $lembaga_id)->where('status_lock', 'Yes')->where('tahun_kegiatan',date('Y'))->get();
+	}
+
+	public function getAllByLembagaIdLockYear($lembaga_id,$year) {
+		return Proker_konsultan::where('lembaga_id', $lembaga_id)->where('status_lock', 'Yes')->where('tahun_kegiatan',$year)->get();
 	}
 
 	// Select where id

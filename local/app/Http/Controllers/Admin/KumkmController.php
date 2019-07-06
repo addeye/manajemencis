@@ -7,6 +7,7 @@ use App\Kumkm;
 use App\KumkmDetail;
 use App\Repositories\BidangUsahaRepository;
 use App\Repositories\RegenciesRepository;
+use App\SasaranProgram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -29,31 +30,33 @@ class KumkmController extends Controller {
 	public function index() {
 		$user = Auth::user();
 
-		$tahun = Input::get('tahun');
+		$byname = Input::get('byname');
 
 		$content = Kumkm::query();
 
 		$content->where('lembaga_id', $user->adminlembagas->lembaga_id);
 
-		if ($tahun == '') {
-			$tahun = date('Y');
-		}
+		$content->with(['kumkm_detail' => function ($q) {
+			$q->orderBy('created_at', 'desc');
+		}]);
 
-		if (Input::get('tahun')) {
+		if (Input::get('byname')) {
 			// $content->whereHas('kumkm_detail', function ($q) use ($tahun) {
-			//  $q->whereYear('tanggal_keadaan', $tahun);
+			// 	$q->whereYear('tanggal_keadaan', $tahun);
 			// });
 
-			$content->with(['kumkm_detail' => function ($q) use ($tahun) {
-				$q->whereYear('tanggal_keadaan', $tahun);
-			}]);
+			// $content->with(['kumkm_detail' => function ($q) use ($tahun) {
+			// 	$q->whereYear('tanggal_keadaan', $tahun);
+			// }]);
+
+			$content->where('nama_usaha', 'like', '%' . $byname . '%');
 		}
 
 		$content = $content->paginate();
 
 		$data = array(
 			'data' => $content,
-			'tahun' => $tahun,
+			'byname' => $byname,
 		);
 
 		return view('dashboard.admin.kumkm.list', $data);

@@ -71,12 +71,42 @@
         </ul>
     </li>
 
+    <li class="treeview {{active_check('monev',true)}}">
+        <a href="#">
+            <i class="fa fa-user"></i> <span>Monev</span>
+            <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{active_check('monev/create')}}"><a href="{{ url('monev/create') }}"><i
+                            class="fa fa-circle-o"></i> Add Monev</a></li>
+            <li class="{{active_check('monev')}}"><a href="{{ url('monev') }}"><i
+                            class="fa fa-circle-o"></i> View Monev</a></li>
+        </ul>
+    </li>
+
+    <li class="treeview {{active_check('pengelola',true)}}">
+        <a href="#">
+            <i class="fa fa-user"></i> <span>Pengelola</span>
+            <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{active_check('pengelolah/create')}}"><a href="{{ url('pengelolah/create') }}"><i
+                            class="fa fa-circle-o"></i> Add Pengelola</a></li>
+            <li class="{{active_check('pengelolah')}}"><a href="{{ url('pengelolah') }}"><i
+                            class="fa fa-circle-o"></i> View Pengelola</a></li>
+        </ul>
+    </li>
+
     <li class="treeview {{active_check('admin',true)}} {{active_check('proker-plut')}}">
         <a href="#">
             <i class="fa fa-home"></i> <span>Admin</span>
-<span class="pull-right-container">
-<i class="fa fa-angle-left pull-right"></i>
-</span>
+            <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
         </a>
         <ul class="treeview-menu">
             <li class="{{active_check('admin/create')}}"><a href="{{ url('admin/create') }}"><i
@@ -104,7 +134,7 @@
                             class="fa fa-circle-o"></i> Report Konsultan</a></li>
         </ul>
     </li>
-    <li class="treeview {{active_check('database-koperasi',true)}} {{active_check('database-koperasi-laporan')}} {{active_check('database-umkm-laporan')}} {{active_check('database-umkm')}}">
+    <li class="treeview {{active_check('database-koperasi',true)}} {{active_check('database-koperasi-laporan')}} {{active_check('database-umkm-laporan')}} {{active_check('database-umkm')}} {{active_check('sentra',true)}}">
         <a href="#">
             <i class="fa fa-cubes">
             </i>
@@ -122,7 +152,7 @@
                     <i class="fa fa-circle-o">
                     </i>
                     <span>
-                        Data Koperasi
+                        Data Koperasi (7a)
                     </span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right">
@@ -151,7 +181,7 @@
                     <i class="fa fa-circle-o">
                     </i>
                     <span>
-                        Data UMKM
+                        Data UMKM (7b)
                     </span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right">
@@ -175,42 +205,22 @@
                     </li>
                 </ul>
             </li>
-            <li class="treeview {{active_check('sentra_kumkm',true)}}">
-                <a href="#">
-                    <i class="fa fa-circle-o">
-                    </i>
-                    <span>
-                        Sentra UMKM
-                    </span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right">
-                        </i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="{{active_check('sentra_kumkm/create')}}">
-                        <a href="{{url('sentra_kumkm/create')}}">
-                            <i class="fa fa-circle-o">
-                            </i>
-                            Add Sentra
-                        </a>
-                    </li>
-                    <li class="{{active_check('sentra_kumkm')}}">
-                        <a href="{{url('sentra_kumkm')}}">
-                            <i class="fa fa-circle-o">
-                            </i>
-                            View Sentra
-                        </a>
-                    </li>
-                    <li class="{{active_check('sentra_kumkm/report/all')}}">
-                        <a href="{{url('sentra_kumkm/report/all')}}">
-                            <i class="fa fa-circle-o">
-                            </i>
-                            Report Sentra
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            <li class="treeview {{active_check('sentra',true)}}">
+                    <a href="#">
+                        <i class="fa fa-circle-o"></i> <span>Sentra UMKM</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li class="{{active_check('sentra/create')}}"><a href="{{ url('sentra/create') }}"><i
+                                        class="fa fa-circle-o"></i> Add Sentra</a></li>
+                        <li class="{{active_check('sentra')}}"><a href="{{ url('sentra') }}"><i
+                                        class="fa fa-circle-o"></i> View Sentra</a></li>
+                        <li class="{{active_check('sentra/report/all')}}"><a href="{{ url('sentra/report/all') }}"><i
+                                        class="fa fa-circle-o"></i> Report Sentra</a></li>
+                    </ul>
+                </li>
             <li class="treeview {{active_check('produk_unggulan',true)}} {{active_check('produk_unggulan/report/all')}}">
                 <a href="#">
                     <i class="fa fa-circle-o">
@@ -249,7 +259,7 @@
             </li>
         </ul>
     </li>
-    <li class="treeview {{active_check('sasaran-program-koperasi',true)}} {{active_check('sasaran-program-umkm',true)}} {{active_check('program-kerja-pendampingan',true)}}">
+    <li class="treeview {{active_check('sasaran-program-koperasi',true)}} {{active_check('sasaran-program-umkm',true)}} {{active_check('program-kerja-pendampingan',true)}} {{ active_check('pelaksanaan-pendampingan-konsultan') }}">
         <a href="#">
             <i class="fa fa-compass">
             </i>
@@ -279,14 +289,14 @@
                         <a href="{{ url('sasaran-program-koperasi') }}">
                             <i class="fa fa-circle-o">
                             </i>
-                            Koperasi
+                            Koperasi (7c)
                         </a>
                     </li>
                     <li class="{{active_check('sasaran-program-umkm',true)}}">
                         <a href="{{ url('sasaran-program-umkm') }}">
                             <i class="fa fa-circle-o">
                             </i>
-                            UMKM
+                            UMKM (7d)
                         </a>
                     </li>
                 </ul>
@@ -295,28 +305,21 @@
                 <a href="{{ url('program-kerja-pendampingan') }}">
                     <i class="fa fa-circle-o">
                     </i>
-                    Program Kerja
+                    Program Kerja (7e)
                 </a>
             </li>
-            <li class="">
-                <a href="javascript:void">
+            <li class="{{ active_check('pelaksanaan-pendampingan-konsultan') }}">
+                <a href="{{ url('pelaksanaan-pendampingan-konsultan') }}">
                     <i class="fa fa-circle-o">
                     </i>
-                    Pelaksanaan Pendampingan
-                </a>
-            </li>
-            <li class="">
-                <a href="javascript:void">
-                    <i class="fa fa-circle-o">
-                    </i>
-                    Penilaian
+                    Pelaksanaan Pendampingan (7f)
                 </a>
             </li>
         </ul>
     </li>
     <li class="treeview {{active_check('kinerja-master',true)}} {{active_check('rekap-kinerja',true)}}">
         <a href="#">
-            <i class="fa fa-users"></i> <span>Pelaporan Kinerja</span>
+            <i class="fa fa-users"></i> <span>Capaian IKU</span>
 <span class="pull-right-container">
 <i class="fa fa-angle-left pull-right"></i>
 </span>
@@ -343,28 +346,12 @@
             <li><a href="#"><i class="fa fa-circle-o"></i> Pendampingan UMKM</a></li>
         </ul>
     </li>
-    <li class="treeview {{active_check('sentra',true)}}">
-        <a href="#">
-            <i class="fa fa-university"></i> <span>Sentra UMKM</span>
-<span class="pull-right-container">
-<i class="fa fa-angle-left pull-right"></i>
-</span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{active_check('sentra/create')}}"><a href="{{ url('sentra/create') }}"><i
-                            class="fa fa-circle-o"></i> Add Sentra</a></li>
-            <li class="{{active_check('sentra')}}"><a href="{{ url('sentra') }}"><i
-                            class="fa fa-circle-o"></i> View Sentra</a></li>
-            <li class="{{active_check('sentra/report/all')}}"><a href="{{ url('sentra/report/all') }}"><i
-                            class="fa fa-circle-o"></i> Report Sentra</a></li>
-        </ul>
-    </li>
-    <li class="treeview {{active_check('laporan-produk')}} {{active_check('laporan-sentra')}} {{active_check('laporan-kegiatan')}} {{active_check('laporan-program')}} {{active_check('laporan-kinerja')}} {{active_check('laporan-proker-plut')}} {{active_check('progres-data')}}">
+    <li class="treeview {{active_check('laporan-pelaksanaan-final')}} {{active_check('laporan-pelaksanaan-pendampingan')}} {{active_check('laporan-program-pendampingan')}} {{active_check('laporan-pendampingan-sasaran-umkm')}} {{active_check('laporan-pendampingan-sasaran-koperasi')}} {{active_check('laporan-pendampingan-koperasi')}} {{active_check('laporan-pendampingan-umkm')}} {{active_check('laporan-produk')}} {{active_check('laporan-sentra')}} {{active_check('laporan-kegiatan')}} {{active_check('laporan-program')}} {{active_check('laporan-kinerja')}} {{active_check('laporan-proker-plut')}} {{active_check('progres-data')}}">
         <a href="#">
             <i class="fa fa-list"></i> <span>Laporan</span>
-<span class="pull-right-container">
-<i class="fa fa-angle-left pull-right"></i>
-</span>
+            <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
         </a>
         <ul class="treeview-menu">
             <li class="{{active_check('laporan-produk')}}"><a href="{{url('laporan-produk')}}"><i class="fa fa-circle-o"></i> Produk Unggulan</a></li>
@@ -380,16 +367,55 @@
                     Progres Data
                 </a>
             </li>
+            <li>
+                <a href="{{ url('progres-pendampingan') }}"><i class="fa fa-circle-o">
+                    </i> Progres Pendampingan</a>
+            </li>
+            <li class="treeview {{active_check('laporan-pelaksanaan-final')}} {{active_check('laporan-pelaksanaan-pendampingan')}} {{active_check('laporan-program-pendampingan')}} {{active_check('laporan-pendampingan-sasaran-umkm')}} {{active_check('laporan-pendampingan-sasaran-koperasi')}} {{active_check('laporan-pendampingan-koperasi')}} {{active_check('laporan-pendampingan-umkm')}}">
+                <a href="{{ url('progres-pendampingan') }}">
+                    <i class="fa fa-circle-o"></i>  Laporan 7a-7g
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{active_check('laporan-pendampingan-koperasi')}}"><a href="{{url('laporan-pendampingan-koperasi')}}"><i class="fa fa-circle-o"></i> Laporan 7a</a></li>
+                    <li class="{{active_check('laporan-pendampingan-umkm')}}"><a href="{{url('laporan-pendampingan-umkm')}}"><i class="fa fa-circle-o"></i> Laporan 7b</a></li>
+                    <li class="{{active_check('laporan-pendampingan-sasaran-koperasi')}}"><a href="{{url('laporan-pendampingan-sasaran-koperasi')}}"><i class="fa fa-circle-o"></i> Laporan 7c</a></li>
+                    <li class="{{active_check('laporan-pendampingan-sasaran-umkm')}}"><a href="{{url('laporan-pendampingan-sasaran-umkm')}}"><i class="fa fa-circle-o"></i> Laporan 7d</a></li>
+                    <li class="{{active_check('laporan-program-pendampingan')}}"><a href="{{url('laporan-program-pendampingan')}}"><i class="fa fa-circle-o"></i> Laporan 7e</a></li>
+                    <li class="{{active_check('laporan-pelaksanaan-pendampingan')}}"><a href="{{url('laporan-pelaksanaan-pendampingan')}}"><i class="fa fa-circle-o"></i> Laporan 7f</a></li>
+                    <li class="{{active_check('laporan-pelaksanaan-final')}}"><a href="{{url('laporan-pelaksanaan-final')}}"><i class="fa fa-circle-o"></i> Laporan 7g</a></li>
+                </ul>
+            </li>
+            <li class="{{active_check('laporan-kumkm-perbidang')}}"><a href="{{url('laporan-kumkm-perbidang')}}"><i class="fa fa-circle-o"></i>laporan kumkm perbidang</a></li>
         </ul>
     </li>
     <li class="{{active_check('pengumuman',true)}}"><a href="{{url('pengumuman')}}"><i
                     class="fa fa-info-circle"></i> <span>Pengumuman</span></a></li>
+
+    <li class="treeview {{active_check('activity-user',true)}} {{active_check('last-login',true)}}">
+        <a href="#">
+            <i class="fa fa-user"></i> <span>Log Activity</span>
+            <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{active_check('activity-user',true)}}"><a href="{{url('activity-user')}}">
+            <i class="fa fa-circle-o"></i> User Activity</a></li>
+            <li class="{{active_check('last-login',true)}}"><a href="{{url('last-login')}}">
+            <i class="fa fa-circle-o"></i> Login Terakhir</a></li>
+        </ul>
+    </li>
+
+
     <li class="treeview {{active_check('roles',true)}} {{active_check('u',true)}} {{active_check('set_kontak',true)}} {{active_check('sbanner',true)}} {{active_check('tingkat',true)}}">
         <a href="#">
             <i class="fa fa-cog"></i> <span>Setting</span>
-<span class="pull-right-container">
-<i class="fa fa-angle-left pull-right"></i>
-</span>
+            <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
         </a>
         <ul class="treeview-menu">
             <li class="{{active_check('sbanner',true)}}"><a href="{{ url('sbanner') }}"><i

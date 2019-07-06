@@ -23,7 +23,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-2 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-aqua">
                 <div class="inner">
@@ -37,7 +37,7 @@
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-2 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-green">
                 <div class="inner">
@@ -45,13 +45,13 @@
                     <p>Data UMKM</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
+                    <i class="ion ion-cube"></i>
                 </div>
                 {{-- <a href="#" class="small-box-footer">Detil Produk <i class="fa fa-arrow-circle-right"></i></a> --}}
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-2 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-yellow">
                 <div class="inner">
@@ -60,13 +60,13 @@
                     <p>Koperasi Dampingan</p>
                 </div>
                 <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
+                    <i class="ion ion-person-add"></i>
                 </div>
                 {{-- <a href="{{url('kegiatan')}}" class="small-box-footer">Detil Kegiatan <i class="fa fa-arrow-circle-right"></i></a> --}}
             </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
+        <div class="col-lg-2 col-xs-6">
             <!-- small box -->
             <div class="small-box bg-red">
                 <div class="inner">
@@ -75,6 +75,32 @@
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
+                </div>
+                {{-- <a href="{{url('penerima')}}" class="small-box-footer">Detil Penerima <i class="fa fa-arrow-circle-right"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-2 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-purple">
+                <div class="inner">
+                    <h3>{{$program}}</h3>
+                    <p>Rencana Aksi</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-home"></i>
+                </div>
+                {{-- <a href="{{url('penerima')}}" class="small-box-footer">Detil Penerima <i class="fa fa-arrow-circle-right"></i></a> --}}
+            </div>
+        </div>
+        <div class="col-lg-2 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-blue">
+                <div class="inner">
+                    <h3>{{$pelaksanaan}}</h3>
+                    <p>Pelaksanaan</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bookmark"></i>
                 </div>
                 {{-- <a href="{{url('penerima')}}" class="small-box-footer">Detil Penerima <i class="fa fa-arrow-circle-right"></i></a> --}}
             </div>

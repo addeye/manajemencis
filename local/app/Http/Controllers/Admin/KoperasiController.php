@@ -567,7 +567,7 @@ class KoperasiController extends Controller {
 			return redirect('adm/koperasi-laporan')->with('error', 'Data Kosong tidak dapat di Export Silahkan Isi DULU BOSS !!');
 		}
 
-		return Excel::create('Data Koperasi ' . $tahun, function ($excel) use ($data) {
+		return Excel::create('Data Koperasi ' . date('d-m-Y'), function ($excel) use ($data) {
 			$excel->sheet('mySheet', function ($sheet) use ($data) {
 				$sheet->cell('A1', function ($cell) {$cell->setValue('ID Koperasi');});
 				$sheet->cell('B1', function ($cell) {$cell->setValue('Nama Koperasi');});

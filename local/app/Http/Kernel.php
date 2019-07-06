@@ -50,6 +50,8 @@ class Kernel extends HttpKernel
         'konsultan' => \App\Http\Middleware\KonsultanMiddleware::class,
         'superadmin' => \App\Http\Middleware\SuperAdminMiddleware::class,
         'admin' => \App\Http\Middleware\AdminMiddleware::class,
+        'pengelolah' => \App\Http\Middleware\PengelolahMiddleware::class,
+        'monev' => \App\Http\Middleware\MonevMiddleware::class,
         'umkm' => \App\Http\Middleware\UmkmMiddleware::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,

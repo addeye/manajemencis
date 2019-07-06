@@ -37,6 +37,15 @@
                 </div>
                 <!-- / box Header -->
                 <div class="box-body table-responsive">
+                    <form class="form-inline">
+                        <div class="form-group">
+                        <input type="text" class="form-control datepicker-realformat" name="tanggal_mulai" placeholder="Tanggal Mulai" value="{{$tanggal_mulai}}">
+                        </div>
+                        <div class="form-group">
+                        <input type="text" class="form-control datepicker-realformat" name="tanggal_selesai" placeholder="Tanggal Selesai" value="{{$tanggal_selesai}}">
+                        </div>
+                        <button class="btn btn-danger">Cari</button>
+                    </form>
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>

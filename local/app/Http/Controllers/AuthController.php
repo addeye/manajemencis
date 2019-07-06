@@ -11,6 +11,8 @@ namespace App\Http\Controllers;
 use App\Bidang_layanan;
 use App\Koperasi;
 use App\Kumkm;
+use App\PelaksanaanPendampingan;
+use App\ProgramKerja;
 use App\Repositories\AuthRepository;
 use App\Repositories\BannerRepository;
 use App\Repositories\KegiatanKonsultanRepository;
@@ -20,6 +22,8 @@ use App\Repositories\SentraKumkmRepository;
 use App\SasaranProgram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\ActivityLog;
+use Auth;
 
 class AuthController extends Controller {
 	protected $auth;
@@ -49,6 +53,8 @@ class AuthController extends Controller {
 			'jml_koperasi' => Koperasi::count(),
 			'koperasi_dampingan' => SasaranProgram::where('ukmtable_type', 'koperasi')->count(),
 			'umkm_dampingan' => SasaranProgram::where('ukmtable_type', 'kumkm')->count(),
+			'program' => ProgramKerja::count(),
+			'pelaksanaan' => PelaksanaanPendampingan::count(),
 			'bidanglayanan' => Bidang_layanan::all(),
 			'banner' => $this->banner->getAll(),
 			'pengumuman' => $this->pengumuman->getAll(),
@@ -87,12 +93,20 @@ class AuthController extends Controller {
 		}
 
 		if ($this->auth->getCheckUser($data)) {
+			$log = new ActivityLog();
+			$log->user_id = Auth::user()->id;
+			$log->info = 'Melakukan login';
+			$log->save();
 			return redirect()->intended('home');
 		}
 		return redirect()->back()->with('message', 'Username and Password Invalid');
 	}
 
 	public function logout() {
+		$log = new ActivityLog();
+		$log->user_id = Auth::user()->id;
+		$log->info = 'Melakukan logout';
+		$log->save();
 		$this->auth->logout();
 		return redirect('/');
 	}

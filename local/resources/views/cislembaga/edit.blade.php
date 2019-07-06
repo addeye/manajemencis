@@ -30,6 +30,17 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label  class="col-sm-2 control-label">Type Lembaga</label>
+                            <div class="col-sm-5">
+                                <select name="type" id="" class="form-control">
+                                    <option value=""></option>
+                                    <option value="Nasional" {{$data->type=='Nasional'?'selected':''}}>Nasional</option>
+                                    <option value="Provinsi" {{$data->type=='Provinsi'?'selected':''}}>Provinsi</option>
+                                    <option value="Kab/Kota" {{$data->type=='Kab/Kota'?'selected':''}}>Kab/Kota</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label  class="col-sm-2 control-label">SKPD Penanggungjawab</label>
                             <div class="col-sm-5">
                                 <input type="text" name="skpd_name" value="{{$data->skpd_name}}" class="form-control" placeholder="Nama SKPD.." required>
@@ -146,7 +157,8 @@
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">Tanggal Peresmian</label>
                             <div class="col-sm-3">
-                                <input type="date" value="{{$data->tgl_peresmian}}" name="tgl_peresmian" class="form-control" placeholder="Tanggal Peresmian.." required>
+                                {{-- <input type="date" value="{{$data->tgl_peresmian}}" name="tgl_peresmian" class="form-control" placeholder="Tanggal Peresmian.." required> --}}
+                                <input type="text" class="form-control datepicker-realformat" name="tgl_peresmian" placeholder="Tanggal Peresmian" value="{{date('d-m-Y',strtotime($data->tgl_peresmian))}}" readonly>
                             </div>
                         </div>
                         <div class="form-group">

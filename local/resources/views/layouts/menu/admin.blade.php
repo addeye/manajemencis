@@ -399,21 +399,21 @@
         </a>
         <ul class="treeview-menu">
             <li class="{{active_check('k/kegiatan/create')}}">
-                <a href="{{url('k/kegiatan/create')}}">
+                <a href="{{url('adm/k/kegiatan/create')}}">
                     <i class="fa fa-circle-o">
                     </i>
                     Add Kegiatan
                 </a>
             </li>
             <li class="{{active_check('k/kegiatan')}}">
-                <a href="{{url('k/kegiatan')}}">
+                <a href="{{url('adm/k/kegiatan')}}">
                     <i class="fa fa-circle-o">
                     </i>
                     View Kegiatan
                 </a>
             </li>
             <li class="{{active_check('k/kegiatan/report/all')}}">
-                <a href="{{url('k/kegiatan/report/all')}}">
+                <a href="{{url('adm/k/kegiatan/report/all')}}">
                     <i class="fa fa-circle-o">
                     </i>
                     Report Kegiatan
@@ -421,12 +421,12 @@
             </li>
         </ul>
         </li>
-    {{-- <li class="treeview {{active_check('kinerja-admin',true)}}">
+    <li class="treeview {{active_check('kinerja-admin',true)}}">
         <a href="#">
             <i class="fa fa-users">
             </i>
             <span>
-                Kinerja CIS
+                Capaian IKU
             </span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right">
@@ -438,19 +438,19 @@
                 <a href="{{ url('adm/kinerja/create') }}">
                     <i class="fa fa-circle-o">
                     </i>
-                    Add Kinerja
+                    Add Capaian IKU
                 </a>
             </li>
             <li class="{{active_check('adm/kinerja')}}">
                 <a href="{{ url('adm/kinerja') }}">
                     <i class="fa fa-circle-o">
                     </i>
-                    View Kinerja
+                    View Capaian IKU
                 </a>
             </li>
         </ul>
-    </li> --}}
-    <li class="treeview {{active_check('adm/koperasi-laporan')}} {{active_check('adm/data-kumkm-laporan')}} {{active_check('adm/sasaran-koperasi-laporan')}} {{active_check('adm/sasaran-kumkm-laporan')}} {{active_check('adm/program-kerja-laporan')}} {{active_check('adm/pelaksanaan-pendampingan-laporan')}}">
+    </li>
+    <li class="treeview {{active_check('adm/laporan-pelaksanaan-final')}} {{active_check('adm/laporan-pelaksanaan-pendampingan')}} {{active_check('adm/laporan-program-pendampingan')}} {{active_check('adm/laporan-pendampingan-sasaran-umkm')}} {{active_check('adm/laporan-pendampingan-sasaran-koperasi')}} {{active_check('adm/laporan-pendampingan-koperasi')}} {{active_check('adm/laporan-pendampingan-umkm')}} {{active_check('adm/koperasi-laporan')}} {{active_check('adm/data-kumkm-laporan')}} {{active_check('adm/sasaran-koperasi-laporan')}} {{active_check('adm/sasaran-kumkm-laporan')}} {{active_check('adm/program-kerja-laporan')}} {{active_check('adm/pelaksanaan-pendampingan-laporan')}} {{active_check('adm/pelaksanaan-pendampingan-laporan-bulanan')}} {{active_check('adm/pelaksanaan-pendampingan-laporan-triwulan')}} {{active_check('adm/pelaksanaan-pendampingan-laporan-tahunan')}}">
         <a href="#">
             <i class="fa fa-file">
             </i>
@@ -506,7 +506,7 @@
                     </li> --}}
                 </ul>
             </li>
-            <li class="treeview {{active_check('adm/sasaran-kumkm-laporan')}} {{active_check('adm/sasaran-koperasi-laporan')}} {{active_check('adm/program-kerja-laporan')}} {{active_check('adm/pelaksanaan-pendampingan-laporan')}}">
+            <li class="treeview {{active_check('adm/sasaran-kumkm-laporan')}} {{active_check('adm/sasaran-koperasi-laporan')}} {{active_check('adm/program-kerja-laporan')}} {{active_check('adm/pelaksanaan-pendampingan-laporan')}} {{active_check('adm/pelaksanaan-pendampingan-laporan-bulanan')}} {{active_check('adm/pelaksanaan-pendampingan-laporan-triwulan')}} {{active_check('adm/pelaksanaan-pendampingan-laporan-tahunan')}}">
                 <a href="#">
                     <i class="fa fa-circle-o">
                     </i>
@@ -562,22 +562,22 @@
                             Pelaksanaan Pendampingan
                         </a>
                     </li>
-                    <li class="">
-                        <a href="javascript:void">
+                    <li class="{{active_check('adm/pelaksanaan-pendampingan-laporan-bulanan')}}">
+                        <a href="{{ url('adm/pelaksanaan-pendampingan-laporan-bulanan') }}">
                             <i class="fa fa-circle-o">
                             </i>
                             Laporan Bulanan
                         </a>
                     </li>
-                    <li class="">
-                        <a href="javascript:void">
+                    <li class="{{active_check('adm/pelaksanaan-pendampingan-laporan-triwulan')}}">
+                        <a href="{{ url('adm/pelaksanaan-pendampingan-laporan-triwulan') }}">
                             <i class="fa fa-circle-o">
                             </i>
                             Laporan Triwulan
                         </a>
                     </li>
-                    <li class="">
-                        <a href="javascript:void">
+                    <li class="{{active_check('adm/pelaksanaan-pendampingan-laporan-tahunan')}}">
+                        <a href="{{ url('adm/pelaksanaan-pendampingan-laporan-tahunan') }}">
                             <i class="fa fa-circle-o">
                             </i>
                             Laporan Tahunan
@@ -613,13 +613,23 @@
                     Kegiatan Konsultan
                 </a>
             </li>
-            {{-- <li class="{{active_check('adm/kinerja-admin')}}">
-                <a href="{{url('adm/kinerja-admin')}}">
-                    <i class="fa fa-circle-o">
-                    </i>
-                    Kinerja CIS
+            <li class="treeview {{active_check('adm/laporan-pelaksanaan-final')}} {{active_check('adm/laporan-pelaksanaan-pendampingan')}} {{active_check('adm/laporan-program-pendampingan')}} {{active_check('adm/laporan-pendampingan-sasaran-umkm')}} {{active_check('adm/laporan-pendampingan-sasaran-koperasi')}} {{active_check('adm/laporan-pendampingan-koperasi')}} {{active_check('adm/laporan-pendampingan-umkm')}}">
+                <a href="{{ url('progres-pendampingan') }}">
+                    <i class="fa fa-circle-o"></i>  Laporan 7a-7g
+                    <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
-            </li> --}}
+                <ul class="treeview-menu">
+                    <li class="{{active_check('adm/laporan-pendampingan-koperasi')}}"><a href="{{url('adm/laporan-pendampingan-koperasi')}}"><i class="fa fa-circle-o"></i> Laporan 7a</a></li>
+                    <li class="{{active_check('adm/laporan-pendampingan-umkm')}}"><a href="{{url('adm/laporan-pendampingan-umkm')}}"><i class="fa fa-circle-o"></i> Laporan 7b</a></li>
+                    <li class="{{active_check('adm/laporan-pendampingan-sasaran-koperasi')}}"><a href="{{url('adm/laporan-pendampingan-sasaran-koperasi')}}"><i class="fa fa-circle-o"></i> Laporan 7c</a></li>
+                    <li class="{{active_check('adm/laporan-pendampingan-sasaran-umkm')}}"><a href="{{url('adm/laporan-pendampingan-sasaran-umkm')}}"><i class="fa fa-circle-o"></i> Laporan 7d</a></li>
+                    <li class="{{active_check('adm/laporan-program-pendampingan')}}"><a href="{{url('adm/laporan-program-pendampingan')}}"><i class="fa fa-circle-o"></i> Laporan 7e</a></li>
+                    <li class="{{active_check('adm/laporan-pelaksanaan-pendampingan')}}"><a href="{{url('adm/laporan-pelaksanaan-pendampingan')}}"><i class="fa fa-circle-o"></i> Laporan 7f</a></li>
+                    <li class="{{active_check('adm/laporan-pelaksanaan-final')}}"><a href="{{url('adm/laporan-pelaksanaan-final')}}"><i class="fa fa-circle-o"></i> Laporan 7g</a></li>
+                </ul>
+            </li>
         </ul>
     </li>
     <li class="{{active_check('info')}}">

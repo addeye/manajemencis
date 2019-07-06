@@ -23,17 +23,13 @@
                         <div class="col-md-12 row">
                         <form method="get" class="">
                             <div class="form-group">
-                                <div class="col-md-4">
-                                    <select name="tahun" class="form-control">
-                                    <option value="">Pilih Tahun</option>
-                                    @for ($i = 2017; $i <= 2020; $i++)
-                                         <option value="{{$i}}" {{$tahun==$i?'selected':''}} >{{$i}}</option>
-                                    @endfor
-                                </select>
-                                </div>
+                            <div class="col-md-3"><input type="text" class="form-control datepicker-realformat" name="tanggal_mulai" placeholder="Tanggal Mulai" value="{{$tanggal_mulai}}"></div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-4"><button type="submit" class="btn btn-danger"><i class="fa fa-search"></i> Cari</button></div>
+                            <div class="col-md-3"><input type="text" name="tanggal_selesai" class="form-control datepicker-realformat" placeholder="Tanggal Selesai" value="{{$tanggal_selesai}}"></div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-danger"><i class="fa fa-search"></i> Cari</button>
                             </div>
                         </form>
                     </div>
@@ -42,6 +38,7 @@
                         <thead>
                         <tr>
                             <th class="col-xs-1">No</th>
+                            <th>Konsultan</th>
                             <th>Tanggal Mulai</th>
                             <th>Tanggal Selesai</th>
                             <th>Nama Kegiatan</th>
@@ -61,6 +58,7 @@
                         @foreach($data as $row)
                             <tr>
                                 <td>{{$no++}}</td>
+                                <td>{{$row->konsultan->nama_lengkap}}</td>
                                 <td>{{date('d-m-Y', strtotime($row->tanggal_mulai))}}</td>
                                 <td>{{date('d-m-Y',strtotime($row->tanggal_selesai))}}</td>
                                 <td>{{$row->judul_kegiatan}}</td>

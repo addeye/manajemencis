@@ -18,6 +18,13 @@
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
+        <span class="title-navbar">
+            @if (Auth::user()->role_id==3)
+                {{Auth::user()->konsultans->lembagas->plut_name}}
+            @elseif(Auth::user()->role_id==2)
+                {{Auth::user()->adminlembagas->lembagas->plut_name}}
+            @endif
+        </span>
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">

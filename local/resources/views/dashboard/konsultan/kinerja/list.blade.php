@@ -17,9 +17,9 @@
                 <div class="box-header">
                     <h3 class="box-title">{{$title}}</h3>
                     <div class="pull-right">
-                        <a class="btn btn-primary" href="{{ url('kinerja-konsultan/create') }}">
+                        {{-- <a class="btn btn-primary" href="{{ url('kinerja-konsultan/create') }}">
                             <i class="fa fa-plus"></i> Tambah Data
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
                 <!-- / box Header -->

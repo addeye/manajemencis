@@ -28,6 +28,14 @@
 				<div class="col-md-12">
 					<form  class="form-inline" method="get">
 						<div class="form-group">
+							<label for="">Tahun</label>
+							<select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+								<option value="">Tahun...</option>
+								<option value="/k/proker?tahun=2018" {{Request::input('tahun')=='2018'?'selected':''}}>2018</option>
+								<option value="/k/proker?tahun=2019" {{Request::input('tahun')=='2019'?'selected':''}}>2019</option>
+							</select>
+						</div>
+						<div class="form-group">
 							<label for="">Proker Plut</label>
 							<select class="form-control" name="proker_id">
 								<option value="">Pilih Proker</option>

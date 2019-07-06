@@ -145,7 +145,44 @@ class PelaksanaanPendampinganController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request, $id) {
-		//
+		$user = Auth::user();
+		$rules = [
+			'program_kerja_id' => 'required',
+			'tanggal' => 'required|date_format:d-m-Y',
+			'materi' => 'required|max:255',
+			'tindak_lanjut' => 'required',
+		];
+
+		$messages = [
+			'program_kerja_id.required' => 'Program Kerja Harus Di Pilih',
+			'tanggal.required' => 'Tanggal Pelaksanaan Pendampingan harus terisi',
+			'tanggal.date_format' => 'Tanggal Pelaksanaan Pendampingan Format tgl-bln-tahun',
+			'materi.required' => 'Materi Pendampingan harus terisi',
+			'materi.max' => 'Materi maximal 255 Karakter',
+			'tindak_lanjut.required' => 'Skema tindakan lebih lanjut harus terisi',
+		];
+
+		$validator = Validator::make($request->all(), $rules, $messages);
+		if ($validator->fails()) {
+			return redirect('pelaksanaan-pendampingan/' . $id . '/edit')->withErrors($validator)->withInput();
+		}
+
+		$program_kerja = ProgramKerja::find($request->program_kerja_id);
+		$nama_kumkm = $program_kerja->sasaran_program->nama_kumkm;
+
+		$data = PelaksanaanPendampingan::find($id);
+		$data->program_kerja_id = $request->program_kerja_id;
+		$data->tanggal = date('Y-m-d', strtotime($request->tanggal));
+		$data->materi = $request->materi;
+		$data->tindak_lanjut = $request->tindak_lanjut;
+		$data->konsultan_id = $user->konsultans->id;
+		$data->lembaga_id = $user->konsultans->lembaga_id;
+		$data->nama_kumkm = $nama_kumkm;
+		$data->save();
+
+		if ($data) {
+			return redirect('pelaksanaan-pendampingan')->with('success', 'Data Pelaksanaan Pendampingan Berhasil Diupdate');
+		}
 	}
 
 	/**
@@ -173,6 +210,33 @@ class PelaksanaanPendampinganController extends Controller {
 		}
 	}
 
+	private function base_report_excel($nama_file, $data) {
+		return Excel::create($nama_file, function ($excel) use ($data) {
+			$excel->sheet('mySheet', function ($sheet) use ($data) {
+				$sheet->cell('A1', function ($cell) {$cell->setValue('Konsultan');});
+				$sheet->cell('B1', function ($cell) {$cell->setValue('KUMKM');});
+				$sheet->cell('C1', function ($cell) {$cell->setValue('Identifikasi Permasalahan');});
+				$sheet->cell('D1', function ($cell) {$cell->setValue('Program Kerja Pendampingan');});
+				$sheet->cell('E1', function ($cell) {$cell->setValue('Tgl/Bln/Thn');});
+				$sheet->cell('F1', function ($cell) {$cell->setValue('Materi Pendampingan');});
+				$sheet->cell('G1', function ($cell) {$cell->setValue('Skema Tindakan Lebih Lanjut');});
+
+				if (!empty($data)) {
+					foreach ($data as $key => $value) {
+						$i = $key + 2;
+						$sheet->cell('A' . $i, $value->konsultans->nama_lengkap);
+						$sheet->cell('B' . $i, $value->nama_kumkm);
+						$sheet->cell('C' . $i, $value->program_kerja->permasalahan);
+						$sheet->cell('D' . $i, $value->program_kerja->proker_pendampingan);
+						$sheet->cell('E' . $i, date('d/m/Y', strtotime($value->tanggal)));
+						$sheet->cell('F' . $i, $value->materi);
+						$sheet->cell('G' . $i, $value->tindak_lanjut);
+					}
+				}
+			});
+		})->download('xlsx');
+	}
+
 	public function laporan() {
 		$user = Auth::user();
 
@@ -181,6 +245,12 @@ class PelaksanaanPendampinganController extends Controller {
 		$konsultan_id = Input::get('konsultan_id');
 
 		$content = PelaksanaanPendampingan::query();
+
+		$content->whereHas('konsultans', function ($q) {
+			$q->orderBy('nama_lengkap');
+		})->orderBy('konsultan_id');
+
+		$content->orderBy('tanggal');
 
 		$content->with('program_kerja')->where('lembaga_id', $user->konsultans->lembaga_id);
 
@@ -220,6 +290,12 @@ class PelaksanaanPendampinganController extends Controller {
 
 		$content = PelaksanaanPendampingan::query();
 
+		$content->whereHas('konsultans', function ($q) {
+			$q->orderBy('nama_lengkap');
+		})->orderBy('konsultan_id');
+
+		$content->orderBy('tanggal');
+
 		$content->with('program_kerja')->where('lembaga_id', $user->konsultans->lembaga_id);
 
 		if (Input::get('nama_kumkm')) {
@@ -238,28 +314,9 @@ class PelaksanaanPendampinganController extends Controller {
 			return redirect('pelaksanaan-pendampingan-laporan')->with('error', 'Data Kosong tidak dapat di Export Silahkan Isi DULU BOSS !!');
 		}
 
-		return Excel::create('Kartu Pelaksanaan Pendampingan ' . $nama_kumkm . ' ' . date('d/m/Y'), function ($excel) use ($data) {
-			$excel->sheet('mySheet', function ($sheet) use ($data) {
-				$sheet->cell('A1', function ($cell) {$cell->setValue('KUMKM');});
-				$sheet->cell('B1', function ($cell) {$cell->setValue('Identifikasi Permasalahan');});
-				$sheet->cell('C1', function ($cell) {$cell->setValue('Program Kerja Pendampingan');});
-				$sheet->cell('D1', function ($cell) {$cell->setValue('Tgl/Bln/Thn');});
-				$sheet->cell('E1', function ($cell) {$cell->setValue('Materi Pendampingan');});
-				$sheet->cell('F1', function ($cell) {$cell->setValue('Skema Tindakan Lebih Lanjut');});
+		$namafileunduh = 'Kartu Pelaksanaan Pendampingan ' . $nama_kumkm . ' ' . date('d/m/Y');
 
-				if (!empty($data)) {
-					foreach ($data as $key => $value) {
-						$i = $key + 2;
-						$sheet->cell('A' . $i, $value->nama_kumkm);
-						$sheet->cell('B' . $i, $value->program_kerja->permasalahan);
-						$sheet->cell('C' . $i, $value->program_kerja->proker_pendampingan);
-						$sheet->cell('D' . $i, date('d/m/Y', strtotime($value->tanggal)));
-						$sheet->cell('E' . $i, $value->materi);
-						$sheet->cell('F' . $i, $value->tindak_lanjut);
-					}
-				}
-			});
-		})->download('xlsx');
+		return $this->base_report_excel($namafileunduh, $data);
 	}
 
 	//bulanan
@@ -271,6 +328,12 @@ class PelaksanaanPendampinganController extends Controller {
 		$tahun = Input::get('tahun');
 
 		$content = PelaksanaanPendampingan::query();
+
+		$content->whereHas('konsultans', function ($q) {
+			$q->orderBy('nama_lengkap');
+		})->orderBy('konsultan_id');
+
+		$content->orderBy('tanggal');
 
 		$content->with('program_kerja')->where('lembaga_id', $user->konsultans->lembaga_id);
 
@@ -297,6 +360,7 @@ class PelaksanaanPendampinganController extends Controller {
 	}
 
 	public function laporanBulananExport() {
+		$nama_bulan = '';
 
 		$bulanarray = [
 			'01' => 'Januari',
@@ -320,10 +384,17 @@ class PelaksanaanPendampinganController extends Controller {
 
 		$content = PelaksanaanPendampingan::query();
 
+		$content->whereHas('konsultans', function ($q) {
+			$q->orderBy('nama_lengkap');
+		})->orderBy('konsultan_id');
+
+		$content->orderBy('tanggal');
+
 		$content->with('program_kerja')->where('lembaga_id', $user->konsultans->lembaga_id);
 
 		if (Input::get('bulan')) {
 			$content->whereMonth('tanggal', $bulan);
+			$nama_bulan = $bulanarray[$bulan];
 		}
 
 		if ($tahun == '') {
@@ -338,42 +409,44 @@ class PelaksanaanPendampinganController extends Controller {
 			return redirect('pelaksanaan-pendampingan-laporan-bulanan')->with('error', 'Data Kosong tidak dapat di Export Silahkan Isi DULU BOSS !!');
 		}
 
-		return Excel::create('Kartu Pelaksanaan Pendampingan Bulan ' . $bulanarray[$bulan] . ' ' . date('d/m/Y'), function ($excel) use ($data) {
-			$excel->sheet('mySheet', function ($sheet) use ($data) {
-				$sheet->cell('A1', function ($cell) {$cell->setValue('KUMKM');});
-				$sheet->cell('B1', function ($cell) {$cell->setValue('Identifikasi Permasalahan');});
-				$sheet->cell('C1', function ($cell) {$cell->setValue('Program Kerja Pendampingan');});
-				$sheet->cell('D1', function ($cell) {$cell->setValue('Tgl/Bln/Thn');});
-				$sheet->cell('E1', function ($cell) {$cell->setValue('Materi Pendampingan');});
-				$sheet->cell('F1', function ($cell) {$cell->setValue('Skema Tindakan Lebih Lanjut');});
+		$namafileunduh = 'Rekap Laporan Bulanan Pelaksanaan Pendampingan ' . $nama_bulan . ' ' . date('d/m/Y');
 
-				if (!empty($data)) {
-					foreach ($data as $key => $value) {
-						$i = $key + 2;
-						$sheet->cell('A' . $i, $value->nama_kumkm);
-						$sheet->cell('B' . $i, $value->program_kerja->permasalahan);
-						$sheet->cell('C' . $i, $value->program_kerja->proker_pendampingan);
-						$sheet->cell('D' . $i, date('d/m/Y', strtotime($value->tanggal)));
-						$sheet->cell('E' . $i, $value->materi);
-						$sheet->cell('F' . $i, $value->tindak_lanjut);
-					}
-				}
-			});
-		})->download('xlsx');
+		return $this->base_report_excel($namafileunduh, $data);
 	}
 
 	public function laporanTriwulan() {
 		$user = Auth::user();
 
-		$nama_kumkm = Input::get('nama_kumkm');
+		$triwulan = Input::get('triwulan');
 		$tahun = Input::get('tahun');
 
 		$content = PelaksanaanPendampingan::query();
 
+		$content->whereHas('konsultans', function ($q) {
+			$q->orderBy('nama_lengkap');
+		})->orderBy('konsultan_id');
+
+		$content->orderBy('tanggal');
+
 		$content->with('program_kerja')->where('lembaga_id', $user->konsultans->lembaga_id);
 
-		if (Input::get('nama_kumkm')) {
-			$content->where('nama_kumkm', 'like', '%' . $nama_kumkm . '%');
+		if (Input::get('triwulan')) {
+			if ($triwulan == 1) {
+
+				$content->whereMonth('tanggal', '>=', 1)->whereMonth('tanggal', '<=', 3);
+
+			} elseif ($triwulan == 2) {
+
+				$content->whereMonth('tanggal', '>=', 4)->whereMonth('tanggal', '<=', 6);
+
+			} elseif ($triwulan == 3) {
+
+				$content->whereMonth('tanggal', '>=', 7)->whereMonth('tanggal', '<=', 9);
+
+			} elseif ($triwulan == 4) {
+
+				$content->whereMonth('tanggal', '>=', 10)->whereMonth('tanggal', '<=', 12);
+			}
 		}
 
 		if ($tahun == '') {
@@ -386,26 +459,53 @@ class PelaksanaanPendampinganController extends Controller {
 
 		$data = array(
 			'data' => $content,
-			'nama_kumkm' => $nama_kumkm,
+			'triwulan' => $triwulan,
 			'tahun' => $tahun,
 
 		);
 		// return $data;
-		return view('dashboard.konsultan.pelaksanaan_pendampingan.laporan', $data);
+		return view('dashboard.konsultan.pelaksanaan_pendampingan.laporan_triwulan', $data);
 	}
 
 	public function laporanTriwulanExport() {
 		$user = Auth::user();
 
-		$nama_kumkm = Input::get('nama_kumkm');
+		$triwulan = Input::get('triwulan');
 		$tahun = Input::get('tahun');
+
+		$nama_triwulan = '';
 
 		$content = PelaksanaanPendampingan::query();
 
+		$content->whereHas('konsultans', function ($q) {
+			$q->orderBy('nama_lengkap');
+		})->orderBy('konsultan_id');
+
+		$content->orderBy('tanggal');
+
 		$content->with('program_kerja')->where('lembaga_id', $user->konsultans->lembaga_id);
 
-		if (Input::get('nama_kumkm')) {
-			$content->where('nama_kumkm', 'like', '%' . $nama_kumkm . '%');
+		if (Input::get('triwulan')) {
+			if ($triwulan == 1) {
+
+				$content->whereMonth('tanggal', '>=', 1)->whereMonth('tanggal', '<=', 3);
+				$nama_triwulan = 'Triwulan 1 (Jan-Mar)';
+
+			} elseif ($triwulan == 2) {
+
+				$content->whereMonth('tanggal', '>=', 4)->whereMonth('tanggal', '<=', 6);
+				$nama_triwulan = 'Triwulan 2 (Apr-Jun)';
+
+			} elseif ($triwulan == 3) {
+
+				$content->whereMonth('tanggal', '>=', 7)->whereMonth('tanggal', '<=', 9);
+				$nama_triwulan = 'Triwulan 3 (Jul-Sept)';
+
+			} elseif ($triwulan == 4) {
+
+				$content->whereMonth('tanggal', '>=', 10)->whereMonth('tanggal', '<=', 12);
+				$nama_triwulan = 'Triwulan 4 (Okt-Des)';
+			}
 		}
 
 		if ($tahun == '') {
@@ -417,30 +517,77 @@ class PelaksanaanPendampinganController extends Controller {
 		$data = $content->get();
 
 		if ($data->count() == 0) {
-			return redirect('pelaksanaan-pendampingan-laporan')->with('error', 'Data Kosong tidak dapat di Export Silahkan Isi DULU BOSS !!');
+			return redirect('pelaksanaan-pendampingan-laporan-triwulan')->with('error', 'Data Kosong tidak dapat di Export Silahkan Isi DULU BOSS !!');
 		}
 
-		return Excel::create('Kartu Pelaksanaan Pendampingan ' . $nama_kumkm . ' ' . date('d/m/Y'), function ($excel) use ($data) {
-			$excel->sheet('mySheet', function ($sheet) use ($data) {
-				$sheet->cell('A1', function ($cell) {$cell->setValue('KUMKM');});
-				$sheet->cell('B1', function ($cell) {$cell->setValue('Identifikasi Permasalahan');});
-				$sheet->cell('C1', function ($cell) {$cell->setValue('Program Kerja Pendampingan');});
-				$sheet->cell('D1', function ($cell) {$cell->setValue('Tgl/Bln/Thn');});
-				$sheet->cell('E1', function ($cell) {$cell->setValue('Materi Pendampingan');});
-				$sheet->cell('F1', function ($cell) {$cell->setValue('Skema Tindakan Lebih Lanjut');});
+		$namafileunduh = 'Rekap Laporan Triwulan Pelaksanaan Pendampingan ' . $nama_triwulan . ' ' . date('d/m/Y');
 
-				if (!empty($data)) {
-					foreach ($data as $key => $value) {
-						$i = $key + 2;
-						$sheet->cell('A' . $i, $value->nama_kumkm);
-						$sheet->cell('B' . $i, $value->program_kerja->permasalahan);
-						$sheet->cell('C' . $i, $value->program_kerja->proker_pendampingan);
-						$sheet->cell('D' . $i, date('d/m/Y', strtotime($value->tanggal)));
-						$sheet->cell('E' . $i, $value->materi);
-						$sheet->cell('F' . $i, $value->tindak_lanjut);
-					}
-				}
-			});
-		})->download('xlsx');
+		return $this->base_report_excel($namafileunduh, $data);
+	}
+
+	public function laporanTahunan() {
+		$user = Auth::user();
+
+		$tahun = Input::get('tahun');
+
+		$content = PelaksanaanPendampingan::query();
+
+		$content->whereHas('konsultans', function ($q) {
+			$q->orderBy('nama_lengkap');
+		})->orderBy('konsultan_id');
+
+		$content->orderBy('tanggal');
+
+		$content->with('program_kerja')->where('lembaga_id', $user->konsultans->lembaga_id);
+
+		if ($tahun == '') {
+			$tahun = date('Y');
+		}
+
+		$content->whereYear('tanggal', $tahun);
+
+		$content = $content->paginate();
+
+		$data = array(
+			'data' => $content,
+			'tahun' => $tahun,
+
+		);
+		// return $data;
+		return view('dashboard.konsultan.pelaksanaan_pendampingan.laporan_tahunan', $data);
+	}
+
+	public function laporanTahunanExport() {
+		$user = Auth::user();
+
+		$tahun = Input::get('tahun');
+
+		$nama_triwulan = '';
+
+		$content = PelaksanaanPendampingan::query();
+
+		$content->whereHas('konsultans', function ($q) {
+			$q->orderBy('nama_lengkap');
+		})->orderBy('konsultan_id');
+
+		$content->orderBy('tanggal');
+
+		$content->with('program_kerja')->where('lembaga_id', $user->konsultans->lembaga_id);
+
+		if ($tahun == '') {
+			$tahun = date('Y');
+		}
+
+		$content->whereYear('tanggal', $tahun);
+
+		$data = $content->get();
+
+		if ($data->count() == 0) {
+			return redirect('pelaksanaan-pendampingan-laporan-tahunan')->with('error', 'Data Kosong tidak dapat di Export Silahkan Isi DULU BOSS !!');
+		}
+
+		$namafileunduh = 'Rekap Laporan Tahunan Pelaksanaan Pendampingan ' . $tahun . ' ' . date('d/m/Y');
+
+		return $this->base_report_excel($namafileunduh, $data);
 	}
 }

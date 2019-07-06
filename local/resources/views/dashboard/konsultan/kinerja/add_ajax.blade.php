@@ -8,10 +8,18 @@
         <th>Standar_Layanan</th>
         <th>Sasaran</th>
         <th>Target</th>
-        <th>Jan-Mar</th>
-        <th>Apr-Jun</th>
-        <th>Jul-Sept</th>
-        <th>Okt-Des</th>
+        <th>Jan</th>
+        <th>Feb</th>
+        <th>Mar</th>
+        <th>Apr</th>
+        <th>Mei</th>
+        <th>Jun</th>
+        <th>Jul</th>
+        <th>Agust</th>
+        <th>Sept</th>
+        <th>Okt</th>
+        <th>Nov</th>
+        <th>Des</th>
     </tr>
     <?php $no = 1;?>
     @foreach($kinerja as $row)
@@ -22,10 +30,18 @@
         <td>{{$row->nama}}</td>
         <td><input type="text" name="sasaran[]" {{$row->sasaran==''?'':'readonly'}} value="{{$row->sasaran}}"></td>
         <td><input type="text" name="target[]" {{$row->target==''?'':'readonly'}} value="{{$row->target}}"></td>
-        <td><input type="text" name="triwulan1[]" {{$row->triwulan1==''?'':'readonly'}} value="{{$row->triwulan1}}"></td>
-        <td><input type="text" name="triwulan2[]" {{$row->triwulan2==''?'':'readonly'}} value="{{$row->triwulan2}}"></td>
-        <td><input type="text" name="triwulan3[]" {{$row->triwulan3==''?'':'readonly'}} value="{{$row->triwulan3}}"></td>
-        <td><input type="text" name="triwulan4[]" {{$row->triwulan4==''?'':'readonly'}} value="{{$row->triwulan4}}"></td>
+        <td><input type="text" name="jan[]" {{$row->jan==''?'':'readonly'}} value="{{$row->jan}}"></td>
+        <td><input type="text" name="feb[]" {{$row->feb==''?'':'readonly'}} value="{{$row->feb}}"></td>
+        <td><input type="text" name="mar[]" {{$row->mar==''?'':'readonly'}} value="{{$row->mar}}"></td>
+        <td><input type="text" name="apr[]" {{$row->apr==''?'':'readonly'}} value="{{$row->apr}}"></td>
+        <td><input type="text" name="mei[]" {{$row->mei==''?'':'readonly'}} value="{{$row->mei}}"></td>
+        <td><input type="text" name="jun[]" {{$row->jun==''?'':'readonly'}} value="{{$row->jun}}"></td>
+        <td><input type="text" name="jul[]" {{$row->jul==''?'':'readonly'}} value="{{$row->jul}}"></td>
+        <td><input type="text" name="agu[]" {{$row->agu==''?'':'readonly'}} value="{{$row->agu}}"></td>
+        <td><input type="text" name="sept[]" {{$row->sept==''?'':'readonly'}} value="{{$row->sept}}"></td>
+        <td><input type="text" name="okt[]" {{$row->okt==''?'':'readonly'}} value="{{$row->okt}}"></td>
+        <td><input type="text" name="nov[]" {{$row->nov==''?'':'readonly'}} value="{{$row->nov}}"></td>
+        <td><input type="text" name="des[]" {{$row->des==''?'':'readonly'}} value="{{$row->des}}"></td>
     </tr>
     @endforeach
     <tr>

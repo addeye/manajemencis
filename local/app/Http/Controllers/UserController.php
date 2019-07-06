@@ -20,24 +20,20 @@ class UserController extends Controller
 
     public function getAll()
     {
-        $data = Array
-        (
+        $data = [
             'title' => 'Data User',
             'user' => $this->user->getAll()
-
-        );
-        return view('setting.users.u_list',$data);
+        ];
+        return view('setting.users.u_list', $data);
     }
 
     public function addData()
     {
-        $data = Array
-        (
+        $data = [
             'title' => 'Tambah User',
             'roles' => $this->roles->getAll()
-
-        );
-        return view('setting.users.u_add',$data);
+        ];
+        return view('setting.users.u_add', $data);
     }
 
     public function doAddData(Request $request)
@@ -60,39 +56,36 @@ class UserController extends Controller
 
 //        return $data;
         $result = $this->user->create($data);
-        if($result)
-        {
-            return redirect('u')->with('success','Data Bidang Layanan Berhasil Disimpan');
+        if ($result) {
+            return redirect('u')->with('success', 'Data Bidang Layanan Berhasil Disimpan');
         }
     }
 
     public function editData($id)
     {
-        $data = array(
+        $data = [
             'title' => 'Edit User',
             'roles' => $this->roles->getAll(),
             'data' => $this->user->getById($id)
-        );
-        return view('setting.users.u_edit',$data);
+        ];
+        return view('setting.users.u_edit', $data);
     }
 
-    public function doEditData(Request $request,$id)
+    public function doEditData(Request $request, $id)
     {
         $data = $request->all();
 
-        $result = $this->user->update($id,$data);
-        if($result)
-        {
-            return redirect('u')->with('info','Data User Berhasil Diupdate');
+        $result = $this->user->update($id, $data);
+        if ($result) {
+            return redirect('u')->with('info', 'Data User Berhasil Diupdate');
         }
     }
 
     public function deleteData($id)
     {
         $result = $this->user->delete($id);
-        if($result)
-        {
-            return redirect('u')->with('info','Data User Berhasil Dihapus');
+        if ($result) {
+            return redirect('u')->with('info', 'Data User Berhasil Dihapus');
         }
     }
 }

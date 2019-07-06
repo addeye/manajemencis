@@ -23,10 +23,10 @@
                     <form method="post" action="{{ url('k/proker') }}" class="form-horizontal">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Proker Plut</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label">Proker Plut {{date('Y')}}</label>
                             <div class="col-sm-5">
                                 <select class="form-control" name="proker_id" id="proker_id">
-                                    <option value="">Proker Plut</option>
+                                    <option value="">Pilih Proker Plut</option>
                                     @foreach ($proker as $p)
                                         <option value="{{$p->id}}">{{$p->program}}</option>
                                     @endforeach

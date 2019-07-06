@@ -17,10 +17,20 @@
 			@include('layouts.alert')
 			<div class="box">
 				<div class="box-header">
-					<h3 class="box-title">{{$title}} {{date('Y')}}</h3>
+					<h3 class="box-title">{{$title}}</h3>
 				</div>
 				<!-- / box Header -->
 				<div class="box-body table-responsive">
+						<div class="form-inline">
+							<div class="form-group">
+								Pilih Tahun
+								<select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+									<option value="">Tahun...</option>
+									<option value="/proker-plut-konsultan?tahun=2018" {{Request::input('tahun')=='2018'?'selected':''}}>2018</option>
+									<option value="/proker-plut-konsultan?tahun=2019" {{Request::input('tahun')=='2019'?'selected':''}}>2019</option>
+								</select>
+							</div>
+						</div>
 						<table id="example" class="table table-bordered table-striped">
 						<thead>
 							<tr>

@@ -38,6 +38,7 @@
                             <th>Telepon</th>
                             <th>Email</th>
                             <th>Whatsapp</th>
+                            <th>Type</th>
                             <th>Action</th>
 
                         </tr>
@@ -54,6 +55,7 @@
                                 <td>{{$row->plut_telp}}</td>
                                 <td>{{$row->plut_email}}</td>
                                 <td>{{$row->plut_whatsapp}}</td>
+                                <td>{{$row->type}}</td>
                                 <td>
                                     <a href="{{ url('cislembaga/'.$row->id.'/detail') }}" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="left" title="Edit Data {{$row->plut_name}}">
                                         <i class="glyphicon glyphicon-eye-open"></i>
